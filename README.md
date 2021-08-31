@@ -1,4 +1,4 @@
-# WasteReuseSystem
+# WasteReuseSystem（仮）
 CCC2021-NoobFighterReturnsの作品です．
 メンバーは
 * 伊地知翔也 STU-Idichi-Syoya
