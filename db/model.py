@@ -12,7 +12,7 @@ Base=declarative_base()
 # bcrypt = Bcrypt(app)
 engine = create_engine('sqlite:///sample_sqlite3', echo=False)
 
-SessionClass = sessionmaker(engine)  # セッションを作るクラスを作成
+SessionClass = sessionmaker(engine)
 session = SessionClass()
 
 
@@ -46,10 +46,12 @@ class Item(Base):
 
 def createTable():
     engine.execute('PRAGMA foreign_keys = true;')
-    Base.metadata.create_all(bind=engine,check_data=True)
+    Base.metadata.create_all(bind=engine)
 
 def deleteTable():
     import os
+    session.close()
+    engine.dispose()
     os.unlink("sample_sqlite3")
     
 if __name__=='__main__':
