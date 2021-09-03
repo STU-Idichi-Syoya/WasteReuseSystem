@@ -1,49 +1,56 @@
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship, sessionmaker
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
+from sqlalchemy.sql.sqltypes import Boolean
+
 from sqlalchemy import Table, Column, Integer, ForeignKey, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 import os, sys
 sys.path.append(os.path.abspath(".."))
-import run
 
-app = Flask(__name__)
+Base=declarative_base()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "tekitou"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.environ["waste_reuse_system_secret_key"]
+# bcrypt = Bcrypt(app)
+engine = create_engine('sqlite:///sample_sqlite3', echo=False)
 
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-engine = create_engine('sqlite:///sample_db.sqlite3', echo=True)
 SessionClass = sessionmaker(engine)  # セッションを作るクラスを作成
 session = SessionClass()
 
-@login_manager.user_loader
-def load_user(mailAddr):
-    return session.query.get(mailAddr)
 
-class User(db.Model):
-    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
-    name = db.Column(db.String(length=30), nullable=False)
-    birthday = db.Column(db.Integer(length=4), nullable=False)
-    univercityId = relationship("Univercity")
-    mailAddr = db.Column(db.String(length=50), nullable=False, unique=True)
-    password = db.Column(db.String(length=60), nullable=False)
+class User(Base):
+    __tablename__= 'users'
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    name = Column(String(length=30), nullable=False)
+    birthday = Column(Integer(), nullable=False)
+    univercityId = Column(Integer(),ForeignKey("univercities.id"),nullable=False)
+    mailAddr = Column(String(length=50), nullable=False, unique=True)
+    password = Column(String(length=60), nullable=False)
 
 
-class Univercity(db.Model):
-    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
-    univercityName = db.Column(db.String(), nullable=False)
-    domainAddr = db.Column(db.String(length=30), nullable=True)
+class Univercity(Base):
+    __tablename__= 'univercities'
 
-class Item(db.Model):
-    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
-    name = db.Column(db.String(length=30), nullable=False)
-    category = db.Column(db.String(length=30), nullable=False, unique=True)
-    dangerous = db.Column(db.Boolean(), nullable=False)
-    needCredential = db.Column(db.String(length=30), nullable=False)
-    expire = db.Column(db.Integer(), nullable=False)
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    univercityName = Column(String(), nullable=False)
+    domainAddr = Column(String(length=30), nullable=True)
 
+class Item(Base):
+    __tablename__= 'items'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    user_id =  Column(Integer(),ForeignKey("users.id"),nullable=False)
+    name = Column(String(length=30), nullable=False)
+    category = Column(String(length=30), nullable=False, unique=True)
+    dangerous = Column(Boolean(), nullable=False)
+    needCredential = Column(String(length=30), nullable=False)
+    expire = Column(Integer(), nullable=False)
+
+def createTable():
+    engine.execute('PRAGMA foreign_keys = true;')
+    Base.metadata.create_all(bind=engine,check_data=True)
+
+def deleteTable():
+    import os
+    os.unlink("sample_sqlite3")
+    
+if __name__=='__main__':
+    createTable()
