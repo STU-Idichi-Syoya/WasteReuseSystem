@@ -3,7 +3,7 @@ from .model import Univercity, User, createTable, deleteTable
 import unittest
 
 class ModelTestCase(unittest.TestCase):
-
+    
     # Only use setUp() and tearDown() if necessary
 
     def setUp(self):
@@ -27,6 +27,7 @@ class ModelTestCase(unittest.TestCase):
         bu = session.query(User).all()
         self.assertEqual(len(bu),1)
         self.assertEqual(bu[0] ,user)
+
 
 if __name__ == '__main__':
     unittest.main()
