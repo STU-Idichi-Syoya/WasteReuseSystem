@@ -8,7 +8,7 @@ class ModelTestCase(unittest.TestCase):
 
     def setUp(self):
         createTable()
-        self.univ = Univercity(univercityName="japan imperial Univ",domainAddr="imperial.ac.jp")
+        self.univ = Univercity(univercity_name="japan imperial Univ",domain_address="imperial.ac.jp")
         session.add(self.univ)
         session.commit()
 
@@ -17,8 +17,8 @@ class ModelTestCase(unittest.TestCase):
 
     def testInsertUser(self):
         # Test feature one.
-        user = User(name="carlos", birthday=20000421, univercityId=self.univ.id,
-                    mailAddr="k3897@k.ac.jp", password="0421")
+        user = User(user_name="carlos", birthday=20000421, univercity_id=self.univ.id,
+                    email_address="k3897@k.ac.jp", password="0421")
         session.add(user)
         session.commit()
         bu = session.query(User).all()
@@ -30,11 +30,11 @@ class ModelTestCase(unittest.TestCase):
         self.assertEqual(None,usr)
 
     def testInsertDuplicateUser(self):
-        usr=User(name='testName',birthday=1234,mailAddr='testaddr@axc.jp',password='str',univercityId=self.univ.id)
+        usr=User(user_name='testName',birthday=1234,email_address='testaddr@axc.jp',password='str',univercity_id=self.univ.id)
         session.add(usr)
         session.commit()
         try:
-            usr=User(name='testName',birthday=1234,mailAddr='testaddr@axc.jp',password='str',univercityId=self.univ.id)
+            usr=User(user_name='testName',birthday=1234,email_address='testaddr@axc.jp',password='str',univercity_id=self.univ.id)
             session.add(usr)
             session.commit()
         except:
