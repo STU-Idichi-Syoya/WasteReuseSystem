@@ -9,7 +9,6 @@ sys.path.append(os.path.abspath(".."))
 
 Base=declarative_base()
 
-# bcrypt = Bcrypt(app)
 engine = create_engine('sqlite:///sample_sqlite3', echo=False)
 
 SessionClass = sessionmaker(engine)
