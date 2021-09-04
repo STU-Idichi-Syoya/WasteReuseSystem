@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ログイン
+{% endblock %}
+
+{% block content %}
+<!--
+<form action="" method="post">
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="mail address" required="required" name="mailAddr">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="password" required="required" name="passwd">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </div>
+    </form>
+-->
+<body class="text-center">  
+    <div class="container">
+        <form method="POST" class="form-register" style="color:white">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">ログインしてください</h1>
+            <br>
+            {{ form.user_name.label() }}
+            {{ form.user_name(class="form-control", placeholder="User Name") }}
+
+            {{ form.password.label() }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+            <br>
+
+            <div class="checkbox mb-3">
+                <h6>会員登録お済みでない?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">会員登録</a>
+            </div>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </form>
+    </div>
+</body>
+{% endblock %}

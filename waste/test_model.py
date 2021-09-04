@@ -8,8 +8,7 @@ class ModelTestCase(unittest.TestCase):
 
     def setUp(self):
         createTable()
-        self.univ = Univercity(univercityName="japan imperial Univ",
-                          domainAddr="imperial.ac.jp")
+        self.univ = Univercity(univercityName="japan imperial Univ",domainAddr="imperial.ac.jp")
         session.add(self.univ)
         session.commit()
 
