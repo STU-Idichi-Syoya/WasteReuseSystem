@@ -3,7 +3,7 @@ import typing
 
 def FindUserByMailAddrPasswd(mailAddr:str,passwd:str) ->typing.Union[User,None] :
     s=session
-    usrs=s.query(User).filter_by(User.mailAddr==mailAddr and User.password==passwd).all()
+    usrs=s.query(User).filter_by(mailAddr=mailAddr,password=passwd).all()
     if len(usrs)!=1:
         return None
     return usrs[0]
@@ -11,4 +11,4 @@ def FindUserByMailAddrPasswd(mailAddr:str,passwd:str) ->typing.Union[User,None] 
 
 def findByUserId(usrId):
     s=session
-    return s.query(User).filter(usrId).first()
+    return s.query(User).filter_by(id=usrId).first()
