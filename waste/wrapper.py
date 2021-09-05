@@ -14,3 +14,10 @@ def findByUserId(usrId):
 
 def findAll():
     return session.query(User).all()
+
+
+def session_add(user_to_create):
+    
+    session_add(user_to_create)
+    session.commit()
+    
