@@ -57,6 +57,14 @@ class Item(Base):
     need_credential = Column(String(length=30), nullable=False)
     expire = Column(Integer(), nullable=False)
 
+# 商品公開先リスト
+class ItemAllow(Base):
+    __tablename__= 'items_allows'
+
+    id = Column(Integer(), primary_key=True, autoincrement=True)
+    item_id =  Column(Integer(),ForeignKey("items.id"),nullable=False)
+    allow_univercity_id = Column(Integer(),ForeignKey("univercities.id"),nullable=False)
+
 # テーブルを作成する．dev_test=True->初期データ挿入
 def createTable(dev_test=False):
     engine.execute('PRAGMA foreign_keys = true;')

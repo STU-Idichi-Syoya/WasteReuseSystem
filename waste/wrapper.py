@@ -1,4 +1,5 @@
-from .model import User,session
+from sqlalchemy.sql.operators import all_op
+from .model import ItemAllow, User,session,Item
 import typing
 
 def FindUserByMailAddrPasswd(email_address:str,passwd:str) ->typing.Union[User,None] :
@@ -14,3 +15,12 @@ def findByUserId(usrId):
 
 def findAll():
     return session.query(User).all()
+
+def findItemByWord(searchWord:str,userId:int=None):
+    # ログインしていない場合の検索は．．．？
+    if userId==None:
+        return []
+
+    return session.query(Item,User,ItemAllow).filter(Item.id==ItemAllow.item_id,
+        Item.user_id==userId,Item.item_name.like(searchWord)).all()
+    
