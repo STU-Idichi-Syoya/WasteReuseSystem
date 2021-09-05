@@ -38,15 +38,15 @@ def login_page():
     elif request.method=='POST':
         mailadr=form.user_name.data
         passwd=form.password.data
-        user = wrapper.FindUserByMailAddrPasswd(mailadr, passwd)
+        attempted_user = wrapper.FindUserByMailAddrPasswd(mailadr, passwd)
         print(wrapper.findAll()[0].email_address)
         print(wrapper.findAll()[0].password_hash)
-        if user==None:
+        if attempted_user==None:
             abort(Response('userNotFound', status=401))
             flash('ログイン失敗',category='danger')
             return render_template('login.html', form=form)
         else:
-            login_user(user)
+            login_user(attempted_user)
             flash(f'ログイン成功! {attempted_user.username}さん', category='success')
             return redirect(url_for('add_page'))
     
