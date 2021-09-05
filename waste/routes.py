@@ -8,7 +8,7 @@ from waste import db, login_manager,app
 @app.teardown_request
 def remove_session(ex=None):
     #session.removeじゃなくてclearじゃないのか？
-    session.remove()
+    session.clear()
 
 # ホーム画面
 @app.route('/')
