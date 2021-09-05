@@ -1,4 +1,5 @@
 flask
 sqlalchemy
 flask-login
-
+flask-wtf
+email_validator

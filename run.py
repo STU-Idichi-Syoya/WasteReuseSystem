@@ -1,5 +1,4 @@
-from routes import RunApp
-
+from waste import app
 
 if __name__ == '__main__':
-    RunApp()
+    app.run(debug=True)
