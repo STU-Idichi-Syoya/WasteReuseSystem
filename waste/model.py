@@ -1,16 +1,12 @@
-# from flask_sqlalchemy import SQLAlchemy
-from flask_sqlalchemy import SQLAlchemy
 from waste import bcrypt
 from flask_login import UserMixin
 import os, sys
-from waste import app
+from waste import app,db,sqliteFile
 
 sys.path.append(os.path.abspath(".."))
 
-sqliteFile="sample_sqlite3"
 
 app.config["SQLALCHEMY_DATABASE_URI"]=f'sqlite:///{sqliteFile}'
-db=SQLAlchemy(app=app)
 session=db.session
 
 # ユーザ情報
@@ -63,30 +59,7 @@ class ItemAllow(db.Model):
     item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
     allow_univercity_id = db.Column(db.Integer(),db.ForeignKey("univercities.id"),nullable=False)
 
-# テーブルを作成する．dev_test=True->初期データ挿入
-def createTable(dev_test=False):
-    if os.path.exists(sqliteFile):return
-    db.create_all()
-    print('creating...')
-    try:
-        univ = Univercity(univercity_name="japan imperial Univ",
-                            domain_addr="abc.ac.jp")
-        session.add(univ)
-        session.commit()
-        user = User(user_name="carlos", birthday=20000421, univercity_id=univ.id,
-                    email_address="test@abc.ac.jp", password="0421")
-        session.add(user)
-        session.commit()
-        item=Item(user_id=user.id,item_name='testItem',category='実験',dangerous=False,need_credential="",expire=100000)
-        itemAllow=ItemAllow(item_id=item.id,allow_univercity_id=univ.id)
-        session.add(item)
-        session.add(itemAllow)
-
-        session.commit()
-    except:
-        # import traceback
-        # traceback.print_exc()
-        print('already inserted')
+#
 def deleteTable():
     # import os
     # session.close()
@@ -94,6 +67,7 @@ def deleteTable():
     # os.unlink("sample_sqlite3")
     pass
 
+
+
 if __name__=='__main__':
     print('model create')
-    createTable()
