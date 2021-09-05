@@ -1,13 +1,12 @@
-from flask import render_template, redirect, url_for, flash, request,Flask,Response,abort ,session
+from flask import render_template, redirect, url_for, flash, request,Flask,Response,abort
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user,UserMixin
 from waste.forms import RegisterForm, LoginForm
 from waste.model import Item, User
 from . import wrapper
-from waste import db, login_manager,app
+from waste import login_manager,app
 
 @app.teardown_request
 def remove_session(ex=None):
-    #session.removeじゃなくてclearじゃないのか？
     session.clear()
 
 # ホーム画面
@@ -47,24 +46,27 @@ def login_page():
             return render_template('login.html', form=form)
         else:
             login_user(user)
-            flash(f'ログイン成功! {attempted_user.username}さん', category='success')
-            return redirect(url_for('add_page'))
+            flash(f'ログイン成功! {attempted_user.user_name}さん', category='success')
+    return redirect(url_for('add_page'))
     
 # 会員登録画面
-@app.route('/users/register')
+@app.route('/users/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
+    # 成功
     if form.validate_on_submit():
-        user_to_create = User(username=form.username.data,email_address=form.email_address.data,password=form.password1.data)
-        db.session.add(user_to_create)
-        db.session.commit()
+        # user_name = User.query.filter_by(user_name=user_name).first()
+        # email_address = User.query.filter_by(email_address=email_address).first()
+        user_to_create = User(user_name=form.user_name.data, birthday=form.birthday.data, email_address=form.email_address.data, password=form.password1.data)
+        wrapper.session_add
         login_user(user_to_create)
-        flash(f'Account created successfuly! You are now logged as {user_to_create.username}', category='success')
+        flash(f'アカウント作成成功 {user_to_create.user_name}', category='success')
+        return redirect(url_for('add_page'))
 
-        return redirect(url_for('market_page'))
-    if form.errors != {}:  # If there are not errors from the validations
+    # 失敗
+    if form.errors != {}:  
         for err_msg in form.errors.values():
-            flash(f'There was an error with creating a user: {err_msg}', category='danger')
+            flash(f'アカウント作成失敗: {err_msg}', category='danger')
 
     return render_template('register.html', form=form)
 
@@ -78,6 +80,6 @@ def logout_page():
 
 @login_manager.user_loader
 def usrLoder(usrId):
-    db.findByUserId(int(usrId))
+    wrapper.findByUserId(int(usrId))
 
 
