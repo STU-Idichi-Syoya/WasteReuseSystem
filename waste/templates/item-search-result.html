@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}
+    items-search
+{% endblock %}
+{% block content %}
+   {% for item in items %}
+        {{item.item_name}}
+    {% endfor %}
+{% endblock %}
