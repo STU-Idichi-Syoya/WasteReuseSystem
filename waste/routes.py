@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash, request,Flask,Response,abort
+from flask import render_template, redirect, url_for, flash, request, Flask, Response, abort, session
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user,UserMixin
 from waste.forms import RegisterForm, LoginForm
 from waste.model import Item, User
@@ -7,7 +7,7 @@ from waste import login_manager,app
 
 @app.teardown_request
 def remove_session(ex=None):
-    session.clear()
+    session.remove()
 
 # ホーム画面
 @app.route('/')
@@ -25,7 +25,7 @@ def search_page():
 @app.route('/items/add', methods=['GET', 'POST'])
 @login_required
 def add_page():
-    return render_template('add.html')
+    return render_template('item-add.html')
 
 # ログイン画面
 @app.route('/login', methods=['GET', 'POST'])
@@ -37,17 +37,16 @@ def login_page():
     elif request.method=='POST':
         mailadr=form.user_name.data
         passwd=form.password.data
-        user = wrapper.FindUserByMailAddrPasswd(mailadr, passwd)
+        attempted_user = wrapper.FindUserByMailAddrPasswd(mailadr, passwd)
         print(wrapper.findAll()[0].email_address)
         print(wrapper.findAll()[0].password_hash)
-        if user==None:
+        if attempted_user==None:
             abort(Response('userNotFound', status=401))
-            flash('ログイン失敗',category='danger')
-            return render_template('login.html', form=form)
+
         else:
-            login_user(user)
-            flash(f'ログイン成功! {attempted_user.user_name}さん', category='success')
-    return redirect(url_for('add_page'))
+            login_user(attempted_user)
+            flash(f'ログイン成功! {attempted_user.username}さん', category='success')
+            return redirect(url_for('add_page'))
     
 # 会員登録画面
 @app.route('/users/register', methods=['GET', 'POST'])
@@ -77,6 +76,16 @@ def logout_page():
     flash("ログアウト成功", category="info")
     return redirect(url_for("home_page"))
 
+@app.route('/items/search',methods=['POST','GET'])
+def search():
+    if request.method=='GET':
+        render_template('items-search.html')
+    elif request.method=='POST':
+        searchWord=request.form['searchWord']
+        if len(searchWord.replace(' ','').replace('\t',''))==0:
+                render_template('items-search.html')
+        items=wrapper.findItemByWord(searchWord,userId=current_user.id)
+        render_template('items-search-result.html',items=items)
 
 @login_manager.user_loader
 def usrLoder(usrId):
