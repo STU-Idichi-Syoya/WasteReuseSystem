@@ -5,7 +5,6 @@ import unittest
 class ModelTestCase(unittest.TestCase):
     
     # Only use setUp() and tearDown() if necessary
-
     def setUp(self):
         createTable()
         self.univ = Univercity(univercity_name="japan imperial Univ",domain_address="imperial.ac.jp")
@@ -17,8 +16,7 @@ class ModelTestCase(unittest.TestCase):
 
     def testInsertUser(self):
         # Test feature one.
-        user = User(user_name="carlos", birthday=20000421, univercity_id=self.univ.id,
-                    email_address="k3897@k.ac.jp", password="0421")
+        user = User(user_name="carlos", birthday=20000421, univercity_id=self.univ.id,email_address="k3897@k.ac.jp", password="0421")
         session.add(user)
         session.commit()
         bu = session.query(User).all()
