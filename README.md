@@ -25,13 +25,13 @@ cd ~ # 各自DLしたディレクトリまで移動しよう。
 ```
 ## Mac or Linux
 ```
-source env/bin/activate
+source env/bin/activate　# 失敗する場合は飛ばして良い
 pip install -r requrements.txt
 flask db init # 毎回しなくていい
 ```
 ## Windows
 ```
-./env/Scripts/activate
+./env/Scripts/activate # 失敗する場合は飛ばして良い
 pip install -r requrements.txt
 flask db init # 毎回しなくていい
 ```
