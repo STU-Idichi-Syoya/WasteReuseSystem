@@ -38,8 +38,8 @@ flask db init # 毎回しなくていい
 
 # サーバ起動
 ```
-export FLASK_APP=project
-export FLASK_DEBUG=1
+set FLASK_APP=project
+set FLASK_DEBUG=1
 flask run
 ```
 # DBスキーマの変更
