@@ -26,11 +26,14 @@ cd ~ # 各自DLしたディレクトリまで移動しよう。
 ## Mac or Linux
 ```
 source env/bin/activate
-
+pip install -r requrements.txt
+flask db init # 毎回しなくていい
 ```
 ## Windows
 ```
 ./env/Scripts/activate
+pip install -r requrements.txt
+flask db init # 毎回しなくていい
 ```
 
 # サーバ起動
@@ -40,8 +43,9 @@ export FLASK_DEBUG=1
 flask run
 ```
 # DBスキーマの変更
+参考：https://flask-migrate.readthedocs.io/en/latest/
 ```
-flask-migration
+flask db upgrade
 ```
 
 # 開発作業終了
