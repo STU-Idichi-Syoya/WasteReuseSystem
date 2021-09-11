@@ -11,29 +11,44 @@ CCC2021-NoobFighterReturnsの作品です.
 * 福田信斗 https://github.com/fukudanobuto
 * Masashi Hashiguchi https://github.com/MasashiHashiguchi
 
-# プロジェクトのDL
-** ここではユーザのホームディレクトリで実行することを前提にします。
+# 初回設定
+**ここではユーザのホームディレクトリで実行することを前提にします。**
 ```
 cd ~
 git clone https://github.com/STU-Idichi-Syoya/WasteReuseSystem/
-```
-
-# 環境設定
-PCを再起動したり、初めてプロジェクトを立ち上げるときに実行しましょう
-```
-cd ~ # 各自DLしたディレクトリまで移動しよう。
+cd  ~/WasteReuseSystem/ # 各自DLしたディレクトリまで移動しよう。
 ```
 ## Mac or Linux
 ```
-source env/bin/activate　# 失敗する場合は飛ばして良い
-pip install -r requrements.txt
-flask db init # 毎回しなくていい
+python3 -m venv env
+source env/bin/activate
+pip3 install  -r requrements.txt
+flask db init 
 ```
 ## Windows
 ```
-./env/Scripts/activate # 失敗する場合は飛ばして良い
-pip install -r requrements.txt
-flask db init # 毎回しなくていい
+python3 -m venv env
+pip3 install -r requrements.txt　## うまくいかない場合、「開発を行うときにやる設定(毎回やること)」のwindowsの項を参照
+flask db init 
+```
+
+# 開発を行うときにやる設定(毎回やること)
+```
+cd ~/WasteReuseSystem/
+```
+## Mac or Linux
+```
+source env/bin/activate
+```
+## windows
+### コマンドプロンプトの場合
+```
+env\Scripts\activate.bat ## コマンドプロンプトの場合
+```
+### PowerShellの場合
+```
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force # 初回だけ実行
+.env/Scripts/activate.ps1 # 毎回実行
 ```
 
 # サーバ起動
@@ -51,13 +66,14 @@ set FLASK_DEBUG=1
 flask run
 ```
 
-# DBスキーマの変更
-参考：https://flask-migrate.readthedocs.io/en/latest/
-```
-flask db upgrade
-```
-
 # 開発作業終了
 ```
 deactivete
+```
+
+# DBスキーマの変更
+参考：https://flask-migrate.readthedocs.io/en/latest/
+```
+flask db migrate -m "msg..."
+flask db upgrade
 ```
