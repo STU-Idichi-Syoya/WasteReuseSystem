@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash, request, Flask, Response, abort, session
+from flask import render_template, redirect, url_for, flash, request, Flask, Response, abort, session,send_from_directory
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user,UserMixin
 from waste.forms import RegisterForm, LoginForm
 from waste.model import Item, User
@@ -58,7 +58,8 @@ def register_page():
         # email_address = User.query.filter_by(email_address=email_address).first()
         user_to_create = User(user_name=form.user_name.data, birthday=form.birthday.data, email_address=form.email_address.data, password=form.password1.data)
         wrapper.session_add
-        login_user(user_to_create)
+        session_add(user_to_create)
+        session.commit()
         flash(f'アカウント作成成功 {user_to_create.user_name}', category='success')
         return redirect(url_for('add_page'))
 
@@ -86,6 +87,11 @@ def search():
                 render_template('items-search.html')
         items=wrapper.findItemByWord(searchWord,userId=current_user.id)
         render_template('items-search-result.html',items=items)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @login_manager.user_loader
 def usrLoder(usrId):
