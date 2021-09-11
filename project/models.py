@@ -41,8 +41,8 @@ class PublicScope(db.Model):
     __tablename__= 'public_scopes'
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
-    item_id =  db.Column(db.Integer(),db.ForeignKey("univercities.id"),nullable=False)
-    permit_to_transaction_univ_id = db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
+    item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
+    permit_to_transaction_univ_id = db.Column(db.Integer(),db.ForeignKey("univercities.id"),nullable=False)
     
 import datetime
 # 商品情報
@@ -59,7 +59,7 @@ class Item(db.Model):
     # 商品状態(正規化しない)
     state = db.Column(db.String(length=30), nullable=False)
     # 取引終了か？(貰い手決定)
-    is_active=db.Column(db.Boolean(), nullable=False,default=True)
+    is_active=db.Column(db.Boolean(), nullable=False,default=False)
     # 出品者からのメッセージ
     message= db.Column(db.String(length=600), nullable=False)
     handing_method = db.Column(db.String(length=100), nullable=False)
