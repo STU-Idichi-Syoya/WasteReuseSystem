@@ -86,7 +86,6 @@ class Category(db.Model):
     __tablename__= 'categories'
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     parent = db.Column(db.Integer(), db.ForeignKey("categories.id"),nullable=True)
-    item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
     category_name = db.Column(db.String(length=100), nullable=False)
 
 class ItemCategory(db.Model):
