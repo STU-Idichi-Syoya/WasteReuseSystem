@@ -49,7 +49,7 @@ env\Scripts\activate.bat ## コマンドプロンプトの場合
 ### PowerShellの場合
 ```
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force # 初回だけ実行
-.env/Scripts/activate.ps1 # 毎回実行
+./env/Scripts/activate.ps1 # 毎回実行
 ```
 
 # サーバ起動
