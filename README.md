@@ -37,11 +37,20 @@ flask db init # 毎回しなくていい
 ```
 
 # サーバ起動
+## Mac or Linux
+```
+export FLASK_APP=project
+export FLASK_DEBUG=1
+flask run
+```
+
+## Windows
 ```
 set FLASK_APP=project
 set FLASK_DEBUG=1
 flask run
 ```
+
 # DBスキーマの変更
 参考：https://flask-migrate.readthedocs.io/en/latest/
 ```
