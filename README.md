@@ -28,7 +28,8 @@ flask db init
 ## Windows
 ```
 python3 -m venv env
-pip3 install -r requrements.txt　## うまくいかない場合、「開発を行うときにやる設定(毎回やること)」のwindowsの項を参照
+env\Scripts\activate.bat ## うまくいかない場合、「開発を行うときにやる設定(毎回やること)」のwindowsの項を参照
+pip3 install -r requrements.txt　
 flask db init 
 ```
 
