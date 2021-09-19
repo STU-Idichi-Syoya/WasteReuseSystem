@@ -29,13 +29,21 @@
     --font-size-P-M: 0.85714rem;
     --font-size-P-S: 0.75rem;
     --font-size-P-SS: 0.66667rem;
-    /* Other
+    /* Shadow
+    -------------------------------------- */
+    --shadow-bottom-fixed: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
+    --shadow-floating-btn: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.15));
+    /* margin
     -------------------------------------- */
     --margin-side: 12px;
     /* Other
     -------------------------------------- */
     --checkbox-size: 18px;
 }
+
+/*--------------------------------------------------------------
+# Structue
+--------------------------------------------------------------*/
 
 body {
     -webkit-text-size-adjust: 100%;
@@ -72,6 +80,10 @@ main {
     margin: 0 12px;
 }
 
+/*--------------------------------------------------------------
+# Basic Style
+--------------------------------------------------------------*/
+
 a {
     cursor: pointer;
     text-decoration: none;
@@ -80,6 +92,30 @@ a {
 a:hover {}
 
 a:visited {}
+
+/* Delet button Style
+    -------------------------------------- */
+
+button {
+    display: inline-block;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+button img {
+    display: block;
+}
+
+button:active, button img {
+    position: relative;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: none;
+}
 
 /*--------------------------------------------------------------
 # Text Style
@@ -169,7 +205,7 @@ a:visited {}
     /* max-width: 375px;*/
     overflow: hidden;
     background-color: var(--color-gray-7);
-    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
+    filter: var(--shadow-bottom-fixed);
 }
 
 .menu-item {
@@ -622,10 +658,12 @@ select {
     opacity: 1;
 }
 
-/* Buttons
-    -------------------------------------- */
+/*--------------------------------------------------------------
+# Buttons
+--------------------------------------------------------------*/
 
-/* Basic ----------------------------- */
+/* Basic
+    -------------------------------------- */
 
 .btn {
     position: relative;
@@ -753,9 +791,55 @@ select {
     transform: translateY(-50%);
 }
 
-/* LINE ----------------------------- */
+/* LINE
+    -------------------------------------- */
 
-/* Circle ----------------------------- */
+/* Circle
+    -------------------------------------- */
+
+/* Like ----------------------------- */
+
+.btn-like {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-color: var(--color-gray-7);
+    color: var(--color-gray-3);
+    filter: var(--shadow-floating-btn);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-like>span {
+    font-family: "Material Icons Outlined";
+    font-size: 18px;
+    color: var(--color-gray-4);
+}
+
+.btn-like-active>span {
+    color: var(--color-like);
+}
+
+/* Delete ----------------------------- */
+
+.btn-delete {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-gray-7);
+    color: var(--color-gray-3);
+    filter: var(--shadow-floating-btn);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-delete>span {}
+
+/* Share ----------------------------- */
 
 .btn-social-share {
     display: inline-block;
@@ -771,39 +855,14 @@ select {
     display: block;
 }
 
-/* URLコピーボタン コピー完了時に出るメッセージ、出てきてしばらくしたらフェードアウトしたい*/
+/* URL  コピー完了時に出るメッセージ、出てきてしばらくしたらフェードアウトしたい*/
 
 .msg-url-copied {
     display: none;
 }
 
-button.native-share-btn {
-    display: inline-block;
-    padding: 0;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-}
-
-button.native-share-btn img {
-    display: block;
-}
-
-button.native-share-btn:active, button.native-share-btn img {
-    position: relative;
-}
-
-button.native-share-btn::-moz-focus-inner {
-    padding: 0;
-    border: none;
-}
-
-.native-share-btn {
-    width: 44px;
-    height: 44px;
-}
-
-/* Hash Tag ----------------------------- */
+/* Hash tag
+    -------------------------------------- */
 
 .hashtag {
     display: inline-block;
