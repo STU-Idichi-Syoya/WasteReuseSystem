@@ -56,7 +56,7 @@
         <i class="material-icons-sharp">account_box</i>
 
 
-        <h1>Tabs</h1>
+        <h1 class="not-component">Tabs</h1>
         <div class='tabs'>
             <div class='tab-buttons'>
                 <span class='content1'>運営から<span class="badge-notify-num have-notify">12</span></span>
@@ -158,8 +158,8 @@
             利用規約に同意する
         </label>
 
-        <h2>Buttons</h2>
-        <h3>Basic</h3>
+        <h2 class="not-component">Buttons</h2>
+        <h3 class="not-component">Basic</h3>
         <a href="" class="btn btn-M btn-primary">
             ボタン
             <i class="material-icons btn-icon-R">navigate_next</i>
@@ -191,7 +191,7 @@
         <a href="" class="btn btn-SS btn-secondary">
             ボタン
         </a>
-        <h4>Button Combination</h4>
+        <h4 class="not-component">Button Combination</h4>
 
         <div class="combi-btn-link">
             <a href="" class="btn btn-M btn-primary">
@@ -224,10 +224,10 @@
             <a href="" class="link-under-btn-S"><i class="material-icons link-icon-L">navigate_before</i>戻る</a>
         </div>
 
-        <h3>LINE</h3>
+        <h3 class="not-component">LINE</h3>
 
-        <h3>Circle</h3>
-        <h4>Like</h4>
+        <h3 class="not-component">Circle</h3>
+        <h4 class="not-component">Like</h4>
         <a class="btn-like"><span class="material-icons">
                 favorite_border
                 <!--塗りつぶしのグレーでも可-->
@@ -237,12 +237,12 @@
                 favorite
             </span>
         </a>
-        <h4>Delete</h4>
+        <h4 class="not-component">Delete</h4>
         <a class="btn-delete"><span class="material-icons-round">
                 delete
             </span>
         </a>
-        <h4>Share</h4>
+        <h4 class="not-component">Share</h4>
         <!-- LINE -->
         <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
                 src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
@@ -266,7 +266,7 @@
             data-share-url="http://labs.w0s.jp/js/web-share/"><img src="./images/buttons/share.svg"
                 alt="シェアする"></button>
 
-        <h3>Hash Tag</h3>
+        <h3 class="not-component">Hash Tag</h3>
         <div class="hashtag-container">
             <a href="" class="hashtag">建築<span class="hashtag-num">(36)</span></a> <a href=""
                 class="hashtag">スチレンボード<span class="hashtag-num">(27)</span></a> <a href="" class="hashtag">PE<span
@@ -279,10 +279,69 @@
                     class="hashtag-num">(8)</span></a>
         </div>
 
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-        </label>
+
+        <h3 class="not-component">Toggle</h3>
+        <!--Copyright (c) 2016 Vadym Yatsyuk-->
+        <div class="vc-toggle-container">
+            <label class="vc-switch">
+                <input type="checkbox" class="vc-switch-input" />
+                <span data-on="ON" data-off="OFF" class="vc-switch-label"></span>
+                <span class="vc-handle"></span>
+            </label>
+        </div>
+
+
+        <h2 class="not-component">Headings</h2>
+        <h3 class="not-component">頭出しタイトル</h3>
+        <!--H1-->
+        <div class="title-seemore">
+            <h1>新規投稿</h1>
+            <div><span class="view-all">下書きを見る</span><i class="material-icons">navigate_next</i></div>
+        </div>
+        <!--H2-->
+        <div class="title-seemore">
+            <h2>いいね！したアイテム</h2>
+            <div><span class="view-all">すべて見る</span><i class="material-icons">navigate_next</i></div>
+        </div>
+        <!--H3-->
+        <div class="title-seemore">
+            <h3>いいね！したアイテム</h3>
+            <div><span class="view-all">すべて見る</span><i class="material-icons">navigate_next</i></div>
+        </div>
+
+        <h3 class="not-component">件数表示付きタイトル</h3>
+        <!--検索結果-->
+        <div class="title-hitnum search-result">
+            <h1><span id="search-word">スチのり</span><span class="suffix-result">の検索結果</span></h1>
+            <p><span id="hitnum">26</span>件</p>
+        </div>
+        <!--〇〇したアイテム-->
+        <div class="title-hitnum">
+            <h1>いいね！したアイテム</h1>
+            <p><span id="hitnum">26</span>件</p>
+        </div>
+
+
+        <h3 class="not-component">モーダルウィンドウ</h3>
+        <input type="checkbox" id="modal01" class="modalCheck">
+        <div class="btn"><label for="modal01">Modal Open</label></div>
+
+        <div class="mordal-wrapper">
+            <div id="modal01Con" class="modalWrap">
+                <div class="modalBg"><label for="modal01" class="closeModal"></label></div>
+                <div class="modalCon">
+                    <div class="modalInner">
+                        <div class="modalCloseBtn"><label for="modal01" class="closeModal">×</label></div>
+                        <div class="modalText">
+                            <p>あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+                            </p>
+
+                            <div class="btn small"><label for="modal01">× Modal Close</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
 
