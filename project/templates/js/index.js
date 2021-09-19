@@ -47,22 +47,22 @@ $(function () {
         });
 
 
-    // 検索フィールドエラー時にフォームの縁の色を変える
-    $('#search-input')
-        .focusInvalid(function (e) {
-            $('#search-form').addClass('form-error');
-        })
-        .fvalid(function (e) {
-            $('#search-form').removeClass('form-error');
-        });
-    // パスワードフィールドエラー時にフォームの縁の色を変える
-    $('#password')
-        .focusInvalid(function (e) {
-            $('.pw-input-container').addClass('form-error');
-        })
-        .valid(function (e) {
-            $('.pw-input-container').removeClass('form-error');
-        });
+    /* // 検索フィールドエラー時にフォームの縁の色を変える ざっと探したけどfocusInvalidって間違っている模様（エラー出てる）直したいけど優先しなくていい
+     $('#search-input')
+         .focusInvalid(function (e) {
+             $('#search-form').addClass('form-error');
+         })
+         .fvalid(function (e) {
+             $('#search-form').removeClass('form-error');
+         });
+     // パスワードフィールドエラー時にフォームの縁の色を変える
+     $('#password')
+         .focusInvalid(function (e) {
+             $('.pw-input-container').addClass('form-error');
+         })
+         .valid(function (e) {
+             $('.pw-input-container').removeClass('form-error');
+         });*/
 });
 
 
@@ -103,8 +103,8 @@ function copyUrl() {
 if (navigator.share !== undefined) {
     /* 未対応ブラウザも多いので判定処理 */
     document.addEventListener('DOMContentLoaded', () => {
-        for (const shareButtonElement of document.querySelectorAll('.share-button')) {
-            shareButtonElement.disabled = false; // ボタンを活性化
+        for (const shareButtonElement of document.querySelectorAll('.native-share-btn')) {
+            //shareButtonElement.disabled = false; // ボタンを活性化
             shareButtonElement.addEventListener('click', () => {
                 const shareTitle = shareButtonElement.dataset.shareTitle;
                 const shareText = shareButtonElement.dataset.shareText;

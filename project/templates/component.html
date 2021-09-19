@@ -235,18 +235,21 @@
                 src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
         <!-- Twitter -->
         <a class="btn-social-share"
-            href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要）】&url=【共有するURL】&hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+            href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
             rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
         <!-- Facebook -->
         <a class="btn-social-share" href="http://www.facebook.com/share.php?u=【共有するURL】"><img
                 src="./images/buttons/Facebook.svg" alt="Facebookで共有"></a>
         <!-- URL Copy -->
         <a class="btn-social-share" onclick="copyUrl()"><img src="./images/buttons/linkcopy.svg" alt="URLをコピー"></a>
+        <p class="msg-url-copied">URLをコピーしました！</p>
         <!-- Share -->
-        <p><button type="button" class="share-button">Share</button></p>
-        <p><button type="button" class="share-button" data-share-title="Web Share API Demo"
-                data-share-text="This page demonstrates the Web Share API."
-                data-share-url="http://labs.w0s.jp/js/web-share/">Share</button></p>
+        <button type="button" class="btn-social-share native-share-btn"><img src="./images/buttons/share.svg"
+                alt="シェアする"></button>
+        <button type="button" class="btn-social-share native-share-btn" data-share-title="Web Share API Demo"
+            data-share-text="This page demonstrates the Web Share API."
+            data-share-url="http://labs.w0s.jp/js/web-share/"><img src="./images/buttons/share.svg"
+                alt="シェアする"></button>
 
         <h3>Hash Tag</h3>
         <div class="hashtag-container">

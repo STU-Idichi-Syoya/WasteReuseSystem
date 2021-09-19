@@ -758,6 +758,9 @@ select {
 /* Circle ----------------------------- */
 
 .btn-social-share {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
     margin-right: 18px;
     /*filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));*/
 }
@@ -767,39 +770,25 @@ select {
     height: auto;
 }
 
-/* URLコピーボタン */
+/* URLコピーボタン コピー完了時に出るメッセージ、出てきてしばらくしたらフェードアウトしたい*/
 
-.share-buttons .share-url {
-    background: #bbb;
-}
-
-.share-buttons .share-url:before {
-    content: '\f0ea';
-}
-
-/* URLコピー完了時のメッセージ（非表示）*/
-
-.url-copied {
+.msg-url-copied {
     display: none;
 }
 
-.url-copied span {
-    background: #0009;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 11px;
-    color: #fff;
-    padding: 2px 4px;
-    box-sizing: border-box;
-    line-height: 14px;
-    border-radius: 3px;
+button.native-share-btn {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+button.native-share-btn img {
+    display: block;
+}
+
+.native-share-btn {
+    width: 44px;
+    height: 44px;
 }
 
 /* Hash Tag ----------------------------- */
