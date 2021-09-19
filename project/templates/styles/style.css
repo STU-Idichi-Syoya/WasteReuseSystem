@@ -768,6 +768,7 @@ select {
 .btn-social-share>img {
     width: 44px;
     height: auto;
+    display: block;
 }
 
 /* URLコピーボタン コピー完了時に出るメッセージ、出てきてしばらくしたらフェードアウトしたい*/
@@ -777,13 +778,24 @@ select {
 }
 
 button.native-share-btn {
+    display: inline-block;
     padding: 0;
     border: none;
     background: transparent;
+    cursor: pointer;
 }
 
 button.native-share-btn img {
     display: block;
+}
+
+button.native-share-btn:active, button.native-share-btn img {
+    position: relative;
+}
+
+button.native-share-btn::-moz-focus-inner {
+    padding: 0;
+    border: none;
 }
 
 .native-share-btn {
