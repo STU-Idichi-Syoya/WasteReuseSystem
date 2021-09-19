@@ -1,3 +1,4 @@
+//document.getElementById('#menu-home"').focus();
 
 /* Tab
     -------------------------------------- */
@@ -85,3 +86,40 @@ visibilityToggle.addEventListener('click', function () {
     password = !password;
 
 });
+
+
+/* URL Copy Button
+    -------------------------------------- */
+function copyUrl() {
+    const element = document.createElement('input');
+    element.value = location.href;
+    document.body.appendChild(element);
+    element.select();
+    document.execCommand('copy');
+    document.body.removeChild(element);
+}
+/* Share Button
+    -------------------------------------- */
+if (navigator.share !== undefined) {
+    /* 未対応ブラウザも多いので判定処理 */
+    document.addEventListener('DOMContentLoaded', () => {
+        for (const shareButtonElement of document.querySelectorAll('.share-button')) {
+            shareButtonElement.disabled = false; // ボタンを活性化
+            shareButtonElement.addEventListener('click', () => {
+                const shareTitle = shareButtonElement.dataset.shareTitle;
+                const shareText = shareButtonElement.dataset.shareText;
+                const shareUrl = shareButtonElement.dataset.shareUrl;
+
+                try {
+                    navigator.share({
+                        title: shareTitle !== undefined ? shareTitle : document.title, // 属性が指定されていないときはページタイトル
+                        text: shareText,
+                        url: shareUrl !== undefined ? shareUrl : document.URL, // 属性が指定されていないときはページURL
+                    });
+                } catch (e) {
+                    console.error('Share failed', e);
+                }
+            });
+        }
+    });
+}

@@ -3,7 +3,7 @@
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta charset="utf-8">
-    <title>フロント</title>
+    <title>Compornents</title>
     <!-- sanitize.css https://csstools.github.io/sanitize.css/ -->
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
     <!-- material design icons -->
@@ -55,43 +55,11 @@
         <i class="material-icons-two-tone">account_box</i>
         <i class="material-icons-sharp">account_box</i>
 
-        <a href="" class="btn btn-M btn-primary">
-            もっとみる
-            <img src="./images/icons/next.svg" class="btn-icon-R" alt="">
-        </a>
-
-        <a href="" class="btn btn-M btn-secondary">
-            もっとみる
-            <img src="./images/icons/next.svg" class="btn-icon-R" alt="">
-        </a>
-
-
-        <a href="" class="btn btn-S btn-primary">
-            もっとみる
-            <img src="./images/icons/next.svg" class="btn-icon-R" alt="">
-        </a>
-
-
-        <a href="" class="btn btn-S btn-secondary">
-            もっとみる
-            <img src="./images/icons/next.svg" class="btn-icon-R" alt="">
-        </a>
-
-
-        <a href="" class="btn btn-SS btn-primary">
-            もっとみる
-        </a>
-
-
-        <a href="" class="btn btn-SS btn-secondary">
-            もっとみる
-        </a>
-
 
         <h1>Tabs</h1>
         <div class='tabs'>
             <div class='tab-buttons'>
-                <span class='content1'>運営から<span class="badge-notify-num">12</span></span>
+                <span class='content1'>運営から<span class="badge-notify-num have-notify">12</span></span>
                 <span class='content2 tab-current'>取引<span class="badge-notify-num">1</span></span>
                 <span class='content3'>その他<span class="badge-notify-num">99+</span></span>
                 <div id='lamp' class='content2'></div>
@@ -190,34 +158,145 @@
             利用規約に同意する
         </label>
 
+        <h2>Buttons</h2>
+        <h3>Basic</h3>
+        <a href="" class="btn btn-M btn-primary">
+            ボタン
+            <i class="material-icons btn-icon-R">navigate_next</i>
+        </a>
 
-        <div class="container">
-            <!-- code here -->
-            <nav class="menu">
-                <a href="#" class="menu-item">
-                    <span class="material-icons">sports_esports</span>
-                    <span class="menu-item-label">Games</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <span class="material-icons">camera_alt</span>
-                    <span class="menu-item-label">Images</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <span class="material-icons">movie</span>
-                    <span class="menu-item-label">Movies</span>
-                </a>
-                <a href="#" class="menu-item">
-                    <span class="material-icons">store_mall_directory</span>
-                    <span class="menu-item-label">Store</span>
-                </a>
-            </nav>
-            <!-- end of code -->
+        <a href="" class="btn btn-M btn-secondary">
+            ボタン
+            <i class="material-icons btn-icon-R">navigate_next</i>
+        </a>
+
+
+        <a href="" class="btn btn-S btn-primary">
+            ボタン
+            <i class="material-icons btn-icon-L">navigate_before</i>
+        </a>
+
+
+        <a href="" class="btn btn-S btn-secondary">
+            ボタン
+            <i class="material-icons btn-icon-R">navigate_next</i>
+        </a>
+
+
+        <a href="" class="btn btn-SS btn-primary">
+            ボタン
+        </a>
+
+
+        <a href="" class="btn btn-SS btn-secondary">
+            ボタン
+        </a>
+        <h4>Button Combination</h4>
+
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-M btn-primary">
+                ボタン
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-M"><i class="material-icons link-icon-R">navigate_next</i>進む</a>
+        </div>
+
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-M btn-primary">
+                ボタン
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-M"><i class="material-icons link-icon-L">navigate_before</i>戻る</a>
+        </div>
+
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-S btn-primary">
+                ボタン
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-S"><i class="material-icons link-icon-R">navigate_next</i>進む</a>
+        </div>
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-S btn-primary">
+                ボタン
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-S"><i class="material-icons link-icon-L">navigate_before</i>戻る</a>
+        </div>
+
+        <h3>LINE</h3>
+
+        <h3>Circle</h3>
+        <h4>Like</h4>
+        <h4>Delete</h4>
+        <h4>Share</h4>
+        <!-- LINE -->
+        <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+        <!-- Twitter -->
+        <a class="btn-social-share"
+            href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要）】&url=【共有するURL】&hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+            rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
+        <!-- Facebook -->
+        <a class="btn-social-share" href="http://www.facebook.com/share.php?u=【共有するURL】"><img
+                src="./images/buttons/Facebook.svg" alt="Facebookで共有"></a>
+        <!-- URL Copy -->
+        <a class="btn-social-share" onclick="copyUrl()"><img src="./images/buttons/linkcopy.svg" alt="URLをコピー"></a>
+        <!-- Share -->
+        <p><button type="button" class="share-button">Share</button></p>
+        <p><button type="button" class="share-button" data-share-title="Web Share API Demo"
+                data-share-text="This page demonstrates the Web Share API."
+                data-share-url="http://labs.w0s.jp/js/web-share/">Share</button></p>
+
+        <h3>Hash Tag</h3>
+        <div class="hashtag-container">
+            <a href="" class="hashtag">建築<span class="hashtag-num">(36)</span></a> <a href=""
+                class="hashtag">スチレンボード<span class="hashtag-num">(27)</span></a> <a href="" class="hashtag">PE<span
+                    class="hashtag-num">(19)</span></a>
+            <a href="" class="hashtag">角材<span class="hashtag-num">(17)</span></a> <a href=""
+                class="hashtag">造形1年後期<span class="hashtag-num">(13)</span></a> <a href="" class="hashtag">スチのり<span
+                    class="hashtag-num">(8)</span></a><a href="" class="hashtag">パルサ材<span
+                    class="hashtag-num">(17)</span></a>
+            <a href="" class="hashtag">アクリル<span class="hashtag-num">(13)</span></a> <a href="" class="hashtag">教科書<span
+                    class="hashtag-num">(8)</span></a>
         </div>
 
 
 
-
     </main>
+
+    <!--Fixed Button-->
+    <div class="fixed-btn-container">
+        <a href="" class="btn btn-S btn-primary">
+            ボタン
+        </a>
+    </div>
+    <!--Tabbar-->
+    <div class="tabbar-container">
+        <nav class="menu">
+            <a href="#" class="menu-item" id="menu-home">
+                <span class="material-icons menu-icon">home<span class="badge-notify-menu have-notify"></span></span>
+                <span class="menu-item-label">ホーム</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-notify">
+                <span class="material-icons menu-icon">notifications</span>
+                <span class="menu-item-label">お知らせ</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-post">
+                <span class="material-icons menu-icon">edit</span>
+                <span class="menu-item-label">投稿</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-report">
+                <span class="material-icons menu-icon">assessment</span>
+                <span class="menu-item-label">レポート</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-mypage">
+                <span class="material-icons menu-icon">person</span>
+                <span class="menu-item-label">マイページ</span>
+            </a>
+        </nav>
+        <!-- end of code -->
+    </div>
 
 
     <footer>

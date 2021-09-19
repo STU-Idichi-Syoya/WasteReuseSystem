@@ -1,8 +1,7 @@
 @charset "UTF-8";
 :root {
-    /*--------------------------------------------------------------
-# Color
---------------------------------------------------------------*/
+    /* Color
+    -------------------------------------- */
     --color-gray-0: #000;
     --color-gray-1: #333;
     --color-gray-2: #666;
@@ -24,11 +23,18 @@
     --color-ok: #FFD15A;
     --color-bad: #5AB0FF;
     --color-LINE: #06C755;
-    --checkbox-size: 18px;
+    /* Fonts
+    -------------------------------------- */
     --font-size-P-L: 1rem;
     --font-size-P-M: 0.85714rem;
     --font-size-P-S: 0.75rem;
     --font-size-P-SS: 0.66667rem;
+    /* Other
+    -------------------------------------- */
+    --margin-side: 12px;
+    /* Other
+    -------------------------------------- */
+    --checkbox-size: 18px;
 }
 
 body {
@@ -55,7 +61,6 @@ body {
     min-height: 100vh;
     /*開発確認用*/
     max-width: 375px;
-    margin: 0 12px;
 }
 
 .wrapper {
@@ -63,8 +68,18 @@ body {
 }
 
 main {
-    /*header footer 除くコンテンツ*/
+    /*header footer 固定されるやつを除くコンテンツ*/
+    margin: 0 12px;
 }
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {}
+
+a:visited {}
 
 /*--------------------------------------------------------------
 # Text Style
@@ -133,11 +148,84 @@ main {
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Tabbar
+# Tabbar(bottom menu)
 --------------------------------------------------------------*/
 
+.tabbar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+}
+
+.menu {
+    display: flex;
+    flex-grow: 1;
+    height: 56px;
+    /* max-width: 375px;*/
+    overflow: hidden;
+    background-color: var(--color-gray-7);
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-decoration: none;
+    width: 20%;
+}
+
+.menu-item:focus, .menu-item:hover {
+    outline: none;
+}
+
+.menu-item:focus .menu-icon, .menu-item:hover .menu-icon {
+    font-family: "Material Icons";
+    color: var(--color-primary);
+}
+
+.menu-item:focus .menu-item-label, .menu-item:hover .menu-item-label {
+    color: var(--color-primary);
+}
+
+.menu-icon {
+    font-family: "Material Icons Outlined";
+    display: block;
+    font-size: 24px;
+    color: var(--color-gray-3);
+    transition: 0.24s ease;
+    position: relative;
+}
+
+.menu-item-label {
+    display: block;
+    font-size: 10px;
+    color: var(--color-gray-3);
+    transition: 0.24s ease;
+}
+
+/* Notification Badge  */
+
+.badge-notify-menu {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: var(--color-like);
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
 /*--------------------------------------------------------------
-# Tab
+# Tabs
 --------------------------------------------------------------*/
 
 .tabs {
@@ -208,7 +296,7 @@ main {
     -moz-transition: all .24s ease-in;
 }
 
-/* Notification Badge ----------------------------- */
+/* Notification Badge  */
 
 .badge-notify-num {
     font-size: 0.75rem;
@@ -222,6 +310,13 @@ main {
     top: 50%;
     right: 6px;
     transform: translateY(-50%);
+    display: none;
+}
+
+/* Tabbar & Tabs 通知がある場合に付与*/
+
+.have-notify {
+    display: block;
 }
 
 /*--------------------------------------------------------------
@@ -268,11 +363,6 @@ input[type="text"], input[type="email"], input[type="url"], input[type="password
     appearance: none;
     font-size: var(--font-size-P-L);
 }
-
-/*
-input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="range"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea:focus {
-    color: var(--color-gray-1);
-}*/
 
 /* Focus */
 
@@ -377,9 +467,6 @@ select {
     appearance: none;
     box-sizing: border-box;
     font-size: 1em;
-    border: #ccc 1px solid;
-    border-radius: 0;
-    background: #fff;
 }
 
 .select-container::after {
@@ -596,83 +683,142 @@ select {
     position: absolute;
     top: 50%;
     right: 12px;
-    /*右からの距離*/
     width: 24px;
-    /*アイコンの横幅指定*/
     transform: translateY(-50%);
-    /*この指定で上下中央に*/
 }
 
 .btn-icon-L {
     position: absolute;
     top: 50%;
     left: 12px;
-    /*右からの距離*/
     width: 24px;
-    /*アイコンの横幅指定*/
     transform: translateY(-50%);
-    /*この指定で上下中央に*/
+}
+
+/* Fixed Button ----------------------------- */
+
+.fixed-btn-container {
+    width: 100%;
+    /*height: 56px;*/
+    background-color: var(--color-gray-7);
+    position: fixed;
+    bottom: 0;
+    z-index: 40;
+    margin: 0;
+}
+
+.fixed-btn-container>.btn {
+    width: calc(100% - var(--margin-side)*2);
+    margin: 8px var(--margin-side);
+}
+
+/* Link under Button ----------------------------- */
+
+.combi-btn-link {
+    text-align: center;
+}
+
+.link-under-btn-M {
+    margin-top: 20px;
+    position: relative;
+    color: var(--color-primary)
+}
+
+.link-under-btn-S {
+    position: relative;
+    color: var(--color-primary)
+}
+
+.link-under-btn-M>i {
+    font-size: 1.5rem;
+}
+
+.link-under-btn-S>i {
+    font-size: 1.25rem;
+}
+
+.link-icon-R {
+    position: absolute;
+    top: 50%;
+    right: -24px;
+    width: 24px;
+    transform: translateY(-50%);
+}
+
+.link-icon-L {
+    position: absolute;
+    top: 50%;
+    left: -24px;
+    width: 24px;
+    transform: translateY(-50%);
 }
 
 /* LINE ----------------------------- */
 
 /* Circle ----------------------------- */
 
-.container {
-    position: fixed;
-    bottom: 0;
+.btn-social-share {
+    margin-right: 18px;
+    /*filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));*/
+}
+
+.btn-social-share>img {
+    width: 44px;
+    height: auto;
+}
+
+/* URLコピーボタン */
+
+.share-buttons .share-url {
+    background: #bbb;
+}
+
+.share-buttons .share-url:before {
+    content: '\f0ea';
+}
+
+/* URLコピー完了時のメッセージ（非表示）*/
+
+.url-copied {
+    display: none;
+}
+
+.url-copied span {
+    background: #0009;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
+    font-size: 11px;
+    color: #fff;
+    padding: 2px 4px;
+    box-sizing: border-box;
+    line-height: 14px;
+    border-radius: 3px;
 }
 
-.menu {
-    display: flex;
-    flex-grow: 1;
-    height: 72px;
-    max-width: 370px;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 0 1px 0 rgba(#342ead, 0.25), 0 15px 30px 0 rgba(#342ead, 0.1);
-}
+/* Hash Tag ----------------------------- */
 
-.menu-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    text-decoration: none;
-}
-
-.menu-item :focus, .menu-item :hover {
-    outline: none;
-}
-
-.menu-item :focus.material-icons, .menu-item :hover.material-icons {
-    font-family: "Material Icons";
+.hashtag {
+    display: inline-block;
+    font-size: var(--font-size-P-M);
+    padding: 8px 9px;
+    margin: 10px 8px 0 0;
     color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
 }
 
-.menu-item :focus.menu-item-label, .menu-item :hover.menu-item-label {
-    color: #342ead;
-    color: var(--color-primary);
+.hashtag:hover {
+    color: var(--color-p-hover);
+    border: 1px solid var(--color-p-hover);
 }
 
-.material-icons {
-    font-family: "Material Icons Outlined";
-    display: block;
-    margin-bottom: 4px;
-    font-size: 26px;
-    color: mix(#fff, #342ead, 60%);
-    transition: 0.25s ease;
-}
-
-.menu-item-label {
-    display: block;
-    font-size: 13px;
-    color: mix(#fff, #342ead, 70%);
-    transition: 0.25s ease;
+.hashtag-num {
+    margin: 0 2px;
 }
