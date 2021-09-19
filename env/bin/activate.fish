@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/shoya.ijichi/hackathon/flask_auth_scotch/env"
+set -gx VIRTUAL_ENV "/Users/suyamac_pro16/Documents/GitHub/cccu-22/WasteReuseSystem/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

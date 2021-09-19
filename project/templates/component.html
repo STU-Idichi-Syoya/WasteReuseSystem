@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+    <meta charset="utf-8">
+    <title>フロント</title>
+    <!-- sanitize.css https://csstools.github.io/sanitize.css/ -->
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <!-- material design icons -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <!--<link rel="stylesheet" href="styles/header.css">-->
+    <!--OGP-->
+    <meta property="og:url" content="https://" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:image" content="https://" />
+    <meta property="fb:app_id" content="" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:player" content="@" />
+
+    <!--favicon-->
+    <link rel="icon" href="./images/favicon.ico" />
+    <link rel="apple-touch-icon" href="./images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="./images/favicons/android-chrome-192x192.png" sizes="192x192">
+
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+
+
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<body>
+
+    <!-- header -->
+    <header>
+
+    </header>
+    <!-- /header -->
+    <main>
+
+        <i class="material-icons-round">account_box</i>
+
+        <i class="material-icons">account_box</i>
+        <i class="material-icons-outlined">account_box</i>
+        <i class="material-icons-round">account_box</i>
+        <i class="material-icons-two-tone">account_box</i>
+        <i class="material-icons-sharp">account_box</i>
+
+        <a href="" class="btn btn-M btn-primary">
+            もっとみる
+            <img src="./images/icons/next.svg" class="btn-icon-R" alt="">
+        </a>
+
+        <a href="" class="btn btn-M btn-secondary">
+            もっとみる
+            <img src="./images/icons/next.svg" class="btn-icon-R" alt="">
+        </a>
+
+
+        <a href="" class="btn btn-S btn-primary">
+            もっとみる
+            <img src="./images/icons/next.svg" class="btn-icon-R" alt="">
+        </a>
+
+
+        <a href="" class="btn btn-S btn-secondary">
+            もっとみる
+            <img src="./images/icons/next.svg" class="btn-icon-R" alt="">
+        </a>
+
+
+        <a href="" class="btn btn-SS btn-primary">
+            もっとみる
+        </a>
+
+
+        <a href="" class="btn btn-SS btn-secondary">
+            もっとみる
+        </a>
+
+
+        <h1>Tabs</h1>
+        <div class='tabs'>
+            <div class='tab-buttons'>
+                <span class='content1'>運営から<span class="badge-notify-num">12</span></span>
+                <span class='content2 tab-current'>取引<span class="badge-notify-num">1</span></span>
+                <span class='content3'>その他<span class="badge-notify-num">99+</span></span>
+                <div id='lamp' class='content2'></div>
+            </div>
+            <div class='tab-content'>
+
+                <div class='content1'>This is the content of 1 container.This will be open when button 1 is clicked.This
+                    is the content of 1 container.This will be open when button 1 is clicked.This is the content of 1
+                    container.This will be open when button 1 is clicked.</div>
+
+                <div class='content2'>This is the content of 2 container.This will be open when button 2 is clicked.This
+                    is the content of 2 container.This will be open when button 2 is clicked.This is the content of 2
+                    container.This will be open when button 2 is clicked.</div>
+
+                <div class='content3'>This is the content of 3 container.This will be open when button 3 is clicked.This
+                    is the content of 3 container.This will be open when button 3 is clicked.This is the content of 3
+                    container.This will be open when button 3 is clicked.</div>
+
+            </div>
+        </div>
+
+
+        <!-- Search form -->
+        <form id="search-form" class="search-form" method="get" action="https://">
+            <input id="search-input" type="text" placeholder="何をお探しですか？" name="s" value="">
+            <button id="search-btn" type="submit" value="Search" alt="検索" title="検索"><i
+                    class="material-icons icon-search">search</i></button>
+        </form>
+
+
+
+        <label for="email" class="text-H-SS">メールアドレス</label>
+        <input type="email" placeholder="info@sample.com" id="email">
+        <p class="error-msg">入力してください</p>
+
+
+
+
+        <label for="password" class="text-H-SS">パスワード</label>
+        <div class="pw-input-container">
+            <input type="password" id="password" maxlength="24" />
+            <i class="material-icons visibility">visibility_off</i>
+        </div>
+        <p class="error-msg">入力してください</p>
+
+
+        <!--<form>
+            <label>電話番号：
+                <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="090-1234-5678">
+            </label>
+            <input type="submit" value="送信">
+            <input type="url">
+            <p class="error-msg">URLを入力してください</p>
+            <input type="submit" value="URLかチェック">
+        </form>-->
+
+
+
+
+        <label for="item-name" class="text-H-SS">アイテム名</label><span class="badge-necessity required">必須</span>
+        <input type="text" id="item-name">
+        </label>
+
+
+
+        <label for="item-description" class="text-H-SS">アイテムの説明</label><span class="badge-necessity optional">任意</span>
+        <textarea name="item-description" placeholder="例）昨年11月に生協購入したものです。B3サイズのから円をいくつかくり抜いていて、6割ほど余っています。 #建築模型"
+            rows="4" cols="40"></textarea>
+        <p class="error-msg">入力してください</p>
+
+
+
+        <label for="how-delivery" class="text-H-SS">受け渡し方法</label><span class="badge-necessity required">必須</span>
+        <div class="select-container">
+            <select name="how-delivery" id="how-delivery">
+                <option value="leave">置いておく</option>
+                <option value="hand">手渡し</option>
+            </select>
+        </div>
+        <p class="error-msg">選択してください</p>
+
+
+        <label for="expire" class="text-H-SS">有効期限</label><span class="badge-necessity required">必須</span>
+        <input type="date" id="expire" name="trip-start" value="2021-09-22" min="2021-09-01" max="2022-10-7">
+        <p class="error-msg">入力してください</p>
+
+
+
+        <label for="comment">Textarea</label>
+        <textarea name="comment" placeholder="コメントを入力..." rows="4" cols="40"></textarea>
+
+
+        <label class="checkbox-label">
+            <input type="checkbox" name="term" value="accept" required>
+            <span class="checkmark"></span>
+            利用規約に同意する
+        </label>
+
+
+        <div class="container">
+            <!-- code here -->
+            <nav class="menu">
+                <a href="#" class="menu-item">
+                    <span class="material-icons">sports_esports</span>
+                    <span class="menu-item-label">Games</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="material-icons">camera_alt</span>
+                    <span class="menu-item-label">Images</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="material-icons">movie</span>
+                    <span class="menu-item-label">Movies</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="material-icons">store_mall_directory</span>
+                    <span class="menu-item-label">Store</span>
+                </a>
+            </nav>
+            <!-- end of code -->
+        </div>
+
+
+
+
+    </main>
+
+
+    <footer>
+        <p>©noob_fighter_returns</p>
+    </footer>
+
+    <script type="text/javascript" src="js/index.js"></script>
+
+</body>
+
+</html>

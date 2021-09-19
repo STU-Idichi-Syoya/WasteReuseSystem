@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/shoya.ijichi/hackathon/flask_auth_scotch/env"
+VIRTUAL_ENV="/Users/suyamac_pro16/Documents/GitHub/cccu-22/WasteReuseSystem/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
