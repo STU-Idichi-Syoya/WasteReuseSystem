@@ -1,6 +1,4 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from flask_login.utils import expand_login_view
-from flask_migrate import current
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required,current_user
 from werkzeug.utils import send_file
@@ -22,9 +20,14 @@ def sendPhotoID(blob_id):
         )
     return Response(status=400)
 
-@items_app.route('items/add',methods=['POST'])
+@items_app.route('/items/add',methods=['POST'])
 def item_post():
-    pass
+    item_name=request.form['item_name']
+    memo=request.form['memo']
+    hanging_method=request.form['hanging_method']
+    place=request.form['place']
+    item_save()
+
 @items_app.route("/items/search")
 def searchItems():
     tag=request.args.get('tag')
