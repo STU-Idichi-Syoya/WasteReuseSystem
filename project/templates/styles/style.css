@@ -35,6 +35,8 @@
     --font-size-P-SS: 0.66667rem;
     /* Shadow
     -------------------------------------- */
+    --shadow-top-fixed: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+    --shadow-top-fixed-light: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
     --shadow-bottom-fixed: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
     --shadow-floating-btn: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.15));
     --shadow-list-item: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
@@ -82,7 +84,7 @@ body {
 
 main {
     /*header footer 固定されるやつを除くコンテンツ*/
-    margin: 0 12px;
+    margin: 60px 12px 0;
 }
 
 /*--------------------------------------------------------------
@@ -199,7 +201,7 @@ header {
     height: 60px;
     padding: 10px var(--margin-side);
     color: var(--color-primary);
-    background-color: var(--gray-color-7);
+    background-color: var(--color-gray-7);
     border-bottom: 1px solid var(--color-primary);
 }
 
@@ -212,6 +214,34 @@ header {
 .school-name {
     margin-left: 12px;
     bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Search Bar
+--------------------------------------------------------------*/
+
+.search-bar {
+    width: 100%;
+    background-color: var(--color-gray-7);
+    padding: 8px 12px;
+}
+
+.head-fix {
+    width: 100%;
+    filter: var(--shadow-top-fixed-light);
+    position: fixed;
+    top: 60px;
+    z-index: 999;
+    transition: .5s;
+}
+
+.head-fix.hide {
+    transform: translateY(-60px);
+    filter: var(--shadow-top-fixed);
+}
+
+.head-fix+* {
+    margin-top: calc(56px + 20px);
 }
 
 /*--------------------------------------------------------------
@@ -690,7 +720,7 @@ select {
 
 #search-btn {
     width: 60px;
-    padding: 4px 8px 0;
+    padding: 0 0 0 6px;
     border: none;
     border-radius: 4px;
     background-color: transparent;
@@ -1054,11 +1084,15 @@ input.btn-like:checked+label::after {
 /* Hash tag
     -------------------------------------- */
 
+.hashtag-container {
+    margin-bottom: 24px;
+}
+
 .btn-hashtag {
     display: inline-block;
     font-size: var(--font-size-P-M);
     padding: 8px 9px;
-    margin: 10px 8px 0 0;
+    margin: 0 8px 10px 0;
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
     border-radius: 20px;
@@ -1439,6 +1473,39 @@ a.item-link {
     width: 96px;
     height: 96px;
     margin-right: 8px;
+}
+
+ul.list-normal {
+    padding: 0;
+}
+
+ul.list-normal>li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-gray-5);
+    padding: 10px 0;
+    position: relative;
+}
+
+ul.list-normal>li:hover {
+    background-color: var(--color-gray-6);
+}
+
+ul.list-normal>li:first-child {
+    border-top: 1px solid var(--color-gray-5);
+}
+
+ul.list-normal>li i {
+    font-size: 2rem;
+    margin-left: 8px;
+    color: var(--color-gray-2);
+}
+
+h2.page-search {
+    font-size: var(--font-size-H-S);
+    margin-bottom: 12px;
 }
 
 /*--------------------------------------------------------------
