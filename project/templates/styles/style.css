@@ -100,6 +100,7 @@ main {
 a {
     cursor: pointer;
     text-decoration: none;
+    color: var(--color-primary);
 }
 
 a:hover {}
@@ -220,6 +221,10 @@ header {
 .share-buttons {
     display: flex;
     align-items: center;
+}
+
+.share-buttons .btn-social-share:last-child {
+    margin-right: 0;
 }
 
 @media (max-height:800px) {
@@ -909,19 +914,28 @@ select {
 
 /* Like ----------------------------- */
 
-.btn-like {
+span.btn-like {
     display: inline-block;
-    width: 26px;
-    height: 26px;
     background-color: var(--color-gray-7);
     color: var(--color-gray-3);
     filter: var(--shadow-floating-btn);
-    border-radius: 16px;
+    border-radius: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.btn-like-S {
+    width: 26px;
+    height: 26px;
+}
+
+.btn-like-L {
+    width: 44px;
+    height: 44px;
+}
+
+/*
 .btn-like>span {
     font-family: "Material Icons Outlined";
     font-size: 18px;
@@ -931,6 +945,74 @@ select {
 .btn-like-active>span {
     color: var(--color-like);
 }
+*/
+
+.btn-like>input {
+    display: none;
+}
+
+.btn-like>label {
+    margin: 0;
+    cursor: pointer;
+}
+
+.btn-like>input+label svg {
+    fill: var(--color-gray-3);
+    transition: all .3s;
+}
+
+.btn-like>input:checked+label svg {
+    fill: var(--color-like);
+    animation: like .4s ease-out;
+    transition: all .3s;
+}
+
+@keyframes like {
+    0% {
+        transform: scale(1, 1);
+    }
+    20% {
+        transform: scale(0.8, 0.8);
+    }
+    50% {
+        transform: scale(1.4, 1.3);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+/*
+input.btn-like:checked+label::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border: 5px solid var(--color-like);
+    border-radius: 50%;
+    animation: circle .8s ease-out;
+    opacity: 0;
+    top: 0px;
+    left: 0px;
+    z-index: -100;
+}
+
+@keyframes circle {
+    0% {
+        transform: scale(.2, .2);
+    }
+    50% {
+        transform: scale(.5, .5);
+    }
+    80% {
+        transform: scale(1, 1);
+        opacity: .8;
+    }
+    100% {
+        transform: scale(1.3, 1.3);
+        opacity: 0;
+    }
+}*/
 
 /* Delete ----------------------------- */
 
@@ -946,8 +1028,6 @@ select {
     justify-content: center;
     align-items: center;
 }
-
-.btn-delete>span {}
 
 /* Share ----------------------------- */
 
@@ -1256,13 +1336,6 @@ img.object-fit-cover {
     position: relative;
 }
 
-/* liの中のaののサイズをliに合わせる
-
-.horizontal_scroll>li>a {
-    display: block;
-    width: 100%;
-}*/
-
 /* 画面幅が768px以上の場合、横スクロールを解除 */
 
 @media screen and (min-width: 768px) {
@@ -1505,6 +1578,125 @@ a.item-link {
         margin: 0 -1em 1em;
     }
 }
+
+/*--------------------------------------------------------------
+#Item detail 
+--------------------------------------------------------------*/
+
+.image-carousel {
+    height: 351px;
+    background-color: #999;
+}
+
+.image-carousel>img {
+    width: 351px;
+    height: 351px;
+}
+
+.swiper-container {
+    width: 100%;
+    height: calc(100vw - 24px);
+}
+
+.swiper-container img {
+    max-width: 100%;
+    height: calc(100vw - 24px);
+}
+
+.display-impression {
+    display: flex;
+    align-items: center;
+    color: var(--color-gray-2);
+    font-size: var(--font-size-P-M);
+}
+
+.display-impression>span {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.display-impression i {
+    font-size: 1.375rem;
+    margin-right: 3px;
+}
+
+h1.item-titel {
+    font-size: var(--font-size-H-M);
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    valign: top;
+}
+
+table tr {
+    /* border-bottom: solid 1px #eee;*/
+    cursor: pointer;
+}
+
+table tr:hover {}
+
+table th, table td {
+    padding: 12px 0;
+    vertical-align: top;
+}
+
+table td:first-child {
+    width: 120px;
+    color: var(--color-gray-2);
+}
+
+.location-text {
+    color: var(--color-gray-2);
+    font-size: var(--font-size-P-S);
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.location-text>i {
+    font-size: 1.125rem;
+    margin-right: 2px;
+}
+
+.deadline-status {
+    font-size: var(--font-size-P-S);
+    font-weight: 700;
+    margin-left: 8px;
+    padding: 2px 4px;
+    background-color: var(--color-like);
+    color: var(--color-gray-7);
+    border-radius: 2px;
+}
+
+td#commnet {
+    font-size: var(--font-size-P-M);
+}
+
+.passed-time {
+    display: flex;
+    align-items: center;
+    color: var(--color-gray-3);
+    font-size: var(--font-size-P-M);
+}
+
+.passed-time>i {
+    font-size: 1rem;
+    margin-right: 4px;
+}
+
+.flex-between {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+/*--------------------------------------------------------------
+#For Development
+--------------------------------------------------------------*/
 
 .spacing {
     height: 420px;
