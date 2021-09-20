@@ -9,12 +9,15 @@ import os
 # init SQLAlchemy so we can use it later in our models
 
 db = SQLAlchemy()
-tpath=os.path.dirname(os.path.abspath(__file__))
-app = Flask(__name__,template_folder=os.path.join(tpath,'templates'),static_folder=os.path.join(tpath,'templates'),static_url_path='')
-bcrypt=Bcrypt(app)
-db.init_app(app)
+app=None
+bcrypt=None
 
 def create_app():
+    global app,db,bcrypt
+    tpath=os.path.dirname(os.path.abspath(__file__))
+    app = Flask(__name__,template_folder=os.path.join(tpath,'templates'),static_folder=os.path.join(tpath,'templates'),static_url_path='')
+    bcrypt=Bcrypt(app)
+    db.init_app(app)
 
     app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
@@ -39,7 +42,10 @@ def create_app():
 
     from .users import users_app
     app.register_blueprint(users_app)
-
+    
+    print('items')
+    from .items import items_app
+    app.register_blueprint(items_app)
 
     # blueprint for non-auth parts of app
     from .main import main as main_blueprint
