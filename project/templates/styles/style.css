@@ -39,7 +39,7 @@
     --shadow-top-fixed-light: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
     --shadow-bottom-fixed: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
     --shadow-floating-btn: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.15));
-    --shadow-list-item: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+    --shadow-list-item: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
     /* margin
     -------------------------------------- */
     --margin-side: 12px;
@@ -108,6 +108,15 @@ a {
 a:hover {}
 
 a:visited {}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
 
 /* Delet button Style
     -------------------------------------- */
@@ -242,6 +251,20 @@ header {
 
 .head-fix+* {
     margin-top: calc(56px + 20px);
+}
+
+/*並べ替え・絞り込み*/
+
+.search-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#filter {
+    display: flex;
+    align-items: center;
 }
 
 /*--------------------------------------------------------------
@@ -944,15 +967,30 @@ select {
 
 /* Like ----------------------------- */
 
-span.btn-like {
-    display: inline-block;
+.btn-like {
     background-color: var(--color-gray-7);
     color: var(--color-gray-3);
     filter: var(--shadow-floating-btn);
-    border-radius: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 22px;
+    z-index: 100;
+}
+
+.btn-like svg {
+    fill: var(--color-gray-3);
+    transition: all .12s;
+}
+
+.btn-like.liked {
+    animation: like .4s ease;
+    transition: all .12s;
+}
+
+.btn-like.liked svg {
+    fill: var(--color-like);
+    animation: like .4s ease;
 }
 
 .btn-like-S {
@@ -965,38 +1003,6 @@ span.btn-like {
     height: 44px;
 }
 
-/*
-.btn-like>span {
-    font-family: "Material Icons Outlined";
-    font-size: 18px;
-    color: var(--color-gray-4);
-}
-
-.btn-like-active>span {
-    color: var(--color-like);
-}
-*/
-
-.btn-like>input {
-    display: none;
-}
-
-.btn-like>label {
-    margin: 0;
-    cursor: pointer;
-}
-
-.btn-like>input+label svg {
-    fill: var(--color-gray-3);
-    transition: all .3s;
-}
-
-.btn-like>input:checked+label svg {
-    fill: var(--color-like);
-    animation: like .4s ease-out;
-    transition: all .3s;
-}
-
 @keyframes like {
     0% {
         transform: scale(1, 1);
@@ -1005,7 +1011,7 @@ span.btn-like {
         transform: scale(0.8, 0.8);
     }
     50% {
-        transform: scale(1.4, 1.3);
+        transform: scale(1.15, 1.2);
     }
     100% {
         transform: scale(1, 1);
@@ -1304,11 +1310,26 @@ input.btn-like:checked+label::after {
 #List
 --------------------------------------------------------------*/
 
+.item-status-tag {
+    display: none;
+}
+
+.item-status-tag.visible {
+    display: block;
+}
+
 /* Item List ----------------------------- */
 
-.list-item-S p {
+ul.list-item-S>li {
+    background-color: var(--color-gray-7);
+    filter: var(--shadow-list-item);
+    border-radius: 4px;
+}
+
+ul.list-item-S>li p {
     width: 100%;
-    margin: 6px 0 0;
+    padding: 3px;
+    margin: 0;
     font-size: var(--font-size-P-S);
     line-height: 1.25;
     overflow-wrap: break-word;
@@ -1321,16 +1342,16 @@ input.btn-like:checked+label::after {
     height: 0;
     position: relative;
     display: block;
-    border-radius: 4px;
+    border-radius: 4px 4px 0 0;
 }
 
-.list-item-S .img_box {
+ul.list-item-S>li .img_box {
     width: 100%;
     padding-bottom: 100%;
     position: relative;
 }
 
-.list-item-S .img_box .btn-like {
+ul.list-item-S>li .img_box .btn-like {
     position: absolute;
     bottom: 3px;
     right: 3px;
@@ -1358,7 +1379,7 @@ img.object-fit-cover {
     display: -ms-flexbox;
     display: flex;
     margin: 0 0 32px;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     /*スクロールバーの位置調整*/
 }
 
@@ -1386,15 +1407,7 @@ img.object-fit-cover {
     margin-right: 0;
 }
 
-.ul-item-M {
-    padding: 0;
-}
-
-.ul-item-M>li {
-    list-style: none;
-}
-
-.list-item-M {
+ul.list-item-M>li {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -1402,6 +1415,8 @@ img.object-fit-cover {
     background-color: var(--color-gray-7);
     filter: var(--shadow-list-item);
     padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
 }
 
 img.item-status-tag {
@@ -1412,31 +1427,31 @@ img.item-status-tag {
     border-radius: 4px 0 0 0;
 }
 
-.list-item-M .item-text {
+ul.list-item-M>li .item-text {
     width: 100%;
     width: calc(100% - 96px - 8px);
 }
 
-.list-item-M .item-text h3 {
+ul.list-item-M>li .item-text h3 {
     font-size: var(--font-size-P-M);
 }
 
-.list-item-M .item-details>div, .list-item-M .item-details>p {
+ul.list-item-M>li .item-details>div, ul.list-item-M>li .item-details>p {
     font-size: var(--font-size-P-S);
     margin: 6px 0 0;
 }
 
-.list-item-M .item-text>div {
+ul.list-item-M>li .item-text>div {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.list-item-M .item-details {
+ul.list-item-M>li .item-details {
     width: calc(100% - 26px - 4px);
 }
 
-.list-item-M .item-details>div {
+ul.list-item-M>li .item-details>div {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1447,16 +1462,16 @@ img.item-status-tag {
     margin-right: 4px;
 }
 
-.list-item-M .item-details>div>span {
+ul.list-item-M>li .item-details>div>span {
     width: calc(100% - 1.125rem - 4px);
 }
 
-.list-item-M .item-details>div>i {
+ul.list-item-M>li .item-details>div>i {
     font-size: 1.125rem;
     margin-right: 4px;
 }
 
-.list-item-M .item-details>div>i>img {
+ul.list-item-M>li .item-details>div>i>img {
     width: 1.125rem;
 }
 
@@ -1469,7 +1484,7 @@ a.item-link {
     height: 100%;
 }
 
-.list-item-M .img_box {
+ul.list-item-M>li .img_box {
     width: 96px;
     height: 96px;
     margin-right: 8px;

@@ -69,6 +69,7 @@ $(function () {
 
 /* Password
     -------------------------------------- */
+/*
 const visibilityToggle = document.querySelector('.visibility');
 
 const input = document.querySelector('.input-container input');
@@ -76,16 +77,66 @@ const input = document.querySelector('.input-container input');
 var password = true;
 
 visibilityToggle.addEventListener('click', function () {
-    if (password) {
-        input.setAttribute('type', 'text');
-        visibilityToggle.innerHTML = 'visibility';
-    } else {
-        input.setAttribute('type', 'password');
-        visibilityToggle.innerHTML = 'visibility_off';
-    }
-    password = !password;
+if (password) {
+    input.setAttribute('type', 'text');
+    visibilityToggle.innerHTML = 'visibility';
+} else {
+    input.setAttribute('type', 'password');
+    visibilityToggle.innerHTML = 'visibility_off';
+}
+password = !password;
 
+});*/
+
+
+/* Like Button
+    -------------------------------------- */
+
+$(function () {
+    // 検索フィールドフォーカス時にフォームの縁の色を変える
+    $('.btn-like').click(function () {
+        if ($(this).hasClass('liked')) {
+            $(this).removeClass('liked');
+            console.log('likedはずされされました！');
+        } else {
+            $(this).addClass('liked');
+            console.log('likedクリックされました！');
+        }
+
+    })
+        .focusout(function (e) {
+            $('#search-form').removeClass('form-focused');
+        });
+    // パスワードフィールドフォーカス時にフォームの縁の色を変える
+    $('#password')
+        .focusin(function (e) {
+            $('.pw-input-container').addClass('form-focused');
+        })
+        .focusout(function (e) {
+            $('.pw-input-container').removeClass('form-focused');
+        });
+
+
+    /* // 検索フィールドエラー時にフォームの縁の色を変える ざっと探したけどfocusInvalidって間違っている模様（エラー出てる）直したいけど優先しなくていい
+     $('#search-input')
+         .focusInvalid(function (e) {
+             $('#search-form').addClass('form-error');
+         })
+         .fvalid(function (e) {
+             $('#search-form').removeClass('form-error');
+         });
+     // パスワードフィールドエラー時にフォームの縁の色を変える
+     $('#password')
+         .focusInvalid(function (e) {
+             $('.pw-input-container').addClass('form-error');
+         })
+         .valid(function (e) {
+             $('.pw-input-container').removeClass('form-error');
+         });*/
 });
+
+
+
 
 
 /* URL Copy Button
