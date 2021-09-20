@@ -182,7 +182,7 @@ const swiper = new Swiper('.swiper', {
         el: '.swiper-scrollbar',
     },
 });*/
-
+/*
 
 var mySwiper = new Swiper(".swiper-container", {
     // オプション設定
@@ -210,4 +210,21 @@ var mySwiper = new Swiper(".swiper-container", {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
     },
+});
+*/
+var startPos = 0, winScrollTop = 0;
+
+
+$(window).on('scroll', function () {
+    winScrollTop = $(this).scrollTop();
+    if (winScrollTop >= startPos) {
+
+        $('.head-fix').addClass('hide');
+        if (winScrollTop <= 60) {
+
+        }
+    } else {
+        $('.head-fix').removeClass('hide');
+    }
+    startPos = winScrollTop;
 });
