@@ -6,6 +6,7 @@ from flask_login import login_user, logout_user, login_required,current_user
 from .models import Item, User
 from . import db
 from .form import ItemAdd
+from project.wrapper import item_save
 
 users_app = Blueprint('users', __name__)
 
@@ -25,10 +26,6 @@ def item_add():
     else:
         form=ItemAdd(request.form)
         if form.validate_on_submit():
-            item=Item(user_id=current_user.id,item_name=form.item_name.data,category=form.category.data,dangerous=False,need_credential='F',expire=1234)
-            db.session.add(item)
-            db.session.commit()
+            item_save(item_name=form.item_name.data,category=form.category.data,)
             return 'OK'
         return 'FALSE'
-
-

@@ -1,5 +1,6 @@
 from .models import Univercity, User
 from . import db
+from project.models import Item
 
 def user_save(user_name,univercity_name,email_address,password1,birthday,db=db):
     univ=db.session.query(Univercity).filter_by(univercity_name=univercity_name).first()
@@ -14,4 +15,9 @@ def user_save(user_name,univercity_name,email_address,password1,birthday,db=db):
     db.session.commit()
     
     return user_to_create
+
+def item_save(item_name, db=db):
+    item = Item(item_name=item_name, dangerous=False, need_credential='F', expire=1234)
+    db.session.add(item)
+    db.session.commit()
 
