@@ -3,6 +3,7 @@
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <title>Compornents</title>
     <!-- sanitize.css https://csstools.github.io/sanitize.css/ -->
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
@@ -30,9 +31,7 @@
     <link rel="apple-touch-icon" href="./images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
     <link rel="icon" type="image/png" href="./images/favicons/android-chrome-192x192.png" sizes="192x192">
 
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-
-
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -40,22 +39,14 @@
 
 <body>
 
-    <!-- header -->
-    <header>
 
+    <!-- header -->
+    <header class="service-title">
+        <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span><i
+            class="material-icons">logout</i>
     </header>
     <!-- /header -->
     <main>
-
-        <i class="material-icons-round">account_box</i>
-
-        <i class="material-icons">account_box</i>
-        <i class="material-icons-outlined">account_box</i>
-        <i class="material-icons-round">account_box</i>
-        <i class="material-icons-two-tone">account_box</i>
-        <i class="material-icons-sharp">account_box</i>
-
-
         <h1 class="not-component">Tabs</h1>
         <div class='tabs'>
             <div class='tab-buttons'>
@@ -66,16 +57,22 @@
             </div>
             <div class='tab-content'>
 
-                <div class='content1'>This is the content of 1 container.This will be open when button 1 is clicked.This
-                    is the content of 1 container.This will be open when button 1 is clicked.This is the content of 1
+                <div class='content1'>This is the content of 1 container.This will be open when button 1 is
+                    clicked.This
+                    is the content of 1 container.This will be open when button 1 is clicked.This is the content of
+                    1
                     container.This will be open when button 1 is clicked.</div>
 
-                <div class='content2'>This is the content of 2 container.This will be open when button 2 is clicked.This
-                    is the content of 2 container.This will be open when button 2 is clicked.This is the content of 2
+                <div class='content2'>This is the content of 2 container.This will be open when button 2 is
+                    clicked.This
+                    is the content of 2 container.This will be open when button 2 is clicked.This is the content of
+                    2
                     container.This will be open when button 2 is clicked.</div>
 
-                <div class='content3'>This is the content of 3 container.This will be open when button 3 is clicked.This
-                    is the content of 3 container.This will be open when button 3 is clicked.This is the content of 3
+                <div class='content3'>This is the content of 3 container.This will be open when button 3 is
+                    clicked.This
+                    is the content of 3 container.This will be open when button 3 is clicked.This is the content of
+                    3
                     container.This will be open when button 3 is clicked.</div>
 
             </div>
@@ -228,11 +225,34 @@
 
         <h3 class="not-component">Circle</h3>
         <h4 class="not-component">Like</h4>
-        <a class="btn-like"><span class="material-icons">
-                favorite_border
-                <!--塗りつぶしのグレーでも可-->
-            </span>
-        </a>
+        <!--<input type="checkbox" id="like"><label for="like"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg></label>-->
+
+
+        <span class="btn-like btn-like-S">
+            <input type="checkbox" class="" id="like-S" name=""><label for="like-S">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                </svg>
+            </label>
+        </span>
+
+
+
+
+        <span class="btn-like btn-like-L">
+            <input type="checkbox" class="" id="like-L"><label for="like-L">
+                <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15 26.6875L13.1875 25.0375C6.75 19.2 2.5 15.35 2.5 10.625C2.5 6.775 5.525 3.75 9.375 3.75C11.55 3.75 13.6375 4.7625 15 6.3625C16.3625 4.7625 18.45 3.75 20.625 3.75C24.475 3.75 27.5 6.775 27.5 10.625C27.5 15.35 23.25 19.2 16.8125 25.05L15 26.6875Z" />
+                </svg>
+            </label>
+        </span>
+
+
         <a class="btn-like btn-like-active"><span class="material-icons">
                 favorite
             </span>
@@ -258,8 +278,9 @@
         <p class="msg-url-copied">URLをコピーしました！</p>
         <!-- Share -->
         <!-- この場のリンクをシェアするだけのシンプルver -->
-        <button type="button" class="btn-social-share native-share-btn"><img src="./images/buttons/share.svg"
-                alt="シェアする"></button>
+
+        <button type="button" class="btn-social-share native-share-btn" data-share-title="JO-TO!"><img
+                src="./images/buttons/share.svg" alt="シェアする"></button>
         <!-- 属性をかけるだけ書いたver -->
         <button type="button" class="btn-social-share native-share-btn" data-share-title="Web Share API Demo"
             data-share-text="This page demonstrates the Web Share API."
@@ -498,15 +519,71 @@
                 <span class="menu-item-label">マイページ</span>
             </a>
         </nav>
-        <!-- end of code -->
     </div>
 
 
     <footer>
-        <p>©noob_fighter_returns</p>
+
+        <div class="service-title">
+            <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span>
+        </div>
+
+        <div class="footer-inner">
+            <div>
+                <ul class="menu">
+                    <li id="" class="menu-item">
+                        <a href="https://">使い方ガイド</a>
+                    </li>
+                    <li id="" class="menu-item">
+                        <a href="https://">マナーガイド</a>
+                    </li>
+                    <li id="" class="menu-item">
+                        <a href="https://">よくある質問</a>
+                    </li>
+
+                    <li id="menu-item-61" class="menu-item">
+                        <a href="https://">お問い合わせ</a>
+                    </li>
+                </ul>
+                <small class="copy-right">©noob_fighter_returns
+                </small>
+            </div>
+
+            <div>
+                <ul class="menu">
+                    <li id="" class="menu-item">
+                        <a href="https://">利用規約</a>
+                    </li>
+                    <li id="" class="menu-item ">
+                        <a href="https://">プライバシーポリシー</a>
+                    </li>
+                    <li id="" class="menu-item ">
+                        <a href="https://">ログアウト</a>
+                    </li>
+                    <li>
+                        <p>友達にシェアする</p>
+                        <div class="share-buttons">
+                            <!-- LINE -->
+                            <a class="btn-social-share"
+                                href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                                    src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+                            <!-- Twitter -->
+                            <a class="btn-social-share"
+                                href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+                                rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
+                            <!-- Share -->
+                            <button type="button" class="btn-social-share native-share-btn"
+                                data-share-title="JO-TO!"><img src="./images/buttons/share.svg" alt="シェアする"></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </footer>
 
+
     <script type="text/javascript" src="js/index.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </body>
 
