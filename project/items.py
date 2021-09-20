@@ -22,6 +22,9 @@ def sendPhotoID(blob_id):
         )
     return Response(status=400)
 
+@items_app.route('items/add',methods=['POST'])
+def item_post():
+    pass
 @items_app.route("/items/search")
 def searchItems():
     tag=request.args.get('tag')
@@ -44,10 +47,13 @@ def searchItems():
                                     .filter_by(is_like=True,univercity_id==current_user.univercity_id).all()
         #TODO:tag
     
-    render_template()
+    # render_template()
+        print(searchItems)
+    return 'OK'
 
 
 
+@items_app.route("/")
 @items_app.route("/items")
 def showItems():
     #     User.idと、UserSocial.user_idで内部結合し、
