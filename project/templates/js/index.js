@@ -71,11 +71,11 @@ $(function () {
     -------------------------------------- */
 /*
 const visibilityToggle = document.querySelector('.visibility');
-
+ 
 const input = document.querySelector('.input-container input');
-
+ 
 var password = true;
-
+ 
 visibilityToggle.addEventListener('click', function () {
 if (password) {
     input.setAttribute('type', 'text');
@@ -85,7 +85,7 @@ if (password) {
     visibilityToggle.innerHTML = 'visibility_off';
 }
 password = !password;
-
+ 
 });*/
 
 
@@ -198,10 +198,10 @@ for (var i = 0; i < checkbox.length; i++) {
 
 }
 /*
-
+ 
 function getCheckedRadioId(){
     var flag = false; // 選択されているか否かを判定するフラグ
-
+ 
     //　ラジオボタンの数だけ判定を繰り返す（ボタンを表すインプットタグがあるので１引く）
     for(var i = 0 ; i < document.getElementsByName('radio').length  ; i++){
         // i番目のラジオボタンがチェックされているかを判定
@@ -216,25 +216,25 @@ const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'vertical',
     loop: true,
-
+ 
     // If we need pagination
     pagination: {
         el: '.swiper-pagination',
     },
-
+ 
     // Navigation arrows
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
-
+ 
     // And if we need scrollbar
     scrollbar: {
         el: '.swiper-scrollbar',
     },
 });*/
 /*
-
+ 
 var mySwiper = new Swiper(".swiper-container", {
     // オプション設定
     loop: true, // ループ
@@ -243,19 +243,19 @@ var mySwiper = new Swiper(".swiper-container", {
     spaceBetween: 0, // スライドの余白(px)
     direction: "horizontal", // スライド方向
     effect: "fade", // スライド効果 ※ここを変更
-
+ 
     // スライダーの自動再生設定
     autoplay: {
         delay: 3000, // スライドが切り替わるまでの時間(ミリ秒)
         stopOnLast: false, // 自動再生の停止なし
         disableOnInteraction: true, // ユーザー操作後の自動再生停止
     },
-
+ 
     // ページネーションを有効化
     pagination: {
         el: ".swiper-pagination",
     },
-
+ 
     // ナビゲーションを有効化
     navigation: {
         nextEl: ".swiper-button-next",
@@ -278,4 +278,12 @@ $(window).on('scroll', function () {
         $('.head-fix').removeClass('hide');
     }
     startPos = winScrollTop;
+});
+
+
+$('input').focus(function () {
+
+    $(this).css('background-color', '#aaf');
+    console.log('あああああ');
+
 });
