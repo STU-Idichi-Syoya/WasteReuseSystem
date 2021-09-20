@@ -79,7 +79,7 @@ def searchItems():
     #                                     .join(ItemLike,Item.id==ItemLike.item_id)\
     #                                     .join(User,Item.user_id==User.id)\
     #                                     .filter_by(is_like=True).filter_by(tag_name=tag).all()
-    return render_template('search_result.html',search_items=searchItems)
+    return render_template('search_result.html')
     
     # # find by keyword
     # # TODO 複数ワード検索
@@ -113,7 +113,7 @@ def showItem(item_id):
     # if item is None:
     #     return f'ERROR {item_id} Item is not exist'
     # return render_template('item_datail.html',item=item,comment=comment)
-    return render_template('item_datail.html',item=None,comment=None)
+    return render_template('item_datail.html')
     
 
 
@@ -160,4 +160,4 @@ def showItems():
     #                                 .limit(100).all()
         
         # return render_template('index.html',recommend_items=recommend_items)
-        return render_template('index.html',recommend_items=None)
+        return render_template('index.html')
