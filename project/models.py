@@ -28,6 +28,11 @@ class User(db.Model,UserMixin):
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
 
+class UserSearchHistory(db.Model):
+    __tablename__='user_search_histories'
+    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
+    keyword = db.Column(db.String(length=60), nullable=False)
+
 # 大学情報
 class Univercity(db.Model):
     __tablename__= 'univercities'

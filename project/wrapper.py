@@ -16,8 +16,10 @@ def user_save(user_name,univercity_name,email_address,password1,birthday,db=db):
     
     return user_to_create
 
-def item_save(item_name, db=db):
-    item = Item(item_name=item_name, dangerous=False, need_credential='F', expire=1234)
-    db.session.add(item)
-    db.session.commit()
+def item_buy(item_id):
+    item = db.session.query(Item).filter_by(id=item_id)
+    if item is not None:
+        item.is_active = False
+        db.session.commit()
+
 
