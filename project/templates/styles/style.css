@@ -72,6 +72,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
     /*開発確認用
     max-width: 375px;*/
 }
@@ -333,6 +334,7 @@ small {
     width: 20%;
 }
 
+
 .tabbar-container .menu-item:focus, .tabbar-container .menu-item:hover {
     outline: none;
 }
@@ -341,6 +343,7 @@ small {
     font-family: "Material Icons";
     color: var(--color-primary);
 }
+
 
 .tabbar-container .menu-item:focus .menu-item-label, .tabbar-container .menu-item:hover .menu-item-label {
     color: var(--color-primary);
@@ -354,6 +357,7 @@ small {
     transition: 0.24s ease;
     position: relative;
 }
+
 
 .tabbar-container .menu-item-label {
     display: block;
@@ -914,6 +918,7 @@ select {
 
 /* Like ----------------------------- */
 
+
 span.btn-like {
     display: inline-block;
     background-color: var(--color-gray-7);
@@ -945,6 +950,7 @@ span.btn-like {
 .btn-like-active>span {
     color: var(--color-like);
 }
+
 */
 
 .btn-like>input {

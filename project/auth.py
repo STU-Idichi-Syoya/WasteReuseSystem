@@ -5,7 +5,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from .models import User,Univercity
 from . import db
-from .form import RegisterForm,LoginForm
+from .form import RegisterForm, LoginForm
+from .wrapper import user_save
 
 auth = Blueprint('auth', __name__)
 
@@ -40,14 +41,7 @@ def signup():
     else:
         form = RegisterForm(request.form)
         if form.validate_on_submit():
-            univ=db.session.query(Univercity).filter_by(univercity_name=form.univercity_name.data).first()
-            if univ is None:
-                univ=Univercity(univercity_name=form.univercity_name.data)
-                db.session.add(univ)
-                db.session.commit()
-            user_to_create = User(user_name=form.user_name.data,email_address=form.email_address.data,password=form.password1.data,birthday=form.birthday.data,univercity_id=univ.id)
-            db.session.add(user_to_create)
-            db.session.commit()
+            user_to_create = user_save(form.user_name.data,form.univercity_name.data,form.email_address.data,form.password1.data,form.birthday.data)
             login_user(user_to_create)
             flash(f'Account created successfuly! You are now logged as {user_to_create.user_name}', category='success')
             return redirect(url_for('main.profile'))
@@ -56,6 +50,8 @@ def signup():
                 flash(f'There was an error with creating a user: {err_msg}', category='danger')
                 print(err_msg)
             return render_template('signup.html', form=form)
+
+
 
 @auth.route('/logout')
 @login_required
