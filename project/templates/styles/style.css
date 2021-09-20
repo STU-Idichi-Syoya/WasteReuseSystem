@@ -1,0 +1,1424 @@
+@charset "UTF-8";
+:root {
+    /* Color
+    -------------------------------------- */
+    --color-gray-0: #000;
+    --color-gray-1: #333;
+    --color-gray-2: #666;
+    --color-gray-3: #999;
+    --color-gray-4: #bbb;
+    --color-gray-5: #eee;
+    --color-gray-6: #f5f5f5;
+    --color-gray-7: #fff;
+    --color-primary: #006CF9;
+    --color-p-dark: #0042C5;
+    --color-p-light: #6999FF;
+    --color-p-ex-light: #F0F5FF;
+    --color-p-hover: #4091FA;
+    --color-secondary: #FFA800;
+    --color-hint: #FFF6C8;
+    --color-like: #FF4853;
+    --color-error: #FA1A1A;
+    --color-good: #FF666F;
+    --color-ok: #FFD15A;
+    --color-bad: #5AB0FF;
+    --color-LINE: #06C755;
+    /* Fonts
+    -------------------------------------- */
+    --font-size-H-L: 2rem;
+    --font-size-H-M: 1.5rem;
+    --font-size-H-S: 1.2rem;
+    --font-size-H-SS: 1rem;
+    --font-size-P-L: 1rem;
+    --font-size-P-M: 0.85714rem;
+    --font-size-P-S: 0.75rem;
+    --font-size-P-SS: 0.66667rem;
+    /* Shadow
+    -------------------------------------- */
+    --shadow-bottom-fixed: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
+    --shadow-floating-btn: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.15));
+    --shadow-list-item: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+    /* margin
+    -------------------------------------- */
+    --margin-side: 12px;
+    /* Other
+    -------------------------------------- */
+    --checkbox-size: 18px;
+}
+
+/*--------------------------------------------------------------
+# Structue
+--------------------------------------------------------------*/
+
+body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--color-gray-1);
+    /* Font
+    -------------------------------------- */
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-feature-settings: "kern";
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    /*コンテンツ量が少なくてもfooterを固定する*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /*開発確認用*/
+    max-width: 375px;
+}
+
+.wrapper {
+    margin: 0 auto;
+}
+
+main {
+    /*header footer 固定されるやつを除くコンテンツ*/
+    margin: 0 12px;
+}
+
+/*--------------------------------------------------------------
+# Basic Style
+--------------------------------------------------------------*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {}
+
+a:visited {}
+
+/* Delet button Style
+    -------------------------------------- */
+
+button {
+    display: inline-block;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+button img {
+    display: block;
+}
+
+button:active, button img {
+    position: relative;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: none;
+}
+
+/*--------------------------------------------------------------
+# Text Style
+--------------------------------------------------------------*/
+
+/* Headings
+    -------------------------------------- */
+
+.bold, h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.text-H-L {
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.text-H-M {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.text-H-S {
+    font-size: 1.2rem;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.text-H-SS {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+/* Paragraphs
+    -------------------------------------- */
+
+.text-P-L {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.text-P-M {
+    font-size: 0.85714rem;
+    line-height: 1.5;
+}
+
+.text-P-S {
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.text-P-SS {
+    font-size: 0.66667rem;
+    line-height: 1.5;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+header {
+    height: 60px;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Tabbar(bottom menu)
+--------------------------------------------------------------*/
+
+.tabbar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+}
+
+.menu {
+    display: flex;
+    flex-grow: 1;
+    height: 56px;
+    /* max-width: 375px;*/
+    overflow: hidden;
+    background-color: var(--color-gray-7);
+    filter: var(--shadow-bottom-fixed);
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-decoration: none;
+    width: 20%;
+}
+
+.menu-item:focus, .menu-item:hover {
+    outline: none;
+}
+
+.menu-item:focus .menu-icon, .menu-item:hover .menu-icon {
+    font-family: "Material Icons";
+    color: var(--color-primary);
+}
+
+.menu-item:focus .menu-item-label, .menu-item:hover .menu-item-label {
+    color: var(--color-primary);
+}
+
+.menu-icon {
+    font-family: "Material Icons Outlined";
+    display: block;
+    font-size: 24px;
+    color: var(--color-gray-3);
+    transition: 0.24s ease;
+    position: relative;
+}
+
+.menu-item-label {
+    display: block;
+    font-size: 10px;
+    color: var(--color-gray-3);
+    transition: 0.24s ease;
+}
+
+/* Notification Badge  */
+
+.badge-notify-menu {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: var(--color-like);
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
+/*--------------------------------------------------------------
+# Tabs
+--------------------------------------------------------------*/
+
+.tabs {
+    width: 100%;
+    margin: 10px auto;
+    position: relative;
+}
+
+.tab-buttons>span {
+    color: var(--color-gray-3);
+    cursor: pointer;
+    border-bottom: 2px solid var(--color-gray-3);
+    display: block;
+    width: 33.3%;
+    float: left;
+    text-align: center;
+    height: 48px;
+    line-height: 48px;
+    position: relative;
+}
+
+.tab-buttons>span.tab-current {
+    color: var(--color-primary);
+    cursor: auto;
+    /*現在地を押させないようにする*/
+}
+
+.tab-content {
+    display: block;
+    padding: 12px 0;
+    display: inline-block;
+}
+
+#lamp {
+    width: 33.3%;
+    height: 2px;
+    background: var(--color-primary);
+    display: block;
+    position: absolute;
+    top: 46px;
+    transition: all .24s ease-in;
+    -o-transition: all .24s ease-in;
+    -webkit-transition: all .24s ease-in;
+    -moz-transition: all .24s ease-in;
+}
+
+#lamp.content2 {
+    left: 33.3%;
+    transition: all .24s ease-in;
+    -o-transition: all .24s ease-in;
+    -webkit-transition: all .24s ease-in;
+    -moz-transition: all .24s ease-in;
+}
+
+#lamp.content3 {
+    left: 66.6%;
+    transition: all .24s ease-in;
+    -o-transition: all .24s ease-in;
+    -webkit-transition: all .24s ease-in;
+    -moz-transition: all .24s ease-in;
+}
+
+#lamp.content1 {
+    left: 0;
+    transition: all .24s ease-in;
+    -o-transition: all .24s ease-in;
+    -webkit-transition: all .24s ease-in;
+    -moz-transition: all .24s ease-in;
+}
+
+/* Notification Badge  */
+
+.badge-notify-num {
+    font-size: 0.75rem;
+    line-height: 1;
+    background-color: var(--color-like);
+    color: var(--color-gray-7);
+    padding: 2px 1px;
+    min-width: 16px;
+    border-radius: 2px;
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    display: none;
+}
+
+/* Tabbar & Tabs 通知がある場合に付与*/
+
+.have-notify {
+    display: block;
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+
+label {
+    display: inline-block;
+    margin: 16px 8px 4px 0;
+}
+
+/* テキストフィールド placeholder */
+
+input::-webkit-input-placeholder {
+    color: var(--color-gray-3);
+}
+
+input:-moz-placeholder {
+    color: var(--color-gray-3);
+}
+
+input::-moz-placeholder {
+    color: var(--color-gray-3);
+}
+
+input:-ms-input-placeholder {
+    color: var(--color-gray-3);
+}
+
+/* Input Field
+    -------------------------------------- */
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea, select {
+    width: 100%;
+    padding: 10px 8px;
+    border: 1px solid var(--color-gray-4);
+    border-radius: 4px;
+    box-shadow: none;
+    background-color: var(--color-gray-7);
+    color: var(--color-gray-1);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: var(--font-size-P-L);
+}
+
+/* Focus */
+
+input[type=text]:focus, input[type=text]:active, input[type=tel]:focus, input[type=tel]:active, input[type=email]:focus, input[type=email]:active, input[type=url]:focus, input[type=url]:active, input[type=password]:focus, input[type=password]:active, input[type=date]:focus, input[type=date]:active, input[type=number]:focus, input[type=number]:active, textarea:focus, textarea:active, select:focus, select:active {
+    outline: 0;
+    border-color: var(--color-primary);
+}
+
+/* Disable */
+
+input[type="text"]:disabled, input[type="email"]:disabled, input[type="url"]:disabled, input[type="password"]:disabled, input[type="search"]:disabled, input[type="number"]:disabled, input[type="tel"]:disabled, input[type="range"]:disabled, input[type="date"]:disabled, input[type="month"]:disabled, input[type="week"]:disabled, input[type="time"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled, input[type="color"]:disabled, textarea:disabled, select:disabled {
+    color: var(--color-gray-3);
+    background-color: var(--color-gray-5);
+}
+
+button[disabled], html input[disabled] {
+    cursor: default;
+}
+
+/* Invalid */
+
+input[type="text"]:invalid, input[type="email"]:invalid, input[type="url"]:invalid, input[type="password"]:invalid, input[type="search"]:invalid, input[type="number"]:invalid, input[type="tel"]:invalid, input[type="range"]:invalid, input[type="date"]:invalid, input[type="month"]:invalid, input[type="week"]:invalid, input[type="time"]:invalid, input[type="datetime"]:invalid, input[type="datetime-local"]:invalid, input[type="color"]:invalid, textarea:invalid {
+    border-color: var(--color-error);
+}
+
+.error-msg {
+    font-size: var(--font-size-P-SS);
+    font-weight: 700;
+    color: var(--color-error);
+    margin: 4px 0;
+    display: none;
+}
+
+/* :invalid時だけ隣の要素を表示 */
+
+input:invalid+.error-msg {
+    display: block;
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/* Normal Text Field */
+
+input[type=text], input[type=tel], input[type=email], textarea {
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/*Password Field*/
+
+.pw-input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+}
+
+.pw-input-container input {
+    padding: 8px 10px;
+    width: 100%;
+    border: 0;
+}
+
+.pw-input-container i {
+    margin: 0 8px;
+    color: var(--color-gray-2);
+    cursor: pointer;
+}
+
+/* DatePicekr
+    -------------------------------------- */
+
+/* Text Area
+    -------------------------------------- */
+
+textarea {
+    overflow: auto;
+    font-size: var(--font-size-P-M);
+}
+
+/* Select
+    -------------------------------------- */
+
+.select-container {
+    position: relative;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.select-container::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 6%;
+    top: 35%;
+    border-bottom: #333 2px solid;
+    border-right: #333 2px solid;
+    transform: rotate(45deg)translateY(-30%);
+}
+
+/* Badge of necessity
+    -------------------------------------- */
+
+.badge-necessity {
+    font-size: var(--font-size-P-S);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 5%;
+    padding: 2px 4px;
+    color: var(--color-gray-7);
+    border-radius: 2px;
+}
+
+.required {
+    background-color: var(--color-like);
+}
+
+.optional {
+    background-color: var(--color-gray-3);
+}
+
+/* Search Form
+    -------------------------------------- */
+
+/*フォーム全体*/
+
+#search-form {
+    display: flex;
+    width: 100%;
+    --height: 40px;
+    /*40px+余白20px*/
+    height: var(--height);
+    background-color: var(--color-gray-6);
+    border-radius: 4px;
+}
+
+.search-form {
+    border: 1px solid var(--color-gray-4);
+}
+
+/*検索ボックス*/
+
+#search-input {
+    width: 100%;
+    padding: 0 12px;
+    outline: 0;
+    /*クリック時の青い枠線消す*/
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+/*検索ボタン*/
+
+#search-btn {
+    width: 60px;
+    padding: 4px 8px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+#search-btn i.icon-search {
+    font-size: 1.5rem;
+}
+
+.form-focused {
+    border-color: var(--color-primary);
+}
+
+.form-error {
+    border-color: var(--color-error);
+}
+
+/* Check box
+    -------------------------------------- */
+
+.checkbox-label {
+    display: block;
+    position: relative;
+    /*padding-left: calc(var(--checkbox-size) + 6);*/
+    padding-left: 24px;
+    cursor: pointer;
+    user-select: none;
+    /* テキストの選択を防ぐ */
+    font-size: var(--font-size-P-M);
+    margin: 1em 0;
+}
+
+.checkbox-label input {
+    display: none;
+}
+
+/* □ */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    border: solid 2px var(--color-gray-4);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* ✓ */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    /* チェックの大きさ */
+    width: 6px;
+    height: 10px;
+    border: solid var(--color-gray-7);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    /* 透明にしておく */
+    opacity: 0;
+}
+
+/* チェックが入ったときの□ */
+
+.checkbox-label input:checked+.checkmark {
+    background: var(--color-primary);
+    /* チェック時の色 */
+    border-color: var(--color-primary);
+    /* チェック時の色 */
+}
+
+/* チェックが入ったときの✓ */
+
+.checkbox-label input:checked+.checkmark:after {
+    /* 透明を解除 */
+    opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Buttons
+--------------------------------------------------------------*/
+
+/* Basic
+    -------------------------------------- */
+
+.btn {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.btn-M {
+    width: 100%;
+    /*height: 48px;*/
+    padding: 12px;
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+.btn-S {
+    width: 100%;
+    /*height: 40px;*/
+    padding: 8px;
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+.btn-SS {
+    width: 80px;
+    /*height: 32px;*/
+    padding: 5px 0;
+    font-size: 0.85714rem;
+}
+
+.btn-primary {
+    color: var(--color-gray-7);
+    background: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background: var(--color-p-hover);
+}
+
+.btn-secondary {
+    color: var(--color-primary);
+    background: var(--color-gray-7);
+    border: 1px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    color: var(--color-p-hover);
+    border: 1px solid var(--color-p-hover);
+}
+
+.btn-icon-R {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 24px;
+    transform: translateY(-50%);
+}
+
+.btn-icon-L {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    width: 24px;
+    transform: translateY(-50%);
+}
+
+/* Fixed Button ----------------------------- */
+
+.fixed-btn-container {
+    width: 100%;
+    /*height: 56px;*/
+    background-color: var(--color-gray-7);
+    position: fixed;
+    bottom: 0;
+    z-index: 40;
+    margin: 0;
+}
+
+.fixed-btn-container>.btn {
+    width: calc(100% - var(--margin-side)*2);
+    margin: 8px var(--margin-side);
+}
+
+/* Link under Button ----------------------------- */
+
+.combi-btn-link {
+    text-align: center;
+}
+
+.link-under-btn-M {
+    margin-top: 20px;
+    position: relative;
+    color: var(--color-primary)
+}
+
+.link-under-btn-S {
+    position: relative;
+    color: var(--color-primary)
+}
+
+.link-under-btn-M>i {
+    font-size: 1.5rem;
+}
+
+.link-under-btn-S>i {
+    font-size: 1.25rem;
+}
+
+.link-icon-R {
+    position: absolute;
+    top: 50%;
+    right: -24px;
+    width: 24px;
+    transform: translateY(-50%);
+}
+
+.link-icon-L {
+    position: absolute;
+    top: 50%;
+    left: -24px;
+    width: 24px;
+    transform: translateY(-50%);
+}
+
+/* LINE
+    -------------------------------------- */
+
+/* Circle
+    -------------------------------------- */
+
+/* Like ----------------------------- */
+
+.btn-like {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-color: var(--color-gray-7);
+    color: var(--color-gray-3);
+    filter: var(--shadow-floating-btn);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-like>span {
+    font-family: "Material Icons Outlined";
+    font-size: 18px;
+    color: var(--color-gray-4);
+}
+
+.btn-like-active>span {
+    color: var(--color-like);
+}
+
+/* Delete ----------------------------- */
+
+.btn-delete {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-gray-7);
+    color: var(--color-gray-3);
+    filter: var(--shadow-floating-btn);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-delete>span {}
+
+/* Share ----------------------------- */
+
+.btn-social-share {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    margin-right: 18px;
+    /*filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));*/
+}
+
+.btn-social-share>img {
+    width: 44px;
+    height: auto;
+    display: block;
+}
+
+/* URL  コピー完了時に出るメッセージ、出てきてしばらくしたらフェードアウトしたい*/
+
+.msg-url-copied {
+    display: none;
+}
+
+/* Hash tag
+    -------------------------------------- */
+
+.btn-hashtag {
+    display: inline-block;
+    font-size: var(--font-size-P-M);
+    padding: 8px 9px;
+    margin: 10px 8px 0 0;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+}
+
+.btn-hashtag:hover {
+    color: var(--color-p-hover);
+    border: 1px solid var(--color-p-hover);
+}
+
+.btn-hashtag-num {
+    margin: 0 2px;
+}
+
+/* Toggle ----------------------------- */
+
+.vc-toggle-container * {
+    -webkit-transition: 0.24s ease-out;
+    -moz-transition: 0.24s ease-out;
+    -o-transition: 0.24s ease-out;
+    transition: 0.24s ease-out;
+}
+
+.vc-switch {
+    width: 64px;
+    height: 36px;
+}
+
+.vc-toggle-container label {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 18px;
+    cursor: pointer;
+}
+
+.vc-switch-input {
+    position: absolute;
+    transform: translate3d(5px, 5px, 0);
+}
+
+.vc-switch-label {
+    position: relative;
+    display: block;
+    height: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--color-gray-4);
+    border-radius: inherit;
+}
+
+.vc-switch-label:before, .vc-switch-label:after {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    line-height: 1;
+}
+
+.vc-switch-label:before {
+    content: attr(data-off);
+    color: var(--color-gray-7);
+}
+
+.vc-switch-label:after {
+    content: attr(data-on);
+    color: var(--color-gray-7);
+    opacity: 0;
+}
+
+.vc-switch-label:before {
+    right: 6px;
+}
+
+.vc-switch-label:after {
+    left: 10px;
+}
+
+.vc-switch-input:checked~.vc-switch-label {
+    background: var(--color-primary);
+}
+
+.vc-switch-input:checked~.vc-switch-label:before {
+    opacity: 0;
+}
+
+.vc-switch-input:checked~.vc-switch-label:after {
+    opacity: 1;
+}
+
+.vc-handle {
+    position: absolute !important;
+    top: 3px;
+    left: 3px;
+    background: var(--color-gray-7);
+    border-radius: 15px;
+    filter: var(--shadow-floating-btn);
+}
+
+.vc-handle {
+    width: 30px;
+    height: 30px;
+    -webkit-transition: 0.24s ease-out;
+    -moz-transition: 0.24s ease-out;
+    -o-transition: 0.24s ease-out;
+    transition: 0.24s ease-out;
+}
+
+.vc-handle:before {
+    content: "";
+    top: 50%;
+    left: 50%;
+    position: absolute !important;
+    margin: -6px 0 0 -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    -webkit-transition: 0.24s ease-out;
+    -moz-transition: 0.24s ease-out;
+    -o-transition: 0.24s ease-out;
+    transition: 0.24s ease-out;
+}
+
+.vc-switch-label:active~.vc-handle, .vc-handle:active {
+    width: 34px;
+}
+
+.vc-switch-input:checked~.vc-handle {
+    /* left: unset;
+    right: 3px;*/
+    -webkit-transform: translateX(28px);
+    -ms-transform: translateX(28px);
+    transform: translateX(28px);
+}
+
+/*--------------------------------------------------------------
+#Headings
+--------------------------------------------------------------*/
+
+/* 頭出しタイトル ----------------------------- */
+
+.title-seemore {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 8px;
+}
+
+.title-seemore>h1 {
+    font-size: var(--font-size-H-M);
+}
+
+.title-seemore>h2 {
+    font-size: var(--font-size-H-S);
+}
+
+.title-seemore>h3 {
+    font-size: var(--font-size-H-SS);
+}
+
+.title-seemore>div {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-P-M);
+    color: var(--color-gray-2);
+}
+
+.title-seemore>h1+div {
+    color: var(--color-primary);
+}
+
+.title-seemore>h3+div {
+    font-size: var(--font-size-P-S);
+}
+
+.title-seemore>div>i {
+    font-size: 1.375rem;
+    /*22px*/
+}
+
+.title-seemore>h3+div>i {
+    font-size: 1.125rem;
+    margin-right: 1.5px;
+    /*見た目を揃えるための調整*/
+}
+
+/* 件数つきタイトル ----------------------------- */
+
+.title-hitnum {
+    margin-bottom: 12px;
+}
+
+.title-hitnum>h1, .search-result>h1>span {
+    font-size: var(--font-size-H-M);
+}
+
+.search-result>h1>span.suffix-result {
+    font-size: var(--font-size-H-S);
+    font-weight: 700;
+    margin-left: 2px;
+    color: var(--color-gray-2);
+}
+
+.title-hitnum>p {
+    margin: 0;
+    font-size: var(--font-size-P-S);
+}
+
+/*--------------------------------------------------------------
+#List
+--------------------------------------------------------------*/
+
+/* Item List ----------------------------- */
+
+.list-item-S p {
+    width: 100%;
+    margin: 6px 0 0;
+    font-size: var(--font-size-P-S);
+    line-height: 1.25;
+    overflow-wrap: break-word;
+}
+
+/*-- crop image--*/
+
+.img_box {
+    background-color: #c4c4c4;
+    height: 0;
+    position: relative;
+    display: block;
+    border-radius: 4px;
+}
+
+.list-item-S .img_box {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+}
+
+.list-item-S .img_box .btn-like {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+img.object-fit-cover {
+    display: block;
+    vertical-align: bottom;
+    border-radius: 4px;
+}
+
+/*-- horizontal scroll--*/
+
+.horizontal_scroll {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+    display: -ms-flexbox;
+    display: flex;
+    padding-bottom: 10px;
+    /*スクロールバーの位置調整*/
+}
+
+.horizontal_scroll>li {
+    width: 28.5%;
+    min-width: 100px;
+    list-style: none;
+    margin-right: 8px;
+    position: relative;
+}
+
+/* liの中のaののサイズをliに合わせる
+
+.horizontal_scroll>li>a {
+    display: block;
+    width: 100%;
+}*/
+
+/* 画面幅が768px以上の場合、横スクロールを解除 */
+
+@media screen and (min-width: 768px) {
+    .horizontal_scroll {
+        overflow-x: inherit;
+        padding: 0 8px 6px;
+    }
+    .horizontal_scroll>li {
+        min-width: inherit;
+    }
+}
+
+.horizontal_scroll>li:last-child {
+    margin-right: 0;
+}
+
+.ul-item-M {
+    padding: 0;
+}
+
+.ul-item-M>li {
+    list-style: none;
+}
+
+.list-item-M {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    background-color: var(--color-gray-7);
+    filter: var(--shadow-list-item);
+    padding: 8px;
+}
+
+img.item-status-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 4px 0 0 0;
+}
+
+.list-item-M .item-text {
+    width: 100%;
+    width: calc(100% - 96px - 8px);
+}
+
+.list-item-M .item-text h3 {
+    font-size: var(--font-size-P-M);
+}
+
+.list-item-M .item-details>div, .list-item-M .item-details>p {
+    font-size: var(--font-size-P-S);
+    margin: 6px 0 0;
+}
+
+.list-item-M .item-text>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.list-item-M .item-details {
+    width: calc(100% - 26px - 4px);
+}
+
+.list-item-M .item-details>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-hashtag a {
+    color: var(--color-primary);
+    margin-right: 4px;
+}
+
+.list-item-M .item-details>div>span {
+    width: calc(100% - 1.125rem - 4px);
+}
+
+.list-item-M .item-details>div>i {
+    font-size: 1.125rem;
+    margin-right: 4px;
+}
+
+.list-item-M .item-details>div>i>img {
+    width: 1.125rem;
+}
+
+a.item-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.list-item-M .img_box {
+    width: 96px;
+    height: 96px;
+    margin-right: 8px;
+}
+
+/*--------------------------------------------------------------
+#Mordal window
+--------------------------------------------------------------*/
+
+.modalCheck {
+    display: none;
+}
+
+.modalWrap, .modalBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: 10;
+}
+
+.modalWrap {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: 0.3s cubic-bezier(1, 0, 0, 1);
+    transition: 0.3s cubic-bezier(1, 0, 0, 1);
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    will-change: opacity;
+}
+
+.modalBg {
+    cursor: pointer;
+    opacity: 0.7;
+    background-color: #000;
+    z-index: 2;
+}
+
+.modalBg label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+}
+
+.modalCon {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right: 0;
+    width: 92%;
+    max-width: 640px;
+    height: 86%;
+    margin: auto;
+    z-index: 3;
+}
+
+.modalInner {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    height: 100%;
+    padding: 24px 12px;
+    cursor: default;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+}
+
+.modalCloseBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.modalCloseBtn label {
+    display: inline-block;
+    padding: 0.5em;
+    color: #333;
+    text-decoration: none;
+    font-size: 2em;
+}
+
+.modalCheck:not(:checked)~.mordal-wrapper>*:not(.modalWrap) {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+}
+
+.modalCheck:not(:checked)~.mordal-wrapper .modalWrap {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modalCheck:checked~.mordal-wrapper>*:not(.modalWrap) {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+
+#modal01:checked~.mordal-wrapper #modal01Con {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modalTtl {
+    padding: 2em 0.5em 1.5em;
+    font-size: 2em;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.modalText .modalCover {
+    margin: 0 -1.5em 1em;
+}
+
+.modalText p {
+    margin-bottom: 1em;
+    line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+    .content {
+        margin: 1.5em auto;
+    }
+    .modalInner {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    .modalTtl {
+        font-size: 1.5em;
+        padding-bottom: 1em;
+    }
+    .modalText .modalCover {
+        margin: 0 -1em 1em;
+    }
+}
+
+.spacing {
+    height: 420px;
+}
+
+.not-component {
+    color: rgb(100, 0, 100);
+    margin: 1em 0;
+}

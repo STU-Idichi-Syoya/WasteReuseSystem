@@ -11,6 +11,7 @@ db = SQLAlchemy()
 bcrypt = None
 def create_app():
     global bcrypt
+
     tpath=os.path.dirname(os.path.abspath(__file__))
     app = Flask(__name__,template_folder=os.path.join(tpath,'templates'),static_folder=os.path.join(tpath,'templates'),static_url_path='')
 
