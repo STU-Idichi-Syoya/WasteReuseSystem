@@ -32,11 +32,25 @@ $(function () {
     // 検索フィールドフォーカス時にフォームの縁の色を変える
     $('#search-input')
         .focusin(function (e) {
-            $('#search-form').addClass('form-focused');
+            $('#search-form').addClass('form-focused shrink');
+            $('#search-back').addClass('visible');
+            $('#search-input').attr('placeholder', 'キーワードで検索');
+            //検索ページがフォーカス時に左から出てくる
+            $('.searching').removeClass('off');
+            $('.searching').animate({ 'marginLeft': '100vw' }, 400).addClass('on');
+
         })
         .focusout(function (e) {
-            $('#search-form').removeClass('form-focused');
+            $('#search-form').removeClass('form-focused shrink');
+            $('#search-back').removeClass('visible');
+            $('#search-input').attr('placeholder', '何をお探しですか？');
+            //検索ページがフォーカス外した時に左に消える
+            $('.searching').addClass('off');
+            $('.searching').animate({ 'marginLeft': '0px' }, 400);
+
         });
+
+
     // パスワードフィールドフォーカス時にフォームの縁の色を変える
     $('#password')
         .focusin(function (e) {
@@ -45,7 +59,6 @@ $(function () {
         .focusout(function (e) {
             $('.pw-input-container').removeClass('form-focused');
         });
-
 
     /* // 検索フィールドエラー時にフォームの縁の色を変える ざっと探したけどfocusInvalidって間違っている模様（エラー出てる）直したいけど優先しなくていい
      $('#search-input')
@@ -65,6 +78,12 @@ $(function () {
          });*/
 });
 
+//検索ページがbackを押した時に左に消える
+$('#search-back').on('click', function () {
+    $('.searching').addClass('off');
+    $('.searching').animate({ 'marginLeft': '0px' }, 400);
+
+});
 
 
 /* Password
@@ -93,7 +112,7 @@ password = !password;
     -------------------------------------- */
 
 $(function () {
-    // 検索フィールドフォーカス時にフォームの縁の色を変える
+
     $('.btn-like').click(function () {
         if ($(this).hasClass('liked')) {
             $(this).removeClass('liked');
@@ -104,35 +123,6 @@ $(function () {
         }
 
     })
-        .focusout(function (e) {
-            $('#search-form').removeClass('form-focused');
-        });
-    // パスワードフィールドフォーカス時にフォームの縁の色を変える
-    $('#password')
-        .focusin(function (e) {
-            $('.pw-input-container').addClass('form-focused');
-        })
-        .focusout(function (e) {
-            $('.pw-input-container').removeClass('form-focused');
-        });
-
-
-    /* // 検索フィールドエラー時にフォームの縁の色を変える ざっと探したけどfocusInvalidって間違っている模様（エラー出てる）直したいけど優先しなくていい
-     $('#search-input')
-         .focusInvalid(function (e) {
-             $('#search-form').addClass('form-error');
-         })
-         .fvalid(function (e) {
-             $('#search-form').removeClass('form-error');
-         });
-     // パスワードフィールドエラー時にフォームの縁の色を変える
-     $('#password')
-         .focusInvalid(function (e) {
-             $('.pw-input-container').addClass('form-error');
-         })
-         .valid(function (e) {
-             $('.pw-input-container').removeClass('form-error');
-         });*/
 });
 
 
@@ -280,10 +270,3 @@ $(window).on('scroll', function () {
     startPos = winScrollTop;
 });
 
-
-$('input').focus(function () {
-
-    $(this).css('background-color', '#aaf');
-    console.log('あああああ');
-
-});

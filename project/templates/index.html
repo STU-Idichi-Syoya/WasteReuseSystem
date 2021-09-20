@@ -5,11 +5,53 @@
 {% block content %}
 <!--検索バー-->
 <div class="search-bar head-fix">
+  <span id="search-back" class="material-icons invisible">navigate_before</span>
   <form id="search-form" class="search-form" method="get" action="https://">
     <input id="search-input" type="text" placeholder="何をお探しですか？" name="s" value="">
     <button id="search-btn" type="submit" value="Search" alt="検索" title="検索"><i
         class="material-icons icon-search">search</i></button>
   </form>
+</div>
+<!--タグ検索・検索履歴が横から出てくるモーダル的なもの-->
+<div class="searching off">
+  <div class="searching-inner">
+    <h2 class="page-search">#タグで検索</h2>
+    <div class="hashtag-container">
+      <a href="" class="btn-hashtag">建築<span class="btn-hashtag-num">(36)</span></a> <a href=""
+        class="btn-hashtag">スチレンボード<span class="btn-hashtag-num">(27)</span></a> <a href="" class="btn-hashtag">PE<span
+          class="btn-hashtag-num">(19)</span></a>
+      <a href="" class="btn-hashtag">角材<span class="btn-hashtag-num">(17)</span></a> <a href=""
+        class="btn-hashtag">造形1年後期<span class="btn-hashtag-num">(13)</span></a> <a href="" class="btn-hashtag">スチのり<span
+          class="btn-hashtag-num">(8)</span></a><a href="" class="btn-hashtag">パルサ材<span
+          class="btn-hashtag-num">(17)</span></a>
+      <a href="" class="btn-hashtag">アクリル<span class="btn-hashtag-num">(13)</span></a> <a href=""
+        class="btn-hashtag">教科書<span class="btn-hashtag-num">(8)</span></a>
+    </div>
+    <h2 class="page-search">検索履歴</h2>
+    <ul class="list-normal">
+      <li>
+        <span>木　角材</span> <i class="material-icons">navigate_next</i>
+        <a href="#" class="item-link"></a>
+      </li>
+      <li>
+        <span>アクリル板</span> <i class="material-icons">navigate_next</i>
+        <a href="#" class="item-link"></a>
+      </li>
+
+      <li>
+        <span>布　黄色　薄手</span> <i class="material-icons">navigate_next</i>
+        <a href="#" class="item-link"></a>
+      </li>
+      <li>
+        <span>LED テープ</span> <i class="material-icons">navigate_next</i>
+        <a href="#" class="item-link"></a>
+      </li>
+      <li>
+        <span>スチール</span> <i class="material-icons">navigate_next</i>
+        <a href="#" class="item-link"></a>
+      </li>
+    </ul>
+  </div>
 </div>
 <main>
   <div class="title-seemore">
