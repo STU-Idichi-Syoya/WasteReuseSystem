@@ -64,7 +64,7 @@ class Item(db.Model):
     # 商品状態(正規化しない)
     state = db.Column(db.String(length=30), nullable=False)
     # 取引終了か？(貰い手決定)
-    is_active=db.Column(db.Boolean(), nullable=False,default=False)
+    is_active=db.Column(db.Boolean(), nullable=False,default=True)
     # 出品者からのメッセージ
     message= db.Column(db.String(length=600), nullable=False)
     handing_method = db.Column(db.String(length=100), nullable=False)
@@ -74,9 +74,19 @@ class ItemComment(db.Model):
     __tablename__= 'item_comments'
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     user_id =  db.Column(db.Integer(),db.ForeignKey("users.id"),nullable=False)
+    item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False) 
     comment=db.Column(db.String(length=600), nullable=False)
     # 自動付加
     created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+
+class ItemBuy(db.Model):
+    __tablename__= 'item_buys'
+    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
+    user_id =  db.Column(db.Integer(),db.ForeignKey("users.id"),nullable=False)
+    item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False) 
+    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+
+
 
 class ItemLike(db.Model):
     __tablename__= 'item_likes'
@@ -86,18 +96,18 @@ class ItemLike(db.Model):
     created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
     
 
-# parent がNULLの場合、親になる、自己参照モデル
-class Category(db.Model):
-    __tablename__= 'categories'
+class ItemTag(db.Model):
+    __tablename__= 'item_tags'
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
-    parent = db.Column(db.Integer(), db.ForeignKey("categories.id"),nullable=True)
-    category_name = db.Column(db.String(length=100), nullable=False)
+    item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False) 
+    tag_id = db.Column(db.Integer(),db.ForeignKey("tag.id"),nullable=False) 
+    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
 
-class ItemCategory(db.Model):
-    __tablename__= 'item_categories'
+class Tag(db.Model):
+    __tablename__= 'tags'
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
-    item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
-    category_id = db.Column(db.Integer(), db.ForeignKey("categories.id"),nullable=True)
+    tag_name = db.Column(db.String(length=30), nullable=False,unique=True)
+    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
 
 
 class ItemPhoto(db.Model):

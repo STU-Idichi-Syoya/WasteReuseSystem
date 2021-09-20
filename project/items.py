@@ -1,11 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from flask_login.utils import expand_login_view
-from flask_migrate import current
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required,current_user
 from werkzeug.utils import send_file
 from werkzeug.wrappers.response import Response
-from .models import Item, ItemLike, ItemPhoto, User,ItemBlob
+from .models import Item, ItemLike, ItemPhoto, ItemTag, Tag, User,ItemBlob
 from . import db
 from .form import ItemAdd
 import io
@@ -22,9 +20,14 @@ def sendPhotoID(blob_id):
         )
     return Response(status=400)
 
-@items_app.route('items/add',methods=['POST'])
+@items_app.route('/items/add',methods=['POST'])
 def item_post():
-    pass
+    item_name=request.form['item_name']
+    memo=request.form['memo']
+    hanging_method=request.form['hanging_method']
+    place=request.form['place']
+    item_save()
+
 @items_app.route("/items/search")
 def searchItems():
     tag=request.args.get('tag')
@@ -35,17 +38,26 @@ def searchItems():
     if keyword is not None:
         # 全角を半角にして、分割
         keyword=keyword.replace('　',' ').split(' ').replace(' ','')
-    # find by tag
+
     if len(tag)>0:
+        #TODO:tag
+        search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like,Item.place,Item.user_id,Item.handing_method)\
+                                        .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
+                                        .join(ItemTag,ItemTag.item_id==Item.id)\
+                                        .join(Tag,Tag.id==ItemTag.tag_id)\
+                                        .join(ItemLike,Item.id==ItemLike.item_id)\
+                                        .join(User,Item.user_id==User.id)\
+                                        .filter_by(is_like=True,univercity_id==current_user.univercity_id,tag_name=tag).all()
+    
         pass
     # find by keyword
-    elif len(keyword)>0:
-        search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like,Item.place,Item.user_id,Item.handing_method)\
-                                    .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
-                                    .join(ItemLike,Item.id==ItemLike.item_id)\
-                                    .join(User,Item.user_id==User.id)\
-                                    .filter_by(is_like=True,univercity_id==current_user.univercity_id).all()
-        #TODO:tag
+    elif len(keyword)>0 and len(keyword[0])>0:
+        if current_user.is_authenticated:
+            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like,Item.place,Item.user_id,Item.handing_method)\
+                                        .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
+                                        .join(ItemLike,Item.id==ItemLike.item_id)\
+                                        .join(User,Item.user_id==User.id)\
+                                        .filter_by(is_like=True,univercity_id==current_user.univercity_id).all()
     
     # render_template()
         print(searchItems)
