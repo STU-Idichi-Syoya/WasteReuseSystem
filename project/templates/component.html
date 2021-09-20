@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <title>Compornents</title>
+    <!-- sanitize.css https://csstools.github.io/sanitize.css/ -->
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <!-- material design icons -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <!--<link rel="stylesheet" href="styles/header.css">-->
+    <!--OGP-->
+    <meta property="og:url" content="https://" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:image" content="https://" />
+    <meta property="fb:app_id" content="" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:player" content="@" />
+
+    <!--favicon-->
+    <link rel="icon" href="./images/favicon.ico" />
+    <link rel="apple-touch-icon" href="./images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="./images/favicons/android-chrome-192x192.png" sizes="192x192">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<body>
+
+
+
+    <!-- header -->
+    <header class="service-title">
+        <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span><i
+            class="material-icons">logout</i>
+    </header>
+    <!-- /header -->
+    <main>
+
+
+
+
+        <h1 class="not-component">Tabs</h1>
+        <div class='tabs'>
+            <div class='tab-buttons'>
+                <span class='content1'>運営から<span class="badge-notify-num have-notify">12</span></span>
+                <span class='content2 tab-current'>取引<span class="badge-notify-num">1</span></span>
+                <span class='content3'>その他<span class="badge-notify-num">99+</span></span>
+                <div id='lamp' class='content2'></div>
+            </div>
+            <div class='tab-content'>
+
+                <div class='content1'>This is the content of 1 container.This will be open when button 1 is
+                    clicked.This
+                    is the content of 1 container.This will be open when button 1 is clicked.This is the content of
+                    1
+                    container.This will be open when button 1 is clicked.</div>
+
+                <div class='content2'>This is the content of 2 container.This will be open when button 2 is
+                    clicked.This
+                    is the content of 2 container.This will be open when button 2 is clicked.This is the content of
+                    2
+                    container.This will be open when button 2 is clicked.</div>
+
+                <div class='content3'>This is the content of 3 container.This will be open when button 3 is
+                    clicked.This
+                    is the content of 3 container.This will be open when button 3 is clicked.This is the content of
+                    3
+                    container.This will be open when button 3 is clicked.</div>
+
+            </div>
+        </div>
+
+
+        <!-- Search form -->
+        <form id="search-form" class="search-form" method="get" action="https://">
+            <input id="search-input" type="text" placeholder="何をお探しですか？" name="s" value="">
+            <button id="search-btn" type="submit" value="Search" alt="検索" title="検索"><i
+                    class="material-icons icon-search">search</i></button>
+        </form>
+
+
+
+        <label for="email" class="text-H-SS">メールアドレス</label>
+        <input type="email" placeholder="info@sample.com" id="email">
+        <p class="error-msg">入力してください</p>
+
+
+
+
+        <label for="password" class="text-H-SS">パスワード</label>
+        <div class="pw-input-container">
+            <input type="password" id="password" maxlength="24" />
+            <i class="material-icons visibility">visibility_off</i>
+        </div>
+        <p class="error-msg">入力してください</p>
+
+
+        <!--<form>
+            <label>電話番号：
+                <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="090-1234-5678">
+            </label>
+            <input type="submit" value="送信">
+            <input type="url">
+            <p class="error-msg">URLを入力してください</p>
+            <input type="submit" value="URLかチェック">
+        </form>-->
+
+
+
+
+        <label for="item-name" class="text-H-SS">アイテム名</label><span class="badge-necessity required">必須</span>
+        <input type="text" id="item-name">
+        </label>
+
+
+
+        <label for="item-description" class="text-H-SS">アイテムの説明</label><span class="badge-necessity optional">任意</span>
+        <textarea name="item-description" placeholder="例）昨年11月に生協購入したものです。B3サイズのから円をいくつかくり抜いていて、6割ほど余っています。 #建築模型"
+            rows="4" cols="40"></textarea>
+        <p class="error-msg">入力してください</p>
+
+
+
+        <label for="how-delivery" class="text-H-SS">受け渡し方法</label><span class="badge-necessity required">必須</span>
+        <div class="select-container">
+            <select name="how-delivery" id="how-delivery">
+                <option value="leave">置いておく</option>
+                <option value="hand">手渡し</option>
+            </select>
+        </div>
+        <p class="error-msg">選択してください</p>
+
+
+        <label for="expire" class="text-H-SS">有効期限</label><span class="badge-necessity required">必須</span>
+        <input type="date" id="expire" name="trip-start" value="2021-09-22" min="2021-09-01" max="2022-10-7">
+        <p class="error-msg">入力してください</p>
+
+
+
+        <label for="comment">Textarea</label>
+        <textarea name="comment" placeholder="コメントを入力..." rows="4" cols="40"></textarea>
+
+
+        <label class="checkbox-label">
+            <input type="checkbox" name="term" value="accept" required>
+            <span class="checkmark"></span>
+            利用規約に同意する
+        </label>
+
+        <h2 class="not-component">Buttons</h2>
+        <h3 class="not-component">Basic</h3>
+        <a href="" class="btn btn-M btn-primary">
+            ボタン
+            <i class="material-icons btn-icon-R">navigate_next</i>
+        </a>
+
+        <a href="" class="btn btn-M btn-secondary">
+            ボタン
+            <i class="material-icons btn-icon-R">navigate_next</i>
+        </a>
+
+
+        <a href="" class="btn btn-S btn-primary">
+            ボタン
+            <i class="material-icons btn-icon-L">navigate_before</i>
+        </a>
+
+
+        <a href="" class="btn btn-S btn-secondary">
+            ボタン
+            <i class="material-icons btn-icon-R">navigate_next</i>
+        </a>
+
+
+        <a href="" class="btn btn-SS btn-primary">
+            ボタン
+        </a>
+
+
+        <a href="" class="btn btn-SS btn-secondary">
+            ボタン
+        </a>
+        <h4 class="not-component">Button Combination</h4>
+
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-M btn-primary">
+                ボタン
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-M"><i class="material-icons link-icon-R">navigate_next</i>進む</a>
+        </div>
+
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-M btn-primary">
+                ボタン
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-M"><i class="material-icons link-icon-L">navigate_before</i>戻る</a>
+        </div>
+
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-S btn-primary">
+                ボタン
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-S"><i class="material-icons link-icon-R">navigate_next</i>進む</a>
+        </div>
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-S btn-primary">
+                ボタン
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-S"><i class="material-icons link-icon-L">navigate_before</i>戻る</a>
+        </div>
+
+        <h3 class="not-component">LINE</h3>
+
+        <h3 class="not-component">Circle</h3>
+        <h4 class="not-component">Like</h4>
+
+        <!--<input type="checkbox" id="like"><label for="like"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg></label>-->
+
+
+        <span class="btn-like btn-like-S">
+            <input type="checkbox" class="" id="like-S" name=""><label for="like-S">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                </svg>
+            </label>
+        </span>
+
+
+
+
+        <span class="btn-like btn-like-L">
+            <input type="checkbox" class="" id="like-L"><label for="like-L">
+                <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15 26.6875L13.1875 25.0375C6.75 19.2 2.5 15.35 2.5 10.625C2.5 6.775 5.525 3.75 9.375 3.75C11.55 3.75 13.6375 4.7625 15 6.3625C16.3625 4.7625 18.45 3.75 20.625 3.75C24.475 3.75 27.5 6.775 27.5 10.625C27.5 15.35 23.25 19.2 16.8125 25.05L15 26.6875Z" />
+                </svg>
+            </label>
+        </span>
+
+
+        <a class="btn-like btn-like-active"><span class="material-icons">
+                favorite
+            </span>
+        </a>
+        <h4 class="not-component">Delete</h4>
+        <a class="btn-delete"><span class="material-icons-round">
+                delete
+            </span>
+        </a>
+        <h4 class="not-component">Share</h4>
+        <!-- LINE -->
+        <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+        <!-- Twitter -->
+        <a class="btn-social-share"
+            href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+            rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
+        <!-- Facebook -->
+        <a class="btn-social-share" href="http://www.facebook.com/share.php?u=【共有するURL】"><img
+                src="./images/buttons/Facebook.svg" alt="Facebookで共有"></a>
+        <!-- URL Copy -->
+        <a class="btn-social-share" onclick="copyUrl()"><img src="./images/buttons/linkcopy.svg" alt="URLをコピー"></a>
+        <p class="msg-url-copied">URLをコピーしました！</p>
+        <!-- Share -->
+        <!-- この場のリンクをシェアするだけのシンプルver -->
+        <button type="button" class="btn-social-share native-share-btn" data-share-title="JO-TO!"><img
+                src="./images/buttons/share.svg" alt="シェアする"></button>
+        <!-- 属性をかけるだけ書いたver -->
+        <button type="button" class="btn-social-share native-share-btn" data-share-title="Web Share API Demo"
+            data-share-text="This page demonstrates the Web Share API."
+            data-share-url="http://labs.w0s.jp/js/web-share/"><img src="./images/buttons/share.svg"
+                alt="シェアする"></button>
+
+        <h3 class="not-component">Hash Tag</h3>
+        <div class="btn-hashtag-container">
+            <a href="" class="btn-hashtag">建築<span class="btn-hashtag-num">(36)</span></a> <a href=""
+                class="btn-hashtag">スチレンボード<span class="btn-hashtag-num">(27)</span></a> <a href=""
+                class="btn-hashtag">PE<span class="btn-hashtag-num">(19)</span></a>
+            <a href="" class="btn-hashtag">角材<span class="btn-hashtag-num">(17)</span></a> <a href=""
+                class="btn-hashtag">造形1年後期<span class="btn-hashtag-num">(13)</span></a> <a href=""
+                class="btn-hashtag">スチのり<span class="btn-hashtag-num">(8)</span></a><a href=""
+                class="btn-hashtag">パルサ材<span class="btn-hashtag-num">(17)</span></a>
+            <a href="" class="btn-hashtag">アクリル<span class="btn-hashtag-num">(13)</span></a> <a href=""
+                class="btn-hashtag">教科書<span class="btn-hashtag-num">(8)</span></a>
+        </div>
+
+
+        <h3 class="not-component">Toggle</h3>
+        <!--Copyright (c) 2016 Vadym Yatsyuk-->
+        <div class="vc-toggle-container">
+            <label class="vc-switch">
+                <input type="checkbox" class="vc-switch-input" />
+                <span data-on="ON" data-off="OFF" class="vc-switch-label"></span>
+                <span class="vc-handle"></span>
+            </label>
+        </div>
+
+
+        <h2 class="not-component">Headings</h2>
+        <h3 class="not-component">頭出しタイトル</h3>
+        <!--H1-->
+        <div class="title-seemore">
+            <h1>新規投稿</h1>
+            <div><span class="view-all">下書きを見る</span><i class="material-icons">navigate_next</i></div>
+        </div>
+        <!--H2-->
+        <div class="title-seemore">
+            <h2>いいね！したアイテム</h2>
+            <div><span class="view-all">すべて見る</span><i class="material-icons">navigate_next</i></div>
+        </div>
+        <!--H3-->
+        <div class="title-seemore">
+            <h3>いいね！したアイテム</h3>
+            <div><span class="view-all">すべて見る</span><i class="material-icons">navigate_next</i></div>
+        </div>
+
+        <h3 class="not-component">件数表示付きタイトル</h3>
+        <!--検索結果-->
+        <div class="title-hitnum search-result">
+            <h1><span id="search-word">スチのり</span><span class="suffix-result">の検索結果</span></h1>
+            <p><span id="hitnum">26</span>件</p>
+        </div>
+        <!--〇〇したアイテム-->
+        <div class="title-hitnum">
+            <h1>いいね！したアイテム</h1>
+            <p><span id="hitnum">26</span>件</p>
+        </div>
+
+
+        <h2 class="not-component">リスト</h2>
+        <h3 class="not-component">アイテムリスト</h3>
+
+
+        <ul class="horizontal_scroll">
+            <!--------- <<START>> list item S -------->
+            <li class="list-item-S">
+                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                    <!--いいねボタン小-->
+                    <a class="btn-like"><span class="material-icons">
+                            favorite_border
+                        </span></a>
+                </div>
+                <p>メンディングテープ 10mm幅 半分</p>
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+
+            </li>
+            <!--------- <<END>> list item S -------->
+            <!--------- <<START>> list item S -------->
+            <li class="list-item-S">
+                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                    <!--いいねボタン小-->
+                    <a class="btn-like"><span class="material-icons">
+                            favorite_border
+                        </span></a>
+                </div>
+                <p>メンディングテープ 10mm幅 半分</p>
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+
+            </li>
+            <!--------- <<END>> list item S -------->
+
+            <!--------- <<START>> list item S -------->
+            <li class="list-item-S">
+                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                    <!--いいねボタン小-->
+                    <a class="btn-like"><span class="material-icons">
+                            favorite_border
+                        </span></a>
+                </div>
+                <p>メンディングテープ 10mm幅 半分</p>
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+
+            </li>
+            <!--------- <<END>> list item S -------->
+
+            <!--------- <<START>> list item S -------->
+            <li class="list-item-S">
+                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                    <!--いいねボタン小-->
+                    <a class="btn-like"><span class="material-icons">
+                            favorite_border
+                        </span></a>
+                </div>
+                <p>メンディングテープ 10mm幅 半分</p>
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+
+            </li>
+            <!--------- <<END>> list item S -------->
+
+            <!--------- <<START>> list item S -------->
+            <li class="list-item-S">
+                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                    <!--いいねボタン小-->
+                    <a class="btn-like"><span class="material-icons">
+                            favorite_border
+                        </span></a>
+                </div>
+                <p>メンディングテープ 10mm幅 半分</p>
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+
+            </li>
+            <!--------- <<END>> list item S -------->
+
+
+        </ul>
+
+
+
+
+
+        <ul class="ul-item-M">
+            <li class="list-item-M">
+                <div class="img_box">
+                    <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                </div>
+                <div class="item-text">
+                    <h3>メンディングテープ 10mm幅</h3>
+                    <div>
+                        <div class="item-details">
+                            <div> <i><img src="./images/icons/delivery.svg" alt="受け渡し方法"> </i><span
+                                    class=".how-delivery">置いておく</span></div>
+                            <div> <i class="material-icons">place</i><span class=".locaiton">1号館 木工室
+                                    端材コーナー</span></div>
+                            <p class="link-hashtag"><a href="">#tag</a><a href="">#tag</a></p>
+                        </div>
+                        <!--いいねボタン小-->
+                        <a class="btn-like"><span class="material-icons">
+                                favorite_border
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <!--以下absolute-->
+                <!--アイテムの状態を表すタグ-->
+                <img class="item-status-tag" src="images/tag/decided_S.svg">
+
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+
+            </li>
+
+        </ul>
+
+
+
+        <h2 class="not-component">モーダルウィンドウ</h2>
+        <input type="checkbox" id="modal01" class="modalCheck">
+        <div class="btn"><label for="modal01">Modal Open</label></div>
+
+        <div class="mordal-wrapper">
+            <div id="modal01Con" class="modalWrap">
+                <div class="modalBg"><label for="modal01" class="closeModal"></label></div>
+                <div class="modalCon">
+                    <div class="modalInner">
+                        <div class="modalCloseBtn"><label for="modal01" class="closeModal">×</label></div>
+                        <div class="modalText">
+                            <p>あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+                            </p>
+
+                            <div class="btn small"><label for="modal01">× Modal Close</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <!--Fixed Button-->
+    <div class="fixed-btn-container">
+        <a href="" class="btn btn-S btn-primary">
+            ボタン
+        </a>
+    </div>
+    <!--Tabbar-->
+    <div class="tabbar-container">
+        <nav class="menu">
+            <a href="#" class="menu-item" id="menu-home">
+                <span class="material-icons menu-icon">home<span class="badge-notify-menu have-notify"></span></span>
+                <span class="menu-item-label">ホーム</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-notify">
+                <span class="material-icons menu-icon">notifications</span>
+                <span class="menu-item-label">お知らせ</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-post">
+                <span class="material-icons menu-icon">edit</span>
+                <span class="menu-item-label">投稿</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-report">
+                <span class="material-icons menu-icon">assessment</span>
+                <span class="menu-item-label">レポート</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-mypage">
+                <span class="material-icons menu-icon">person</span>
+                <span class="menu-item-label">マイページ</span>
+            </a>
+        </nav>
+    </div>
+
+
+    <footer>
+        <div class="service-title">
+            <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span>
+        </div>
+
+        <div class="footer-inner">
+            <div>
+                <ul class="menu">
+                    <li id="" class="menu-item">
+                        <a href="https://">使い方ガイド</a>
+                    </li>
+                    <li id="" class="menu-item">
+                        <a href="https://">マナーガイド</a>
+                    </li>
+                    <li id="" class="menu-item">
+                        <a href="https://">よくある質問</a>
+                    </li>
+
+                    <li id="menu-item-61" class="menu-item">
+                        <a href="https://">お問い合わせ</a>
+                    </li>
+                </ul>
+                <small class="copy-right">©noob_fighter_returns
+                </small>
+            </div>
+
+            <div>
+                <ul class="menu">
+                    <li id="" class="menu-item">
+                        <a href="https://">利用規約</a>
+                    </li>
+                    <li id="" class="menu-item ">
+                        <a href="https://">プライバシーポリシー</a>
+                    </li>
+                    <li id="" class="menu-item ">
+                        <a href="https://">ログアウト</a>
+                    </li>
+                    <li>
+                        <p>友達にシェアする</p>
+                        <div class="share-buttons">
+                            <!-- LINE -->
+                            <a class="btn-social-share"
+                                href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                                    src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+                            <!-- Twitter -->
+                            <a class="btn-social-share"
+                                href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+                                rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
+                            <!-- Share -->
+                            <button type="button" class="btn-social-share native-share-btn"
+                                data-share-title="JO-TO!"><img src="./images/buttons/share.svg" alt="シェアする"></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</body>
+
+</html>
