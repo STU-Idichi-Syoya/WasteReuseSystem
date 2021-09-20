@@ -21,7 +21,7 @@ session=db.session
 class TestDB(unittest.TestCase):
   
   def test_register(self):
-    user = user_save(user_name="carlos", univercity_name="kandai", email_address="k3897@k.ac.jp",password1="0421",birthday=20000421, univercityId=self.univ.id,db=db)
+    user = user_save(user_name="carlos", univercity_name="kandai", email_address="k3897@k.ac.jp",password1="0421",birthday=20000421,db=db)
     #user_name univercity_name email_address password1 birthday univercity_id
     session.add(user)
     session.commit()
