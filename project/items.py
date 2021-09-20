@@ -44,7 +44,8 @@ def item_post():
     # else:
     #     return 'FALSE'
     return render_template('item_add.html')
-    
+
+@items_app.route("/item_s_r")
 @items_app.route("/items/search_result")
 def searchItems():
     tag=request.args.get('tag')
@@ -107,7 +108,8 @@ def r():
     render_template("search.html")
 
 @items_app.route("/items/<id>")
-def showItem(item_id):
+# def showItem(item_id):
+def showItem():
     # item=db.session.query(Item).filter_by(id=item_id).first()
     # comment=db.session.query(ItemComment).filter_by(item_id=item_id).order_by(Item.created_at.amount.asc()).all()
     # if item is None:
@@ -119,7 +121,7 @@ def showItem(item_id):
 
 @items_app.route("/")
 # @items_app.route("/items")
-def showItems():
+def IndexM():
     #     User.idと、UserSocial.user_idで内部結合し、
     # ユーザ全てをList型で取得する。
     # user_nameはこの形式で取得される。
