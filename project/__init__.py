@@ -5,13 +5,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager 
 from flask_migrate import Migrate 
 from flask_bcrypt import Bcrypt
+import os
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 bcrypt = None
 def create_app():
     global bcrypt
-
-    app = Flask(__name__)
+    tpath=os.path.dirname(os.path.abspath(__file__))
+    app = Flask(__name__,template_folder=os.path.join(tpath,'templates'),static_folder=os.path.join(tpath,'templates'),static_url_path='')
 
     app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
