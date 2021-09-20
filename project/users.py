@@ -26,6 +26,6 @@ def item_add():
     else:
         form=ItemAdd(request.form)
         if form.validate_on_submit():
-            item_save(item_name=form.item_name.data,category=form.category.data,)
+            item_save(item_name=form.item_name.data,category=form.category.data)
             return 'OK'
         return 'FALSE'

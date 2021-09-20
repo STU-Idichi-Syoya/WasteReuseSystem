@@ -87,7 +87,6 @@ class ItemBuy(db.Model):
     created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
 
 
-
 class ItemLike(db.Model):
     __tablename__= 'item_likes'
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
@@ -108,7 +107,6 @@ class Tag(db.Model):
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     tag_name = db.Column(db.String(length=30), nullable=False,unique=True)
     created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
-
 
 class ItemPhoto(db.Model):
     __tablename__= 'item_photos'
