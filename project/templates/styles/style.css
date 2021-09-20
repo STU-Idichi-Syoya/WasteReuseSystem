@@ -37,6 +37,7 @@
     -------------------------------------- */
     --shadow-bottom-fixed: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
     --shadow-floating-btn: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.15));
+    --shadow-list-item: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
     /* margin
     -------------------------------------- */
     --margin-side: 12px;
@@ -87,6 +88,14 @@ main {
 /*--------------------------------------------------------------
 # Basic Style
 --------------------------------------------------------------*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 a {
     cursor: pointer;
@@ -870,7 +879,7 @@ select {
 /* Hash tag
     -------------------------------------- */
 
-.hashtag {
+.btn-hashtag {
     display: inline-block;
     font-size: var(--font-size-P-M);
     padding: 8px 9px;
@@ -880,12 +889,12 @@ select {
     border-radius: 20px;
 }
 
-.hashtag:hover {
+.btn-hashtag:hover {
     color: var(--color-p-hover);
     border: 1px solid var(--color-p-hover);
 }
 
-.hashtag-num {
+.btn-hashtag-num {
     margin: 0 2px;
 }
 
@@ -1080,6 +1089,187 @@ select {
 .title-hitnum>p {
     margin: 0;
     font-size: var(--font-size-P-S);
+}
+
+/*--------------------------------------------------------------
+#List
+--------------------------------------------------------------*/
+
+/* Item List ----------------------------- */
+
+.list-item-S p {
+    width: 100%;
+    margin: 6px 0 0;
+    font-size: var(--font-size-P-S);
+    line-height: 1.25;
+    overflow-wrap: break-word;
+}
+
+/*-- crop image--*/
+
+.img_box {
+    background-color: #c4c4c4;
+    height: 0;
+    position: relative;
+    display: block;
+    border-radius: 4px;
+}
+
+.list-item-S .img_box {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+}
+
+.list-item-S .img_box .btn-like {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+img.object-fit-cover {
+    display: block;
+    vertical-align: bottom;
+    border-radius: 4px;
+}
+
+/*-- horizontal scroll--*/
+
+.horizontal_scroll {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+    display: -ms-flexbox;
+    display: flex;
+    padding-bottom: 10px;
+    /*スクロールバーの位置調整*/
+}
+
+.horizontal_scroll>li {
+    width: 28.5%;
+    min-width: 100px;
+    list-style: none;
+    margin-right: 8px;
+    position: relative;
+}
+
+/* liの中のaののサイズをliに合わせる
+
+.horizontal_scroll>li>a {
+    display: block;
+    width: 100%;
+}*/
+
+/* 画面幅が768px以上の場合、横スクロールを解除 */
+
+@media screen and (min-width: 768px) {
+    .horizontal_scroll {
+        overflow-x: inherit;
+        padding: 0 8px 6px;
+    }
+    .horizontal_scroll>li {
+        min-width: inherit;
+    }
+}
+
+.horizontal_scroll>li:last-child {
+    margin-right: 0;
+}
+
+.ul-item-M {
+    padding: 0;
+}
+
+.ul-item-M>li {
+    list-style: none;
+}
+
+.list-item-M {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    background-color: var(--color-gray-7);
+    filter: var(--shadow-list-item);
+    padding: 8px;
+}
+
+img.item-status-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 4px 0 0 0;
+}
+
+.list-item-M .item-text {
+    width: 100%;
+    width: calc(100% - 96px - 8px);
+}
+
+.list-item-M .item-text h3 {
+    font-size: var(--font-size-P-M);
+}
+
+.list-item-M .item-details>div, .list-item-M .item-details>p {
+    font-size: var(--font-size-P-S);
+    margin: 6px 0 0;
+}
+
+.list-item-M .item-text>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.list-item-M .item-details {
+    width: calc(100% - 26px - 4px);
+}
+
+.list-item-M .item-details>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-hashtag a {
+    color: var(--color-primary);
+    margin-right: 4px;
+}
+
+.list-item-M .item-details>div>span {
+    width: calc(100% - 1.125rem - 4px);
+}
+
+.list-item-M .item-details>div>i {
+    font-size: 1.125rem;
+    margin-right: 4px;
+}
+
+.list-item-M .item-details>div>i>img {
+    width: 1.125rem;
+}
+
+a.item-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.list-item-M .img_box {
+    width: 96px;
+    height: 96px;
+    margin-right: 8px;
 }
 
 /*--------------------------------------------------------------
