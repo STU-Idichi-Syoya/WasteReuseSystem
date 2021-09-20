@@ -1,0 +1,195 @@
+<!-- templates/item_detail.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="swiper-container">
+    <!--なぜかSwiper.jsがうまくいかんから一回パス-->
+</div>
+<!--アイテム名-->
+<h1 class="item-titel">スチのり 4本 実質2本分</h1>
+<div class="display-impression">
+    <span>
+        <i class="material-icons">favorite</i>
+        <span>いいね！</span>
+        <span class="like-num">5</span>
+    </span>
+    <span>
+        <i class="material-icons">comment</i>
+        <span>コメント</span>
+        <span class="comment-num">5</span>
+    </span>
+</div>
+
+
+<table>
+    <tr>
+        <td>投稿者</td>
+        <td><a href="">Nakayama</a></td>
+    </tr>
+    <tr>
+
+        <td>受け渡し方法</td>
+        <td>置いておく</td>
+    </tr>
+    <tr>
+
+        <td>受け渡し場所</td>
+        <td>工学部 建築学科 山本研究室（8号館204号室）ご自由にどうぞコーナー</td>
+    </tr>
+    <tr>
+
+        <td colspan="2" id="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25946.403953116118!2d139.36448623955079!3d35.62031790000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e2bcb9759bd9%3A0xbdea70c84b94e196!2z5p2x5Lqs6YO956uL5aSn5a2mIOWNl-Wkp-ayouOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2sjp!4v1632127046169!5m2!1sja!2sjp"
+                width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="location-text"> <i class="material-icons">place</i><span
+                    class=".locaiton">北海道札幌市北区北13条西８丁目</span></div>
+        </td>
+
+    </tr>
+
+
+    <td>有効期限</td>
+    <td>2021.09.30<span class="deadline-status">残りわずか</span></td>
+    <tr>
+
+        <td colspan="2" id="commnet">
+            大学に持っていき忘れるたびに生協で買っていて、気付いたら4本持っていました。どれも半分以上は残っているので、全部で2本強分くらいはあると思います。意外と安くはないスチのり、もう使う予定がないので、だれか使ってあげてください。
+            #建築設計実習 #半分以上 #700円分
+        </td>
+</table>
+<div class="flex-between">
+    <span class="passed-time">
+        <i class="material-icons">schedule</i><span>2週間前</span>
+    </span>
+    <div class="share-buttons">
+        <!-- LINE -->
+        <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+
+        <!-- Share -->
+        <button type="button" class="btn-social-share native-share-btn" data-share-title="JO-TO!"><img
+                src="./images/buttons/share.svg" alt="シェアする"></button>
+    </div>
+</div>
+<!--コメントのパーツが入る-->
+<div class="title-seemore">
+    <h2>関連アイテム</h2>
+    <div><span class="view-all">すべて見る</span><i class="material-icons">navigate_next</i></div>
+</div>
+<ul class="horizontal_scroll">
+    <!--------- <<START>> list item S -------->
+    <li class="list-item-S">
+        <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+            <!--いいねボタン小-->
+            <span class="btn-like btn-like-S">
+                <input type="checkbox" class="" id="like-S"><label for="like-S">
+                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                    </svg>
+                </label>
+            </span>
+        </div>
+        <p>メンディングテープ 10mm幅 半分</p>
+        <!--アイテムへのリンク（カード全体にかかる）-->
+        <a href="#" class="item-link"></a>
+
+    </li>
+    <!--------- <<END>> list item S -------->
+    <!--------- <<START>> list item S -------->
+    <li class="list-item-S">
+        <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+            <!--いいねボタン小-->
+            <span class="btn-like btn-like-S">
+                <input type="checkbox" class="" id="like-S"><label for="like-S">
+                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                    </svg>
+                </label>
+            </span>
+        </div>
+        <p>メンディングテープ 10mm幅 半分</p>
+        <!--アイテムへのリンク（カード全体にかかる）-->
+        <a href="#" class="item-link"></a>
+
+    </li>
+    <!--------- <<END>> list item S -------->
+
+    <!--------- <<START>> list item S -------->
+    <li class="list-item-S">
+        <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+            <!--いいねボタン小-->
+            <span class="btn-like btn-like-S">
+                <input type="checkbox" class="" id="like-S"><label for="like-S">
+                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                    </svg>
+                </label>
+            </span>
+        </div>
+        <p>メンディングテープ 10mm幅 半分</p>
+        <!--アイテムへのリンク（カード全体にかかる）-->
+        <a href="#" class="item-link"></a>
+
+    </li>
+    <!--------- <<END>> list item S -------->
+
+    <!--------- <<START>> list item S -------->
+    <li class="list-item-S">
+        <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+            <!--いいねボタン小-->
+            <span class="btn-like btn-like-S">
+                <input type="checkbox" class="" id="like-S"><label for="like-S">
+                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                    </svg>
+                </label>
+            </span>
+        </div>
+        <p>メンディングテープ 10mm幅 半分</p>
+        <!--アイテムへのリンク（カード全体にかかる）-->
+        <a href="#" class="item-link"></a>
+
+    </li>
+    <!--------- <<END>> list item S -------->
+
+    <!--------- <<START>> list item S -------->
+    <li class="list-item-S">
+        <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+            <!--いいねボタン小-->
+            <span class="btn-like btn-like-S">
+                <input type="checkbox" class="" id="like-S"><label for="like-S">
+                    <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                    </svg>
+                </label>
+            </span>
+        </div>
+        <p>メンディングテープ 10mm幅 半分</p>
+        <!--アイテムへのリンク（カード全体にかかる）-->
+        <a href="#" class="item-link"></a>
+
+    </li>
+    <!--------- <<END>> list item S -------->
+
+</ul>
+
+<!--Fixed Button-->
+<div class="fixed-btn-container">
+    <a href="" class="btn btn-S btn-primary">
+        このアイテムをもらう
+    </a>
+</div>
+
+
+
+
+
+{% endblock %}
