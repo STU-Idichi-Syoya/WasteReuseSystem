@@ -245,21 +245,54 @@ for (var i = 0; i < checkbox.length; i++) {
     });
 
 }
+
+function postComment() {
+    //コメントの送信　できなくてもいいので一旦パス
+}
+
+/*--------------------------------------------------------------
+#modal window　関連
+--------------------------------------------------------------*/
+var scrollPos;
+
 /*--------------------------------------------------------------
 #取引
 --------------------------------------------------------------*/
 
 
-function gotoDelivery() {
-    /*「受け渡しに進む」ボタンクリックで受け渡しモーダルを開く */
+function gotoDelivery(howDelivery) {
+    //「受け渡しに進む」ボタンクリックで
+    if (howDelivery == leave) {
+        //受け渡し（置いておく）モーダルを開く
+        scrollPos = $(window).scrollTop();
+        $('.modal-wrapper.delivey-leave').fadeIn();
+        $('body').addClass('fixed').css({ top: -scrollPos });
+        return false;
+    } else {
+
+    }
 }
 
 function cancelTransaction() {
     /*「取引をキャンセルする」ボタンクリックで取引キャンセル画面に遷移する */
 }
-/*--------------------------------------------------------------
-#modal window
---------------------------------------------------------------*/
+
+function endCancel() {
+
+    //キャンセルメッセージを「送信する」ボタンをクリックで、
+    //キャンセル理由とメッセージの取得
+    let whyCancel = $('#why-cancel').value
+    let canselMsg = $('#cansel-msg').value
+    console.log(whyCancel, canselMsg);//なぜかundefined、わからない、ほっとく
+    //取引キャンセル用モーダルを表示オフ
+    $('.modal-wrapper.cancel-transaction').fadeOut().css({ top: 0 });
+    $('body').removeClass('fixed');
+    $(window).scrollTop(scrollPos);
+    return false;
+    //トップページに飛ばしたい
+
+}
+
 /* 受け渡し
 -------------------------------------- */
 function noItem() {
@@ -275,7 +308,8 @@ function gotoEvaluation() {
     /*受け渡し（取引）完了の送信 */
 }
 function submitEvaluation() {
-    /*評価の送信*/
+    //評価の送信
+    //チェックされてるラジオボタンの値を取ればいいと思うけどパス
 }
 function endTransaction() {
     //「このまま取引を終わる」ボタンをクリックで、取引用モーダルを表示オフ
@@ -290,6 +324,24 @@ function endTransaction() {
 /* テスト用
 -------------------------------------- */
 $(function () {
+
+
+    /* 取引キャンセルモーダルの開閉
+     -------------------------------------- */
+    $('.modal-open.cancel-transaction').click(function () {
+        scrollPos = $(window).scrollTop();
+        $('.modal-wrapper.cancel-transaction').fadeIn();
+        $('body').addClass('fixed').css({ top: -scrollPos });
+        return false;
+    });
+    $('.overlay, .modal-close.cancel-transaction').click(function () {
+        $('.modal-wrapper.cancel-transaction').fadeOut().css({ top: 0 });
+        $('body').removeClass('fixed');
+        $(window).scrollTop(scrollPos);
+        return false;
+    });
+
+
     /* 受け渡しモーダルの開閉
     -------------------------------------- */
     var scrollPos;

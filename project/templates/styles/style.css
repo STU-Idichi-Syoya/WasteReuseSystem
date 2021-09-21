@@ -1631,6 +1631,14 @@ body.fixed {
     -webkit-overflow-scrolling: touch;
 }
 
+.cancel-transaction .modal-contents {
+    text-align: left;
+}
+
+.cancel-transaction .modal-contents p {
+    margin-bottom: 16px;
+}
+
 i.modal-close {
     position: absolute;
     top: 10px;
@@ -1822,6 +1830,13 @@ i.modal-close {
     width: 100%;
     height: calc(100vw - var(--margin-side)*2);
     margin-bottom: 16px;
+    position: relative;
+}
+
+.swiper .btn-like-L {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
 }
 
 .swiper-slide {
