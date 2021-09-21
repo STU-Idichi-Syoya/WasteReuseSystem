@@ -5,16 +5,19 @@
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta charset="utf-8">
-    <title>|ホーム
-        <!--要書き換え-->
-    </title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <title>Compornents</title>
     <!-- sanitize.css https://csstools.github.io/sanitize.css/ -->
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
     <!-- material design icons -->
     <link
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet">
-    <link rel="stylesheet" href="/styles/style.css">
+    <!-- Swiper.js-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Original Style-->
+    <link rel="stylesheet" href="styles/style.css">
     <!--<link rel="stylesheet" href="styles/header.css">-->
     <!--OGP-->
     <meta property="og:url" content="https://" />
@@ -34,20 +37,80 @@
     <link rel="apple-touch-icon" href="./images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
     <link rel="icon" type="image/png" href="./images/favicons/android-chrome-192x192.png" sizes="192x192">
 
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-
-
+    <!-- Swiper.js-->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <body>
+
+
+
     <!-- header -->
+
     <header class="service-title">
-        <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span>
+        <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span><i
+            class="material-icons">logout</i>
     </header>
     <!-- /header -->
+
+
+
+
+    <!--検索バー-->
+    <div class="search-bar head-fix">
+        <span id="search-back" class="material-icons invisible">navigate_before</span>
+        <form id="search-form" class="search-form" method="get" action="https://">
+            <input id="search-input" type="text" placeholder="何をお探しですか？" name="s" value="">
+            <button id="search-btn" type="submit" value="Search" alt="検索" title="検索"><i
+                    class="material-icons icon-search">search</i></button>
+        </form>
+    </div>
+    <!--タグ検索・検索履歴が横から出てくるモーダル的なもの-->
+    <div class="searching off">
+        <div class="searching-inner">
+            <h2 class="page-search">#タグで検索</h2>
+            <div class="hashtag-container">
+                <a href="" class="btn-hashtag">建築<span class="btn-hashtag-num">(36)</span></a> <a href=""
+                    class="btn-hashtag">スチレンボード<span class="btn-hashtag-num">(27)</span></a> <a href=""
+                    class="btn-hashtag">PE<span class="btn-hashtag-num">(19)</span></a>
+                <a href="" class="btn-hashtag">角材<span class="btn-hashtag-num">(17)</span></a> <a href=""
+                    class="btn-hashtag">造形1年後期<span class="btn-hashtag-num">(13)</span></a> <a href=""
+                    class="btn-hashtag">スチのり<span class="btn-hashtag-num">(8)</span></a><a href=""
+                    class="btn-hashtag">パルサ材<span class="btn-hashtag-num">(17)</span></a>
+                <a href="" class="btn-hashtag">アクリル<span class="btn-hashtag-num">(13)</span></a> <a href=""
+                    class="btn-hashtag">教科書<span class="btn-hashtag-num">(8)</span></a>
+            </div>
+            <h2 class="page-search">検索履歴</h2>
+            <ul class="list-normal">
+                <li>
+                    <span>木　角材</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>アクリル板</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+
+                <li>
+                    <span>布　黄色　薄手</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>LED テープ</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>スチール</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
 
     <!-- <section class="hero is-primary is-fullheight">-->
 

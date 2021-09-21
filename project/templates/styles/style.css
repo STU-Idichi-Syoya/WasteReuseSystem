@@ -496,10 +496,6 @@ small {
 
 /* Tabbar & Tabs 通知がある場合に付与*/
 
-.have-notify {
-    display: block;
-}
-
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -1904,7 +1900,6 @@ iframe {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 24px;
 }
 
 ul.post-images {
@@ -2005,6 +2000,32 @@ input:checked+label {
 #UserImage
 --------------------------------------------------------------*/
 
+.transac-item-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.transac-item-info p {
+    margin: 4px 0 0;
+    font-size: var(--font-size-P-M);
+}
+
+.transac-item-info p:first-child {}
+
+.transac-item-info>div:first-child {
+    width: calc(100% - (64px + 12px));
+    margin-right: 12px;
+}
+
+.item-image-S {
+    width: 64px;
+}
+
+.item-image-S .img_box {
+    height: 64px;
+}
+
 .user-image {
     color: var(--color-gray-7);
 }
@@ -2067,7 +2088,7 @@ input:checked+label {
     font-size: var(--font-size-P-M);
     background-color: var(--color-p-ex-light);
     padding: 20px var(--margin-side) 8px;
-    margin-bottom: 24px;
+    margin: 24px 0;
 }
 
 .comments-container textarea {
