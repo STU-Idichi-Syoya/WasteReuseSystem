@@ -12,6 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet">
+    <!-- Swiper.js-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Original Style-->
     <link rel="stylesheet" href="styles/style.css">
     <!--<link rel="stylesheet" href="styles/header.css">-->
     <!--OGP-->
@@ -32,9 +35,8 @@
     <link rel="apple-touch-icon" href="./images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
     <link rel="icon" type="image/png" href="./images/favicons/android-chrome-192x192.png" sizes="192x192">
 
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <!-- Swiper.js-->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -123,7 +125,7 @@
                 <ul class="post-images">
                     <li>
                         <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
-                            <button class="btn-delete"><span class="material-icons-round">
+                            <button class="btn-delete visible"><span class="material-icons-round">
                                     delete
                                 </span>
                             </button>
@@ -220,7 +222,7 @@
                         <i class="material-icons">place</i>
                         <span class=".locaiton">北海道札幌市北区北13条西８丁目</span>
                     </div>
-                    <button class="btn-pin-delete">
+                    <button class="btn-nagative">
                         <i class="material-icons">close</i>
                         ピンを削除する
                     </button>
@@ -310,6 +312,327 @@
         </div>
 
         <div class="margin-LR">
+            <!-- Swiper -->
+            <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events">
+                <div class="swiper-wrapper" id="swiper-wrapper-a82291023b3682c2a" aria-live="polite"
+                    style="transition-duration: 0ms; transform: translate3d(-7168px, 0px, 0px);">
+                    <div class="swiper-slide" role="group" aria-label="1 / 6"><img src="./images/item/IMG_5532.jpg"
+                            alt="img"></div>
+                    <div class="swiper-slide" role="group" aria-label="2 / 6"><img src="./images/item/IMG_5533.jpg"
+                            alt="img"></div>
+                    <div class="swiper-slide" role="group" aria-label="3 / 6"><img src="./images/item/IMG_5534.jpg"
+                            alt="img"></div>
+                    <div class="swiper-slide" role="group" aria-label="4 / 6"><img src="./images/item/IMG_5535.jpg"
+                            alt="img"></div>
+                    <div class="swiper-slide" role="group" aria-label="5 / 6"><img src="./images/item/IMG_5536.jpg"
+                            alt="img"></div>
+                    <div class="swiper-slide" role="group" aria-label="6 / 6"><img src="./images/item/IMG_5537.jpg"
+                            alt="img"></div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
+                    <span class="swiper-pagination-bullet"></span>
+                    <span class="swiper-pagination-bullet"></span>
+                    <span class="swiper-pagination-bullet"></span>
+                    <span class="swiper-pagination-bullet"></span>
+                    <span class="swiper-pagination-bullet"></span>
+                    <span class="swiper-pagination-bullet"></span>
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true">
+
+                </span>
+            </div>
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                    pagination: {
+                        el: ".swiper-pagination",
+                    }, loop: true,
+                });
+            </script>
+            <!--アイテム名-->
+            <h1 class="item-titel">スチのり 4本 実質2本分</h1>
+            <div class="display-impression">
+                <span>
+                    <i class="material-icons">favorite</i>
+                    <span>いいね！</span>
+                    <span class="like-num">5</span>
+                </span>
+                <span>
+                    <i class="material-icons">comment</i>
+                    <span>コメント</span>
+                    <span class="comment-num">5</span>
+                </span>
+            </div>
+
+
+            <table>
+                <tr>
+                    <td>投稿者</td>
+                    <td><a href="">Nakayama</a></td>
+                </tr>
+                <tr>
+
+                    <td>受け渡し方法</td>
+                    <td>置いておく</td>
+                </tr>
+                <tr>
+
+                    <td>受け渡し場所</td>
+                    <td>工学部 建築学科 山本研究室（8号館204号室）ご自由にどうぞコーナー</td>
+                </tr>
+                <tr>
+
+                    <td colspan="2" id="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.3766485305728!2d141.33931481587553!3d43.07557622914536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2906217dd379%3A0x7f7327389e4ec240!2z44CSMDYwLTA4MTMg5YyX5rW36YGT5pyt5bmM5biC5YyX5Yy65YyX77yR77yT5p2h6KW_77yY5LiB55uu!5e0!3m2!1sja!2sjp!4v1632154682049!5m2!1sja!2sjp"
+                            width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="location-text"> <i class="material-icons">place</i><span
+                                class=".locaiton">北海道札幌市北区北13条西８丁目</span></div>
+                    </td>
+
+                </tr>
+
+
+                <td>有効期限</td>
+                <td>2021.09.30<span class="deadline-status">残りわずか</span></td>
+                <tr>
+
+                    <td colspan="2" class="item-description">
+                        大学に持っていき忘れるたびに生協で買っていて、気付いたら4本持っていました。どれも半分以上は残っているので、全部で2本強分くらいはあると思います。意外と安くはないスチのり、もう使う予定がないので、だれか使ってあげてください。
+                        <a href="#">#建築設計実習</a><a href="#">#半分以上</a><a href="#">#700円分</a>
+                    </td>
+            </table>
+            <div class="time-and-share">
+                <div>
+                    <span class="passed-time">
+                        <i class="material-icons">schedule</i><span>2週間前</span>
+                    </span>
+
+                    <button class="btn-nagative">
+                        <i class="material-icons">outlined_flag</i>
+                        不適切な投稿・管理の報告
+                    </button>
+                </div>
+                <div class="share-buttons">
+                    <!-- LINE -->
+                    <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                            src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+
+                    <!-- Share -->
+                    <button type="button" class="btn-social-share native-share-btn" data-share-title="JO-TO!"><img
+                            src="./images/buttons/share.svg" alt="シェアする"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="comments-container">
+            <p>コメント（3件）
+                <!--コメントの件数-->
+            </p>
+            <!-- <<START>> Your comment block -->
+            <div class="comment-wrapper you">
+                <div class="dispaly-user">
+                    <div class="user-image S">
+                        <div class="img_box">
+                            <img class="object-fit-cover" src="./images/user/user_1.jpg" alt="user image">
+                            <i class="material-icons">person</i>
+                        </div>
+                    </div>
+                    <span class="user-tag item-orner visible">投稿者</span>
+                </div>
+                <div class="dispaly-comment">
+                    <p>
+                        <!--ここにユーザー名-->Nakayama
+                    </p>
+                    <div class="speech-balloon">
+                        <div class="commnet">
+                            <!---ここにコメントが入る-->8月27日 15:00に１号間の前でお渡しでどうでしょうか？
+                        </div>
+                        <div class="comment-footer">
+                            <span class="passed-time">
+                                <i class="material-icons">schedule</i><span>2週間前</span>
+                            </span>
+                            <div class="reactions">
+                                <button class="btn-good">👍<span>2</span>
+                                </button><button class="btn-thanks">🙏<span>12</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <<END>> Your comment block -->
+
+            <!-- <<START>> My comment block -->
+            <div class="comment-wrapper me">
+                <div class="dispaly-user">
+                    <div class="user-image S">
+                        <div class="img_box">
+                            <!-- ユーザー画像を登録していない場合はimgなし <img class="object-fit-cover" src="./images/user/none.jpg" name="user image">-->
+                            <i class="material-icons">person</i>
+                        </div>
+                    </div>
+                    <span class="user-tag item-orner">投稿者</span>
+                </div>
+                <div class="dispaly-comment">
+                    <p>あなた</p>
+                    <div class="speech-balloon">
+                        <div class="commnet">
+                            <!---ここにコメントが入る-->差し支えありません！承知しました！
+                        </div>
+                        <div class="comment-footer">
+                            <span class="passed-time">
+                                <i class="material-icons">schedule</i><span>2週間前</span>
+                            </span>
+                            <div class="reactions">
+                                <button class="btn-good">👍<span>2</span>
+                                </button><button class="btn-thanks">🙏<span>12</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <<END>> My comment block -->
+
+            <textarea name="comment" placeholder="コメントを入力..." rows="3"></textarea>
+
+            <a href="" class="btn btn-S btn-primary">
+                コメントする
+            </a>
+
+        </div>
+
+
+        <div class="margin-LR">
+
+            <div class="title-seemore">
+                <h2>関連アイテム</h2>
+                <a href="#"><span class="view-all">すべて見る</span><i class="material-icons">navigate_next</i></a>
+            </div>
+
+            <ul class="horizontal_scroll list-item-S">
+                <!--------- <<START>> list item S -------->
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                        <!--いいねボタン小-->
+                        <button type="button" class="btn-like btn-like-S" name="like">
+                            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                            </svg></button>
+                    </div>
+                    <p>メンディングテープ 10mm幅</p>
+                    <!--アイテムの状態を表すタグ-->
+                    <img class="item-status-tag decided" src="images/tag/decided_S.svg">
+                    <img class="item-status-tag sold visible" src="images/tag/sold_S.svg">
+                    <!--アイテムへのリンク（カード全体にかかる）-->
+                    <a href="#" class="item-link"></a>
+
+                </li>
+                <!--------- <<END>> list item S -------->
+                <!--------- <<START>> list item S -------->
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                        <!--いいねボタン小-->
+                        <button type="button" class="btn-like btn-like-S" name="like">
+                            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                            </svg></button>
+                    </div>
+                    <p>メンディングテープ 10mm幅</p>
+                    <!--アイテムの状態を表すタグ-->
+                    <img class="item-status-tag decided visible" src="images/tag/decided_S.svg">
+                    <img class="item-status-tag sold" src="images/tag/sold_S.svg">
+                    <!--アイテムへのリンク（カード全体にかかる）-->
+                    <a href="#" class="item-link"></a>
+
+                </li>
+                <!--------- <<END>> list item S -------->
+
+                <!--------- <<START>> list item S -------->
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                        <!--いいねボタン小-->
+                        <button type="button" class="btn-like btn-like-S" name="like">
+                            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                            </svg></button>
+                    </div>
+                    <p>メンディングテープ 10mm幅</p>
+                    <!--アイテムの状態を表すタグ-->
+                    <img class="item-status-tag decided" src="images/tag/decided_S.svg">
+                    <img class="item-status-tag sold" src="images/tag/sold_S.svg">
+                    <!--アイテムへのリンク（カード全体にかかる）-->
+                    <a href="#" class="item-link"></a>
+
+                </li>
+                <!--------- <<END>> list item S -------->
+
+                <!--------- <<START>> list item S -------->
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                        <!--いいねボタン小-->
+                        <button type="button" class="btn-like btn-like-S" name="like">
+                            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                            </svg></button>
+                    </div>
+                    <p>メンディングテープ 10mm幅</p>
+                    <!--アイテムの状態を表すタグ-->
+                    <img class="item-status-tag decided" src="images/tag/decided_S.svg">
+                    <img class="item-status-tag sold" src="images/tag/sold_S.svg">
+                    <!--アイテムへのリンク（カード全体にかかる）-->
+                    <a href="#" class="item-link"></a>
+
+                </li>
+                <!--------- <<END>> list item S -------->
+
+                <!--------- <<START>> list item S -------->
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                        <!--いいねボタン小-->
+                        <button type="button" class="btn-like btn-like-S" name="like">
+                            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                            </svg></button>
+                    </div>
+                    <p>メンディングテープ 10mm幅</p>
+                    <!--アイテムの状態を表すタグ-->
+                    <img class="item-status-tag decided" src="images/tag/decided_S.svg">
+                    <img class="item-status-tag sold" src="images/tag/sold_S.svg">
+                    <!--アイテムへのリンク（カード全体にかかる）-->
+                    <a href="#" class="item-link"></a>
+
+                </li>
+                <!--------- <<END>> list item S -------->
+
+
+            </ul>
+
+            <!--Fixed Button-->
+            <div class="fixed-btn-container">
+                <a href="" class="btn btn-S btn-primary">
+                    このアイテムをもらう
+                </a>
+            </div>
+
+        </div>
+
+
+
+        <div class="margin-LR">
+            <span class="user-tag">現役生</span>
+            <div class="user-image M">
+                <div class="img_box">
+                    <img class="object-fit-cover" src="./images/user/user_1.jpg" alt="user image">
+                    <i class="material-icons">person</i>
+                </div>
+            </div>
+
+
             <div class="search-detail">
                 <div class="select-container">
                     <select name="how-delivery" id="how-delivery">
@@ -515,19 +838,22 @@
 
                     <div class='content1'>This is the content of 1 container.This will be open when button 1 is
                         clicked.This
-                        is the content of 1 container.This will be open when button 1 is clicked.This is the content of
+                        is the content of 1 container.This will be open when button 1 is clicked.This is the content
+                        of
                         1
                         container.This will be open when button 1 is clicked.</div>
 
                     <div class='content2'>This is the content of 2 container.This will be open when button 2 is
                         clicked.This
-                        is the content of 2 container.This will be open when button 2 is clicked.This is the content of
+                        is the content of 2 container.This will be open when button 2 is clicked.This is the content
+                        of
                         2
                         container.This will be open when button 2 is clicked.</div>
 
                     <div class='content3'>This is the content of 3 container.This will be open when button 3 is
                         clicked.This
-                        is the content of 3 container.This will be open when button 3 is clicked.This is the content of
+                        is the content of 3 container.This will be open when button 3 is clicked.This is the content
+                        of
                         3
                         container.This will be open when button 3 is clicked.</div>
 
@@ -951,23 +1277,7 @@
                 </div>
             </div>
 
-            <div class="swiper-container">
-                <!-- スライドメニュー -->
-                <div class="swiper-wrapper">
-                    <!-- スライドメニュー内容を個々に追加してください -->
-                    <div class="swiper-slide">スライド１</div>
-                    <div class="swiper-slide">スライド２</div>
-                    <div class="swiper-slide">スライド３</div>
-                    <div class="swiper-slide">スライド４</div>
-                </div><!-- スライドのページネーション表示 -->
-                <div class="swiper-pagination"></div>
-                <!-- 「次へ」や「戻る」のアイコン表示 -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <!-- スクロールバーの表示 -->
-                <div class="swiper-scrollbar">
-                </div>
-            </div>
+
 
         </div>
     </main>
@@ -1065,6 +1375,7 @@
 
 
     <script type="text/javascript" src="js/index.js"></script>
+
 
 
 </body>
