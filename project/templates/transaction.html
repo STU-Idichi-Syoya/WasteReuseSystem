@@ -5,7 +5,124 @@
 {% block content %}
 <main>
 
+    <div class="margin-LR">
+        <h1>取引</h1>
+        <div class="transac-item-info">
+            <div>
+                <h2 class="text-H-S">
+                    <!--取引するアイテム名-->スチのり 4本 実質2本分
+                </h2>
+                <p class="text-H-SS">
+                    <span>
+                        <!--投稿者orもらい手-->投稿者
+                    </span><a href="#">Nakayama</a>さんとの取引メッセージ
+                </p>
+                <p>取引の希望：<span>簡潔に済ませたい</span></p>
+            </div>
+            <div class="item-image S">
+                <div class="img_box">
+                    <img class="object-fit-cover" src="./images/item/IMG_5538.jpg" alt="item image">
+                </div>
+            </div>
+        </div>
 
+
+        <div class="hint">
+            <span class="material-icons">lightbulb
+            </span>
+            <div>
+                <p>ここでは受け渡しに必要なやりとりを行えます</p>
+                <p>※このメッセージは公開されません</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="comments-container">
+        <p>コメント（3件）
+            <!--コメントの件数-->
+        </p>
+        <!-- <<START>> Your comment block -->
+        <div class="comment-wrapper you">
+            <div class="dispaly-user">
+                <div class="user-image S">
+                    <div class="img_box">
+                        <img class="object-fit-cover" src="./images/user/user_1.jpg" alt="user image">
+                        <i class="material-icons">person</i>
+                    </div>
+                </div>
+                <span class="user-tag item-orner visible">投稿者</span>
+            </div>
+            <div class="dispaly-comment">
+                <p>
+                    <!--ここにユーザー名-->Nakayama
+                </p>
+                <div class="speech-balloon">
+                    <div class="commnet">
+                        <!---ここにコメントが入る-->8月27日 15:00に１号間の前でお渡しでどうでしょうか？
+                    </div>
+                    <div class="comment-footer">
+                        <span class="passed-time">
+                            <i class="material-icons">schedule</i><span>2週間前</span>
+                        </span>
+                        <div class="reactions">
+                            <button class="btn-good">👍<span id="good-num">2</span>
+                            </button><button class="btn-thanks">🙏<span id="thanks-num">12</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <<END>> Your comment block -->
+
+        <!-- <<START>> My comment block -->
+        <div class="comment-wrapper me">
+            <div class="dispaly-user">
+                <div class="user-image S">
+                    <div class="img_box">
+                        <!-- ユーザー画像を登録していない場合はimgなし <img class="object-fit-cover" src="./images/user/none.jpg" name="user image">-->
+                        <i class="material-icons">person</i>
+                    </div>
+                </div>
+                <span class="user-tag item-orner">投稿者</span>
+            </div>
+            <div class="dispaly-comment">
+                <p>あなた</p>
+                <div class="speech-balloon">
+                    <div class="commnet">
+                        <!---ここにコメントが入る-->差し支えありません！承知しました！
+                    </div>
+                    <div class="comment-footer">
+                        <span class="passed-time">
+                            <i class="material-icons">schedule</i><span>2週間前</span>
+                        </span>
+                        <div class="reactions">
+                            <button class="btn-good">👍<span id="good-num">2</span>
+                            </button><button class="btn-thanks">🙏<span id="thanks-num">12</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <<END>> My comment block -->
+
+        <textarea name="comment" placeholder="コメントを入力..." rows="3"></textarea>
+
+        <a href="" class="btn btn-S btn-primary">
+            コメントする
+        </a>
+
+    </div>
+
+    <div class="margin-LR">
+
+        <div class="combi-btn-link">
+            <a href="" class="btn btn-M btn-secondary" onclick="gotoDelivery()">
+                受け渡しに進む
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a href="" class="link-under-btn-M" onclick="cancelTransaction()">取引をキャンセルする</a>
+        </div>
+    </div>
 </main>
 
 

@@ -25,6 +25,26 @@ $('.tab-buttons span').click(function () {
     });
 });
 
+/* Search Bar Fix（あるところだけ）
+    -------------------------------------- */
+/*スクロールすると検索フィールドが上に固定される（実は微妙にうまく行ってない）*/
+var startPos = 0, winScrollTop = 0;
+
+
+$(window).on('scroll', function () {
+    winScrollTop = $(this).scrollTop();
+    if (winScrollTop >= startPos) {
+        //下に行ってる時 top:0まで上げて固定する
+        $('.head-fix').addClass('hide');
+
+    } else {//上に行ってるとき
+        // $('.head-fix').removeClass('hide');
+        if (winScrollTop <= 60) {//headerの高さ以下までたどり着いたら元の位置に固定する
+            $('.head-fix').removeClass('hide');
+        }
+    }
+    startPos = winScrollTop;
+});
 
 /* Search Field
     -------------------------------------- */
@@ -86,7 +106,7 @@ $('#search-back').on('click', function () {
 });
 
 
-/* Password
+/* Password（あるところだけ）
     -------------------------------------- */
 /*
 const visibilityToggle = document.querySelector('.visibility');
@@ -116,12 +136,43 @@ $(function () {
     $('.btn-like').click(function () {
         if ($(this).hasClass('liked')) {
             $(this).removeClass('liked');
-            console.log('likedはずされされました！');
+
         } else {
             $(this).addClass('liked');
-            console.log('likedクリックされました！');
+
         }
 
+    })
+});
+
+/* Reaction Button（カウントは表示できてない）
+    -------------------------------------- */
+
+$(function () {
+
+    $('.reactions>button').click(function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+
+        } else {
+            $(this).addClass('active');
+
+        }
+    })
+
+    $('.btn-good').click(function () {
+        /*1つのコメントごとに別々のIDを付けないとカウントできない... */
+        if ($(this).hasClass('active')) {
+            let goodNum = parseInt(document.getElementById('good-num').innerText);
+            document.getElementById('good-num').innerText = goodNum + 1;
+        }
+    })
+    $('.btn-thanks').click(function () {
+        /*1つのコメントごとに別々のIDを付けないとカウントできない... */
+        if ($(this).hasClass('active')) {
+            let thanksNum = parseInt(document.getElementById('thanks-num').innerText);
+            document.getElementById('thanks-num').innerText = thanksNum + 1;
+        }
     })
 });
 
@@ -194,33 +245,83 @@ for (var i = 0; i < checkbox.length; i++) {
     });
 
 }
+/*--------------------------------------------------------------
+#取引
+--------------------------------------------------------------*/
 
-/*
- 
-/* Search Bar Fix（あるところだけ）
+
+function gotoDelivery() {
+    /*「受け渡しに進む」ボタンクリックで受け渡しモーダルを開く */
+}
+
+function cancelTransaction() {
+    /*「取引をキャンセルする」ボタンクリックで取引キャンセル画面に遷移する */
+}
+/*--------------------------------------------------------------
+#modal window
+--------------------------------------------------------------*/
+/* 受け渡し
+-------------------------------------- */
+function noItem() {
+    /*初めは隠してあるヘルプコンテンツの表示 */
+    $('.modal-contents .bg-color').css('display', 'block');
+}
+
+function gotoEvaluation() {
+    //「受け取りました！」ボタンをクリックで、取引用モーダルを表示オフしてから評価用のモーダルを表示
+    $('.modal-wrapper.delivey-leave').fadeOut().css({ top: 0 });
+    $('.modal-wrapper.evaluation').fadeIn();
+    return false;
+    /*受け渡し（取引）完了の送信 */
+}
+function submitEvaluation() {
+    /*評価の送信*/
+}
+function endTransaction() {
+    //「このまま取引を終わる」ボタンをクリックで、取引用モーダルを表示オフ
+    $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
+    $('body').removeClass('fixed');
+    $(window).scrollTop(scrollPos);
+    return false;
+    /*実質受け渡し（取引）完了の送信 */
+}
+
+
+/* テスト用
+-------------------------------------- */
+$(function () {
+    /* 受け渡しモーダルの開閉
     -------------------------------------- */
-/*スクロールすると検索フィールドが上に固定される（実は微妙にうまく行ってない）*/
-var startPos = 0, winScrollTop = 0;
+    var scrollPos;
+    $('.modal-open.delivey-leave').click(function () {
+        scrollPos = $(window).scrollTop();
+        $('.modal-wrapper.delivey-leave').fadeIn();
+        $('body').addClass('fixed').css({ top: -scrollPos });
+        return false;
+    });
+    $('.overlay, .modal-close.delivey-leave').click(function () {
+        $('.modal-wrapper.delivey-leave').fadeOut().css({ top: 0 });
+        $('body').removeClass('fixed');
+        $(window).scrollTop(scrollPos);
+        return false;
+    });
 
 
-$(window).on('scroll', function () {
-    winScrollTop = $(this).scrollTop();
-    if (winScrollTop >= startPos) {
-        //下に行ってる時 top:0まで上げて固定する
-        $('.head-fix').addClass('hide');
+    /* 評価モーダルの開閉
+        -------------------------------------- */
+    $('.modal-open.evaluation').click(function () {
+        scrollPos = $(window).scrollTop();
+        $('.modal-wrapper.evaluation').fadeIn();
+        $('body').addClass('fixed').css({ top: -scrollPos });
+        return false;
+    });
+    $('.overlay, .modal-close.evaluation').click(function () {
+        $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
+        $('body').removeClass('fixed');
+        $(window).scrollTop(scrollPos);
+        return false;
+    });
 
-    } else {//上に行ってるとき
-        // $('.head-fix').removeClass('hide');
-        if (winScrollTop <= 60) {//headerの高さ以下までたどり着いたら元の位置に固定する
-            $('.head-fix').removeClass('hide');
-        }
-    }
-    startPos = winScrollTop;
+
 });
 
-
-/* URL Copy Button
-    -------------------------------------- */
-function noItem() {
-    $('.mordal-contents.bg-color').css('display', 'block');
-}

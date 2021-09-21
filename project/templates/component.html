@@ -453,8 +453,8 @@
                                 <i class="material-icons">schedule</i><span>2週間前</span>
                             </span>
                             <div class="reactions">
-                                <button class="btn-good">👍<span>2</span>
-                                </button><button class="btn-thanks">🙏<span>12</span></button>
+                                <button class="btn-good">👍<span id="good-num">2</span>
+                                </button><button class="btn-thanks">🙏<span id="thanks-num">12</span></button>
                             </div>
                         </div>
                     </div>
@@ -484,8 +484,8 @@
                                 <i class="material-icons">schedule</i><span>2週間前</span>
                             </span>
                             <div class="reactions">
-                                <button class="btn-good">👍<span>2</span>
-                                </button><button class="btn-thanks">🙏<span>12</span></button>
+                                <button class="btn-good">👍<span id="good-num">2</span>
+                                </button><button class="btn-thanks">🙏<span id="thanks-num">12</span></button>
                             </div>
                         </div>
                     </div>
@@ -681,8 +681,8 @@
                                 <i class="material-icons">schedule</i><span>2週間前</span>
                             </span>
                             <div class="reactions">
-                                <button class="btn-good">👍<span>2</span>
-                                </button><button class="btn-thanks">🙏<span>12</span></button>
+                                <button class="btn-good">👍<span id="good-num">2</span>
+                                </button><button class="btn-thanks">🙏<span id="thanks-num">12</span></button>
                             </div>
                         </div>
                     </div>
@@ -712,8 +712,8 @@
                                 <i class="material-icons">schedule</i><span>2週間前</span>
                             </span>
                             <div class="reactions">
-                                <button class="btn-good">👍<span>2</span>
-                                </button><button class="btn-thanks">🙏<span>12</span></button>
+                                <button class="btn-good">👍<span id="good-num">2</span>
+                                </button><button class="btn-thanks">🙏<span id="thanks-num">12</span></button>
                             </div>
                         </div>
                     </div>
@@ -732,11 +732,11 @@
         <div class="margin-LR">
 
             <div class="combi-btn-link">
-                <a href="" class="btn btn-M btn-secondary">
+                <a href="" class="btn btn-M btn-secondary" onclick="gotoDelivery()">
                     受け渡しに進む
                     <i class="material-icons btn-icon-R">navigate_next</i>
                 </a>
-                <a href="" class="link-under-btn-M">取引をキャンセルする</a>
+                <a href="" class="link-under-btn-M" onclick="cancelTransaction()">取引をキャンセルする</a>
             </div>
         </div>
 
@@ -1392,7 +1392,7 @@
             <input type="checkbox" id="modal01" class="modalCheck">
             <div class="btn"><label for="modal01">Modal Open</label></div>
 
-            <div class="mordal-wrapper">
+            <div class="modal-wrapper">
                 <div id="modal01Con" class="modalWrap">
                     <div class="modalBg"><label for="modal01" class="closeModal"></label></div>
                     <div class="modalCon">
