@@ -801,12 +801,13 @@ select {
     filter: var(--shadow-top-fixed-light);
     position: fixed;
     top: 60px;
-    z-index: 999;
+    z-index: 100;
     transition: .5s;
 }
 
 .head-fix.hide {
-    transform: translateY(-60px);
+    /*transform: translateY(-60px);*/
+    top: 0px;
     filter: var(--shadow-top-fixed);
 }
 
@@ -1601,14 +1602,14 @@ h2.page-search {
     width: 100%;
     height: 100%;
     margin: auto;
-    z-index: 20;
+    z-index: 900;
 }
 
 .modalWrap {
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: 0.3s cubic-bezier(1, 0, 0, 1);
-    transition: 0.3s cubic-bezier(1, 0, 0, 1);
+    -webkit-transition: 0.36s cubic-bezier(1, 0, 0, 1);
+    transition: 0.36s cubic-bezier(1, 0, 0, 1);
     -webkit-transition-property: opacity;
     transition-property: opacity;
     will-change: opacity;
@@ -1618,7 +1619,7 @@ h2.page-search {
     cursor: pointer;
     opacity: 0.7;
     background-color: #000;
-    z-index: 10;
+    z-index: 700;
 }
 
 .modalBg label {
@@ -1632,14 +1633,15 @@ h2.page-search {
 
 .modalCon {
     position: absolute;
-    top: 5%;
+    top: 15%;
     left: 0;
     right: 0;
-    width: 92%;
+    width: calc(100% - 60px);
     max-width: 640px;
-    height: 86%;
+    /* min-height: 50%;*/
+    height: 70%;
     margin: auto;
-    z-index: 15;
+    z-index: 800;
 }
 
 .modalInner {
@@ -1647,12 +1649,16 @@ h2.page-search {
     -webkit-overflow-scrolling: touch;
     position: relative;
     height: 100%;
-    padding: 24px 12px;
+    padding: 0px;
+    /**/
     cursor: default;
     background-color: #fff;
     border-radius: 5px;
     -webkit-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    overflow-x: hidden;
+    /*チケットの丸い穴がはみ出している分で横スクロールが発生しないように書き足し*/
 }
 
 .modalCloseBtn {
@@ -1663,10 +1669,16 @@ h2.page-search {
 
 .modalCloseBtn label {
     display: inline-block;
-    padding: 0.5em;
+    padding: 10px;
     color: #333;
     text-decoration: none;
-    font-size: 2em;
+    font-size: 2rem;
+}
+
+.modalCloseBtn label>i {
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--color-primary);
 }
 
 .modalCheck:not(:checked)~.mordal-wrapper>*:not(.modalWrap) {
@@ -1689,6 +1701,11 @@ h2.page-search {
     visibility: visible;
 }
 
+#modal02:checked~.mordal-wrapper #modal02Con {
+    opacity: 1;
+    visibility: visible;
+}
+
 .modalTtl {
     padding: 2em 0.5em 1.5em;
     font-size: 2em;
@@ -1696,20 +1713,109 @@ h2.page-search {
     text-align: center;
 }
 
-.modalText .modalCover {
-    margin: 0 -1.5em 1em;
+.mordal-LR {
+    padding: 0 var(--margin-side);
 }
 
-.modalText p {
-    margin-bottom: 1em;
-    line-height: 1.7;
+.mordal-contents {
+    padding: 24px 0;
+    margin-top: 16px;
 }
+
+.mordal-contents p {
+    margin: 8px 0 0;
+}
+
+.mordal-contents .leave-location {
+    font-size: var(--font-size-P-S);
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 0;
+}
+
+.mordal-contents .leave-location i {
+    font-size: 1.125rem;
+    margin-right: 4px;
+}
+
+.mordal-contents .item-info {
+    /*  margin-bottom: 48px*/
+}
+
+.urge-msg {
+    font-size: var(--font-size-P-S);
+    padding: 2px 8px;
+    font-weight: 700;
+    border-radius: 32px;
+    background-color: var(--color-secondary);
+    color: var(--color-gray-7);
+}
+
+.ticket-line {
+    width: 100%;
+    display: inline-block;
+    margin: 24px 0;
+    border: 1px dashed var(--color-p-light);
+    position: relative
+}
+
+.ticket-line>.hole {
+    position: absolute;
+    top: -12px;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    border-radius: 12px;
+    background-color: var(--color-gray-3);
+    mix-blend-mode: multiply;
+}
+
+.ticket-line>.hole.L {
+    left: -30px;
+    /*calc(- 50% - 12px);*/
+}
+
+.ticket-line>.hole.R {
+    right: -30px;
+}
+
+.mordal-contents.bg-color {
+    background-color: var(--color-p-ex-light);
+    padding: 10px var(--margin-side) 24px;
+    display: none;
+}
+
+.mordal-contents.bg-color .btn-S {
+    margin-bottom: 8px;
+}
+
+.mordal-contents.bg-color p {
+    margin-bottom: 8px;
+}
+
+.mordal-contents.bg-color p.caution {
+    margin-bottom: 20px;
+}
+
+.mordal-contents.bg-color .btn-primary+p {
+    margin-bottom: 16px;
+}
+
+.evaluation svg {
+    fill: var(--color-gray-4);
+}
+
+.evaluation svg.good.selected {}
+
+.evaluation svg.ok.selected {}
+
+.evaluation svg.bad.selected {}
 
 @media (max-width: 640px) {
-    .content {
+    /*   .content {
         margin: 1.5em auto;
     }
-    .modalInner {
+   .modalInner {
         padding-left: 1em;
         padding-right: 1em;
     }
@@ -1719,7 +1825,7 @@ h2.page-search {
     }
     .modalText .modalCover {
         margin: 0 -1em 1em;
-    }
+    }*/
 }
 
 /*--------------------------------------------------------------
@@ -2011,18 +2117,33 @@ input:checked+label {
     font-size: var(--font-size-P-M);
 }
 
-.transac-item-info p:first-child {}
-
 .transac-item-info>div:first-child {
     width: calc(100% - (64px + 12px));
     margin-right: 12px;
 }
 
-.item-image-S {
+.item-image.L {
+    width: 180px;
+    margin: 16px auto;
+}
+
+.item-image.L .img_box {
+    height: 180px;
+}
+
+.item-image.M {
+    width: 96px;
+}
+
+.item-image.M .img_box {
+    height: 96px;
+}
+
+.item-image.S {
     width: 64px;
 }
 
-.item-image-S .img_box {
+.item-image.S .img_box {
     height: 64px;
 }
 

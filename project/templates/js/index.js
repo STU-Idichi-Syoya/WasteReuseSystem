@@ -194,42 +194,7 @@ for (var i = 0; i < checkbox.length; i++) {
     });
 
 }
-/*
- 
-function getCheckedRadioId(){
-    var flag = false; // 選択されているか否かを判定するフラグ
- 
-    //　ラジオボタンの数だけ判定を繰り返す（ボタンを表すインプットタグがあるので１引く）
-    for(var i = 0 ; i < document.getElementsByName('radio').length  ; i++){
-        // i番目のラジオボタンがチェックされているかを判定
-        if(document.getElementsByName('radio')[i].checked){ 
-            flag = true;
-            return i+1;
-        }
-    }*/
 
-/*
-const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'vertical',
-    loop: true,
- 
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-    },
- 
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
- 
-    // And if we need scrollbar
-    scrollbar: {
-        el: '.swiper-scrollbar',
-    },
-});*/
 /*
  
 /* Search Bar Fix（あるところだけ）
@@ -241,15 +206,21 @@ var startPos = 0, winScrollTop = 0;
 $(window).on('scroll', function () {
     winScrollTop = $(this).scrollTop();
     if (winScrollTop >= startPos) {
-
+        //下に行ってる時 top:0まで上げて固定する
         $('.head-fix').addClass('hide');
-        if (winScrollTop <= 60) {
 
+    } else {//上に行ってるとき
+        // $('.head-fix').removeClass('hide');
+        if (winScrollTop <= 60) {//headerの高さ以下までたどり着いたら元の位置に固定する
+            $('.head-fix').removeClass('hide');
         }
-    } else {
-        $('.head-fix').removeClass('hide');
     }
     startPos = winScrollTop;
 });
 
 
+/* URL Copy Button
+    -------------------------------------- */
+function noItem() {
+    $('.mordal-contents.bg-color').css('display', 'block');
+}

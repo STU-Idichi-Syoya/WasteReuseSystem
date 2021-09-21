@@ -114,72 +114,176 @@
     <main>
         <div class="margin-LR">
 
+            <input type="checkbox" id="modal01" class="modalCheck">
+            <div class="btn"><label for="modal01">Modal Open</label></div>
 
+            <input type="checkbox" id="modal02" class="modalCheck">
+            <div class="btn"><label for="modal02">Modal Open</label></div>
 
-            <div class="margin-LR">
+            <div class="mordal-wrapper">
+                <div id="modal01Con" class="modalWrap">
+                    <div class="modalBg"><label for="modal01" class="closeModal"></label></div>
+                    <div class="modalCon">
+                        <div class="modalInner">
+                            <div class="modalCloseBtn"><label for="modal01" class="closeModal"><i
+                                        class="material-icons">close</i></label></div>
+                            <div class="mordal-contents">
+                                <div class="mordal-LR">
+                                    <p class="text-H-S">受け渡し【置いておく】</p>
+                                    <div class="item-image L">
+                                        <div class="img_box">
+                                            <img class="object-fit-cover" src="./images/item/IMG_5538.jpg"
+                                                alt="item image">
+                                        </div>
+                                    </div>
+                                    <div class="item-info">
+                                        <p class="text-H-S">スチのり 4本 実質2本分</p>
+                                        <p class="text-P-M">
+                                            <span>
+                                                投稿者：
+                                            </span><a href="#">Nakayama</a>
+                                        </p>
+                                        <div class="leave-location"><i class="material-icons">place</i><span>1号館 木工室
+                                                端材コーナー</span></div>
 
-                <h1 class="not-component">Tabs</h1>
-                <div class='tabs'>
-                    <div class='tab-buttons'>
-                        <span class='content1'>運営から<span class="badge-notify-num have-notify">12</span></span>
-                        <span class='content2 tab-current'>取引<span class="badge-notify-num">1</span></span>
-                        <span class='content3'>その他<span class="badge-notify-num">99+</span></span>
-                        <div id='lamp' class='content2'></div>
-                    </div>
-                    <div class='tab-content'>
+                                    </div>
+                                    <span class="ticket-line">
+                                        <span class="hole L"></span><span class="hole R"></span>
+                                    </span>
+                                    <div class="combi-btn-link">
+                                        <label for="modal01" class="btn btn-S btn-primary">
+                                            受け取りました！
+                                        </label>
+                                        <a class="link-under-btn-S " onclick="noItem()"><i
+                                                class="material-icons link-icon-L">help_outline</i>アイテムが置いていなかった場合</a>
+                                    </div>
+                                </div>
+                                <div class="mordal-contents bg-color">
+                                    <p class="text-H-S">アイテムがなかった場合</p>
+                                    <p class="text-P-M caution">
+                                        あなたが取りに行く前に、誰かが回収してしまった可能性があります。投稿者に問い合わせることもできますが、投稿者の問題とは限らないことを念頭に置きましょう。</p>
 
-                        <div class='content1'>This is the content of 1 container.This will be open when button 1 is
-                            clicked.This
-                            is the content of 1 container.This will be open when button 1 is clicked.This is the content
-                            of
-                            1
-                            container.This will be open when button 1 is clicked.</div>
+                                    <label for="modal01" class="btn btn-S btn-primary">
+                                        投稿者に問い合わせる
+                                        <i class="material-icons btn-icon-R">navigate_next</i>
+                                    </label>
 
-                        <div class='content2'>This is the content of 2 container.This will be open when button 2 is
-                            clicked.This
-                            is the content of 2 container.This will be open when button 2 is clicked.This is the content
-                            of
-                            2
-                            container.This will be open when button 2 is clicked.</div>
+                                    <p class="text-P-S">取引画面に移動します</p>
+                                    <label for="modal01" href="" class="btn btn-S btn-secondary">
+                                        このまま取引を終わる
+                                    </label>
 
-                        <div class='content3'>This is the content of 3 container.This will be open when button 3 is
-                            clicked.This
-                            is the content of 3 container.This will be open when button 3 is clicked.This is the content
-                            of
-                            3
-                            container.This will be open when button 3 is clicked.</div>
+                                    <p class="text-P-S">投稿者にアイテムがなかった旨は伝わります</p>
 
-                    </div>
-                </div>
-
-
-
-
-
-                <h2 class="not-component">モーダルウィンドウ</h2>
-                <input type="checkbox" id="modal01" class="modalCheck">
-                <div class="btn"><label for="modal01">Modal Open</label></div>
-
-                <div class="mordal-wrapper">
-                    <div id="modal01Con" class="modalWrap">
-                        <div class="modalBg"><label for="modal01" class="closeModal"></label></div>
-                        <div class="modalCon">
-                            <div class="modalInner">
-                                <div class="modalCloseBtn"><label for="modal01" class="closeModal">×</label></div>
-                                <div class="modalText">
-                                    <p>あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
-                                    </p>
-
-                                    <div class="btn small"><label for="modal01">× Modal Close</label></div>
                                 </div>
                             </div>
+                            <!--<div class="btn small"><label for="modal01">× Modal Close</label></div>-->
                         </div>
                     </div>
                 </div>
 
 
+                <div id="modal02Con" class="modalWrap">
+                    <div class="modalBg"><label for="modal02" class="closeModal"></label></div>
+                    <div class="modalCon">
+                        <div class="modalInner">
+                            <div class="modalCloseBtn"><label for="modal02" class="closeModal"><i
+                                        class="material-icons">close</i></label></div>
+                            <div class="mordal-contents">
+                                <div class="mordal-LR">
+                                    <span class="urge-msg">安心な取引をつづけるために</span>
+                                    <p class="text-H-S">お相手の評価をお願いします！</p>
+                                    <p class="text-P-M">これにて取引は完了です、おつかれさまでした。
+                                        最後にお相手の評価をお願いします！</p>
+                                    <div class="evaluation"></div>
+
+                                    <label for="modal02" class="btn btn-S btn-primary">
+                                        送信する
+                                    </label>
+
+                                </div>
+
+                            </div>
+                            <!--<div class="btn small"><label for="modal01">× Modal Close</label></div>-->
+                        </div>
+                    </div>
+                </div>
 
             </div>
+
+
+
+            div class="container">
+            <div class="radio-tile-group">
+                <div class="input-container">
+                    <input id="walk" class="radio-button" type="radio" name="radio" />
+                    <div class="radio-tile">
+                        <div class="icon walk-icon">
+                            <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7" />
+                            </svg>
+                        </div>
+                        <label for="walk" class="radio-tile-label">Walk</label>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <input id="bike" class="radio-button" type="radio" name="radio" />
+                    <div class="radio-tile">
+                        <div class="icon bike-icon">
+                            <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M15.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM5 12c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 8.5c-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5-1.6 3.5-3.5 3.5zm5.8-10l2.4-2.4.8.8c1.3 1.3 3 2.1 5.1 2.1V9c-1.5 0-2.7-.6-3.6-1.5l-1.9-1.9c-.5-.4-1-.6-1.6-.6s-1.1.2-1.4.6L7.8 8.4c-.4.4-.6.9-.6 1.4 0 .6.2 1.1.6 1.4L11 14v5h2v-6.2l-2.2-2.3zM19 12c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 8.5c-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5-1.6 3.5-3.5 3.5z" />
+                            </svg>
+                        </div>
+                        <label for="bike" class="radio-tile-label">Bike</label>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <input id="drive" class="radio-button" type="radio" name="radio" />
+                    <div class="radio-tile">
+                        <div class="icon car-icon">
+                            <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </div>
+                        <label for="drive" class="radio-tile-label">Drive</label>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <input id="fly" class="radio-button" type="radio" name="radio" />
+                    <div class="radio-tile">
+                        <div class="icon fly-icon">
+                            <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.18 9" />
+                                <path
+                                    d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </div>
+                        <label for="fly" class="radio-tile-label">Fly</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+
+
+        </div>
     </main>
 
     <!--Fixed Button-->
