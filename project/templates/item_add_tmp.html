@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block title%}
+アイテム出品
+{% endblock%}
+
+{% block content %}
+
+<body class="text-center">
+    <div class="container">
+        <main>
+            <div class="margin-LR">
+                <!--H1-->
+                <div class="title-seemore h1">
+                    <h1>新規投稿</h1>
+                    <a href="#"><span class="view-all">下書きを見る</span><i class="material-icons">navigate_next</i></a>
+                </div>
+                <form>
+
+                    <label for="item-name" class="text-H-SS">アイテムの画像</label><span
+                        class="badge-necessity required">必須</span>
+
+                    <ul class="post-images">
+                        <li>
+                            <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg"
+                                    alt="img">
+                                <button class="btn-delete"><span class="material-icons-round">
+                                        delete
+                                    </span>
+                                </button>
+                                <i class="material-icons">photo_camera</i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg"
+                                    alt="img">
+                                <button class="btn-delete"><span class="material-icons-round">
+                                        delete
+                                    </span>
+                                </button>
+                                <i class="material-icons">photo_camera</i>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg"
+                                    alt="img">
+                                <button class="btn-delete"><span class="material-icons-round">
+                                        delete
+                                    </span>
+                                </button>
+                                <i class="material-icons">photo_camera</i>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg"
+                                    alt="img">
+                                <button class="btn-delete"><span class="material-icons-round">
+                                        delete
+                                    </span>
+                                </button>
+                                <i class="material-icons">photo_camera</i>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg"
+                                    alt="img">
+                                <button class="btn-delete"><span class="material-icons-round">
+                                        delete
+                                    </span>
+                                </button>
+                                <i class="material-icons">photo_camera</i>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg"
+                                    alt="img">
+                                <button class="btn-delete"><span class="material-icons-round">
+                                        delete
+                                    </span>
+                                </button>
+                                <i class="material-icons">photo_camera</i>
+                            </div>
+
+                        </li>
+                    </ul>
+
+
+                    <label for="item-name" class="text-H-SS">アイテム名</label><span
+                        class="badge-necessity required">必須</span>
+                    <input type="text" id="item-name">
+                    </label>
+                    <p class="error-msg">入力してください</p>
+
+
+
+                    <label for="item-description" class="text-H-SS">アイテムの説明</label><span
+                        class="badge-necessity optional">任意</span>
+                    <textarea name="item-description"
+                        placeholder="例）昨年11月に生協購入したものです。B3サイズのから円をいくつかくり抜いていて、6割ほど余っています。 #建築模型" rows="4"
+                        cols="40"></textarea>
+                    <p class="caption">#（ハッシュタグ）が使えます</p>
+                    <p class="error-msg">入力してください</p>
+
+                    <label for="how-delivery" class="text-H-SS">受け渡し方法</label><span
+                        class="badge-necessity required">必須</span>
+                    <div class="select-container">
+                        <select name="how-delivery" id="how-delivery">
+                            <option value="leave">置いておく</option>
+                            <option value="hand">手渡し</option>
+                        </select>
+                    </div>
+                    <p class="error-msg">選択してください</p>
+
+
+                    <label for="location" class="text-H-SS">受け渡し場所</label><span
+                        class="badge-necessity required">必須</span>
+
+                    <label for="location-map" class="text-P-M small-label-1">地図にピンを刺す</label>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.2633975511535!2d141.33782431587557!3d43.077957479145276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b290bc5dc9a43%3A0x425f98023e0b86d5!2z5YyX5rW36YGT5aSn5a2m!5e0!3m2!1sja!2sjp!4v1632154798729!5m2!1sja!2sjp"
+                        width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="location-text-delete">
+                        <div class="location-text">
+                            <i class="material-icons">place</i>
+                            <span class=".locaiton">北海道札幌市北区北13条西８丁目</span>
+                        </div>
+                        <button class="btn-pin-delete">
+                            <i class="material-icons">close</i>
+                            ピンを削除する
+                        </button>
+                    </div>
+
+                    <label for="location-description" class="text-P-M">テキストで伝える</label>
+                    <input type="text" id="location-description">
+                    </label>
+                    <p class="caption">地図だけで伝わりにくい場合は補足しておくと丁寧です</p>
+                    <p class="error-msg">ピンかテキストのいずれかは必ず使用してください。</p>
+
+                    <label for="expire" class="text-H-SS">有効期限</label><span class="badge-necessity required">必須</span>
+                    <label for="expire-term" class="text-P-M small-label-1">期間から選ぶ</label>
+                    <group id="expire-term" class="inline-radio">
+                        <div><input type="radio" name="expire-terms" id="1month" value="1"><label>1ヶ月</label></div>
+                        <div><input type="radio" name="expire-terms" id="3months" value="3"><label>3ヶ月</label></div>
+                        <div><input type="radio" name="expire-terms" id="half-year" value="6"><label>半年</label></div>
+                        <div><input type="radio" name="expire-terms" id="1-year" value="12"><label>1年</label></div>
+
+                    </group>
+
+                    <label for="expire-term" class="text-P-M">日付から選ぶ</label>
+                    <input type="date" id="expire-date" name="expire-date" value="" min="2021-09-01" max="2022-10-7">
+                    <p class="caption">最大1年間</p>
+                    <p class="error-msg">入力してください</p>
+                </form>
+
+                <script>
+                    /* 期間を選ぶボタン（あるところだけ）
+                        -------------------------------------- */
+                    //デフォルトで3ヶ月先をdatapickerに入れておく
+                    window.onload = function () {
+                        getTargetYMD(3)
+
+                    }
+                    //今日の日付＋ラジオボタンで選ばれた期間を返す
+                    function getTargetYMD(N) {
+                        var dt = new Date();
+                        //Nか月後
+                        if (N == 12) {
+                            dt.setFullYear(dt.getFullYear() + 1);
+                        } else {
+                            dt.setMonth(dt.getMonth() + N);
+                        }
+
+                        var y = dt.getFullYear();
+                        var m = ("00" + (dt.getMonth() + 1)).slice(-2);
+                        var d = ("00" + dt.getDate()).slice(-2);
+                        var result = y + "-" + m + "-" + d;
+                        console.log(result);
+                        $("#expire-date").val(result);
+                        return result;
+                    }
+
+                    //ラジオボタンの値の変化を読み取る
+                    function valueChange(event) {
+                        let selectValue = parseInt(event.currentTarget.value, 10);
+                        console.log(selectValue)
+                        getTargetYMD(selectValue);
+                    }
+
+                    let expireTerm1 = document.getElementById('1month');
+                    expireTerm1.addEventListener('change', valueChange);
+
+                    let expireTerm2 = document.getElementById('3months');
+                    expireTerm2.addEventListener('change', valueChange);
+
+                    let expireTerm3 = document.getElementById('half-year');
+                    expireTerm3.addEventListener('change', valueChange);
+
+                    let expireTerm4 = document.getElementById('1-year');
+                    expireTerm4.addEventListener('change', valueChange);
+                </script>
+
+                <div class="combi-btn-link">
+                    <a href="" class="btn btn-M btn-primary">
+                        投稿する
+                        <i class="material-icons btn-icon-R">navigate_next</i>
+                    </a>
+                    <a href="" class="btn btn-M btn-secondary">
+                        下書きに保存する
+                        <i class="material-icons btn-icon-R">navigate_next</i>
+                    </a>
+                    <a href="" class="link-under-btn-M"><i class="material-icons link-icon-L">close</i>削除する</a>
+                </div>
+            </div>
+    </div>
+</body>
+{% endblock %}

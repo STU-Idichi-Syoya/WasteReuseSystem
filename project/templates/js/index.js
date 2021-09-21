@@ -125,7 +125,14 @@ $(function () {
     })
 });
 
+/* 投稿画面 撮影/選択済みの画像の削除 
+   -------------------------------------- */
+$(function () {
+    $('.btn-delete').click(function () {
+        //写真を消す
 
+    })
+});
 
 
 
@@ -253,6 +260,10 @@ var mySwiper = new Swiper(".swiper-container", {
     },
 });
 */
+
+/* Search Bar Fix（あるところだけ）
+    -------------------------------------- */
+/*スクロールすると検索フィールドが上に固定される（実は微妙にうまく行ってない）*/
 var startPos = 0, winScrollTop = 0;
 
 
@@ -270,3 +281,27 @@ $(window).on('scroll', function () {
     startPos = winScrollTop;
 });
 
+
+
+const swiper = new Swiper('.swiper-container', {
+    // スライドメニューの表示方法
+    direction: 'horizontal',
+    loop: true,
+    autoHeight: true,
+    autoplay: {
+        delay: 1000,
+    },
+    // スライドのページネーション表示
+    pagination: {
+        el: '.swiper-pagination',
+    },
+    // 「次へ」や「戻る」のアイコン表示
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    // スクロールバーの表示
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+});
