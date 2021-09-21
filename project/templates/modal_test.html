@@ -116,6 +116,97 @@
 
 
 
+            <div class="modal-open check-conditions leave">クリックで取引開始確認用モーダル（置いておく）を表示</div>
+            <div class="modal-wrapper check-conditions leave">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-conditions leave">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">スチのり 4本 実質2本分</p>
+                        <p class="text-P-M">
+                            <span>
+                                投稿者：
+                            </span><a href="#">Nakayama</a>
+                        </p>
+                        <p class="text-H-SS">【置いておく】による受け渡しです
+                        </p>
+                        <img class="" src="./images/leave.svg" alt="置いておく">
+                        <ul>
+                            <li>
+                                あなたが取りに行く前に、誰かが回収してしまう可能性があります。</li>
+                            <li>2週間以内に受け取り完了が確認されない場合、「もらい手」が自動的にキャンセルされます。
+                            </li>
+                        </ul>
+                        <label class="checkbox-label">
+                            <input id="checked-conditions" type="checkbox" value="accept" required>
+                            <span class="checkmark"></span>
+                            条件を確認しました
+                        </label>
+                        <script>
+                            function valueChange(event) {
+                                document.getElementById('btn-confirm').classList.add('checked');
+                            }
+
+                            document.getElementById('checked-conditions').addEventListener('change', valueChange);
+                        </script>
+
+                        <a id="btn-confirm" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                            確定する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="modal-open check-conditions hand">クリックで取引開始確認用モーダル（手渡し）を表示</div>
+            <div class="modal-wrapper check-conditions hand">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-conditions hand">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">スチのり 4本 実質2本分</p>
+                        <p class="text-P-M">
+                            <span>
+                                投稿者：
+                            </span><a href="#">Nakayama</a>
+                        </p>
+                        <p class="text-H-SS">【手渡し】による受け渡しです
+                        </p>
+                        <img class="" src="./images/hand-to-hand.svg" alt="手渡し">
+                        <ul>
+                            <li>
+                                投稿者と対面での受け渡しになります
+                            </li>
+                            <li>取引画面で受け渡し日時・場所の調整が必要です
+                            </li>
+                        </ul>
+                        <label class="checkbox-label">
+                            <input id="checked-conditions" type="checkbox" value="accept" required>
+                            <span class="checkmark"></span>
+                            条件を確認しました
+                        </label>
+                        <script>
+
+                            function valueChange(event) {
+                                document.getElementById('btn-confirm').classList.add('checked');
+                            }
+
+                            document.getElementById('checked-conditions').addEventListener('change', valueChange);
+                        </script>
+
+                        <a id="btn-confirm" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                            確定する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
 
             <div class="modal-open delivey-leave">クリックで受け渡し（置いておく）用モーダルを表示</div>
             <div class="modal-wrapper delivey-leave">
@@ -130,17 +221,16 @@
                                 <img class="object-fit-cover" src="./images/item/IMG_5538.jpg" alt="item image">
                             </div>
                         </div>
-                        <div class="item-info">
-                            <p class="text-H-S">スチのり 4本 実質2本分</p>
-                            <p class="text-P-M">
-                                <span>
-                                    投稿者：
-                                </span><a href="#">Nakayama</a>
-                            </p>
-                            <div class="leave-location"><i class="material-icons">place</i><span>1号館 木工室
-                                    端材コーナー</span></div>
 
-                        </div>
+                        <p class="text-H-S">スチのり 4本 実質2本分</p>
+                        <p class="text-P-M">
+                            <span>
+                                投稿者：
+                            </span><a href="#">Nakayama</a>
+                        </p>
+                        <div class="leave-location"><i class="material-icons">place</i><span>1号館 木工室
+                                端材コーナー</span></div>
+
                         <span class="ticket-line">
                             <span class="hole L"></span><span class="hole R"></span>
                         </span>

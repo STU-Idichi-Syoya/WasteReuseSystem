@@ -1175,6 +1175,14 @@ select {
     margin: 0 2px;
 }
 
+#btn-confirm {
+    background-color: var(--color-gray-4);
+}
+
+#btn-confirm.checked {
+    background-color: var(--color-primary);
+}
+
 /* Toggle ----------------------------- */
 
 .vc-toggle-container * {
@@ -1624,7 +1632,7 @@ body.fixed {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 44px 0;
+    padding: 36px 0 24px;
     z-index: 900;
     text-align: center;
     overflow: auto;
@@ -1726,6 +1734,30 @@ i.modal-close {
 
 .modal-contents .bg-color .btn-primary+p {
     margin-bottom: 16px;
+}
+
+.check-conditions img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    margin: 8px auto;
+}
+
+.check-conditions ul {
+    text-align: left;
+    font-size: var(--font-size-P-S);
+    color: var(--color-gray-2);
+}
+
+.check-conditions ul li {
+    list-style: disc;
+    margin-left: 2em;
+}
+
+.check-conditions .checkbox-label {
+    display: inline-block;
+    margin: 24px 0;
 }
 
 /* Evaluation ----------------------------- */

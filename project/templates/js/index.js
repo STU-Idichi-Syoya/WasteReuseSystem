@@ -250,50 +250,68 @@ function postComment() {
     //コメントの送信　できなくてもいいので一旦パス
 }
 
-/*--------------------------------------------------------------
-#modal window　関連
---------------------------------------------------------------*/
-var scrollPos;
+
 
 /*--------------------------------------------------------------
-#取引
+#アイテムの取引に関わる関数（モーダル関連）
 --------------------------------------------------------------*/
-
-
-function gotoDelivery(howDelivery) {
-    //「受け渡しに進む」ボタンクリックで
-    if (howDelivery == leave) {
+/* 取引
+-------------------------------------- */
+function checkConditions() {
+    let howDelivery = $('#disp-how-delivery').value;
+    console.log(howDelivery);
+    //アイテム詳細「もらい手になる」ボタンを押したら取引開始確定前のチェックモーダルに飛ばす
+    if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
         //受け渡し（置いておく）モーダルを開く
-        scrollPos = $(window).scrollTop();
-        $('.modal-wrapper.delivey-leave').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
+        $('.modal-wrapper.check-conditions.leave').fadeIn();
         return false;
-    } else {
 
+    } else {//受け渡し方法が「手渡し」の場合
+        $('.modal-wrapper.check-conditions.hand').fadeIn();
+        return false;
     }
 }
 
+
+function gotoTransaction() {
+    //取引開始確認モーダルの「確定する」ボタンを押したら
+    //確認モーダルを非表示
+    $('.modal-wrapper.check-conditions').fadeOut().css({ top: 0 });
+    //取引ページに飛ぶ
+}
+
+function gotoDelivery() {
+    let howDelivery = '置いておく'
+    //取引画面「受け渡しに進む」ボタンを押したら
+    if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
+        //受け渡し（置いておく）モーダルを開く
+        $('.modal-wrapper.delivey-leave').fadeIn();
+        return false;
+    } else {//受け渡し方法が「手渡し」の場合
+
+    }
+}
+/* 取引
+-------------------------------------- */
 function cancelTransaction() {
-    /*「取引をキャンセルする」ボタンクリックで取引キャンセル画面に遷移する */
+    /*取引画面「取引をキャンセルする」ボタンを押したら取引キャンセル画面に遷移する */
+    $('.modal-wrapper.cancel-transaction').fadeIn();
+    return false;
 }
 
 function endCancel() {
-
-    //キャンセルメッセージを「送信する」ボタンをクリックで、
+    //キャンセルメッセージを「送信する」ボタンをを押したら、
     //キャンセル理由とメッセージの取得
     let whyCancel = $('#why-cancel').value
     let canselMsg = $('#cansel-msg').value
     console.log(whyCancel, canselMsg);//なぜかundefined、わからない、ほっとく
     //取引キャンセル用モーダルを表示オフ
     $('.modal-wrapper.cancel-transaction').fadeOut().css({ top: 0 });
-    $('body').removeClass('fixed');
-    $(window).scrollTop(scrollPos);
     return false;
-    //トップページに飛ばしたい
 
 }
 
-/* 受け渡し
+/* 受け渡し〜評価
 -------------------------------------- */
 function noItem() {
     /*初めは隠してあるヘルプコンテンツの表示 */
@@ -301,76 +319,107 @@ function noItem() {
 }
 
 function gotoEvaluation() {
-    //「受け取りました！」ボタンをクリックで、取引用モーダルを表示オフしてから評価用のモーダルを表示
+    //「受け取りました！」ボタンをを押したら、取引用モーダルを表示オフしてから評価用のモーダルを表示
     $('.modal-wrapper.delivey-leave').fadeOut().css({ top: 0 });
     $('.modal-wrapper.evaluation').fadeIn();
     return false;
     /*受け渡し（取引）完了の送信 */
 }
 function submitEvaluation() {
+    //評価モーダルを閉じる
+    $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
+    return false;
     //評価の送信
     //チェックされてるラジオボタンの値を取ればいいと思うけどパス
+
 }
 function endTransaction() {
-    //「このまま取引を終わる」ボタンをクリックで、取引用モーダルを表示オフ
+    //「このまま取引を終わる」ボタンをを押したら、取引用モーダルを表示オフ
     $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
-    $('body').removeClass('fixed');
-    $(window).scrollTop(scrollPos);
     return false;
     /*実質受け渡し（取引）完了の送信 */
 }
 
 
-/* テスト用
--------------------------------------- */
+// moral_test.html テスト用　閉じる用
+
 $(function () {
 
+    // 取引開始確認モーダルの開閉（置いておく）
 
-    /* 取引キャンセルモーダルの開閉
-     -------------------------------------- */
-    $('.modal-open.cancel-transaction').click(function () {
-        scrollPos = $(window).scrollTop();
-        $('.modal-wrapper.cancel-transaction').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
+    /*  $('.modal-open.check-conditions.leave').click(function () {
+          scrollPos = $(window).scrollTop();
+          $('.modal-wrapper.check-conditions.leave').fadeIn();
+          $('body').addClass('fixed').css({ top: -scrollPos });
+          return false;
+      });*/
+    $('.overlay, .modal-close.check-conditions.leave').click(function () {
+        $('.modal-wrapper.check-conditions.leave').fadeOut().css({ top: 0 });
+        // $('body').removeClass('fixed');
+        //$(window).scrollTop(scrollPos);
         return false;
     });
+
+    // 取引開始確認モーダルの開閉（手渡し）
+    /*
+        $('.modal-open.check-conditions.hand').click(function () {
+            scrollPos = $(window).scrollTop();
+            $('.modal-wrapper.check-conditions.hand').fadeIn();
+            $('body').addClass('fixed').css({ top: -scrollPos });
+            return false;
+        });*/
+    $('.overlay, .modal-close.check-conditions.hand').click(function () {
+        $('.modal-wrapper.check-conditions.hand').fadeOut().css({ top: 0 });
+        // $('body').removeClass('fixed');
+        //$(window).scrollTop(scrollPos);
+        return false;
+    });
+
+
+    // 取引キャンセルモーダルの開閉
+    /*
+        $('.modal-open.cancel-transaction').click(function () {
+            scrollPos = $(window).scrollTop();
+            $('.modal-wrapper.cancel-transaction').fadeIn();
+            $('body').addClass('fixed').css({ top: -scrollPos });
+            return false;
+        });*/
     $('.overlay, .modal-close.cancel-transaction').click(function () {
         $('.modal-wrapper.cancel-transaction').fadeOut().css({ top: 0 });
-        $('body').removeClass('fixed');
-        $(window).scrollTop(scrollPos);
+        // $('body').removeClass('fixed');
+        //$(window).scrollTop(scrollPos);
         return false;
     });
 
 
-    /* 受け渡しモーダルの開閉
-    -------------------------------------- */
+    // 受け渡し（置いておく）モーダルの開閉
     var scrollPos;
-    $('.modal-open.delivey-leave').click(function () {
-        scrollPos = $(window).scrollTop();
-        $('.modal-wrapper.delivey-leave').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
-        return false;
-    });
+    /* $('.modal-open.delivey-leave').click(function () {
+         scrollPos = $(window).scrollTop();
+         $('.modal-wrapper.delivey-leave').fadeIn();
+         $('body').addClass('fixed').css({ top: -scrollPos });
+         return false;
+     });*/
     $('.overlay, .modal-close.delivey-leave').click(function () {
         $('.modal-wrapper.delivey-leave').fadeOut().css({ top: 0 });
-        $('body').removeClass('fixed');
-        $(window).scrollTop(scrollPos);
+        // $('body').removeClass('fixed');
+        //$(window).scrollTop(scrollPos);
         return false;
     });
 
 
-    /* 評価モーダルの開閉
-        -------------------------------------- */
-    $('.modal-open.evaluation').click(function () {
-        scrollPos = $(window).scrollTop();
-        $('.modal-wrapper.evaluation').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
-        return false;
-    });
+    //評価モーダルの開閉
+
+    /* $('.modal-open.evaluation').click(function () {
+         scrollPos = $(window).scrollTop();
+         $('.modal-wrapper.evaluation').fadeIn();
+         $('body').addClass('fixed').css({ top: -scrollPos });
+         return false;
+     });*/
     $('.overlay, .modal-close.evaluation').click(function () {
         $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
-        $('body').removeClass('fixed');
-        $(window).scrollTop(scrollPos);
+        // $('body').removeClass('fixed');
+        //$(window).scrollTop(scrollPos);
         return false;
     });
 
