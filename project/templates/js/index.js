@@ -320,17 +320,25 @@ function gotoTransaction() {
     //確認モーダルを非表示
     $('.modal-wrapper.check-conditions').fadeOut().css({ top: 0 });
     //取引ページに飛ぶ
+    return false;
 }
 
 function gotoDelivery() {
-    let howDelivery = '置いておく'
+    let howDelivery = '手渡し'//受け渡し方法、本当はどこかからとってくる
+    let role = "もらい手"//ユーザーの役割、本当はどこかからとってくる
     //取引画面「受け渡しに進む」ボタンを押したら
     if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
         //受け渡し（置いておく）モーダルを開く
-        $('.modal-wrapper.delivey-leave').fadeIn();
+        $('.modal-wrapper.delivey.leave').fadeIn();
         return false;
     } else {//受け渡し方法が「手渡し」の場合
-
+        if (role == '投稿者') {//役割が投稿者の場合
+            $('.modal-wrapper.delivey.hand.contributor').fadeIn();
+            return false;
+        } else {//役割がもらい手の場合
+            $('.modal-wrapper.delivey.hand.recipient').fadeIn();
+            return false;
+        }
     }
 }
 /* 取引
@@ -362,7 +370,7 @@ function noItem() {
 
 function gotoEvaluation() {
     //「受け取りました！」ボタンをを押したら、取引用モーダルを表示オフしてから評価用のモーダルを表示
-    $('.modal-wrapper.delivey-leave').fadeOut().css({ top: 0 });
+    $('.modal-wrapper.delivey').fadeOut().css({ top: 0 });
     $('.modal-wrapper.evaluation').fadeIn();
     return false;
     /*受け渡し（取引）完了の送信 */
@@ -379,55 +387,46 @@ function endTransaction() {
     //「このまま取引を終わる」ボタンをを押したら、取引用モーダルを表示オフ
     $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
     return false;
-    /*実質受け渡し（取引）完了の送信 */
+    //実質受け渡し（取引）完了の送信
 }
 
 
-// moral_test.html テスト用　閉じる用
+// 閉じる用・moral_test.htmlで開くテスト用
 
 $(function () {
 
     // 下書き削除モーダルの開閉）
 
     $('.modal-open.check-delete').click(function () {
-        scrollPos = $(window).scrollTop();
+
         $('.modal-wrapper.check-delete').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
         return false;
     });
     $('.overlay, .modal-close.check-delete').click(function () {
         $('.modal-wrapper.check-delete').fadeOut().css({ top: 0 });
-        // $('body').removeClass('fixed');
-        //$(window).scrollTop(scrollPos);
         return false;
     });
     // 投稿確認モーダルの開閉（置いておく）
 
     $('.modal-open.check-post.leave').click(function () {
-        scrollPos = $(window).scrollTop();
+
         $('.modal-wrapper.check-post.leave').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
         return false;
     });
     $('.overlay, .modal-close.check-post.leave').click(function () {
         $('.modal-wrapper.check-post.leave').fadeOut().css({ top: 0 });
-        // $('body').removeClass('fixed');
-        //$(window).scrollTop(scrollPos);
         return false;
     });
 
     // 投稿確認モーダルの開閉（手渡し）
 
     $('.modal-open.check-post.hand').click(function () {
-        scrollPos = $(window).scrollTop();
+
         $('.modal-wrapper.check-post.hand').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
         return false;
     });
     $('.overlay, .modal-close.check-post.hand').click(function () {
         $('.modal-wrapper.check-post.hand').fadeOut().css({ top: 0 });
-        // $('body').removeClass('fixed');
-        //$(window).scrollTop(scrollPos);
         return false;
     });
 
@@ -435,30 +434,24 @@ $(function () {
     // 取引開始確認モーダルの開閉（置いておく）
 
     $('.modal-open.check-conditions.leave').click(function () {
-        scrollPos = $(window).scrollTop();
+
         $('.modal-wrapper.check-conditions.leave').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
         return false;
     });
     $('.overlay, .modal-close.check-conditions.leave').click(function () {
         $('.modal-wrapper.check-conditions.leave').fadeOut().css({ top: 0 });
-        // $('body').removeClass('fixed');
-        //$(window).scrollTop(scrollPos);
         return false;
     });
 
     // 取引開始確認モーダルの開閉（手渡し）
 
     $('.modal-open.check-conditions.hand').click(function () {
-        scrollPos = $(window).scrollTop();
+
         $('.modal-wrapper.check-conditions.hand').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
         return false;
     });
     $('.overlay, .modal-close.check-conditions.hand').click(function () {
         $('.modal-wrapper.check-conditions.hand').fadeOut().css({ top: 0 });
-        // $('body').removeClass('fixed');
-        //$(window).scrollTop(scrollPos);
         return false;
     });
 
@@ -466,47 +459,67 @@ $(function () {
     // 取引キャンセルモーダルの開閉
 
     $('.modal-open.cancel-transaction').click(function () {
-        scrollPos = $(window).scrollTop();
+
         $('.modal-wrapper.cancel-transaction').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
         return false;
     });
     $('.overlay, .modal-close.cancel-transaction').click(function () {
         $('.modal-wrapper.cancel-transaction').fadeOut().css({ top: 0 });
-        // $('body').removeClass('fixed');
-        //$(window).scrollTop(scrollPos);
         return false;
     });
 
 
     // 受け渡し（置いておく）モーダルの開閉
-    var scrollPos;
-    $('.modal-open.delivey-leave').click(function () {
-        scrollPos = $(window).scrollTop();
-        $('.modal-wrapper.delivey-leave').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
+
+    $('.modal-open.delivey.leave').click(function () {
+
+        $('.modal-wrapper.delivey.leave').fadeIn();
         return false;
     });
-    $('.overlay, .modal-close.delivey-leave').click(function () {
-        $('.modal-wrapper.delivey-leave').fadeOut().css({ top: 0 });
-        // $('body').removeClass('fixed');
-        //$(window).scrollTop(scrollPos);
+    $('.overlay, .modal-close.delivey.leave').click(function () {
+        $('.modal-wrapper.delivey.leave').fadeOut().css({ top: 0 });
         return false;
     });
+
+
+    // 受け渡し（手渡し,もらい手）モーダルの開閉
+
+    $('.modal-open.delivey.hand.recipient').click(function () {
+
+        $('.modal-wrapper.delivey.hand.recipient').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.delivey.hand.recipient').click(function () {
+        $('.modal-wrapper.delivey.hand.recipient').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+    // 受け渡し（手渡し,投稿者）モーダルの開閉
+
+    $('.modal-open.delivey.hand.contributor').click(function () {
+
+        $('.modal-wrapper.delivey.hand.contributor').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.delivey.hand.contributor').click(function () {
+        $('.modal-wrapper.delivey.hand.contributor').fadeOut().css({ top: 0 });
+        return false;
+    });
+
 
 
     //評価モーダルの開閉
 
     $('.modal-open.evaluation').click(function () {
-        scrollPos = $(window).scrollTop();
+
         $('.modal-wrapper.evaluation').fadeIn();
-        $('body').addClass('fixed').css({ top: -scrollPos });
+
         return false;
     });
     $('.overlay, .modal-close.evaluation').click(function () {
         $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
-        // $('body').removeClass('fixed');
-        //$(window).scrollTop(scrollPos);
+
+
         return false;
     });
 

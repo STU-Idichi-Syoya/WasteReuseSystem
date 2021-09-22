@@ -2396,6 +2396,49 @@ input:checked+label {
     margin: 0;
 }
 
+.attention {
+    color: var(--color-gray-7);
+    background-color: var(--color-secondary);
+    padding: 4px 0;
+    width: 100%;
+    font-size: var(--font-size-P-M);
+    font-weight: 700;
+    margin: 16px 0;
+}
+
+.who-i-am {
+    margin-top: 16px;
+}
+
+.who-i-am p {
+    margin: 4px 0;
+}
+
+.item-to-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-to-user .item-image.M {
+    margin-right: 12px;
+}
+
+.item-to-user .user-image.M {
+    margin-left: 12px;
+}
+
+.item-to-user .user-image img {
+    border: none;
+}
+
+.triangle {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 18px solid var(--color-primary);
+    margin-left: 12px;
+}
+
 /*--------------------------------------------------------------
 #可視性の操作（上書きする必要があるため一番最後に書く）
 --------------------------------------------------------------*/
