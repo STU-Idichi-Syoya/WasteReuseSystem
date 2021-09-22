@@ -176,6 +176,14 @@ function copyUrl() {
     element.select();
     document.execCommand('copy');
     document.body.removeChild(element);
+
+    //queue()で処理を溜めてdequeue()で実行。3秒経ったらfadeOut()
+    $(".msg-url-copied").fadeIn().queue(function () {
+        setTimeout(function () {
+            $(".msg-url-copied").dequeue();
+        }, 1600);
+    });
+    $(".msg-url-copied").fadeOut();
 }
 /* Share Button
     -------------------------------------- */
