@@ -1175,11 +1175,11 @@ select {
     margin: 0 2px;
 }
 
-#btn-confirm {
+#btn-confirm-cpleave, #btn-confirm-cphand, #btn-confirm-ccleave, #btn-confirm-cchand {
     background-color: var(--color-gray-4);
 }
 
-#btn-confirm.checked {
+#btn-confirm-cpleave.checked, #btn-confirm-cphand.checked, #btn-confirm-ccleave.checked, #btn-confirm-cchand.checked {
     background-color: var(--color-primary);
 }
 
@@ -1736,7 +1736,19 @@ i.modal-close {
     margin-bottom: 16px;
 }
 
-.check-conditions img {
+.check-delete img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+    margin: 8px auto;
+}
+
+.check-delete .btn-S {
+    margin-top: 16px;
+}
+
+.check-conditions img, .check-post img {
     display: block;
     width: 100px;
     height: 100px;
@@ -1744,18 +1756,18 @@ i.modal-close {
     margin: 8px auto;
 }
 
-.check-conditions ul {
+.check-conditions ul, .check-post ul {
     text-align: left;
     font-size: var(--font-size-P-S);
     color: var(--color-gray-2);
 }
 
-.check-conditions ul li {
+.check-conditions ul li, .check-post ul li {
     list-style: disc;
     margin-left: 2em;
 }
 
-.check-conditions .checkbox-label {
+.check-conditions .checkbox-label, .check-post .checkbox-label {
     display: inline-block;
     margin: 24px 0;
 }

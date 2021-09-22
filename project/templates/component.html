@@ -200,10 +200,10 @@
                 <p class="caption">#（ハッシュタグ）が使えます</p>
                 <p class="error-msg">入力してください</p>
 
-                <label for="how-delivery" class="text-H-SS">受け渡し方法</label><span
+                <label for="input-how-delivery" class="text-H-SS">受け渡し方法</label><span
                     class="badge-necessity required">必須</span>
                 <div class="select-container">
-                    <select name="how-delivery" id="how-delivery">
+                    <select name="input-how-delivery" id="input-how-delivery">
                         <option value="leave">置いておく</option>
                         <option value="hand">手渡し</option>
                     </select>
@@ -222,7 +222,7 @@
                         <i class="material-icons">place</i>
                         <span>北海道札幌市北区北13条西８丁目</span>
                     </div>
-                    <button class="btn-nagative">
+                    <button class="btn-pin-delete">
                         <i class="material-icons">close</i>
                         ピンを削除する
                     </button>
@@ -298,19 +298,19 @@
             </script>
 
             <div class="combi-btn-link">
-                <a href="" class="btn btn-M btn-primary">
+                <a class="btn btn-M btn-primary" onclick="checkPost()">
                     投稿する
-                    <i class="material-icons btn-icon-R">navigate_next</i>
+
                 </a>
-                <a href="" class="btn btn-M btn-secondary">
+                <a class="btn btn-M btn-secondary" onclick="savePost()">
                     下書きに保存する
-                    <i class="material-icons btn-icon-R">navigate_next</i>
+
                 </a>
-                <a href="" class="link-under-btn-M"><i class="material-icons link-icon-L">close</i>削除する</a>
+                <a class="link-under-btn-M" onclick="checkDeletePost()"><i
+                        class="material-icons link-icon-L">close</i>削除する</a>
             </div>
-
         </div>
-
+        <div class="spacing"></div>
         <div class="margin-LR">
             <!-- Swiper -->
             <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events">
@@ -931,7 +931,7 @@
 
             <div class="search-detail">
                 <div class="select-container">
-                    <select name="how-delivery" id="how-delivery">
+                    <select name="sort-item" id="sort-item">
                         <option value="leave">新しい順</option>
                         <option value="hand">有効期限が近い順</option>
                     </select>
@@ -1667,6 +1667,109 @@
             </div>
 
 
+
+
+
+            <div class="modal-open check-post leave">クリックで投稿確認用モーダル（置いておく）を表示</div>
+            <div class="modal-wrapper check-post leave">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-post leave">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">受け渡し方法として
+                            【置いておく】を選択しています</p>
+                        <img class="" src="./images/leave.svg" alt="置いておく">
+                        <ul>
+                            <li>
+                                意図せずものがなくなる恐れがあります。あなたの問題でなくとも問い合わせがくる可能性がありますが、落ち着いて正直に対応しましょう。</li>
+                            <li>期限までに貰い手が現れなかった場合は自分で責任を持って処理しましょう。
+                            </li>
+                            <li>
+                                置き場の治安維持に努めましょう。
+                            </li>
+                        </ul>
+                        <label class="checkbox-label">
+                            <input id="checked-post-leave" type="checkbox" value="accept" required>
+                            <span class="checkmark"></span>
+                            条件を確認しました
+                        </label>
+                        <script>
+                            function valueChange(event) {
+                                document.getElementById('btn-confirm-cpleave').classList.add('checked');
+                            }
+
+                            document.getElementById('checked-post-leave').addEventListener('change', valueChange);
+                        </script>
+
+                        <a id="btn-confirm-cpleave" class="btn btn-S btn-primary" onclick="postItem()">
+                            確定する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal-open check-post hand">クリックで投稿確認用モーダル（手渡し）を表示</div>
+            <div class="modal-wrapper check-post hand">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-post hand">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">受け渡し方法として
+                            【手渡し】を選択しています</p>
+                        <img class="" src="./images/hand-to-hand.svg" alt="手渡し">
+                        <ul>
+                            <li>
+                                もらい手と対面での受け渡しになります
+                            </li>
+                            <li>取引画面で受け渡し日時・場所の調整が必要です
+                            </li>
+                        </ul>
+                        <label class="checkbox-label">
+                            <input id="checked-post-hand" type="checkbox" value="accept" required>
+                            <span class="checkmark"></span>
+                            条件を確認しました
+                        </label>
+                        <script>
+                            function valueChange(event) {
+                                document.getElementById('btn-confirm-cphand').classList.add('checked');
+                            }
+
+                            document.getElementById('checked-post-hand').addEventListener('change', valueChange);
+                        </script>
+
+                        <a id="btn-confirm-cphand" class="btn btn-S btn-primary" onclick="postItem()">
+                            確定する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal-open check-delete leave">クリックで下書き削除用モーダルを表示</div>
+            <div class="modal-wrapper check-delete leave">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-delete leave">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">下書きを削除しますか？</p>
+                        <img class="" src="./images/delete.svg" alt="置いておく">
+                        <p>
+                            この操作は取り消せません
+                        </p>
+
+                        <a id="btn-confirm-delete" class="btn btn-S btn-primary" onclick="deletePost()">
+                            下書きを削除する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
 
 
 

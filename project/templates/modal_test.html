@@ -113,9 +113,115 @@
 
     <main>
         <div class="margin-LR">
+            <!--<<START>> 下書き削除確認用モーダル-->
+            <div class="modal-open check-delete leave">クリックで下書き削除用モーダルを表示</div>
 
+            <div class="modal-wrapper check-delete leave">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-delete leave">close</i>
 
+                    <div class="modal-LR">
+                        <p class="text-H-S">下書きを削除しますか？</p>
+                        <img class="" src="./images/delete.svg" alt="置いておく">
+                        <p>
+                            この操作は取り消せません
+                        </p>
 
+                        <a id="btn-confirm-delete" class="btn btn-S btn-primary" onclick="deletePost()">
+                            下書きを削除する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <!--<<END>> 下書き削除確認用モーダル-->
+
+            <!--<<START>> 投稿確認（置いておく）用モーダル-->
+            <div class="modal-open check-post leave">クリックで投稿確認用モーダル（置いておく）を表示</div>
+            <div class="modal-wrapper check-post leave">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-post leave">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">受け渡し方法として
+                            【置いておく】を選択しています</p>
+                        <img class="" src="./images/leave.svg" alt="置いておく">
+                        <ul>
+                            <li>
+                                意図せずものがなくなる恐れがあります。あなたの問題でなくとも問い合わせがくる可能性がありますが、落ち着いて正直に対応しましょう。</li>
+                            <li>期限までに貰い手が現れなかった場合は自分で責任を持って処理しましょう。
+                            </li>
+                            <li>
+                                置き場の治安維持に努めましょう。
+                            </li>
+                        </ul>
+                        <label class="checkbox-label">
+                            <input id="checked-post-leave" type="checkbox" value="accept" required>
+                            <span class="checkmark"></span>
+                            条件を確認しました
+                        </label>
+                        <script>
+                            function valueChange(event) {
+                                document.getElementById('btn-confirm-cpleave').classList.add('checked');
+                            }
+
+                            document.getElementById('checked-post-leave').addEventListener('change', valueChange);
+                        </script>
+
+                        <a id="btn-confirm-cpleave" class="btn btn-S btn-primary" onclick="postItem()">
+                            確定する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--<<END>> 投稿確認（置いておく）用モーダル-->
+
+            <!--<<START>> 投稿確認（手渡し）用モーダル-->
+
+            <div class="modal-open check-post hand">クリックで投稿確認用モーダル（手渡し）を表示</div>
+            <div class="modal-wrapper check-post hand">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-post hand">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">受け渡し方法として
+                            【手渡し】を選択しています</p>
+                        <img class="" src="./images/hand-to-hand.svg" alt="手渡し">
+                        <ul>
+                            <li>
+                                もらい手と対面での受け渡しになります
+                            </li>
+                            <li>取引画面で受け渡し日時・場所の調整が必要です
+                            </li>
+                        </ul>
+                        <label class="checkbox-label">
+                            <input id="checked-post-hand" type="checkbox" value="accept" required>
+                            <span class="checkmark"></span>
+                            条件を確認しました
+                        </label>
+                        <script>
+                            function valueChange(event) {
+                                document.getElementById('btn-confirm-cphand').classList.add('checked');
+                            }
+
+                            document.getElementById('checked-post-hand').addEventListener('change', valueChange);
+                        </script>
+
+                        <a id="btn-confirm-cphand" class="btn btn-S btn-primary" onclick="postItem()">
+                            確定する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <!--<<END>> 投稿確認（手渡し）用モーダル-->
+
+            <!--<<START>> 取引開始確認用モーダル（置いておく）用モーダル-->
             <div class="modal-open check-conditions leave">クリックで取引開始確認用モーダル（置いておく）を表示</div>
             <div class="modal-wrapper check-conditions leave">
                 <div class="overlay"></div>
@@ -139,19 +245,19 @@
                             </li>
                         </ul>
                         <label class="checkbox-label">
-                            <input id="checked-conditions" type="checkbox" value="accept" required>
+                            <input id="checked-conditions-leave" type="checkbox" value="accept" required>
                             <span class="checkmark"></span>
                             条件を確認しました
                         </label>
                         <script>
                             function valueChange(event) {
-                                document.getElementById('btn-confirm').classList.add('checked');
+                                document.getElementById('btn-confirm-ccleave').classList.add('checked');
                             }
 
-                            document.getElementById('checked-conditions').addEventListener('change', valueChange);
+                            document.getElementById('checked-conditions-leave').addEventListener('change', valueChange);
                         </script>
 
-                        <a id="btn-confirm" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                        <a id="btn-confirm-ccleave" class="btn btn-S btn-primary" onclick="gotoTransaction()">
                             確定する
                         </a>
 
@@ -159,9 +265,9 @@
                 </div>
             </div>
 
+            <!--<<END>> 取引開始確認用モーダル（置いておく）用モーダル-->
 
-
-
+            <!--<<START>> 取引開始確認用モーダル（手渡し）用モーダル-->
             <div class="modal-open check-conditions hand">クリックで取引開始確認用モーダル（手渡し）を表示</div>
             <div class="modal-wrapper check-conditions hand">
                 <div class="overlay"></div>
@@ -186,26 +292,27 @@
                             </li>
                         </ul>
                         <label class="checkbox-label">
-                            <input id="checked-conditions" type="checkbox" value="accept" required>
+                            <input id="checked-conditions-hand" type="checkbox" value="accept" required>
                             <span class="checkmark"></span>
                             条件を確認しました
                         </label>
                         <script>
 
                             function valueChange(event) {
-                                document.getElementById('btn-confirm').classList.add('checked');
+                                document.getElementById('btn-confirm-cchand').classList.add('checked');
                             }
 
-                            document.getElementById('checked-conditions').addEventListener('change', valueChange);
+                            document.getElementById('checked-conditions-hand').addEventListener('change', valueChange);
                         </script>
 
-                        <a id="btn-confirm" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                        <a id="btn-confirm-cchand" class="btn btn-S btn-primary" onclick="gotoTransaction()">
                             確定する
                         </a>
 
                     </div>
                 </div>
             </div>
+            <!--<<END>> 取引開始確認用モーダル（手渡し）用モーダル-->
 
 
             <div class="modal-open delivey-leave">クリックで受け渡し（置いておく）用モーダルを表示</div>

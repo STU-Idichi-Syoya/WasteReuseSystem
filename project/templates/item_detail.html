@@ -308,15 +308,108 @@
 
 
         </ul>
-
-        <!--Fixed Button-->
-        <div class="fixed-btn-container">
-            <a class="btn btn-S btn-primary" onclick='checkConditions()'>
-                もらい手になる
-            </a>
-        </div>
-
     </div>
+    <!--Fixed Button-->
+    <div class="fixed-btn-container">
+        <a class="btn btn-S btn-primary" onclick='checkConditions()'>
+            もらい手になる
+        </a>
+    </div>
+
+
+
+    <!--<<START>> 取引開始確認用モーダル（置いておく）用モーダル-->
+    <div class="modal-open check-conditions leave">クリックで取引開始確認用モーダル（置いておく）を表示</div>
+    <div class="modal-wrapper check-conditions leave">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-conditions leave">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">スチのり 4本 実質2本分</p>
+                <p class="text-P-M">
+                    <span>
+                        投稿者：
+                    </span><a href="#">Nakayama</a>
+                </p>
+                <p class="text-H-SS">【置いておく】による受け渡しです
+                </p>
+                <img class="" src="./images/leave.svg" alt="置いておく">
+                <ul>
+                    <li>
+                        あなたが取りに行く前に、誰かが回収してしまう可能性があります。</li>
+                    <li>2週間以内に受け取り完了が確認されない場合、「もらい手」が自動的にキャンセルされます。
+                    </li>
+                </ul>
+                <label class="checkbox-label">
+                    <input id="checked-conditions-leave" type="checkbox" value="accept" required>
+                    <span class="checkmark"></span>
+                    条件を確認しました
+                </label>
+                <script>
+                    function valueChange(event) {
+                        document.getElementById('btn-confirm-ccleave').classList.add('checked');
+                    }
+
+                    document.getElementById('checked-conditions-leave').addEventListener('change', valueChange);
+                </script>
+
+                <a id="btn-confirm-ccleave" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                    確定する
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!--<<END>> 取引開始確認用モーダル（置いておく）用モーダル-->
+
+    <!--<<START>> 取引開始確認用モーダル（手渡し）用モーダル-->
+    <div class="modal-open check-conditions hand">クリックで取引開始確認用モーダル（手渡し）を表示</div>
+    <div class="modal-wrapper check-conditions hand">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-conditions hand">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">スチのり 4本 実質2本分</p>
+                <p class="text-P-M">
+                    <span>
+                        投稿者：
+                    </span><a href="#">Nakayama</a>
+                </p>
+                <p class="text-H-SS">【手渡し】による受け渡しです
+                </p>
+                <img class="" src="./images/hand-to-hand.svg" alt="手渡し">
+                <ul>
+                    <li>
+                        投稿者と対面での受け渡しになります
+                    </li>
+                    <li>取引画面で受け渡し日時・場所の調整が必要です
+                    </li>
+                </ul>
+                <label class="checkbox-label">
+                    <input id="checked-conditions-hand" type="checkbox" value="accept" required>
+                    <span class="checkmark"></span>
+                    条件を確認しました
+                </label>
+                <script>
+
+                    function valueChange(event) {
+                        document.getElementById('btn-confirm-cchand').classList.add('checked');
+                    }
+
+                    document.getElementById('checked-conditions-hand').addEventListener('change', valueChange);
+                </script>
+
+                <a id="btn-confirm-cchand" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                    確定する
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!--<<END>> 取引開始確認用モーダル（手渡し）用モーダル-->
 </main>
 
 
