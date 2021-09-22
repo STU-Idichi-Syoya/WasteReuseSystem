@@ -3,36 +3,68 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="column is-4 is-offset-4">
-    <h3 class="title">Login</h3>
-    <div class="box">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
+<main>
+    <div class="margin-LR">
+        <h1 class="title centering">ログイン</h1>
+        <div class="box">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
             <div class="notification is-danger">
                 {{ messages[0] }}
             </div>
-        {% endif %}
-        {% endwith %}
-        <form method="POST" action="/login">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
-                </div>
-            </div>
+            {% endif %}
+            {% endwith %}
+            <form method="POST" action="/login">
+                <label for="email" class="text-H-SS">メールアドレス</label>
+                <input type="email" name="email" placeholder="example@ed.exm.ac.jp" id="email" autofocus>
+                <p class="error-msg">入力してください</p>
 
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Your Password">
+
+                <label for="password" class="text-H-SS">パスワード</label>
+                <div class="pw-input-container">
+                    <input type="password" name="password" id="password" maxlength="16" />
+                    <i class="material-icons visibility">visibility_off</i>
                 </div>
-            </div>
-            <div class="field">
-                <label class="checkbox">
-                    <input type="checkbox">
-                    Remember me
-                </label>
-            </div>
-            <button class="button is-block is-info is-large is-fullwidth">Login</button>
-        </form>
+                <p class="error-msg">入力してください</p>
+                <div class="centering">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="save-password" value="save-password">
+                        <span class="checkmark"></span>
+                        パスワードを保存する
+                    </label>
+                </div>
+                <div class="combi-btn-link">
+                    <button href="#" class="btn btn-M btn-primary">
+                        ログイン
+                    </button>
+                    <div>アカウントをお持ちでない方は<a href="#" class="link-under-btn-S">新規登録</a></div>
+                </div>
+
+            </form>
+        </div>
     </div>
-</div>
+</main>
+<script>
+
+    /* Password Eye
+        -------------------------------------- */
+
+    const visibilityToggle = document.querySelector('.visibility');
+
+    const input = document.querySelector('.pw-input-container input');
+
+    var password = true;
+
+    visibilityToggle.addEventListener('click', function () {
+        if (password) {
+            input.setAttribute('type', 'text');
+            visibilityToggle.innerHTML = 'visibility';
+        } else {
+            input.setAttribute('type', 'password');
+            visibilityToggle.innerHTML = 'visibility_off';
+        }
+        password = !password;
+
+    });
+</script>
 {% endblock %}

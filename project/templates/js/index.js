@@ -3,8 +3,8 @@
 /* Tab
     -------------------------------------- */
 $('.tab-content>div').hide();
-$('.tab-content>div').first().slideDown();
-$('.tab-buttons span').click(function () {
+$('.tab-content>div.tab-current').slideDown();
+$('.tab-buttons h3').click(function () {
     var thisclass = $(this).attr('class');
     $('#lamp').removeClass().addClass('#lamp').addClass(thisclass);
     $('.tab-content>div').each(function () {
@@ -16,7 +16,7 @@ $('.tab-buttons span').click(function () {
         }
     });
     //tabの文字にcurrentを付与して青くする
-    $('.tab-buttons span').each(function () {
+    $('.tab-buttons h3').each(function () {
         if ($(this).hasClass(thisclass)) {
             $(this).addClass('tab-current');
         } else {
@@ -106,26 +106,6 @@ $('#search-back').on('click', function () {
 });
 
 
-/* Password（あるところだけ）
-    -------------------------------------- */
-/*
-const visibilityToggle = document.querySelector('.visibility');
- 
-const input = document.querySelector('.input-container input');
- 
-var password = true;
- 
-visibilityToggle.addEventListener('click', function () {
-if (password) {
-    input.setAttribute('type', 'text');
-    visibilityToggle.innerHTML = 'visibility';
-} else {
-    input.setAttribute('type', 'password');
-    visibilityToggle.innerHTML = 'visibility_off';
-}
-password = !password;
- 
-});*/
 
 
 /* Like Button
