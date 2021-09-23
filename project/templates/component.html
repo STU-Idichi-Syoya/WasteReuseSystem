@@ -45,12 +45,9 @@
 <body>
 
 
-
     <!-- header -->
-
     <header class="service-title">
-        <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span><i
-            class="material-icons">logout</i>
+        <a href="トップページへのリンク"><img src="images/logo.svg" alt="JO-TO!"></a><span class="school-name">北苺道大学</span>
     </header>
     <!-- /header -->
 
@@ -391,7 +388,9 @@
                     <!-- URL Copy -->
                     <a class="btn-social-share" onclick="copyUrl()"><img src="./images/buttons/linkcopy.svg"
                             alt="URLをコピー"></a>
-                    <p class="msg-url-copied">URLをコピーしました！</p>
+                    <div class="msg-tmp msg_copyURL">
+                        <p><i class="material-icons">check_circle</i>URLをコピーしました</p>
+                    </div>
                 </div>
             </section>
         </div>
@@ -706,23 +705,30 @@
                     <select name="input-how-delivery" id="input-how-delivery">
                         <option value="leave">置いておく</option>
                         <option value="hand">手渡し</option>
+                        <option value="mailing">郵送</option>
                     </select>
                 </div>
                 <p class="error-msg">選択してください</p>
 
 
-                <label for="location" class="text-H-SS">受け渡し場所</label><span class="badge-necessity required">必須</span>
+                <label for="location" class="text-H-SS">受け渡し場所</label><span
+                    class="badge-necessity required">必須（郵送を除く）</span>
 
                 <label for="location-map" class="text-P-M small-label-1">地図にピンを刺す</label>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.2633975511535!2d141.33782431587557!3d43.077957479145276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b290bc5dc9a43%3A0x425f98023e0b86d5!2z5YyX5rW36YGT5aSn5a2m!5e0!3m2!1sja!2sjp!4v1632154798729!5m2!1sja!2sjp"
-                    width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.2633975511535!2d141.33782431587557!3d43.077957479145276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b290bc5dc9a43%3A0x425f98023e0b86d5!2z5YyX5rW36YGT5aSn5a2m!5e0!3m2!1sja!2sjp!4v1632154798729!5m2!1sja!2sjp"
+                        width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                    <div id="map-disable-overlay"></div>
+                </div>
+
                 <div class="location-text-delete">
                     <div class="location-text">
                         <i class="material-icons">place</i>
                         <span>北海道札幌市北区北13条西８丁目</span>
                     </div>
-                    <button class="btn-pin-delete">
+                    <button class="btn-nagative">
                         <i class="material-icons">close</i>
                         ピンを削除する
                     </button>
@@ -751,6 +757,22 @@
             </form>
 
             <script>
+                //郵送が選ばれたらテキスト入力を無効にする
+                $('#input-how-delivery').on('change', function () {
+                    const inputLocation = document.getElementById('location-description');
+                    const mapOverlay = document.getElementById("map-disable-overlay");
+                    console.log($("#input-how-delivery").val());
+                    if ($("#input-how-delivery").val() == "mailing") {
+                        mapOverlay.classList.add("visible");
+                        inputLocation.disabled = true;
+
+                    } else {
+                        inputLocation.disabled = false;
+                        mapOverlay.classList.remove("visible");
+                    }
+                });
+
+
                 /* 期間を選ぶボタン（あるところだけ）
                     -------------------------------------- */
                 //デフォルトで3ヶ月先をdatapickerに入れておく
@@ -804,8 +826,10 @@
                 </a>
                 <a class="btn btn-M btn-secondary" onclick="savePost()">
                     下書きに保存する
-
                 </a>
+                <div class="msg-tmp msg_savePost">
+                    <p><i class="material-icons">check_circle</i>下書きを保存しました</p>
+                </div>
                 <a class="link-under-btn-M" onclick="checkDeletePost()"><i
                         class="material-icons link-icon-L">close</i>削除する</a>
             </div>
@@ -1668,8 +1692,9 @@
                     src="./images/buttons/Facebook.svg" alt="Facebookで共有"></a>
             <!-- URL Copy -->
             <a class="btn-social-share" onclick="copyUrl()"><img src="./images/buttons/linkcopy.svg" alt="URLをコピー"></a>
-            <p class="msg-url-copied">URLをコピーしました！</p>
-            <!-- Share -->
+            <div class="msg-tmp msg_copyURL">
+                <p><i class="material-icons">check_circle</i>URLをコピーしました</p>
+            </div> <!-- Share -->
             <!-- この場のリンクをシェアするだけのシンプルver -->
             <button type="button" class="btn-social-share native-share-btn" data-share-title="JO-TO!"><img
                     src="./images/buttons/share.svg" alt="シェアする"></button>
@@ -1908,6 +1933,9 @@
                     </div>
                 </div>
             </div>
+            <div class="msg-tmp msg_deletePost">
+                <p><i class="material-icons">check_circle</i>下書きを削除しました</p>
+            </div>
             <!--<<END>> 下書き削除確認用モーダル-->
 
             <!--<<START>> 投稿確認（置いておく）用モーダル-->
@@ -1918,7 +1946,7 @@
                     <i class="material-icons modal-close check-post leave">close</i>
 
                     <div class="modal-LR">
-                        <p class="text-H-S">受け渡し方法として
+                        <p class="text-H-S">受け渡し方法として<br>
                             【置いておく】を選択しています</p>
                         <img class="" src="./images/leave.svg" alt="置いておく">
                         <ul>
@@ -1963,7 +1991,8 @@
 
                     <div class="modal-LR">
                         <p class="text-H-S">受け渡し方法として
-                            【手渡し】を選択しています</p>
+                            <br>【手渡し】を選択しています
+                        </p>
                         <img class="" src="./images/hand-to-hand.svg" alt="手渡し">
                         <ul>
                             <li>
@@ -1993,6 +2022,48 @@
                 </div>
             </div>
             <!--<<END>> 投稿確認（手渡し）用モーダル-->
+
+            <!--<<START>> 投稿確認（郵送）用モーダル-->
+            <div class="modal-open check-post mailing">クリックで投稿確認用モーダル（郵送）を表示</div>
+            <div class="modal-wrapper check-post mailing">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-post mailing">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">受け渡し方法として
+                            <br>【手渡し】を選択しています
+                        </p>
+                        <img class="" src="./images/mailing.svg" alt="郵送">
+                        <ul>
+                            <li>
+                                取引画面で郵送方法や料金の負担について相談する必要があります
+                            </li>
+                            <li>投稿者から送り先を伝えられた場合、取り扱いに留意してください
+                            </li>
+                        </ul>
+                        <label class="checkbox-label">
+                            <input id="checked-post-mailing" type="checkbox" value="accept" required>
+                            <span class="checkmark"></span>
+                            条件を確認しました
+                        </label>
+                        <script>
+                            function valueChange(event) {
+                                document.getElementById('btn-confirm-cpmailing').classList.add('checked');
+                            }
+
+                            document.getElementById('checked-post-mailing').addEventListener('change', valueChange);
+                        </script>
+
+                        <a id="btn-confirm-cpmailing" class="btn btn-S btn-primary" onclick="postItem()">
+                            確定する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <!--<<END>> 投稿確認（郵送）用モーダル-->
+
 
             <!--<<START>> 取引開始確認用モーダル（置いておく）用モーダル-->
             <div class="modal-open check-conditions leave">クリックで取引開始確認用モーダル（置いておく）を表示</div>
@@ -2086,6 +2157,55 @@
                 </div>
             </div>
             <!--<<END>> 取引開始確認用モーダル（手渡し）用モーダル-->
+
+
+
+            <!--<<START>> 取引開始確認用モーダル（郵送）用モーダル-->
+            <div class="modal-open check-conditions mailing">クリックで取引開始確認用モーダル（郵送）を表示</div>
+            <div class="modal-wrapper check-conditions mailing">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close check-conditions mailing">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">スチのり 4本 実質2本分</p>
+                        <p class="text-P-M">
+                            <span>
+                                投稿者：
+                            </span><a href="#">Nakayama</a>
+                        </p>
+                        <p class="text-H-SS">【郵送】による受け渡しです
+                        </p>
+                        <img class="" src="./images/mailing.svg" alt="郵送">
+                        <ul>
+                            <li>
+                                取引画面で郵送方法や料金の負担について相談する必要があります
+                            </li>
+                            <li>投稿者に送り先を伝える必要があります
+                            </li>
+                        </ul>
+                        <label class="checkbox-label">
+                            <input id="checked-conditions-mailing" type="checkbox" value="accept" required>
+                            <span class="checkmark"></span>
+                            条件を確認しました
+                        </label>
+                        <script>
+
+                            function valueChange(event) {
+                                document.getElementById('btn-confirm-ccmailing').classList.add('checked');
+                            }
+
+                            document.getElementById('checked-conditions-mailing').addEventListener('change', valueChange);
+                        </script>
+
+                        <a id="btn-confirm-ccmailing" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                            確定する
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <!--<<END>> 取引開始確認用モーダル（郵送）用モーダル-->
 
             <!--<<START>>受け渡し（置いておく）用モーダル-->
             <div class="modal-open delivey leave">クリックで受け渡し（置いておく）用モーダルを表示</div>
@@ -2248,6 +2368,43 @@
             </div>
             <!--<<END>> 受け渡し（手渡し、投稿者）用モーダル-->
 
+
+
+            <!--<<START>>受け渡し（郵送）用モーダル-->
+            <div class="modal-open delivey leave">クリックで受け渡し（郵送）用モーダルを表示</div>
+            <div class="modal-wrapper delivey leave">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close delivey leave">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">受け渡し【郵送】</p>
+                        <div class="item-image L">
+                            <div class="img_box">
+                                <img class="object-fit-cover" src="./images/item/IMG_5532.jpg" alt="item image">
+                            </div>
+                        </div>
+
+                        <p class="text-H-S">スチのり 4本 実質2本分</p>
+                        <p class="text-P-M">
+                            <span>
+                                投稿者：
+                            </span><a href="#">Nakayama</a>
+                        </p>
+
+
+                        <span class="ticket-line">
+                            <span class="hole L"></span><span class="hole R"></span>
+                        </span>
+                        <div class="combi-btn-link">
+                            <a class="btn btn-S btn-primary" onclick="gotoEvaluation()">
+                                受け取りました！
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<<END>> 受け渡し（郵送）用モーダル-->
 
             <!--<<START>>評価用モーダル-->
             <div class="modal-open evaluation">クリックで評価モーダルを表示</div>

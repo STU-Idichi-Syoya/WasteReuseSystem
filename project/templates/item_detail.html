@@ -319,7 +319,6 @@
 
 
     <!--<<START>> 取引開始確認用モーダル（置いておく）用モーダル-->
-    <div class="modal-open check-conditions leave">クリックで取引開始確認用モーダル（置いておく）を表示</div>
     <div class="modal-wrapper check-conditions leave">
         <div class="overlay"></div>
         <div class="modal-contents">
@@ -365,7 +364,6 @@
     <!--<<END>> 取引開始確認用モーダル（置いておく）用モーダル-->
 
     <!--<<START>> 取引開始確認用モーダル（手渡し）用モーダル-->
-    <div class="modal-open check-conditions hand">クリックで取引開始確認用モーダル（手渡し）を表示</div>
     <div class="modal-wrapper check-conditions hand">
         <div class="overlay"></div>
         <div class="modal-contents">
@@ -410,6 +408,52 @@
         </div>
     </div>
     <!--<<END>> 取引開始確認用モーダル（手渡し）用モーダル-->
+
+    <!--<<START>> 取引開始確認用モーダル（郵送）用モーダル-->
+    <div class="modal-wrapper check-conditions mailing">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-conditions mailing">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">スチのり 4本 実質2本分</p>
+                <p class="text-P-M">
+                    <span>
+                        投稿者：
+                    </span><a href="#">Nakayama</a>
+                </p>
+                <p class="text-H-SS">【郵送】による受け渡しです
+                </p>
+                <img class="" src="./images/mailing.svg" alt="郵送">
+                <ul>
+                    <li>
+                        取引画面で郵送方法や料金の負担について相談する必要があります
+                    </li>
+                    <li>投稿者に送り先を伝える必要があります
+                    </li>
+                </ul>
+                <label class="checkbox-label">
+                    <input id="checked-conditions-mailing" type="checkbox" value="accept" required>
+                    <span class="checkmark"></span>
+                    条件を確認しました
+                </label>
+                <script>
+
+                    function valueChange(event) {
+                        document.getElementById('btn-confirm-ccmailing').classList.add('checked');
+                    }
+
+                    document.getElementById('checked-conditions-mailing').addEventListener('change', valueChange);
+                </script>
+
+                <a id="btn-confirm-ccmailing" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                    確定する
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!--<<END>> 取引開始確認用モーダル（郵送）用モーダル-->
 </main>
 
 
