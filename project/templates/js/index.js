@@ -3,8 +3,8 @@
 /* Tab
     -------------------------------------- */
 $('.tab-content>div').hide();
-$('.tab-content>div').first().slideDown();
-$('.tab-buttons span').click(function () {
+$('.tab-content>div.tab-current').slideDown();
+$('.tab-buttons h3').click(function () {
     var thisclass = $(this).attr('class');
     $('#lamp').removeClass().addClass('#lamp').addClass(thisclass);
     $('.tab-content>div').each(function () {
@@ -16,7 +16,7 @@ $('.tab-buttons span').click(function () {
         }
     });
     //tabの文字にcurrentを付与して青くする
-    $('.tab-buttons span').each(function () {
+    $('.tab-buttons h3').each(function () {
         if ($(this).hasClass(thisclass)) {
             $(this).addClass('tab-current');
         } else {
@@ -25,6 +25,26 @@ $('.tab-buttons span').click(function () {
     });
 });
 
+/* Search Bar Fix（あるところだけ）
+    -------------------------------------- */
+/*スクロールすると検索フィールドが上に固定される（実は微妙にうまく行ってない）*/
+var startPos = 0, winScrollTop = 0;
+
+
+$(window).on('scroll', function () {
+    winScrollTop = $(this).scrollTop();
+    if (winScrollTop >= startPos) {
+        //下に行ってる時 top:0まで上げて固定する
+        $('.head-fix').addClass('hide');
+
+    } else {//上に行ってるとき
+        // $('.head-fix').removeClass('hide');
+        if (winScrollTop <= 60) {//headerの高さ以下までたどり着いたら元の位置に固定する
+            $('.head-fix').removeClass('hide');
+        }
+    }
+    startPos = winScrollTop;
+});
 
 /* Search Field
     -------------------------------------- */
@@ -32,11 +52,25 @@ $(function () {
     // 検索フィールドフォーカス時にフォームの縁の色を変える
     $('#search-input')
         .focusin(function (e) {
-            $('#search-form').addClass('form-focused');
+            $('#search-form').addClass('form-focused shrink');
+            $('#search-back').addClass('visible');
+            $('#search-input').attr('placeholder', 'キーワードで検索');
+            //検索ページがフォーカス時に左から出てくる
+            $('.searching').removeClass('off');
+            $('.searching').animate({ 'marginLeft': '100vw' }, 400).addClass('on');
+
         })
         .focusout(function (e) {
-            $('#search-form').removeClass('form-focused');
+            $('#search-form').removeClass('form-focused shrink');
+            $('#search-back').removeClass('visible');
+            $('#search-input').attr('placeholder', '何をお探しですか？');
+            //検索ページがフォーカス外した時に左に消える
+            $('.searching').addClass('off');
+            $('.searching').animate({ 'marginLeft': '0px' }, 400);
+
         });
+
+
     // パスワードフィールドフォーカス時にフォームの縁の色を変える
     $('#password')
         .focusin(function (e) {
@@ -45,7 +79,6 @@ $(function () {
         .focusout(function (e) {
             $('.pw-input-container').removeClass('form-focused');
         });
-
 
     /* // 検索フィールドエラー時にフォームの縁の色を変える ざっと探したけどfocusInvalidって間違っている模様（エラー出てる）直したいけど優先しなくていい
      $('#search-input')
@@ -65,27 +98,73 @@ $(function () {
          });*/
 });
 
-
-
-/* Password
-    -------------------------------------- */
-const visibilityToggle = document.querySelector('.visibility');
-
-const input = document.querySelector('.input-container input');
-
-var password = true;
-
-visibilityToggle.addEventListener('click', function () {
-    if (password) {
-        input.setAttribute('type', 'text');
-        visibilityToggle.innerHTML = 'visibility';
-    } else {
-        input.setAttribute('type', 'password');
-        visibilityToggle.innerHTML = 'visibility_off';
-    }
-    password = !password;
+//検索ページがbackを押した時に左に消える
+$('#search-back').on('click', function () {
+    $('.searching').addClass('off');
+    $('.searching').animate({ 'marginLeft': '0px' }, 400);
 
 });
+
+
+
+
+/* Like Button
+    -------------------------------------- */
+
+$(function () {
+
+    $('.btn-like').click(function () {
+        if ($(this).hasClass('liked')) {
+            $(this).removeClass('liked');
+
+        } else {
+            $(this).addClass('liked');
+
+        }
+
+    })
+});
+
+/* Reaction Button（カウントは表示できてない）
+    -------------------------------------- */
+
+$(function () {
+
+    $('.reactions>button').click(function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+
+        } else {
+            $(this).addClass('active');
+
+        }
+    })
+
+    $('.btn-good').click(function () {
+        /*1つのコメントごとに別々のIDを付けないとカウントできない... */
+        if ($(this).hasClass('active')) {
+            let goodNum = parseInt(document.getElementById('good-num').innerText);
+            document.getElementById('good-num').innerText = goodNum + 1;
+        }
+    })
+    $('.btn-thanks').click(function () {
+        /*1つのコメントごとに別々のIDを付けないとカウントできない... */
+        if ($(this).hasClass('active')) {
+            let thanksNum = parseInt(document.getElementById('thanks-num').innerText);
+            document.getElementById('thanks-num').innerText = thanksNum + 1;
+        }
+    })
+});
+
+/* 投稿画面 撮影/選択済みの画像の削除 
+   -------------------------------------- */
+$(function () {
+    $('.btn-delete').click(function () {
+        //写真を消す
+
+    })
+});
+
 
 
 /* URL Copy Button
@@ -97,6 +176,14 @@ function copyUrl() {
     element.select();
     document.execCommand('copy');
     document.body.removeChild(element);
+
+    //queue()で処理を溜めてdequeue()で実行。3秒経ったらfadeOut()
+    $(".msg-url-copied").fadeIn().queue(function () {
+        setTimeout(function () {
+            $(".msg-url-copied").dequeue();
+        }, 1600);
+    });
+    $(".msg-url-copied").fadeOut();
 }
 /* Share Button
     -------------------------------------- */
@@ -146,68 +233,284 @@ for (var i = 0; i < checkbox.length; i++) {
     });
 
 }
-/*
 
-function getCheckedRadioId(){
-    var flag = false; // 選択されているか否かを判定するフラグ
+function postComment() {
+    //コメントの送信　できなくてもいいので一旦パス
+}
 
-    //　ラジオボタンの数だけ判定を繰り返す（ボタンを表すインプットタグがあるので１引く）
-    for(var i = 0 ; i < document.getElementsByName('radio').length  ; i++){
-        // i番目のラジオボタンがチェックされているかを判定
-        if(document.getElementsByName('radio')[i].checked){ 
-            flag = true;
-            return i+1;
+
+
+/*--------------------------------------------------------------
+#アイテムの情報に関わる関数（主にモーダル関連）
+--------------------------------------------------------------*/
+/* 投稿
+-------------------------------------- */
+function savePost() {
+    //下書きに保存(パス)
+
+}
+
+function checkDeletePost() {
+    //投稿画面「削除する」で下書き消すか確認モーダルを開く
+    $('.modal-wrapper.check-delete').fadeIn();
+
+}
+function deletePost() {
+    //投稿画面「削除する」で下書き消すか確認モーダルを閉じる
+    $('.modal-wrapper.check-delete').fadeOut().css({ top: 0 });
+    //下書き削除(パス)
+    //下書き一覧に飛ばす
+}
+function checkPost() {
+    //投稿するボタンで確認モーダルを開く
+
+    let howDelivery = $('#input-how-delivery').value;//undefined
+    console.log(howDelivery);
+    //取引画面「受け渡しに進む」ボタンを押したら
+    if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
+        //投稿確認（置いておく）モーダルを開く
+        $('.modal-wrapper.check-post.leave').fadeIn();
+        return false;
+    } else {//受け渡し方法が「手渡し」の場合
+        //投稿確認（手渡し）モーダルを開く
+        $('.modal-wrapper.check-post.hand').fadeIn();
+    }
+
+
+}
+
+function postItem() {
+    //投稿確認モーダルを閉じる
+    $('.modal-wrapper.check-post').fadeOut().css({ top: 0 });
+    //投稿する
+}
+
+/* 取引
+-------------------------------------- */
+function checkConditions() {
+    let howDelivery = $('#disp-how-delivery').value;//undefined
+    console.log(howDelivery);
+    //アイテム詳細「もらい手になる」ボタンを押したら取引開始確定前のチェックモーダルに飛ばす
+    if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
+        //受け渡し（置いておく）モーダルを開く
+        $('.modal-wrapper.check-conditions.leave').fadeIn();
+        return false;
+
+    } else {//受け渡し方法が「手渡し」の場合
+        $('.modal-wrapper.check-conditions.hand').fadeIn();
+        return false;
+    }
+}
+
+
+function gotoTransaction() {
+    //取引開始確認モーダルの「確定する」ボタンを押したら
+    //確認モーダルを非表示
+    $('.modal-wrapper.check-conditions').fadeOut().css({ top: 0 });
+    //取引ページに飛ぶ
+    return false;
+}
+
+function gotoDelivery() {
+    let howDelivery = '手渡し'//受け渡し方法、本当はどこかからとってくる
+    let role = "もらい手"//ユーザーの役割、本当はどこかからとってくる
+    //取引画面「受け渡しに進む」ボタンを押したら
+    if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
+        //受け渡し（置いておく）モーダルを開く
+        $('.modal-wrapper.delivey.leave').fadeIn();
+        return false;
+    } else {//受け渡し方法が「手渡し」の場合
+        if (role == '投稿者') {//役割が投稿者の場合
+            $('.modal-wrapper.delivey.hand.contributor').fadeIn();
+            return false;
+        } else {//役割がもらい手の場合
+            $('.modal-wrapper.delivey.hand.recipient').fadeIn();
+            return false;
         }
-    }*/
+    }
+}
+/* 取引
+-------------------------------------- */
+function cancelTransaction() {
+    /*取引画面「取引をキャンセルする」ボタンを押したら取引キャンセル画面に遷移する */
+    $('.modal-wrapper.cancel-transaction').fadeIn();
+    return false;
+}
 
-/*
-const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'vertical',
-    loop: true,
+function endCancel() {
+    //キャンセルメッセージを「送信する」ボタンをを押したら、
+    //キャンセル理由とメッセージの取得
+    let whyCancel = $('#why-cancel').value
+    let canselMsg = $('#cansel-msg').value
+    console.log(whyCancel, canselMsg);//なぜかundefined、わからない、ほっとく
+    //取引キャンセル用モーダルを表示オフ
+    $('.modal-wrapper.cancel-transaction').fadeOut().css({ top: 0 });
+    return false;
 
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-    },
+}
 
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+/* 受け渡し〜評価
+-------------------------------------- */
+function noItem() {
+    /*初めは隠してあるヘルプコンテンツの表示 */
+    $('.modal-contents .bg-color').css('display', 'block');
+}
 
-    // And if we need scrollbar
-    scrollbar: {
-        el: '.swiper-scrollbar',
-    },
-});*/
+function gotoEvaluation() {
+    //「受け取りました！」ボタンをを押したら、取引用モーダルを表示オフしてから評価用のモーダルを表示
+    $('.modal-wrapper.delivey').fadeOut().css({ top: 0 });
+    $('.modal-wrapper.evaluation').fadeIn();
+    return false;
+    /*受け渡し（取引）完了の送信 */
+}
+function submitEvaluation() {
+    //評価モーダルを閉じる
+    $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
+    return false;
+    //評価の送信
+    //チェックされてるラジオボタンの値を取ればいいと思うけどパス
+
+}
+function endTransaction() {
+    //「このまま取引を終わる」ボタンをを押したら、取引用モーダルを表示オフ
+    $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
+    return false;
+    //実質受け渡し（取引）完了の送信
+}
 
 
-var mySwiper = new Swiper(".swiper-container", {
-    // オプション設定
-    loop: true, // ループ
-    speed: 600, // 切り替えスピード(ミリ秒)。
-    slidesPerView: 1, // １スライドの表示数
-    spaceBetween: 0, // スライドの余白(px)
-    direction: "horizontal", // スライド方向
-    effect: "fade", // スライド効果 ※ここを変更
+// 閉じる用・moral_test.htmlで開くテスト用
 
-    // スライダーの自動再生設定
-    autoplay: {
-        delay: 3000, // スライドが切り替わるまでの時間(ミリ秒)
-        stopOnLast: false, // 自動再生の停止なし
-        disableOnInteraction: true, // ユーザー操作後の自動再生停止
-    },
+$(function () {
 
-    // ページネーションを有効化
-    pagination: {
-        el: ".swiper-pagination",
-    },
+    // 下書き削除モーダルの開閉）
 
-    // ナビゲーションを有効化
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
+    $('.modal-open.check-delete').click(function () {
+
+        $('.modal-wrapper.check-delete').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-delete').click(function () {
+        $('.modal-wrapper.check-delete').fadeOut().css({ top: 0 });
+        return false;
+    });
+    // 投稿確認モーダルの開閉（置いておく）
+
+    $('.modal-open.check-post.leave').click(function () {
+
+        $('.modal-wrapper.check-post.leave').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-post.leave').click(function () {
+        $('.modal-wrapper.check-post.leave').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+    // 投稿確認モーダルの開閉（手渡し）
+
+    $('.modal-open.check-post.hand').click(function () {
+
+        $('.modal-wrapper.check-post.hand').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-post.hand').click(function () {
+        $('.modal-wrapper.check-post.hand').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+
+    // 取引開始確認モーダルの開閉（置いておく）
+
+    $('.modal-open.check-conditions.leave').click(function () {
+
+        $('.modal-wrapper.check-conditions.leave').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-conditions.leave').click(function () {
+        $('.modal-wrapper.check-conditions.leave').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+    // 取引開始確認モーダルの開閉（手渡し）
+
+    $('.modal-open.check-conditions.hand').click(function () {
+
+        $('.modal-wrapper.check-conditions.hand').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-conditions.hand').click(function () {
+        $('.modal-wrapper.check-conditions.hand').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+
+    // 取引キャンセルモーダルの開閉
+
+    $('.modal-open.cancel-transaction').click(function () {
+
+        $('.modal-wrapper.cancel-transaction').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.cancel-transaction').click(function () {
+        $('.modal-wrapper.cancel-transaction').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+
+    // 受け渡し（置いておく）モーダルの開閉
+
+    $('.modal-open.delivey.leave').click(function () {
+
+        $('.modal-wrapper.delivey.leave').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.delivey.leave').click(function () {
+        $('.modal-wrapper.delivey.leave').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+
+    // 受け渡し（手渡し,もらい手）モーダルの開閉
+
+    $('.modal-open.delivey.hand.recipient').click(function () {
+
+        $('.modal-wrapper.delivey.hand.recipient').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.delivey.hand.recipient').click(function () {
+        $('.modal-wrapper.delivey.hand.recipient').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+    // 受け渡し（手渡し,投稿者）モーダルの開閉
+
+    $('.modal-open.delivey.hand.contributor').click(function () {
+
+        $('.modal-wrapper.delivey.hand.contributor').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.delivey.hand.contributor').click(function () {
+        $('.modal-wrapper.delivey.hand.contributor').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+
+
+    //評価モーダルの開閉
+
+    $('.modal-open.evaluation').click(function () {
+
+        $('.modal-wrapper.evaluation').fadeIn();
+
+        return false;
+    });
+    $('.overlay, .modal-close.evaluation').click(function () {
+        $('.modal-wrapper.evaluation').fadeOut().css({ top: 0 });
+
+
+        return false;
+    });
+
+
 });
+

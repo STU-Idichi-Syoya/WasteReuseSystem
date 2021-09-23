@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+
+{% block title%}
+アイテム出品
+{% endblock%}
+
+{% block content %}
+
+
+<main>
+    <div class="margin-LR">
+        <!--H1-->
+        <div class="title-seemore h1">
+            <h1>新規投稿</h1>
+            <a href="#"><span class="view-all">下書きを見る</span><i class="material-icons">navigate_next</i></a>
+        </div>
+        <form>
+
+            <label for="item-name" class="text-H-SS">アイテムの画像</label><span class="badge-necessity required">必須</span>
+
+            <ul class="post-images">
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                        <button class="btn-delete visible"><span class="material-icons-round">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons">photo_camera</i>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="img">
+                        <button class="btn-delete"><span class="material-icons-round">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons">photo_camera</i>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="img">
+                        <button class="btn-delete"><span class="material-icons-round">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons">photo_camera</i>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="img">
+                        <button class="btn-delete"><span class="material-icons-round">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons">photo_camera</i>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="img">
+                        <button class="btn-delete"><span class="material-icons-round">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons">photo_camera</i>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="img">
+                        <button class="btn-delete"><span class="material-icons-round">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons">photo_camera</i>
+                    </div>
+
+                </li>
+            </ul>
+
+
+            <label for="item-name" class="text-H-SS">アイテム名</label><span class="badge-necessity required">必須</span>
+            <input type="text" id="item-name">
+            </label>
+            <p class="error-msg">入力してください</p>
+
+
+
+            <label for="item-description" class="text-H-SS">アイテムの説明</label><span
+                class="badge-necessity optional">任意</span>
+            <textarea name="item-description" placeholder="例）昨年11月に生協購入したものです。B3サイズのから円をいくつかくり抜いていて、6割ほど余っています。 #建築模型"
+                rows="4" cols="40"></textarea>
+            <p class="caption">#（ハッシュタグ）が使えます</p>
+            <p class="error-msg">入力してください</p>
+
+            <label for="input-how-delivery" class="text-H-SS">受け渡し方法</label><span
+                class="badge-necessity required">必須</span>
+            <div class="select-container">
+                <select name="input-how-delivery" id="input-how-delivery">
+                    <option value="leave">置いておく</option>
+                    <option value="hand">手渡し</option>
+                </select>
+            </div>
+            <p class="error-msg">選択してください</p>
+
+
+            <label for="location" class="text-H-SS">受け渡し場所</label><span class="badge-necessity required">必須</span>
+
+            <label for="location-map" class="text-P-M small-label-1">地図にピンを刺す</label>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.2633975511535!2d141.33782431587557!3d43.077957479145276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b290bc5dc9a43%3A0x425f98023e0b86d5!2z5YyX5rW36YGT5aSn5a2m!5e0!3m2!1sja!2sjp!4v1632154798729!5m2!1sja!2sjp"
+                width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="location-text-delete">
+                <div class="location-text">
+                    <i class="material-icons">place</i>
+                    <span>北海道札幌市北区北13条西８丁目</span>
+                </div>
+                <button class="btn-pin-delete">
+                    <i class="material-icons">close</i>
+                    ピンを削除する
+                </button>
+            </div>
+
+            <label for="location-description" class="text-P-M">テキストで伝える</label>
+            <input type="text" id="location-description">
+            </label>
+            <p class="caption">地図だけで伝わりにくい場合は補足しておくと丁寧です</p>
+            <p class="error-msg">ピンかテキストのいずれかは必ず使用してください。</p>
+
+            <label for="expire" class="text-H-SS">有効期限</label><span class="badge-necessity required">必須</span>
+            <label for="expire-term" class="text-P-M small-label-1">期間から選ぶ</label>
+            <group id="expire-term" class="inline-radio">
+                <div><input type="radio" name="expire-terms" id="1month" value="1"><label>1ヶ月</label></div>
+                <div><input type="radio" name="expire-terms" id="3months" value="3"><label>3ヶ月</label></div>
+                <div><input type="radio" name="expire-terms" id="half-year" value="6"><label>半年</label></div>
+                <div><input type="radio" name="expire-terms" id="1-year" value="12"><label>1年</label></div>
+
+            </group>
+
+            <label for="expire-term" class="text-P-M">日付から選ぶ</label>
+            <input type="date" id="expire-date" name="expire-date" value="" min="2021-09-01" max="2022-10-7">
+            <p class="caption">最大1年間</p>
+            <p class="error-msg">入力してください</p>
+        </form>
+
+        <script>
+            /* 期間を選ぶボタン（あるところだけ）
+                -------------------------------------- */
+            //デフォルトで3ヶ月先をdatapickerに入れておく
+            window.onload = function () {
+                getTargetYMD(3)
+
+            }
+            //今日の日付＋ラジオボタンで選ばれた期間を返す
+            function getTargetYMD(N) {
+                var dt = new Date();
+                //Nか月後
+                if (N == 12) {
+                    dt.setFullYear(dt.getFullYear() + 1);
+                } else {
+                    dt.setMonth(dt.getMonth() + N);
+                }
+
+                var y = dt.getFullYear();
+                var m = ("00" + (dt.getMonth() + 1)).slice(-2);
+                var d = ("00" + dt.getDate()).slice(-2);
+                var result = y + "-" + m + "-" + d;
+                console.log(result);
+                $("#expire-date").val(result);
+                return result;
+            }
+
+            //ラジオボタンの値の変化を読み取る
+            function valueChange(event) {
+                let selectValue = parseInt(event.currentTarget.value, 10);
+                console.log(selectValue)
+                getTargetYMD(selectValue);
+            }
+
+            let expireTerm1 = document.getElementById('1month');
+            expireTerm1.addEventListener('change', valueChange);
+
+            let expireTerm2 = document.getElementById('3months');
+            expireTerm2.addEventListener('change', valueChange);
+
+            let expireTerm3 = document.getElementById('half-year');
+            expireTerm3.addEventListener('change', valueChange);
+
+            let expireTerm4 = document.getElementById('1-year');
+            expireTerm4.addEventListener('change', valueChange);
+        </script>
+
+        <div class="combi-btn-link">
+            <a class="btn btn-M btn-primary" onclick="checkPost()">
+                投稿する
+
+            </a>
+            <a class="btn btn-M btn-secondary" onclick="savePost()">
+                下書きに保存する
+
+            </a>
+            <a class="link-under-btn-M" onclick="checkDeletePost()"><i
+                    class="material-icons link-icon-L">close</i>削除する</a>
+        </div>
+    </div>
+
+    <!--<<START>> 下書き削除確認用モーダル-->
+    <div class="modal-open check-delete leave">クリックで下書き削除用モーダルを表示</div>
+
+    <div class="modal-wrapper check-delete leave">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-delete leave">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">下書きを削除しますか？</p>
+                <img class="" src="./images/delete.svg" alt="置いておく">
+                <p>
+                    この操作は取り消せません
+                </p>
+
+                <a id="btn-confirm-delete" class="btn btn-S btn-primary" onclick="deletePost()">
+                    下書きを削除する
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!--<<END>> 下書き削除確認用モーダル-->
+
+    <!--<<START>> 投稿確認（置いておく）用モーダル-->
+    <div class="modal-open check-post leave">クリックで投稿確認用モーダル（置いておく）を表示</div>
+    <div class="modal-wrapper check-post leave">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-post leave">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">受け渡し方法として
+                    【置いておく】を選択しています</p>
+                <img class="" src="./images/leave.svg" alt="置いておく">
+                <ul>
+                    <li>
+                        意図せずものがなくなる恐れがあります。あなたの問題でなくとも問い合わせがくる可能性がありますが、落ち着いて正直に対応しましょう。</li>
+                    <li>期限までに貰い手が現れなかった場合は自分で責任を持って処理しましょう。
+                    </li>
+                    <li>
+                        置き場の治安維持に努めましょう。
+                    </li>
+                </ul>
+                <label class="checkbox-label">
+                    <input id="checked-post-leave" type="checkbox" value="accept" required>
+                    <span class="checkmark"></span>
+                    条件を確認しました
+                </label>
+                <script>
+                    function valueChange(event) {
+                        document.getElementById('btn-confirm-cpleave').classList.add('checked');
+                    }
+
+                    document.getElementById('checked-post-leave').addEventListener('change', valueChange);
+                </script>
+
+                <a id="btn-confirm-cpleave" class="btn btn-S btn-primary" onclick="postItem()">
+                    確定する
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!--<<END>> 投稿確認（置いておく）用モーダル-->
+
+    <!--<<START>> 投稿確認（手渡し）用モーダル-->
+
+    <div class="modal-open check-post hand">クリックで投稿確認用モーダル（手渡し）を表示</div>
+    <div class="modal-wrapper check-post hand">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-post hand">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">受け渡し方法として
+                    【手渡し】を選択しています</p>
+                <img class="" src="./images/hand-to-hand.svg" alt="手渡し">
+                <ul>
+                    <li>
+                        もらい手と対面での受け渡しになります
+                    </li>
+                    <li>取引画面で受け渡し日時・場所の調整が必要です
+                    </li>
+                </ul>
+                <label class="checkbox-label">
+                    <input id="checked-post-hand" type="checkbox" value="accept" required>
+                    <span class="checkmark"></span>
+                    条件を確認しました
+                </label>
+                <script>
+                    function valueChange(event) {
+                        document.getElementById('btn-confirm-cphand').classList.add('checked');
+                    }
+
+                    document.getElementById('checked-post-hand').addEventListener('change', valueChange);
+                </script>
+
+                <a id="btn-confirm-cphand" class="btn btn-S btn-primary" onclick="postItem()">
+                    確定する
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!--<<END>> 投稿確認（手渡し）用モーダル-->
+
+
+</main>
+
+{% endblock %}

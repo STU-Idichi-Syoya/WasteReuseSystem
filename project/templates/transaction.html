@@ -1,0 +1,295 @@
+<!-- templates/item_detail.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+
+    <div class="margin-LR">
+        <h1>取引</h1>
+        <div class="transac-item-info">
+            <div>
+                <h2 class="text-H-S">
+                    <!--取引するアイテム名-->スチのり 4本 実質2本分
+                </h2>
+                <p class="text-H-SS">
+                    <span>
+                        <!--投稿者orもらい手-->投稿者
+                    </span><a href="#">Nakayama</a>さんとの取引メッセージ
+                </p>
+                <p>取引の希望：<span>簡潔に済ませたい</span></p>
+            </div>
+            <div class="item-image S">
+                <div class="img_box">
+                    <img class="object-fit-cover" src="./images/item/IMG_5532.jpg" alt="item image">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hint">
+            <span class="material-icons">lightbulb
+            </span>
+            <div>
+                <p>ここでは受け渡しに必要なやりとりを行えます</p>
+                <p>※このメッセージは公開されません</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="comments-container">
+        <p>コメント（3件）
+            <!--コメントの件数-->
+        </p>
+        <!-- <<START>> Your comment block -->
+        <div class="comment-wrapper you">
+            <div class="dispaly-user">
+                <div class="user-image S">
+                    <div class="img_box">
+                        <img class="object-fit-cover" src="./images/user/user_1.jpg" alt="user image">
+                        <i class="material-icons">person</i>
+                    </div>
+                </div>
+                <span class="user-tag item-orner visible">投稿者</span>
+            </div>
+            <div class="dispaly-comment">
+                <p>
+                    <!--ここにユーザー名-->Nakayama
+                </p>
+                <div class="speech-balloon">
+                    <div class="commnet">
+                        <!---ここにコメントが入る-->8月27日 15:00に１号間の前でお渡しでどうでしょうか？
+                    </div>
+                    <div class="comment-footer">
+                        <span class="passed-time">
+                            <i class="material-icons">schedule</i><span>2週間前</span>
+                        </span>
+                        <div class="reactions">
+                            <button class="btn-good">👍<span id="good-num">2</span>
+                            </button><button class="btn-thanks">🙏<span id="thanks-num">12</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <<END>> Your comment block -->
+
+        <!-- <<START>> My comment block -->
+        <div class="comment-wrapper me">
+            <div class="dispaly-user">
+                <div class="user-image S">
+                    <div class="img_box">
+                        <!-- ユーザー画像を登録していない場合はimgなし <img class="object-fit-cover" src="./images/user/none.jpg" name="user image">-->
+                        <i class="material-icons">person</i>
+                    </div>
+                </div>
+                <span class="user-tag item-orner">投稿者</span>
+            </div>
+            <div class="dispaly-comment">
+                <p>あなた</p>
+                <div class="speech-balloon">
+                    <div class="commnet">
+                        <!---ここにコメントが入る-->差し支えありません！承知しました！
+                    </div>
+                    <div class="comment-footer">
+                        <span class="passed-time">
+                            <i class="material-icons">schedule</i><span>2週間前</span>
+                        </span>
+                        <div class="reactions">
+                            <button class="btn-good">👍<span id="good-num">2</span>
+                            </button><button class="btn-thanks">🙏<span id="thanks-num">12</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <<END>> My comment block -->
+
+        <textarea id="new-comment" name="comment" placeholder="コメントを入力..." rows="3"></textarea>
+
+        <a class="btn btn-S btn-primary" onclick="postComment()">
+            メッセージを送信する
+        </a>
+
+    </div>
+
+    <div class="margin-LR">
+        <div class="combi-btn-link">
+            <a class="btn btn-M btn-secondary" onclick="gotoDelivery()">
+                受け渡しに進む
+                <i class="material-icons btn-icon-R">navigate_next</i>
+            </a>
+            <a class="link-under-btn-M" onclick="cancelTransaction()">取引をキャンセルする</a>
+        </div>
+    </div>
+
+
+    <!--<<START>> 取引キャンセルモーダル-->
+    <div class="modal-wrapper cancel-transaction">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close cancel-transaction">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S" style="text-align: center;">取引をキャンセルする</p>
+                <div class="hint">
+                    <span class="material-icons">lightbulb
+                    </span>
+                    <div>
+                        <p>投稿者にキャンセル理由を伝えてあげましょう</p>
+                        <p>※このメッセージはお相手の取引画面に反映され、通知が行きます</p>
+                    </div>
+                </div>
+
+                <label for="why-cancel" class="text-H-SS">キャンセル理由</label><span
+                    class="badge-necessity required">必須</span>
+                <div class="select-container">
+                    <select name="why-cancel" id="why-cancel">
+                        <option value="miss">誤ってもらい手になってしまった</option>
+                        <option value="changed">都合が変わってしまった</option>
+                        <option value="not-expect">思っていたのと違った</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+                <p class="error-msg">選択してください</p>
+
+                <label for="cansel-msg" class="text-H-SS">メッセージ</label><span class="badge-necessity optional">任意</span>
+                <textarea id="cansel-msg" name="cansel-msg"
+                    placeholder="例）当初から都合が変わってしまい、不要になりました。お話進めていただいていたところ申し訳ありません。" rows="4" cols="40"></textarea>
+                <p class="caption">お相手に一声かけてあげると丁寧です</p>
+                <p class="error-msg">入力してください</p>
+
+
+                <a class="btn btn-S btn-primary" onclick="endCancel()">
+                    送信する
+                </a>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!--<<END>> 取引キャンセルモーダル-->
+
+
+    <!--<<START>> 受け渡し（置いておく）用モーダル-->
+    <div class="modal-wrapper delivey leave">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close delivey leave">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">受け渡し【置いておく】</p>
+                <div class="item-image L">
+                    <div class="img_box">
+                        <img class="object-fit-cover" src="./images/item/IMG_5532.jpg" alt="item image">
+                    </div>
+                </div>
+
+                <p class="text-H-S">スチのり 4本 実質2本分</p>
+                <p class="text-P-M">
+                    <span>
+                        投稿者：
+                    </span><a href="#">Nakayama</a>
+                </p>
+                <div class="leave-location"><i class="material-icons">place</i><span>1号館 木工室
+                        端材コーナー</span></div>
+
+
+                <span class="ticket-line">
+                    <span class="hole L"></span><span class="hole R"></span>
+                </span>
+                <div class="combi-btn-link">
+                    <a class="btn btn-S btn-primary" onclick="gotoEvaluation()">
+                        受け取りました！
+                    </a>
+                    <a class="link-under-btn-S" onclick="noItem()"><i
+                            class="material-icons link-icon-L">help_outline</i>アイテムが置いていなかった場合</a>
+                </div>
+            </div>
+            <div class="bg-color">
+                <p class="text-H-S">アイテムがなかった場合</p>
+                <p class="text-P-M caution">
+                    あなたが取りに行く前に、誰かが回収してしまった可能性があります。投稿者に問い合わせることもできますが、投稿者の問題とは限らないことを念頭に置きましょう。</p>
+
+                <a class="btn btn-S btn-primary">
+                    投稿者に問い合わせる
+                    <i class="material-icons btn-icon-R">navigate_next</i>
+                </a>
+
+                <p class="text-P-S">取引画面に移動します</p>
+                <a href="" class="btn btn-S btn-secondary" onclick="endTransaction()">
+                    このまま取引を終わる
+                </a>
+
+                <p class="text-P-S">投稿者にアイテムがなかった旨は伝わります</p>
+            </div>
+
+        </div>
+    </div>
+    <!--<<END>> 受け渡し（置いておく）用モーダル-->
+
+    <!--<<START>> 評価用モーダル-->
+    <div class="modal-wrapper evaluation">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close evaluation">close</i>
+
+            <div class="modal-LR">
+                <span class="urge-msg">安心な取引をつづけるために</span>
+                <p class="text-H-S">お相手の評価をお願いします！</p>
+                <p class="text-P-M">これにて取引は完了です、おつかれさまでした。
+                    最後にお相手の評価をお願いします！</p>
+
+
+                <div class="evaluation-group">
+                    <div class="input-container">
+                        <input id="good" class="radio-button radio-shape" type="radio" name="radio" />
+                        <div class="radio-tile good">
+                            <div class="icon good-icon">
+                                <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M52 27C52 40.8071 40.8071 52 27 52C13.1929 52 2 40.8071 2 27C2 13.1929 13.1929 2 27 2C40.8071 2 52 13.1929 52 27ZM27 54C41.9117 54 54 41.9117 54 27C54 12.0883 41.9117 0 27 0C12.0883 0 0 12.0883 0 27C0 41.9117 12.0883 54 27 54ZM11.011 27.3536C11.2206 25.3932 12.797 23.7841 14.8424 23.6052C16.8792 23.427 18.6992 24.7201 19.2542 26.6042C19.3819 27.0376 19.8368 27.2855 20.2702 27.1578C20.7037 27.0302 20.9515 26.5753 20.8239 26.1418C20.0526 23.5236 17.526 21.7278 14.6998 21.9751C11.8607 22.2235 9.67519 24.456 9.38394 27.1796C9.33589 27.6289 9.66117 28.032 10.1105 28.0801C10.5598 28.1281 10.9629 27.8029 11.011 27.3536ZM39.169 23.5976C37.1236 23.4186 35.2917 24.7296 34.7449 26.6237C34.6195 27.0578 34.166 27.3082 33.7319 27.1828C33.2978 27.0575 33.0474 26.604 33.1728 26.1698C33.9325 23.5382 36.4725 21.7191 39.3116 21.9675C42.1378 22.2147 44.3142 24.422 44.6191 27.1344C44.6696 27.5834 44.3465 27.9883 43.8974 28.0388C43.4484 28.0893 43.0435 27.7662 42.993 27.3172C42.7736 25.3653 41.2058 23.7758 39.169 23.5976ZM36.5354 35.4838C36.5379 35.3734 36.4481 35.2831 36.3376 35.2831H17.6648C17.5544 35.2831 17.4646 35.3734 17.4671 35.4838C17.5777 40.4674 21.8005 44.4847 27.0012 44.4847C32.2022 44.4847 36.425 40.4777 36.5354 35.4838Z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-container">
+                        <input id="ok" class="radio-button radio-shape" type="radio" name="radio" />
+                        <div class="radio-tile ok">
+                            <div class="icon ok-icon">
+                                <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M52 27C52 40.8071 40.8071 52 27 52C13.1929 52 2 40.8071 2 27C2 13.1929 13.1929 2 27 2C40.8071 2 52 13.1929 52 27ZM27 54C41.9117 54 54 41.9117 54 27C54 12.0883 41.9117 0 27 0C12.0883 0 0 12.0883 0 27C0 41.9117 12.0883 54 27 54ZM36.5358 37.5298C36.7863 37.0235 36.579 36.4101 36.0727 36.1596C35.5664 35.9091 34.9529 36.1164 34.7025 36.6227C33.3419 39.3725 30.4147 41.2915 27.0007 41.2915C23.5886 41.2915 20.6699 39.374 19.2978 36.6201C19.0459 36.1146 18.4318 35.9089 17.9262 36.1608C17.4207 36.4128 17.215 37.0268 17.4669 37.5324C19.1836 40.9778 22.8097 43.337 27.0007 43.337C31.1899 43.337 34.8292 40.9792 36.5358 37.5298ZM15.1203 29.1599C17.3094 29.1599 19.0839 27.3854 19.0839 25.1963C19.0839 23.0073 17.3094 21.2327 15.1203 21.2327C12.9313 21.2327 11.1567 23.0073 11.1567 25.1963C11.1567 27.3854 12.9313 29.1599 15.1203 29.1599ZM42.8452 25.1963C42.8452 27.3854 41.0706 29.1599 38.8816 29.1599C36.6925 29.1599 34.918 27.3854 34.918 25.1963C34.918 23.0073 36.6925 21.2327 38.8816 21.2327C41.0706 21.2327 42.8452 23.0073 42.8452 25.1963Z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-container">
+                        <input id="bad" class="radio-button" type="radio" name="radio" />
+                        <div class="radio-tile bad">
+                            <div class="icon bad-icon">
+                                <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M52 27C52 40.8071 40.8071 52 27 52C13.1929 52 2 40.8071 2 27C2 13.1929 13.1929 2 27 2C40.8071 2 52 13.1929 52 27ZM27 54C41.9117 54 54 41.9117 54 27C54 12.0883 41.9117 0 27 0C12.0883 0 0 12.0883 0 27C0 41.9117 12.0883 54 27 54ZM35.6367 40.6265C36.2014 40.6157 36.6504 40.149 36.6395 39.5843C36.6286 39.0195 36.1619 38.5705 35.5972 38.5814C34.627 38.6002 33.7785 38.617 33.0266 38.6319H33.0263C30.1517 38.6888 28.687 38.7178 27.2224 38.7189C25.701 38.72 24.1796 38.691 21.078 38.6318H21.0777C20.2969 38.6169 19.4161 38.6001 18.4099 38.5814C17.8452 38.5709 17.3788 39.0202 17.3683 39.585C17.3578 40.1497 17.8071 40.6161 18.3719 40.6266C19.3657 40.645 20.2378 40.6617 21.0125 40.6764L21.0162 40.6765C24.1487 40.7362 25.6856 40.7655 27.2225 40.7644C28.7025 40.7633 30.1825 40.734 33.0876 40.6765L33.089 40.6765L33.0927 40.6764C33.8387 40.6617 34.6787 40.645 35.6367 40.6265ZM15.1204 30.2399C17.3094 30.2399 19.084 28.4653 19.084 26.2763C19.084 24.0872 17.3094 22.3127 15.1204 22.3127C12.9313 22.3127 11.1567 24.0872 11.1567 26.2763C11.1567 28.4653 12.9313 30.2399 15.1204 30.2399ZM42.8452 26.2763C42.8452 28.4653 41.0706 30.2399 38.8816 30.2399C36.6925 30.2399 34.918 28.4653 34.918 26.2763C34.918 24.0872 36.6925 22.3127 38.8816 22.3127C41.0706 22.3127 42.8452 24.0872 42.8452 26.2763Z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="btn btn-S btn-primary" onclick="submitEvaluation()">
+                    送信する
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!--<<END>> 評価用モーダル-->
+</main>
+
+
+
+{% endblock %}

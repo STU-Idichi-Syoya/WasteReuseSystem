@@ -1,0 +1,218 @@
+<!-- templates/index.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<main class="mypage">
+    <!--START マイページ-->
+    <div class="margin-LR">
+        <h1 class="title">マイページ</h1>
+        <div class="user-card">
+            <div class="user-image M">
+                <div class="img_box">
+                    <img class="object-fit-cover" src="./images/user/user_10.jpg" alt="user image">
+                    <i class="material-icons">person</i>
+                </div>
+            </div>
+            <div class="circle-filter"></div>
+
+            <h2>やまもと</h2>
+            <div class="student-data"><span class="graduation-YM">2023年3月卒</span>
+                <span class="user-tag student">現役生</span>
+            </div>
+            <div class="evaluation-records">
+                <span><img src="./images/evaluation/good_mini.svg" alt="good">34</span>
+                <span><img src="./images/evaluation/ok_mini.svg" alt="good">0</span>
+                <span><img src="./images/evaluation/bad_mini.svg" alt="good">2</span>
+            </div>
+            <a href="#" class="link-under-btn-M"><i class="material-icons link-icon-R">navigate_next</i>プロフィール設定</a>
+
+        </div>
+    </div>
+    <section class="bg-color">
+        <h2>受け渡しリスト</h2>
+        <ul class="list-delivery">
+            <!--------- <<START>> list Delivery -------->
+            <li>
+                <div>
+                    <div class="img_box">
+                        <img class="object-fit-cover" src="./images/item/IMG_5532.jpg" alt="img">
+                        <span class="tag-how-delivery">手渡し</span>
+                    </div>
+                    <div class="item-text">
+                        <p>もらい手になった<span>「スチのり 4本 実質2本分」</span>を受け取りにいきましょう</p>
+                        <div>
+                            <div class="item-details">
+                                <div> <i class="material-icons">place</i><span class="locaiton">1号館 木工室
+                                        端材コーナー</span></div>
+                                <div><i class="material-icons">schedule</i><span class="locaiton">有効期限：2021.10.16
+                                    </span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="btn btn-S btn-primary">
+                    受け渡しに進む
+                    <i class="material-icons btn-icon-R">navigate_next</i>
+                </a>
+                <!--以下absolute-->
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+            </li>
+            <!--------- <<END>> list Delivery  -------->
+
+            <!--------- <<START>> list Delivery -------->
+            <li>
+                <div>
+                    <div class="img_box">
+                        <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="img">
+                        <span class="tag-how-delivery">手渡し</span>
+                    </div>
+                    <div class="item-text">
+                        <p>投稿した<span>「カラースプレー カナリーイエロー」</span>を渡しにいきましょう</p>
+                        <div>
+                            <div class="item-details">
+                                <div> <i class="material-icons">place</i><span class="locaiton">1号館 木工室
+                                        端材コーナー</span></div>
+                                <div><i class="material-icons">schedule</i><span class="locaiton">有効期限：2021.11.28
+                                    </span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="btn btn-S btn-primary">
+                    受け渡しに進む
+                    <i class="material-icons btn-icon-R">navigate_next</i>
+                </a>
+                <!--以下absolute-->
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+            </li>
+            <!--------- <<END>> list Delivery  -------->
+        </ul>
+    </section>
+    <div class="margin-LR">
+        <section>
+            <h2>アイテム</h2>
+            <ul class="list-normal">
+                <li>
+                    <span>いいね！したアイテム</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>もらったアイテム</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+
+                <li>
+                    <span>投稿したアイテム</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>下書き一覧</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>設定</h2>
+            <ul class="list-normal">
+                <li>
+                    <span>プロフィール設定</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>興味・需要の設定</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+
+                <li>
+                    <span>通知設定</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>LINE連携</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>アカウント設定</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>編入手続き</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+
+            </ul>
+        </section>
+        <section>
+            <h2>ヘルプ・その他</h2>
+            <ul class="list-normal">
+                <li>
+                    <span>使い方ガイド</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>マナーガイド</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+
+                <li>
+                    <span>よくある質問</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>お問い合わせ</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>利用規約</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>プライバシーポリシー</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>ログアウト</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+                <li>
+                    <span>退会する</span> <i class="material-icons">navigate_next</i>
+                    <a href="#" class="item-link"></a>
+                </li>
+
+            </ul>
+        </section>
+        <section class="share-service">
+            <h2>JO-TO!をシェアする</h2>
+            <h3>置き場でシェアする</h3>
+            <a><img src="./images/banners/pop_dl@2x.jpg" alt="JO-TO!のポップダウンロードに進む"></a>
+
+            <h3>SNSでシェアする</h3>
+            <div class="share-buttons">
+                <!-- LINE -->
+                <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                        src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+                <!-- Twitter -->
+                <a class="btn-social-share"
+                    href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+                    rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
+                <!-- Facebook -->
+                <a class="btn-social-share" href="http://www.facebook.com/share.php?u=【共有するURL】"><img
+                        src="./images/buttons/Facebook.svg" alt="Facebookで共有"></a>
+                <!-- URL Copy -->
+                <a class="btn-social-share" onclick="copyUrl()"><img src="./images/buttons/linkcopy.svg"
+                        alt="URLをコピー"></a>
+                <p class="msg-url-copied">URLをコピーしました！</p>
+            </div>
+        </section>
+    </div>
+    <div class="margin-LR">
+        <img class="ad" src="images/sample_ad@2x.jpg" alt="advertisement">
+    </div>
+
+</main>
+
+{% endblock %}
