@@ -27,7 +27,7 @@ $('.tab-buttons h3').click(function () {
 
 /* Search Bar Fix（あるところだけ）
     -------------------------------------- */
-/*スクロールすると検索フィールドが上に固定される（実は微妙にうまく行ってない）*/
+/*スクロールすると検索フィールドが上に固定される*/
 var startPos = 0, winScrollTop = 0;
 
 
@@ -70,16 +70,6 @@ $(function () {
 
         });
 
-
-    // パスワードフィールドフォーカス時にフォームの縁の色を変える
-    $('#password')
-        .focusin(function (e) {
-            $('.pw-input-container').addClass('form-focused');
-        })
-        .focusout(function (e) {
-            $('.pw-input-container').removeClass('form-focused');
-        });
-
     /* // 検索フィールドエラー時にフォームの縁の色を変える ざっと探したけどfocusInvalidって間違っている模様（エラー出てる）直したいけど優先しなくていい
      $('#search-input')
          .focusInvalid(function (e) {
@@ -87,14 +77,6 @@ $(function () {
          })
          .fvalid(function (e) {
              $('#search-form').removeClass('form-error');
-         });
-     // パスワードフィールドエラー時にフォームの縁の色を変える
-     $('#password')
-         .focusInvalid(function (e) {
-             $('.pw-input-container').addClass('form-error');
-         })
-         .valid(function (e) {
-             $('.pw-input-container').removeClass('form-error');
          });*/
 });
 
@@ -216,27 +198,7 @@ if (navigator.share !== undefined) {
 }
 
 
-var body = document.body;
 
-var checkbox = document.getElementsByClassName('modalCheck');
-
-for (var i = 0; i < checkbox.length; i++) {
-
-    checkbox[i].addEventListener('click', function () {
-
-        if (this.checked) {
-
-            body.style.overflow = 'hidden';
-
-        } else {
-
-            body.style.overflow = 'visible';
-
-        }
-
-    });
-
-}
 
 function postComment() {
     //コメントの送信　できなくてもいいので一旦パス

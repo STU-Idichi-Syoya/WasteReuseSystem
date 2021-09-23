@@ -23,7 +23,8 @@
                 <label for="password" class="text-H-SS">パスワード</label>
                 <div class="pw-input-container">
                     <input type="password" name="password" id="password" maxlength="16" />
-                    <i class="material-icons visibility">visibility_off</i>
+                    <i class="material-icons visibility" aria-label="パスワードの表示・非表示を切り替える"
+                        role="presentation">visibility_off</i>
                 </div>
                 <p class="error-msg">入力してください</p>
                 <div class="centering">
@@ -66,5 +67,25 @@
         password = !password;
 
     });
+    $(function () {
+        // パスワードフィールドフォーカス時にフォームの縁の色を変える
+        $('#password')
+            .focusin(function (e) {
+                $('.pw-input-container').addClass('form-focused');
+            })
+            .focusout(function (e) {
+                $('.pw-input-container').removeClass('form-focused');
+            });
+
+        /*// パスワードフィールドエラー時にフォームの縁の色を変える
+        $('#password')
+            .focusInvalid(function (e) {
+                $('.pw-input-container').addClass('form-error');
+            })
+            .valid(function (e) {
+                $('.pw-input-container').removeClass('form-error');
+            });*/
+    });
+
 </script>
 {% endblock %}

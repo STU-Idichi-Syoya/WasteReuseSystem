@@ -60,10 +60,10 @@
     <!--検索バー-->
     <div class="search-bar head-fix">
         <span id="search-back" class="material-icons invisible">navigate_before</span>
-        <form id="search-form" class="search-form" method="get" action="https://">
+        <form id="search-form" class="search-form" method="get" action="https://" role="search">
             <input id="search-input" type="text" placeholder="何をお探しですか？" name="s" value="">
-            <button id="search-btn" type="submit" value="Search" alt="検索" title="検索"><i
-                    class="material-icons icon-search">search</i></button>
+            <button id="search-btn" type="submit" value="Search" title="検索"><i class="material-icons icon-search"
+                    aria-hidden="true" role="presentation">search</i></button>
         </form>
     </div>
     <!--タグ検索・検索履歴が横から出てくるモーダル的なもの-->
@@ -150,6 +150,32 @@
             {% block content %}
             {% endblock %}
         </div>
+        <!--Tabbar-->
+        <div class="tabbar-container">
+            <nav class="menu">
+                <a href="#" class="menu-item" id="menu-home">
+                    <span class="material-icons menu-icon">home<span class="badge-notify-menu visible"></span></span>
+                    <span class="menu-item-label">ホーム</span>
+                </a>
+                <a href="#" class="menu-item" id="menu-notify">
+                    <span class="material-icons menu-icon">notifications<span
+                            class="badge-notify-menu visible"></span></span>
+                    <span class="menu-item-label">お知らせ</span>
+                </a>
+                <a href="#" class="menu-item" id="menu-post">
+                    <span class="material-icons menu-icon">edit</span>
+                    <span class="menu-item-label">投稿</span>
+                </a>
+                <a href="#" class="menu-item" id="menu-report">
+                    <span class="material-icons menu-icon">assessment<span class="badge-notify-menu"></span></span>
+                    <span class="menu-item-label">レポート</span>
+                </a>
+                <a href="#" class="menu-item" id="menu-mypage">
+                    <span class="material-icons menu-icon">person<span class="badge-notify-menu"></span></span>
+                    <span class="menu-item-label">マイページ</span>
+                </a>
+            </nav>
+        </div>
         <footer>
             <div class="service-title">
                 <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span>
@@ -158,17 +184,17 @@
             <div class="footer-inner">
                 <div>
                     <ul class="menu">
-                        <li id="" class="menu-item">
+                        <li class="menu-item">
                             <a href="https://">使い方ガイド</a>
                         </li>
-                        <li id="" class="menu-item">
+                        <li class="menu-item">
                             <a href="https://">マナーガイド</a>
                         </li>
-                        <li id="" class="menu-item">
+                        <li class="menu-item">
                             <a href="https://">よくある質問</a>
                         </li>
 
-                        <li id="menu-item-61" class="menu-item">
+                        <li class="menu-item">
                             <a href="https://">お問い合わせ</a>
                         </li>
                     </ul>
@@ -178,13 +204,13 @@
 
                 <div>
                     <ul class="menu">
-                        <li id="" class="menu-item">
+                        <li class="menu-item">
                             <a href="https://">利用規約</a>
                         </li>
-                        <li id="" class="menu-item ">
+                        <li class="menu-item ">
                             <a href="https://">プライバシーポリシー</a>
                         </li>
-                        <li id="" class="menu-item ">
+                        <li class="menu-item ">
                             <a href="https://">ログアウト</a>
                         </li>
                         <li>
