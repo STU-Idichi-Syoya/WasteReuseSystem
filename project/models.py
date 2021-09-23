@@ -95,7 +95,15 @@ class ItemLike(db.Model):
     item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
     is_like = db.Column(db.Boolean(), nullable=False,default=True)
     created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
-    
+
+class TransactionComment(db.Model):
+    __tablename__ = "transaction_comments"
+    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
+    user_id =  db.Column(db.Integer(),db.ForeignKey("users.id"),nullable=False)
+    item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
+    comment = db.Column(db.String(length=100), nullable=False,unique=True)
+    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+
 
 class ItemTag(db.Model):
     __tablename__= 'item_tags'
