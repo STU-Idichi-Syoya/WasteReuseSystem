@@ -28,8 +28,10 @@ def item_save(item_name,user_id,expire_unix_time,place,state,message,handing_met
         for t in tags:
             tag_id=db.session.query(Tag.id).filter_by(tag_name=t)
             if tag_id is None:
-                db.session.add(Tag(tag_name=t))
+                tag=Tag(tag_name=t)
+                db.session.add(tag)
                 db.session.flush()
+                tag_id=tag.id
             db.session.add(ItemTag(tag_id=tag_id,item_id=item_id))
         # add photos
         for idx,photo in enumerate(itemphotos):

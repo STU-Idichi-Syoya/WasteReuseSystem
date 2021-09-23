@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required,current_user
 from werkzeug.utils import send_file
 from werkzeug.wrappers.response import Response
-from .models import Item, ItemComment, ItemLike, ItemPhoto, ItemTag, Tag, User,ItemBlob
+from .models import Item, ItemComment, ItemLike, ItemPhoto, ItemTag, Tag, TransactionComment, User,ItemBlob
 from . import db
 from .form import ItemAdd
 from .util import get_tags
@@ -154,4 +154,21 @@ def showItems():
         
         return render_template('index.html',recommend_items=recommend_items)
 
+#取引コメントの表示とボタン
+@items_app.route('/items/<item_id>/transaction')
+def tsc_get(item_id):
+    comments=db.session.query(TransactionComment).filter_by(item_id=id).order_by(ItemComment.created_at.amount.desc()).all()
+    item=db.session.query(Item).filter_by(id=item_id).first()
+    return render_template('transaction.html')
 
+@items_app.route('/items/<item_id>/transaction/comments',methods=['POST'])
+def tsc_get(item_id):
+    comment=request.form['comment']
+    item=db.session.query(Item).filter_by(id=item_id).first()
+    db.session.add(TransactionComment(item_id=item_id,user_id=current_user.id,comment=comment))
+    db.session.commit()
+    return render_template('transaction.html')
+
+
+@items_app.route('/items/<item_id>/transaction/',methods=['DELETE'])
+def delete()
