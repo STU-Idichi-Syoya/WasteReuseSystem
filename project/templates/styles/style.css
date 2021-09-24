@@ -1620,6 +1620,10 @@ img.object-fit-cover {
     border-radius: 4px;
 }
 
+ul.list-item-S>li .img_box>img.object-fit-cover {
+    border-radius: 4px 4px 0 0;
+}
+
 /*-- horizontal scroll--*/
 
 .horizontal_scroll {
@@ -2219,7 +2223,7 @@ table td:first-child.item-description>a {
     position: relative;
 }
 
-.map-wrapper iframe {
+iframe {
     margin-bottom: 8px;
     width: 100%;
 }
@@ -2645,6 +2649,20 @@ input:checked+label {
     font-size: var(--font-size-P-SS);
     color: var(--color-gray-2);
     margin: 0;
+}
+
+.hint>div>ul {
+    font-size: var(--font-size-P-SS);
+    color: var(--color-gray-2);
+}
+
+.hint>div>ul>li {
+    margin-left: 16px;
+    list-style: disc;
+}
+
+.error-msg+.hint {
+    margin-top: 16px;
 }
 
 .attention {

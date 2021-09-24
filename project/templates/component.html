@@ -47,7 +47,7 @@
 
     <!-- header -->
     <header class="service-title">
-        <a href="トップページへのリンク"><img src="images/logo.svg" alt="JO-TO!"></a><span class="school-name">北苺道大学</span>
+        <a href="トップページへのリンク"><img src="images/logo.svg" alt="JO-TO!"></a><span class="school-name">東京美術大学</span>
     </header>
     <!-- /header -->
 
@@ -109,6 +109,50 @@
 
 
     <main class="mypage report">
+
+        <div class="margin-LR">
+            <h1 class="title centering">新規登録</h1>
+            <label for="email" class="text-H-SS">メールアドレス</label>
+            <input type="email" placeholder="info@sample.com" id="email">
+            <p class="error-msg">入力してください</p>
+            <div class="hint">
+                <span class="material-icons" aria-label="ヒント" role="presentation">lightbulb
+                </span>
+                <div>
+                    <p>学校のメールアドレスを登録してください</p>
+                    <ul>
+                        <li>所属校の認証に使用します</li>
+                        <li>ログイン後に通知用のメールアドレスを別途設定することができます</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-P-M">学校のメールアドレスをお持ちでない方は<a href="#">こちら</a></p>
+            <label for="password" class="text-H-SS">パスワード</label>
+            <div class="pw-input-container">
+                <input type="password" id="password" maxlength="24" />
+                <i class="material-icons visibility">visibility_off</i>
+            </div>
+            <p class="error-msg">入力してください</p>
+            <label for="password" class="text-H-SS">パスワード（確認用）</label>
+            <div class="pw-input-container">
+                <input type="password" id="password" maxlength="24" />
+                <i class="material-icons visibility">visibility_off</i>
+            </div>
+            <p class="error-msg">入力してください</p>
+            <div class="centering">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="term" value="accept" required>
+                    <span class="checkmark"></span>
+                    <a href="#">利用規約</a>と<a href="#">プライバシーポリシー</a>に同意する
+                </label>
+            </div>
+            <div class="combi-btn-link">
+                <a href="" class="btn btn-M btn-primary">
+                    登録する
+                </a>
+                <p class="text-H-SS">既にアカウントをお持ちの方は<a href="./login.html">ログイン</a></p>
+            </div>
+        </div>
         <!--START レポート-->
         <div class="margin-LR">
 
@@ -731,16 +775,15 @@
                 <label for="location-map" class="text-P-M small-label-1">地図にピンを刺す</label>
                 <div class="map-wrapper">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.2633975511535!2d141.33782431587557!3d43.077957479145276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b290bc5dc9a43%3A0x425f98023e0b86d5!2z5YyX5rW36YGT5aSn5a2m!5e0!3m2!1sja!2sjp!4v1632154798729!5m2!1sja!2sjp"
-                        width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.993270150686!2d139.44595836568348!3d35.72638403510085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e6cb125391c7%3A0xe245216965837f7d!2z5q2m6JS16YeO576O6KGT5aSn5a2m!5e0!3m2!1sja!2sjp!4v1632493692080!5m2!1sja!2sjp"
+                        width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     <div id="map-disable-overlay"></div>
                 </div>
 
                 <div class="location-text-delete">
                     <div class="location-text">
                         <i class="material-icons" aria-label="場所" role="presentation">place</i>
-                        <span>北海道札幌市北区北13条西８丁目</span>
+                        <span>東京都小平市小川町1丁目736</span>
                     </div>
                     <button class="btn-nagative">
                         <i class="material-icons" aria-label="閉じる" role="button">close</i>
@@ -919,16 +962,16 @@
                 <tr>
 
                     <td>受け渡し場所</td>
-                    <td>工学部 建築学科 山本研究室（8号館204号室）ご自由にどうぞコーナー</td>
+                    <td>建築学科 山本研究室（8号館204号室）ご自由にどうぞコーナー</td>
                 </tr>
                 <tr>
 
                     <td colspan="2" id="map">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.3766485305728!2d141.33931481587553!3d43.07557622914536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2906217dd379%3A0x7f7327389e4ec240!2z44CSMDYwLTA4MTMg5YyX5rW36YGT5pyt5bmM5biC5YyX5Yy65YyX77yR77yT5p2h6KW_77yY5LiB55uu!5e0!3m2!1sja!2sjp!4v1632154682049!5m2!1sja!2sjp"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.993270150686!2d139.44595836568348!3d35.72638403510085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e6cb125391c7%3A0xe245216965837f7d!2z5q2m6JS16YeO576O6KGT5aSn5a2m!5e0!3m2!1sja!2sjp!4v1632493692080!5m2!1sja!2sjp"
                             width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         <div class="location-text"> <i class="material-icons" aria-label="場所"
-                                role="presentation">place</i><span>北海道札幌市北区北13条西８丁目</span>
+                                role="presentation">place</i><span>東京都小平市小川町1丁目736</span>
                         </div>
                     </td>
 
@@ -1187,7 +1230,7 @@
 
 
             <div class="hint">
-                <span class="material-icons">lightbulb
+                <span class="material-icons" aria-label="ヒント" role="presentation">lightbulb
                 </span>
                 <div>
                     <p>ここでは受け渡しに必要なやりとりを行えます</p>
@@ -1478,7 +1521,7 @@
 
 
             <div class="hint">
-                <span class="material-icons">lightbulb
+                <span class="material-icons" aria-label="ヒント" role="presentation">lightbulb
                 </span>
                 <div>
                     <p>ここでは受け渡しに必要なやりとりを行えます</p>
@@ -2512,7 +2555,7 @@
                     <div class="modal-LR">
                         <p class="text-H-S" style="text-align: center;">取引をキャンセルする</p>
                         <div class="hint">
-                            <span class="material-icons">lightbulb
+                            <span class="material-icons" aria-label="ヒント" role="presentation">lightbulb
                             </span>
                             <div>
                                 <p>投稿者にキャンセル理由を伝えてあげましょう</p>
@@ -2594,7 +2637,7 @@
 
     <footer>
         <div class="service-title">
-            <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span>
+            <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">東京美術大学</span>
         </div>
 
         <div class="footer-inner">
