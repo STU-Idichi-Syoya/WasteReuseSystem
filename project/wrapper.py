@@ -1,5 +1,5 @@
 from flask.globals import session
-from .models import Item, ItemBlob, ItemLike, ItemPhoto, ItemTag, Tag, Univercity, User
+from .models import Item, ItemBlob, ItemBuy, ItemLike, ItemPhoto, ItemTag, Tag, Univercity, User
 from . import db
 from project.models import Item
 
@@ -61,9 +61,11 @@ def item_buy(item_id, user_id,):
 
 def item_like(item_id,user_id):
     item = db.session.query(Item).filter_by(id=item_id, is_active=True).first()
-    item.is_like = False
-    item=ItemLike(item_id=item.id, user_id=user_id)
-    db.session.add(item)
+    if item is None:
+        item=ItemLike(item_id=item.id, user_id=user_id)
+        db.session.add(item)
+    else:
+        item.is_like = not item.is_like
     db.session.commit()
 
 def item_photo(item_id,user_id):
@@ -73,4 +75,3 @@ def item_photo(item_id,user_id):
     db.session.add(item)
     db.session.commit()
 
-def get_comment(user_id,user_id):
