@@ -39,17 +39,26 @@ class TestDB(unittest.TestCase):
         self.assertEqual(bu[0] ,user5)
 
     def test_itemlike(self):
-        like = item_like(is_like=True ,createrd_at="2021-09-20 21:04:15.412854" ,db=db)
-        session.add(like)
-        session.commit()
+        like0 = item_like(is_like=True, created_at="2021-09-20 21:04:15.412854", db=db)
+        like1 = item_like(is_like=True, created_at="2021-10-20 21:04:15.412854", db=db)
+        like2 = item_like(is_like=True, created_at="2021-11-20 21:04:15.412854", db=db)
+        like3 = item_like(is_like=True, created_at="2021-12-20 21:04:15.412854", db=db)
+        like4 = item_like(is_like=True, created_at="2021-01-20 21:04:15.412854", db=db)
         bu = session.query(item_like).all()
         self.assertEqual(len(bu), 1)
-        self.assertEqual(bu[0], like)
+        self.assertEqual(bu[0], like0)
+        self.assertEqual(bu[0], like1)
+        self.assertEqual(bu[0], like2)
+        self.assertEqual(bu[0], like3)
+        self.assertEqual(bu[0], like4)
+
         
     def test_itemPhoto(self):
-        photo = item_photo(photoNum=1 ,URI=1 ,db=db)
-        session.add(photo)
-        session.commit()
+        photo0 = item_photo(photoNum=1, URI="/items/blob/1", db=db)
+        photo1 = item_photo(photoNum=2, URI="/items/blob/2", db=db)
+        photo2 = item_photo(photoNum=3, URI="/items/blob/3", db=db)
+        photo3 = item_photo(photoNum=4, URI="/items/blob/4", db=db)
+        photo4 = item_photo(photoNum=5, URI="/items/blob/5", db=db)
         bu = session.query(item_photo).all()
         self.assertEqual(len(bu), 1)
         self.assertEqual(bu[0] ,photo)

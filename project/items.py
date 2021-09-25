@@ -7,6 +7,7 @@ from .models import Item, ItemLike, ItemPhoto, ItemTag, Tag, User,ItemBlob
 from . import db
 from .form import ItemAdd
 import io
+from project.wrapper import item_save
 items_app = Blueprint('items', __name__)
 
 @items_app.route('/items/blob/<int:blob_id>')
