@@ -2099,6 +2099,10 @@ i.modal-close {
     position: relative;
 }
 
+.start .swiper {
+    margin-top: 40px;
+}
+
 .swiper .btn-like-L {
     position: absolute;
     right: 12px;
@@ -2880,18 +2884,81 @@ section.bg-color {
     text-align: center;
 }
 
+.mypage section.share-service .share-buttons+p {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.mypage section.share-service p.text-P-M>span {
+    font-weight: 700;
+}
+
 .mypage section.share-service img {
     width: 100%;
-    margin: 8px auto 36px;
+    margin: 8px auto 24px;
+}
+
+.twitter-campaign {
+    text-align: left;
+    font-size: var(--font-size-P-M);
+    border: 2px solid var(--color-primary);
+    border-radius: 4px;
+    padding: 0 var(--margin-side) 12px;
+}
+
+.twitter-campaign p.centering {
+    color: var(--color-primary);
+}
+
+.twitter-campaign div>ul, .twitter-campaign div>ol {
+    margin: 0;
+    padding: 0;
+}
+
+.twitter-campaign div p {
+    margin: 1em 0 0.2em;
+}
+
+.twitter-campaign div {
+    margin-bottom: 4px;
+}
+
+.twitter-campaign div:last-child {
+    color: var(--color-gray-2);
+}
+
+.twitter-campaign div li {
+    margin: 0 0 0.4em 1.6em;
+}
+
+.twitter-campaign div>ol>li {
+    list-style-type: decimal;
+}
+
+.twitter-campaign div>ul>li {
+    list-style: disc;
 }
 
 .mypage .share-service .share-buttons {
     justify-content: center;
+    margin: 0 0 24px;
 }
 
 .mypage .share-service h3 {
-    margin-bottom: 8px;
+    margin: 16px auto;
     font-size: var(--font-size-H-SS);
+    position: relative;
+}
+
+.mypage .share-service h3:before {
+    position: absolute;
+    bottom: -8px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 2px;
+    content: '';
+    border-radius: 3px;
+    background: var(--color-primary);
 }
 
 img.ad {
