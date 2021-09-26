@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block title%}
@@ -6,30 +5,382 @@
 {% endblock%}
 
 {% block content %}
-<body class="text-center">  
-  <div class="container">
-    <form method="POST" class="form-register" style="color:white">
-      {{ form.hidden_tag() }}
-      <h1 class="h3 mb-3 font-weight-normal">
-          アカウントを作成してください
-      </h1>
-      <br>
-      {{ form.item_name.label() }}
-      {{ form.item_name(class="form-control", placeholder="item Name") }}
 
-      {{ form.expire_date.label() }}
-      {{ form.expire_date(class="form-control", placeholder="expire_date") }}
 
-      {{ form.category.label() }}
-      {{ form.category(class="form-control", placeholder="category") }}
-      <br>
+<main>
+    <div class="margin-LR">
+        <!--H1-->
+        <div class="title-seemore h1">
+            <h1>新規投稿</h1>
+            <a href="#"><span class="view-all">下書きを見る</span><i class="material-icons">navigate_next</i></a>
+        </div>
+        <form>
 
-      <div class="checkbox mb-3">
-        <h6>アカウントをお持ちですか?</h6>
-        <a class="btn btn-sm btn-secondary" href="{{ url_for('auth.login') }}">ログイン</a>
-      </div>
-      {{ form.submit(class="btn btn-lg btn-block btn-primary")}}
-    </form>
-  </div>
-</body>
+            <label for="item-name" class="text-H-SS">アイテムの画像</label><span class="badge-necessity required">必須</span>
+
+            <ul class="post-images">
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="登録した画像">
+                        <button class="btn-delete visible"><span class="material-icons-round" aria-label="削除する"
+                                role="presentation">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons" aria-label="写真を追加する" role="presentation">photo_camera</i>
+                    </div>
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="登録した画像">
+                        <button class="btn-delete"><span class="material-icons-round" aria-label="削除する"
+                                role="presentation">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons" aria-label="写真を追加する" role="presentation">photo_camera</i>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="登録した画像">
+                        <button class="btn-delete"><span class="material-icons-round" aria-label="削除する"
+                                role="presentation">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons" aria-label="写真を追加する" role="presentation">photo_camera</i>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="登録した画像">
+                        <button class="btn-delete"><span class="material-icons-round" aria-label="削除する"
+                                role="presentation">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons" aria-label="写真を追加する" role="presentation">photo_camera</i>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="登録した画像">
+                        <button class="btn-delete"><span class="material-icons-round" aria-label="削除する"
+                                role="presentation">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons" aria-label="写真を追加する" role="presentation">photo_camera</i>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_553s6.jpg" alt="登録した画像">
+                        <button class="btn-delete"><span class="material-icons-round" aria-label="削除する"
+                                role="presentation">
+                                delete
+                            </span>
+                        </button>
+                        <i class="material-icons" aria-label="写真を追加する" role="presentation">photo_camera</i>
+                    </div>
+
+                </li>
+            </ul>
+
+
+            <label for="item-name" class="text-H-SS">アイテム名</label><span class="badge-necessity required">必須</span>
+            <input type="text" id="item-name">
+            </label>
+            <p class="error-msg">入力してください</p>
+
+
+
+            <label for="item-description" class="text-H-SS">アイテムの説明</label><span
+                class="badge-necessity optional">任意</span>
+            <textarea name="item-description" placeholder="例）昨年11月に生協購入したものです。B3サイズのから円をいくつかくり抜いていて、6割ほど余っています。 #建築模型"
+                rows="4" cols="40"></textarea>
+            <p class="caption">#（ハッシュタグ）が使えます</p>
+            <p class="error-msg">入力してください</p>
+
+            <label for="input-how-delivery" class="text-H-SS">受け渡し方法</label><span
+                class="badge-necessity required">必須</span>
+            <div class="select-container">
+                <select name="input-how-delivery" id="input-how-delivery">
+                    <option value="leave">置いておく</option>
+                    <option value="hand">手渡し</option>
+                    <option value="mailing">郵送</option>
+                </select>
+            </div>
+            <p class="error-msg">選択してください</p>
+
+
+            <label for="location" class="text-H-SS">受け渡し場所</label><span
+                class="badge-necessity required">必須（郵送を除く）</span>
+
+            <label for="location-map" class="text-P-M small-label-1">地図にピンを刺す</label>
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.993270150686!2d139.44595836568348!3d35.72638403510085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e6cb125391c7%3A0xe245216965837f7d!2z5q2m6JS16YeO576O6KGT5aSn5a2m!5e0!3m2!1sja!2sjp!4v1632493692080!5m2!1sja!2sjp"
+                    width="351" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div id="map-disable-overlay"></div>
+            </div>
+            <div class="location-text-delete">
+                <div class="location-text">
+                    <i class="material-icons" aria-label="場所" role="presentation">place</i>
+                    <span>東京都小平市小川町1丁目736</span>
+                </div>
+                <button class="btn-nagative">
+                    <i class="material-icons" aria-label="閉じる" role="button">close</i>
+                    ピンを削除する
+                </button>
+            </div>
+
+            <label for="location-description" class="text-P-M">テキストで伝える</label>
+            <input type="text" id="location-description">
+            </label>
+            <p class="caption">地図だけで伝わりにくい場合は補足しておくと丁寧です</p>
+            <p class="error-msg">ピンかテキストのいずれかは必ず使用してください。</p>
+
+            <label for="expire" class="text-H-SS">有効期限</label><span class="badge-necessity required">必須</span>
+            <label for="expire-term" class="text-P-M small-label-1">期間から選ぶ</label>
+            <group id="expire-term" class="inline-radio">
+                <div><input type="radio" name="expire-terms" id="1month" value="1"><label>1ヶ月</label></div>
+                <div><input type="radio" name="expire-terms" id="3months" value="3"><label>3ヶ月</label></div>
+                <div><input type="radio" name="expire-terms" id="half-year" value="6"><label>半年</label></div>
+                <div><input type="radio" name="expire-terms" id="1-year" value="12"><label>1年</label></div>
+
+            </group>
+
+            <label for="expire-term" class="text-P-M">日付から選ぶ</label>
+            <input type="date" id="expire-date" name="expire-date" value="" min="2021-09-01" max="2022-10-7">
+            <p class="caption">最大1年間</p>
+            <p class="error-msg">入力してください</p>
+        </form>
+
+        <script>
+            //郵送が選ばれたらテキスト入力を無効にする
+            $('#input-how-delivery').on('change', function () {
+                const inputLocation = document.getElementById('location-description');
+                const mapOverlay = document.getElementById("map-disable-overlay");
+                console.log($("#input-how-delivery").val());
+                if ($("#input-how-delivery").val() == "mailing") {
+                    mapOverlay.classList.add("visible");
+                    inputLocation.disabled = true;
+
+                } else {
+                    inputLocation.disabled = false;
+                    mapOverlay.classList.remove("visible");
+                }
+            });
+
+            /* 期間を選ぶボタン（あるところだけ）
+                -------------------------------------- */
+            //デフォルトで3ヶ月先をdatapickerに入れておく
+            window.onload = function () {
+                getTargetYMD(3)
+
+            }
+            //今日の日付＋ラジオボタンで選ばれた期間を返す
+            function getTargetYMD(N) {
+                var dt = new Date();
+                //Nか月後
+                if (N == 12) {
+                    dt.setFullYear(dt.getFullYear() + 1);
+                } else {
+                    dt.setMonth(dt.getMonth() + N);
+                }
+
+                var y = dt.getFullYear();
+                var m = ("00" + (dt.getMonth() + 1)).slice(-2);
+                var d = ("00" + dt.getDate()).slice(-2);
+                var result = y + "-" + m + "-" + d;
+                console.log(result);
+                $("#expire-date").val(result);
+                return result;
+            }
+
+            //ラジオボタンの値の変化を読み取る
+            function valueChange(event) {
+                let selectValue = parseInt(event.currentTarget.value, 10);
+                console.log(selectValue)
+                getTargetYMD(selectValue);
+            }
+
+            let expireTerm1 = document.getElementById('1month');
+            expireTerm1.addEventListener('change', valueChange);
+
+            let expireTerm2 = document.getElementById('3months');
+            expireTerm2.addEventListener('change', valueChange);
+
+            let expireTerm3 = document.getElementById('half-year');
+            expireTerm3.addEventListener('change', valueChange);
+
+            let expireTerm4 = document.getElementById('1-year');
+            expireTerm4.addEventListener('change', valueChange);
+        </script>
+
+        <div class="combi-btn-link">
+            <a class="btn btn-M btn-primary" onclick="checkPost()">
+                投稿する
+
+            </a>
+            <a class="btn btn-M btn-secondary" onclick="savePost()">
+                下書きに保存する
+            </a>
+            <div class="msg-tmp msg_savePost">
+                <p><i class="material-icons">check_circle</i>下書きを保存しました</p>
+            </div>
+            <a class="link-under-btn-M" onclick="checkDeletePost()"><i
+                    class="material-icons link-icon-L">close</i>削除する</a>
+        </div>
+    </div>
+
+    <!--<<START>> 下書き削除確認用モーダル-->
+    <div class="modal-wrapper check-delete leave">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-delete leave" aria-label="閉じる" role="button">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">下書きを削除しますか？</p>
+                <img class="" src="./images/delete.svg" alt="置いておく">
+                <p>
+                    この操作は取り消せません
+                </p>
+
+                <a id="btn-confirm-delete" class="btn btn-S btn-primary" onclick="deletePost()">
+                    下書きを削除する
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="msg-tmp msg_deletePost">
+        <p><i class="material-icons">check_circle</i>下書きを削除しました</p>
+    </div>
+    <!--<<END>> 下書き削除確認用モーダル-->
+
+    <!--<<START>> 投稿確認（置いておく）用モーダル-->
+    <div class="modal-wrapper check-post leave">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-post leave" aria-label="閉じる" role="button">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">受け渡し方法として
+                    【置いておく】を選択しています</p>
+                <img class="" src="./images/leave.svg" alt="置いておく">
+                <ul>
+                    <li>
+                        意図せずものがなくなる恐れがあります。あなたの問題でなくとも問い合わせがくる可能性がありますが、落ち着いて正直に対応しましょう。</li>
+                    <li>期限までに貰い手が現れなかった場合は自分で責任を持って処理しましょう。
+                    </li>
+                    <li>
+                        置き場の治安維持に努めましょう。
+                    </li>
+                </ul>
+                <label class="checkbox-label">
+                    <input id="checked-post-leave" type="checkbox" value="accept" required>
+                    <span class="checkmark"></span>
+                    条件を確認しました
+                </label>
+                <script>
+                    function valueChange(event) {
+                        document.getElementById('btn-confirm-cpleave').classList.add('checked');
+                    }
+
+                    document.getElementById('checked-post-leave').addEventListener('change', valueChange);
+                </script>
+
+                <a id="btn-confirm-cpleave" class="btn btn-S btn-primary" onclick="postItem()">
+                    確定する
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!--<<END>> 投稿確認（置いておく）用モーダル-->
+
+    <!--<<START>> 投稿確認（手渡し）用モーダル-->
+    <div class="modal-wrapper check-post hand">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-post hand" aria-label="閉じる" role="button">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">受け渡し方法として
+                    【手渡し】を選択しています</p>
+                <img class="" src="./images/hand-to-hand.svg" alt="手渡し">
+                <ul>
+                    <li>
+                        もらい手と対面での受け渡しになります
+                    </li>
+                    <li>取引画面で受け渡し日時・場所の調整が必要です
+                    </li>
+                </ul>
+                <label class="checkbox-label">
+                    <input id="checked-post-hand" type="checkbox" value="accept" required>
+                    <span class="checkmark"></span>
+                    条件を確認しました
+                </label>
+                <script>
+                    function valueChange(event) {
+                        document.getElementById('btn-confirm-cphand').classList.add('checked');
+                    }
+
+                    document.getElementById('checked-post-hand').addEventListener('change', valueChange);
+                </script>
+
+                <a id="btn-confirm-cphand" class="btn btn-S btn-primary" onclick="postItem()">
+                    確定する
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!--<<END>> 投稿確認（手渡し）用モーダル-->
+
+    <!--<<START>> 投稿確認（郵送）用モーダル-->
+    <div class="modal-wrapper check-post mailing">
+        <div class="overlay"></div>
+        <div class="modal-contents">
+            <i class="material-icons modal-close check-post mailing" aria-label="閉じる" role="button">close</i>
+
+            <div class="modal-LR">
+                <p class="text-H-S">受け渡し方法として
+                    <br>【手渡し】を選択しています
+                </p>
+                <img class="" src="./images/mailing.svg" alt="郵送">
+                <ul>
+                    <li>
+                        取引画面で郵送方法や料金の負担について相談する必要があります
+                    </li>
+                    <li>投稿者から送り先を伝えられた場合、取り扱いに留意してください
+                    </li>
+                </ul>
+                <label class="checkbox-label">
+                    <input id="checked-post-mailing" type="checkbox" value="accept" required>
+                    <span class="checkmark"></span>
+                    条件を確認しました
+                </label>
+                <script>
+                    function valueChange(event) {
+                        document.getElementById('btn-confirm-cpmailing').classList.add('checked');
+                    }
+
+                    document.getElementById('checked-post-mailing').addEventListener('change', valueChange);
+                </script>
+
+                <a id="btn-confirm-cpmailing" class="btn btn-S btn-primary" onclick="postItem()">
+                    確定する
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!--<<END>> 投稿確認（郵送）用モーダル-->
+
+
+</main>
+
 {% endblock %}

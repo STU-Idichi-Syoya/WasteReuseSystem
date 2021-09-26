@@ -105,9 +105,11 @@ def searchItems():
 def showItem(item_id):
     item=db.session.query(Item).filter_by(id=item_id).first()
     comment=db.session.query(ItemComment).filter_by(item_id=item_id).order_by(Item.created_at.amount.asc()).all()
+    photos=db.session.query(ItemPhoto).filter_by(item_id=item_id).all()
+    tag=db.session.query(ItemTag).join(Tag,Tag.id==ItemTag.tag_id).filter_by(item_id=item_id)
     if item is None:
         return f'ERROR {item_id} Item is not exist'
-    return render_template('item_datail.html',item=item,comment=comment)
+    return render_template('item_datail.html',item=item,comment=comment,photos=photos,tag=tag)
 
 
 @items_app.route("/")

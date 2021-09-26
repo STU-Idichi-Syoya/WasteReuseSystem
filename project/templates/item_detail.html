@@ -10,18 +10,10 @@
         <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events">
             <div class="swiper-wrapper" aria-live="polite"
                 style="transition-duration: 0ms; transform: translate3d(-7168px, 0px, 0px);">
-                <div class="swiper-slide" role="group" aria-label="1 / 6"><img src="./images/item/IMG_5532.jpg"
+                {% for p in photos %}
+                <div class="swiper-slide" role="group" aria-label="{{loop.index}} / 6"><img src="{{p.URI}}"
                         alt="投稿された画像"></div>
-                <div class="swiper-slide" role="group" aria-label="2 / 6"><img src="./images/item/IMG_5533.jpg"
-                        alt="投稿された画像"></div>
-                <div class="swiper-slide" role="group" aria-label="3 / 6"><img src="./images/item/IMG_5534.jpg"
-                        alt="投稿された画像"></div>
-                <div class="swiper-slide" role="group" aria-label="4 / 6"><img src="./images/item/IMG_5535.jpg"
-                        alt="投稿された画像"></div>
-                <div class="swiper-slide" role="group" aria-label="5 / 6"><img src="./images/item/IMG_5536.jpg"
-                        alt="投稿された画像"></div>
-                <div class="swiper-slide" role="group" aria-label="6 / 6"><img src="./images/item/IMG_5537.jpg"
-                        alt="投稿された画像"></div>
+                {% endfor %}
             </div>
             <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
                 <span class="swiper-pagination-bullet"></span>
@@ -37,7 +29,8 @@
                 <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M15 26.6875L13.1875 25.0375C6.75 19.2 2.5 15.35 2.5 10.625C2.5 6.775 5.525 3.75 9.375 3.75C11.55 3.75 13.6375 4.7625 15 6.3625C16.3625 4.7625 18.45 3.75 20.625 3.75C24.475 3.75 27.5 6.775 27.5 10.625C27.5 15.35 23.25 19.2 16.8125 25.05L15 26.6875Z" />
-                </svg></button>
+                </svg>
+            </button>
         </div>
         <!-- Initialize Swiper -->
         <script>
@@ -48,7 +41,7 @@
             });
         </script>
         <!--アイテム名-->
-        <h1 class="item-titel">スチのり 4本 実質2本分</h1>
+        <h1 class="item-titel">{{item.item_name}}</h1>
         <div class="display-impression">
             <span>
                 <i class="material-icons">favorite</i>
@@ -58,7 +51,7 @@
             <span>
                 <i class="material-icons">comment</i>
                 <span>コメント</span>
-                <span class="comment-num">5</span>
+                <span class="comment-num">{{ comment | count }}</span>
             </span>
         </div>
 
@@ -71,12 +64,12 @@
             <tr>
 
                 <td>受け渡し方法</td>
-                <td id="disp-how-delivery">置いておく</td>
+                <td id="disp-how-delivery">{{item.handing_method}}</td>
             </tr>
             <tr>
 
                 <td>受け渡し場所</td>
-                <td>建築学科 山本研究室（8号館204号室）ご自由にどうぞコーナー</td>
+                <td>{{item.place}}</td>
             </tr>
             <tr>
 
@@ -96,8 +89,10 @@
             <tr>
 
                 <td colspan="2" class="item-description">
-                    大学に持っていき忘れるたびに生協で買っていて、気付いたら4本持っていました。どれも半分以上は残っているので、全部で2本強分くらいはあると思います。意外と安くはないスチのり、もう使う予定がないので、だれか使ってあげてください。
-                    <a href="#">#建築設計実習</a><a href="#">#半分以上</a><a href="#">#700円分</a>
+                    {{item.message}}
+                    {% for t in tag %}
+                    <a href="#">{{t.tag_name}}</a>
+                    {% endfor %}
                 </td>
         </table>
         <div class="time-and-share">
@@ -124,10 +119,12 @@
     </div>
 
     <div class="comments-container">
-        <p>コメント（3件）
+        <p>コメント（{{comment | count }}件）
             <!--コメントの件数-->
         </p>
         <!-- <<START>> Your comment block -->
+        {% for c in comment %}
+        {%if item.user_id != c.user_id %}
         <div class="comment-wrapper you">
             <div class="dispaly-user">
                 <div class="user-image S">
@@ -140,11 +137,11 @@
             </div>
             <div class="dispaly-comment">
                 <p>
-                    <!--ここにユーザー名-->Nakayama
+                    <!--ここにユーザー名-->{{c.user_id}}
                 </p>
                 <div class="speech-balloon">
                     <div class="commnet">
-                        <!---ここにコメントが入る-->8月27日 15:00に１号間の前でお渡しでどうでしょうか？
+                        <!---ここにコメントが入る-->{{c.comment}}
                     </div>
                     <div class="comment-footer">
                         <span class="passed-time">
@@ -159,7 +156,7 @@
             </div>
         </div>
         <!-- <<END>> Your comment block -->
-
+        {%else%}
         <!-- <<START>> My comment block -->
         <div class="comment-wrapper me">
             <div class="dispaly-user">
@@ -175,7 +172,7 @@
                 <p>あなた</p>
                 <div class="speech-balloon">
                     <div class="commnet">
-                        <!---ここにコメントが入る-->差し支えありません！承知しました！
+                        <!---ここにコメントが入る-->{c.comment}
                     </div>
                     <div class="comment-footer">
                         <span class="passed-time">
@@ -190,7 +187,8 @@
             </div>
         </div>
         <!-- <<END>> My comment block -->
-
+        {%endif%}
+        {%endfor%}
         <textarea id="new-comment" name="comment" placeholder="コメントを入力..." rows="3"></textarea>
 
         <a class="btn btn-S btn-primary" onclick="postComment()">
