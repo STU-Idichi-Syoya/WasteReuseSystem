@@ -42,7 +42,7 @@ def seed_items():
             date = datetime.datetime.strptime(item["有効期限"], '%Y/%m/%d').timestamp()
             tags=get_tags(item["アイテムの説明"])
             item_id=item_save(item_name=item['アイテム名'],user_id=user,expire_unix_time=date,place=item["テキスト"],state="傷少しあります",message=item["アイテムの説明"]
-            ,handing_method=item["受け渡し方法"],tags=tags,itemphotos=["/item/"+item["アイテムの画像"]])
+            ,handing_method=item["受け渡し方法"],tags=tags,itemphotos=["/images/item/"+item["アイテムの画像"]])
 
             for j in range(1,4):
                 if not item["ユーザ名"+str(j)] :break
