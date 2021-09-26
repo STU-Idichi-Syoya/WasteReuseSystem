@@ -10,18 +10,16 @@ import os
 
 db = SQLAlchemy()
 app=None
-bcrypt=None
+bcrypt=Bcrypt()
 
 def create_app():
     global app,db,bcrypt
     tpath=os.path.dirname(os.path.abspath(__file__))
-    app = Flask(__name__,template_folder=os.path.join(tpath,'templates'),static_folder=os.path.join(tpath,'templates'),static_url_path='')
-    bcrypt=Bcrypt(app)
-    db.init_app(app)
-
+    app = Flask(__name__,template_folder=os.path.join(tpath,'templates'),static_folder=os.path.join(tpath,'static'),static_url_path='/')
     app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db.init_app(app)
 
     Migrate(app, db)
 

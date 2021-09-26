@@ -15,6 +15,7 @@ class User(db.Model,UserMixin):
     univercity_id = db.Column(db.Integer(),db.ForeignKey("univercities.id"),nullable=False)
     email_address = db.Column(db.String(length=50), nullable=False, unique=True)
     password_hash = db.Column(db.String(length=60), nullable=False)
+    icon = db.Column(db.String(length=100), nullable=True)
     is_active = db.Column(db.Boolean(), nullable=False,default=True)
     @property
     def password(self):
@@ -58,7 +59,7 @@ class Item(db.Model):
     user_id =  db.Column(db.Integer(),db.ForeignKey("users.id"),nullable=False)
     item_name = db.Column(db.String(length=30), nullable=False)
     # 有効期限
-    expire = db.Column(db.Time(), default=datetime.datetime.now().time())
+    expire = db.Column(db.Integer(), default=int(datetime.datetime.now().timestamp()))
     # お渡し場所
     place= db.Column(db.String(length=100), nullable=False)
     # 商品状態(正規化しない)
@@ -68,7 +69,7 @@ class Item(db.Model):
     # 出品者からのメッセージ
     message= db.Column(db.String(length=600), nullable=False)
     handing_method = db.Column(db.String(length=100), nullable=False)
-    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+    created_at= db.Column(db.Integer(), default=int(datetime.datetime.now().timestamp()))
 
 class ItemComment(db.Model):
     __tablename__= 'item_comments'
@@ -77,14 +78,14 @@ class ItemComment(db.Model):
     item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False) 
     comment=db.Column(db.String(length=600), nullable=False)
     # 自動付加
-    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+    created_at= db.Column(db.Integer(), default=int(datetime.datetime.now().timestamp()))
 
 class ItemBuy(db.Model):
     __tablename__= 'item_buys'
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     user_id =  db.Column(db.Integer(),db.ForeignKey("users.id"),nullable=False)
     item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False) 
-    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+    created_at= db.Column(db.Integer(), default=int(datetime.datetime.now().timestamp()))
 
 
 
@@ -94,7 +95,7 @@ class ItemLike(db.Model):
     user_id =  db.Column(db.Integer(),db.ForeignKey("users.id"),nullable=False)
     item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
     is_like = db.Column(db.Boolean(), nullable=False,default=True)
-    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+    created_at= db.Column(db.Integer(), default=int(datetime.datetime.now().timestamp()))
 
 class TransactionComment(db.Model):
     __tablename__ = "transaction_comments"
@@ -102,21 +103,21 @@ class TransactionComment(db.Model):
     user_id =  db.Column(db.Integer(),db.ForeignKey("users.id"),nullable=False)
     item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False)
     comment = db.Column(db.String(length=100), nullable=False,unique=True)
-    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+    created_at= db.Column(db.Integer(), default=int(datetime.datetime.now().timestamp()))
 
 
 class ItemTag(db.Model):
     __tablename__= 'item_tags'
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     item_id =  db.Column(db.Integer(),db.ForeignKey("items.id"),nullable=False) 
-    tag_id = db.Column(db.Integer(),db.ForeignKey("tags.id"),nullable=False) 
-    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+    tag_name = db.Column(db.String(length=30), nullable=False,unique=True)
+    created_at= db.Column(db.Integer(), default=int(datetime.datetime.now().timestamp()))
 
 class Tag(db.Model):
     __tablename__= 'tags'
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     tag_name = db.Column(db.String(length=30), nullable=False,unique=True)
-    created_at= db.Column(db.Time(), default=datetime.datetime.now().time())
+    created_at= db.Column(db.Integer(), default=int(datetime.datetime.now().timestamp()))
 
 
 class ItemPhoto(db.Model):

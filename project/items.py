@@ -9,7 +9,12 @@ from . import db
 from .form import ItemAdd
 from .util import get_tags
 import io
-items_app = Blueprint('items', __name__)
+
+items_app = Blueprint('items', __name__,static_folder='static',static_url_path="/")
+
+# @items_app.route("/items/<photo_file>")
+# def sendphoto(photo_file):
+#     return send_file(f"static/item/{filename}")
 
 @items_app.route('/items/blob/<int:blob_id>')
 def sendPhotoID(blob_id):
@@ -49,8 +54,6 @@ def searchItems():
     tag=request.args.get('tag')
     keyword=request.args.get('keyword')
 
-
-    
     # validation
     if tag is not None:
         tag=tag.replace(' ','')
@@ -61,42 +64,39 @@ def searchItems():
     if len(tag)>0:
         #TODO:tag
         if current_user.is_authenticated:
-            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like,Item.place,Item.user_id,Item.handing_method)\
+            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,Item.place,Item.user_id,Item.handing_method)\
                                             .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
                                             .join(ItemTag,ItemTag.item_id==Item.id)\
                                             .join(Tag,Tag.id==ItemTag.tag_id)\
-                                            .join(ItemLike,Item.id==ItemLike.item_id)\
                                             .join(User,Item.user_id==User.id)\
-                                            .filter_by(is_like=True).filter_by(univercity_id==current_user.univercity_id,tag_name=tag).all()
+                                            .all()
+                                            # .filter_by(is_like=True).filter_by(univercity_id==current_user.univercity_id,tag_name=tag)
             return render_template('search_result.html',search_items=searchItems)
             
         else:
-            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like,Item.place,Item.user_id,Item.handing_method)\
+            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,Item.place,Item.user_id,Item.handing_method)\
                                         .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
                                         .join(ItemTag,ItemTag.item_id==Item.id)\
                                         .join(Tag,Tag.id==ItemTag.tag_id)\
-                                        .join(ItemLike,Item.id==ItemLike.item_id)\
                                         .join(User,Item.user_id==User.id)\
-                                        .filter_by(is_like=True).filter_by(tag_name=tag).all()
+                                        .filter_by(tag_name=tag).all()
             return render_template('search_result.html',search_items=searchItems)
     
     # find by keyword
     # TODO 複数ワード検索
     elif len(keyword)>0 and len(keyword[0])>0:
         if current_user.is_authenticated:
-            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like,Item.place,Item.user_id,Item.handing_method)\
+            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,Item.place,Item.user_id,Item.handing_method)\
                                         .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
-                                        .join(ItemLike,Item.id==ItemLike.item_id)\
                                         .join(User,Item.user_id==User.id)\
-                                        .filter_by(is_like=True).filter_by(univercity_id==current_user.univercity_id).all()
+                                        .filter_by(univercity_id==current_user.univercity_id).all()
     
             return render_template('search_result.html',search_items=searchItems)
         else:
-            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like,Item.place,Item.user_id,Item.handing_method)\
+            search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,Item.place,Item.user_id,Item.handing_method)\
                                         .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
-                                        .join(ItemLike,Item.id==ItemLike.item_id)\
                                         .join(User,Item.user_id==User.id)\
-                                        .filter_by(is_like=True).filter(Item.item_name.like(f'%{keyword[0]}%')).all()
+                                        .filter(Item.item_name.like(f'%{keyword[0]}%')).all()
             return render_template('search_result.html',search_items=search_items)
     # クエリパラメータがなければ、検索画面
     return render_template('search.html')
@@ -104,7 +104,7 @@ def searchItems():
 @items_app.route("/items/<id>")
 def showItem(item_id):
     item=db.session.query(Item).filter_by(id=item_id).first()
-    comment=db.session.query(ItemComment).filter_by(item_id=item_id).order_by(Item.created_at.amount.asc()).all()
+    comment=db.session.query(ItemComment).filter_by(item_id=item_id).order_by(Item.created_at.asc()).all()
     photos=db.session.query(ItemPhoto).filter_by(item_id=item_id).all()
     tag=db.session.query(ItemTag).join(Tag,Tag.id==ItemTag.tag_id).filter_by(item_id=item_id)
     if item is None:
@@ -122,35 +122,35 @@ def showItems():
     # user_name = session.query(User, UserSocial).\
     # join(UserSocial, User.id==UserSocial.user_id).\
     # all()
-    if current_user.is_authenticated:
+    # if current_user.is_authenticated:
+    if 1:
         # いいねしたアイテム
-        like_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like)\
+        like_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI)\
                                     .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
-                                    .join(ItemLike,Item.id==ItemLike.item_id)\
                                     .join(User,Item.user_id==User.id)\
-                                    .filter_by(is_like=True).filter_by(univercity_id==current_user.univercity_id).limit(10).all()
-        
-        recommend_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like)\
+                                    .limit(10)
+                                    # .filter_by(is_like=True)\
+                                    # .filter_by(univercity_id==current_user.univercity_id)\
+        print(like_items.statement)
+        recommend_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI)\
                                     .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
-                                    .join(ItemLike,Item.id==ItemLike.item_id)\
                                     .join(User,Item.user_id==User.id)\
-                                    .filter_by(univercity_id==current_user.univercity_id).limit(10).all()
+                                    .limit(10).all()
         
         #検索履歴
         #TODO
         search_his_items=[]
         # new Item
-        new_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like)\
+        new_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI)\
                                     .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
-                                    .join(ItemLike,Item.id==ItemLike.item_id)\
                                     .join(User,Item.user_id==User.id)\
-                                    .filter_by(univercity_id==current_user.univercity_id).limit(10).order_by(Item.created_at.amount.desc()).all()
+                                    .order_by(Item.created_at.desc()).limit(10).all()
+                                    
         return render_template('index.html',like_items=like_items,recommend_items=recommend_items,new_items=new_items)
         
     else:
-        recommend_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,ItemLike.is_like)\
+        recommend_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI)\
                                     .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
-                                    .join(ItemLike,Item.id==ItemLike.item_id)\
                                     .join(User,Item.user_id==User.id)\
                                     .limit(100).all()
         
@@ -159,7 +159,7 @@ def showItems():
 #取引コメントの表示とボタン
 @items_app.route('/items/<item_id>/transaction')
 def tsc_get(item_id):
-    comments=db.session.query(TransactionComment).filter_by(item_id=id).order_by(ItemComment.created_at.amount.desc()).all()
+    comments=db.session.query(TransactionComment).filter_by(item_id=id).order_by(ItemComment.created_at.desc()).all()
     item=db.session.query(Item).filter_by(id=item_id).first()
     return render_template('transaction.html')
 

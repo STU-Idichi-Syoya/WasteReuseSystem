@@ -4,7 +4,7 @@ def get_tags(msg):
     msg=msg.replace('　',' ')
     flg=False
     for c in msg:
-        print('tag=',tags,'c=',c)
+        # print('tag=',tags,'c=',c)
         if c == '#':
             if flg:
                 tags.append(tag)
