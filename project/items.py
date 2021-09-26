@@ -162,7 +162,7 @@ def tsc_get(item_id):
     return render_template('transaction.html')
 
 @items_app.route('/items/<item_id>/transaction/comments',methods=['POST'])
-def tsc_get(item_id):
+def tsc_get_c(item_id):
     comment=request.form['comment']
     item=db.session.query(Item).filter_by(id=item_id).first()
     db.session.add(TransactionComment(item_id=item_id,user_id=current_user.id,comment=comment))
@@ -170,5 +170,5 @@ def tsc_get(item_id):
     return render_template('transaction.html')
 
 
-@items_app.route('/items/<item_id>/transaction/',methods=['DELETE'])
-def delete()
+# @items_app.route('/items/<item_id>/transaction/',methods=['DELETE'])
+# def delete()
