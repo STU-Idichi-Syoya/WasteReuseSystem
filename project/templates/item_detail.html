@@ -124,7 +124,7 @@
         </p>
         <!-- <<START>> Your comment block -->
         {% for c in comment %}
-        {%if item.user_id != c.user_id %}
+        {%if item.user_id == c.user_id %}
         <div class="comment-wrapper you">
             <div class="dispaly-user">
                 <div class="user-image S">
