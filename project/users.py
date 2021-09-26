@@ -16,20 +16,20 @@ users_app = Blueprint('users', __name__)
     
 #     return render_template('search.html')
 
-@users_app.route('/items/add',methods=['GET','POST'])
-@login_required
-def item_add():
-    if request.method=='GET':
-        form=ItemAdd()
-        return render_template('item_add.html',form=form)
-    else:
-        form=ItemAdd(request.form)
-        if form.validate_on_submit():
-            item=Item(user_id=current_user.id,item_name=form.item_name.data,category=form.category.data,dangerous=False,need_credential='F',expire=1234)
-            db.session.add(item)
-            db.session.commit()
-            return 'OK'
-        return 'FALSE'
+# @users_app.route('/items/add',methods=['GET','POST'])
+# @login_required
+# def item_add():
+#     if request.method=='GET':
+#         form=ItemAdd()
+#         return render_template('item_add.html',form=form)
+#     else:
+#         form=ItemAdd(request.form)
+#         if form.validate_on_submit():
+#             item=Item(user_id=current_user.id,item_name=form.item_name.data,category=form.category.data,dangerous=False,need_credential='F',expire=1234)
+#             db.session.add(item)
+#             db.session.commit()
+#             return 'OK'
+#         return 'FALSE'
 
 @users_app.route("/users/report")
 def report():

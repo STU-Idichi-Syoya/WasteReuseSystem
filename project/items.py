@@ -28,6 +28,9 @@ def sendPhotoID(blob_id):
     return Response(status=400)
 
                
+@items_app.route('/items/add',methods=['GET'])
+def item_add_get():
+    return render_template("item_add.html")
 
 @items_app.route('/items/add',methods=['POST'])
 def item_post():
