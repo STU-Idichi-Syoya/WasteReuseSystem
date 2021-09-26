@@ -27,7 +27,7 @@ $('.tab-buttons h3').click(function () {
 
 /* Search Bar Fix（あるところだけ）
     -------------------------------------- */
-/*スクロールすると検索フィールドが上に固定される（実は微妙にうまく行ってない）*/
+/*スクロールすると検索フィールドが上に固定される*/
 var startPos = 0, winScrollTop = 0;
 
 
@@ -70,16 +70,6 @@ $(function () {
 
         });
 
-
-    // パスワードフィールドフォーカス時にフォームの縁の色を変える
-    $('#password')
-        .focusin(function (e) {
-            $('.pw-input-container').addClass('form-focused');
-        })
-        .focusout(function (e) {
-            $('.pw-input-container').removeClass('form-focused');
-        });
-
     /* // 検索フィールドエラー時にフォームの縁の色を変える ざっと探したけどfocusInvalidって間違っている模様（エラー出てる）直したいけど優先しなくていい
      $('#search-input')
          .focusInvalid(function (e) {
@@ -87,14 +77,6 @@ $(function () {
          })
          .fvalid(function (e) {
              $('#search-form').removeClass('form-error');
-         });
-     // パスワードフィールドエラー時にフォームの縁の色を変える
-     $('#password')
-         .focusInvalid(function (e) {
-             $('.pw-input-container').addClass('form-error');
-         })
-         .valid(function (e) {
-             $('.pw-input-container').removeClass('form-error');
          });*/
 });
 
@@ -165,25 +147,29 @@ $(function () {
     })
 });
 
+function tmpMessage(type) {
+    $(".msg-tmp." + type).fadeIn().queue(function () {
+        setTimeout(function () {
+            $(".msg-tmp." + type).dequeue();
+        }, 1600);
+    });
+    $(".msg-tmp." + type).fadeOut();
+    console.log(".msg-tmp." + type);
+}
 
 
 /* URL Copy Button
     -------------------------------------- */
 function copyUrl() {
+    const msg_copyURL = "msg_copyURL";
     const element = document.createElement('input');
     element.value = location.href;
     document.body.appendChild(element);
     element.select();
     document.execCommand('copy');
     document.body.removeChild(element);
+    tmpMessage(msg_copyURL);
 
-    //queue()で処理を溜めてdequeue()で実行。3秒経ったらfadeOut()
-    $(".msg-url-copied").fadeIn().queue(function () {
-        setTimeout(function () {
-            $(".msg-url-copied").dequeue();
-        }, 1600);
-    });
-    $(".msg-url-copied").fadeOut();
 }
 /* Share Button
     -------------------------------------- */
@@ -212,27 +198,7 @@ if (navigator.share !== undefined) {
 }
 
 
-var body = document.body;
 
-var checkbox = document.getElementsByClassName('modalCheck');
-
-for (var i = 0; i < checkbox.length; i++) {
-
-    checkbox[i].addEventListener('click', function () {
-
-        if (this.checked) {
-
-            body.style.overflow = 'hidden';
-
-        } else {
-
-            body.style.overflow = 'visible';
-
-        }
-
-    });
-
-}
 
 function postComment() {
     //コメントの送信　できなくてもいいので一旦パス
@@ -246,7 +212,10 @@ function postComment() {
 /* 投稿
 -------------------------------------- */
 function savePost() {
+    const msg_savePost = "msg_savePost";
+    tmpMessage(msg_savePost);//下書きを保存しましたというメッセージを一時的に表示
     //下書きに保存(パス)
+    //下書き一覧に飛ばす
 
 }
 
@@ -258,22 +227,29 @@ function checkDeletePost() {
 function deletePost() {
     //投稿画面「削除する」で下書き消すか確認モーダルを閉じる
     $('.modal-wrapper.check-delete').fadeOut().css({ top: 0 });
+    const msg_deletePost = "msg_deletePost";
+    tmpMessage(msg_deletePost);
     //下書き削除(パス)
     //下書き一覧に飛ばす
 }
 function checkPost() {
     //投稿するボタンで確認モーダルを開く
 
-    let howDelivery = $('#input-how-delivery').value;//undefined
+    let howDelivery = $('#input-how-delivery').val();;//undefined
     console.log(howDelivery);
     //取引画面「受け渡しに進む」ボタンを押したら
-    if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
+    if (howDelivery == 'leave') {//受け渡し方法が「置いておく」の場合
         //投稿確認（置いておく）モーダルを開く
         $('.modal-wrapper.check-post.leave').fadeIn();
         return false;
-    } else {//受け渡し方法が「手渡し」の場合
+    } else if (howDelivery == 'hand') {//受け渡し方法が「手渡し」の場合
         //投稿確認（手渡し）モーダルを開く
         $('.modal-wrapper.check-post.hand').fadeIn();
+        return false;
+    } else {//受け渡し方法が「郵送」の場合
+        //投稿確認（郵送）モーダルを開く
+        $('.modal-wrapper.check-post.mailing').fadeIn();
+        return false;
     }
 
 
@@ -288,16 +264,20 @@ function postItem() {
 /* 取引
 -------------------------------------- */
 function checkConditions() {
-    let howDelivery = $('#disp-how-delivery').value;//undefined
+    let howDelivery = $('#disp-how-delivery').val();;//undefined
     console.log(howDelivery);
     //アイテム詳細「もらい手になる」ボタンを押したら取引開始確定前のチェックモーダルに飛ばす
-    if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
+    if (howDelivery == 'leave') {//受け渡し方法が「置いておく」の場合
         //受け渡し（置いておく）モーダルを開く
         $('.modal-wrapper.check-conditions.leave').fadeIn();
         return false;
-
-    } else {//受け渡し方法が「手渡し」の場合
+    } else if (howDelivery == 'hand') {//受け渡し方法が「手渡し」の場合
+        //受け渡し（手渡し）モーダルを開く
         $('.modal-wrapper.check-conditions.hand').fadeIn();
+        return false;
+    } else {//受け渡し方法が「郵送」の場合
+        //受け渡し（郵送）モーダルを開く
+        $('.modal-wrapper.check-conditions.mainling').fadeIn();
         return false;
     }
 }
@@ -340,8 +320,8 @@ function cancelTransaction() {
 function endCancel() {
     //キャンセルメッセージを「送信する」ボタンをを押したら、
     //キャンセル理由とメッセージの取得
-    let whyCancel = $('#why-cancel').value
-    let canselMsg = $('#cansel-msg').value
+    let whyCancel = $('#why-cancel').val();
+    let canselMsg = $('#cansel-msg').val();
     console.log(whyCancel, canselMsg);//なぜかundefined、わからない、ほっとく
     //取引キャンセル用モーダルを表示オフ
     $('.modal-wrapper.cancel-transaction').fadeOut().css({ top: 0 });
@@ -418,6 +398,18 @@ $(function () {
         return false;
     });
 
+    // 投稿確認モーダルの開閉（郵送）
+
+    $('.modal-open.check-post.mailing').click(function () {
+
+        $('.modal-wrapper.check-post.mailing').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-post.mailing').click(function () {
+        $('.modal-wrapper.check-post.mailing').fadeOut().css({ top: 0 });
+        return false;
+    });
+
 
     // 取引開始確認モーダルの開閉（置いておく）
 
@@ -442,6 +434,18 @@ $(function () {
         $('.modal-wrapper.check-conditions.hand').fadeOut().css({ top: 0 });
         return false;
     });
+    // 取引開始確認モーダルの開閉（手渡し）
+
+    $('.modal-open.check-conditions.mailing').click(function () {
+
+        $('.modal-wrapper.check-conditions.mailing').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-conditions.mailing').click(function () {
+        $('.modal-wrapper.check-conditions.mailing').fadeOut().css({ top: 0 });
+        return false;
+    });
+
 
 
     // 取引キャンセルモーダルの開閉

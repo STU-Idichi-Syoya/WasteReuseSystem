@@ -49,9 +49,8 @@
 
 
     <!-- header -->
-
     <header class="service-title">
-        <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span>
+        <a href="トップページへのリンク"><img src="images/logo.svg" alt="JO-TO!"></a><span class="school-name">東京美術大学</span>
     </header>
     <!-- /header -->
 
@@ -61,10 +60,10 @@
     <!--検索バー-->
     <div class="search-bar head-fix">
         <span id="search-back" class="material-icons invisible">navigate_before</span>
-        <form id="search-form" class="search-form" method="get" action="https://">
+        <form id="search-form" class="search-form" method="get" action="https://" role="search">
             <input id="search-input" type="text" placeholder="何をお探しですか？" name="s" value="">
-            <button id="search-btn" type="submit" value="Search" alt="検索" title="検索"><i
-                    class="material-icons icon-search">search</i></button>
+            <button id="search-btn" type="submit" value="Search" title="検索"><i class="material-icons icon-search"
+                    aria-hidden="true" role="presentation">search</i></button>
         </form>
     </div>
     <!--タグ検索・検索履歴が横から出てくるモーダル的なもの-->
@@ -111,105 +110,95 @@
         </div>
     </div>
 
-    <!-- <section class="hero is-primary is-fullheight">-->
 
-    <!--<div class="hero-head">
-        <nav class="navbar">
-            <div class="container">
 
-                <div id="navbarMenuHeroA" class="navbar-menu">
-                    <div class="navbar-end">
-                        <a href="{{ url_for('main.index') }}" class="navbar-item">
-                            Home
-                        </a>
-                        {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('main.profile') }}" class="navbar-item">
-                            Profile
-                        </a>
-                        {% endif %}
-                        {% if not current_user.is_authenticated %}
-                        <a href="{{ url_for('auth.login') }}" class="navbar-item">
-                            Login
-                        </a>
-                        <a href="{{ url_for('auth.signup') }}" class="navbar-item">
-                            Sign Up
-                        </a>
-                        {% endif %}
-                        {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('auth.logout') }}" class="navbar-item">
-                            Logout
-                        </a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+    {% block content %}
+    {% endblock %}
+
+    <!--Tabbar-->
+    <div class="tabbar-container">
+        <nav class="menu">
+            <a href="#" class="menu-item" id="menu-home">
+                <span class="material-icons menu-icon">home<span class="badge-notify-menu visible"></span></span>
+                <span class="menu-item-label">ホーム</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-notify">
+                <span class="material-icons menu-icon">notifications<span
+                        class="badge-notify-menu visible"></span></span>
+                <span class="menu-item-label">お知らせ</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-post">
+                <span class="material-icons menu-icon">edit</span>
+                <span class="menu-item-label">投稿</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-report">
+                <span class="material-icons menu-icon">assessment<span class="badge-notify-menu"></span></span>
+                <span class="menu-item-label">レポート</span>
+            </a>
+            <a href="#" class="menu-item" id="menu-mypage">
+                <span class="material-icons menu-icon">person<span class="badge-notify-menu"></span></span>
+                <span class="menu-item-label">マイページ</span>
+            </a>
         </nav>
-    </div>-->
-
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            {% block content %}
-            {% endblock %}
-        </div>
-        <footer>
-            <div class="service-title">
-                <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">北苺道大学</span>
-            </div>
-
-            <div class="footer-inner">
-                <div>
-                    <ul class="menu">
-                        <li id="" class="menu-item">
-                            <a href="https://">使い方ガイド</a>
-                        </li>
-                        <li id="" class="menu-item">
-                            <a href="https://">マナーガイド</a>
-                        </li>
-                        <li id="" class="menu-item">
-                            <a href="https://">よくある質問</a>
-                        </li>
-
-                        <li id="menu-item-61" class="menu-item">
-                            <a href="https://">お問い合わせ</a>
-                        </li>
-                    </ul>
-                    <small class="copy-right">©noob_fighter_returns
-                    </small>
-                </div>
-
-                <div>
-                    <ul class="menu">
-                        <li id="" class="menu-item">
-                            <a href="https://">利用規約</a>
-                        </li>
-                        <li id="" class="menu-item ">
-                            <a href="https://">プライバシーポリシー</a>
-                        </li>
-                        <li id="" class="menu-item ">
-                            <a href="https://">ログアウト</a>
-                        </li>
-                        <li>
-                            <p>友達にシェアする</p>
-                            <div class="share-buttons">
-                                <!-- LINE -->
-                                <a class="btn-social-share"
-                                    href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
-                                        src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
-                                <!-- Twitter -->
-                                <a class="btn-social-share"
-                                    href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
-                                    rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
-                                <!-- Share -->
-                                <button type="button" class="btn-social-share native-share-btn"
-                                    data-share-title="JO-TO!"><img src="./images/buttons/share.svg"
-                                        alt="シェアする"></button>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
     </div>
+    <footer>
+        <div class="service-title">
+            <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">東京美術大学</span>
+        </div>
+
+        <div class="footer-inner">
+            <div>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="https://">使い方ガイド</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://">マナーガイド</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://">よくある質問</a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="https://">お問い合わせ</a>
+                    </li>
+                </ul>
+                <small class="copy-right">©noob_fighter_returns
+                </small>
+            </div>
+
+            <div>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="https://">利用規約</a>
+                    </li>
+                    <li class="menu-item ">
+                        <a href="https://">プライバシーポリシー</a>
+                    </li>
+                    <li class="menu-item ">
+                        <a href="https://">ログアウト</a>
+                    </li>
+                    <li>
+                        <p>友達にシェアする</p>
+                        <div class="share-buttons">
+                            <!-- LINE -->
+                            <a class="btn-social-share"
+                                href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                                    src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+                            <!-- Twitter -->
+                            <a class="btn-social-share"
+                                href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+                                rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
+                            <!-- Share -->
+                            <button type="button" class="btn-social-share native-share-btn"
+                                data-share-title="JO-TO!"><img src="./images/buttons/share.svg" alt="シェアする"></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
 
     <!--</section>-->
 
