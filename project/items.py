@@ -51,27 +51,29 @@ def item_post():
     
 @items_app.route("/items/search")
 def searchItems():
+    print(request.query_string)
     tag=request.args.get('tag')
     keyword=request.args.get('keyword')
-
+    print(tag,keyword)
     # validation
     if tag is not None:
         tag=tag.replace(' ','')
     if keyword is not None:
         # 全角を半角にして、分割
-        keyword=keyword.replace('　',' ').split(' ').replace(' ','')
-
-    if len(tag)>0:
+        keyword=keyword.replace('　',' ').split(' ')
+    
+    
+    if tag is not None and len(tag)>0:
         #TODO:tag
         if current_user.is_authenticated:
             search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,Item.place,Item.user_id,Item.handing_method)\
                                             .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
                                             .join(ItemTag,ItemTag.item_id==Item.id)\
-                                            .join(Tag,Tag.id==ItemTag.tag_id)\
                                             .join(User,Item.user_id==User.id)\
+                                            .filter_by(tag_name=tag[0])\
                                             .all()
                                             # .filter_by(is_like=True).filter_by(univercity_id==current_user.univercity_id,tag_name=tag)
-            return render_template('search_result.html',search_items=searchItems)
+            return render_template('search_result.html',word=tag[0],search_items=searchItems)
             
         else:
             search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,Item.place,Item.user_id,Item.handing_method)\
@@ -79,37 +81,38 @@ def searchItems():
                                         .join(ItemTag,ItemTag.item_id==Item.id)\
                                         .join(Tag,Tag.id==ItemTag.tag_id)\
                                         .join(User,Item.user_id==User.id)\
-                                        .filter_by(tag_name=tag).all()
-            return render_template('search_result.html',search_items=searchItems)
+                                        .filter_by(tag_name=tag[0]).all()
+            return render_template('search_result.html',word=tag[0],search_items=searchItems)
     
     # find by keyword
     # TODO 複数ワード検索
     elif len(keyword)>0 and len(keyword[0])>0:
+        display_keyword=" ".join(keyword)
         if current_user.is_authenticated:
             search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,Item.place,Item.user_id,Item.handing_method)\
                                         .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
                                         .join(User,Item.user_id==User.id)\
                                         .filter_by(univercity_id==current_user.univercity_id).all()
     
-            return render_template('search_result.html',search_items=searchItems)
+            return render_template('search_result.html',word=display_keyword,search_items=searchItems)
         else:
             search_items=db.session.query(Item.id,Item.item_name,ItemPhoto.URI,Item.place,Item.user_id,Item.handing_method)\
                                         .join(ItemPhoto,ItemPhoto.item_id==Item.id)\
                                         .join(User,Item.user_id==User.id)\
                                         .filter(Item.item_name.like(f'%{keyword[0]}%')).all()
-            return render_template('search_result.html',search_items=search_items)
+            return render_template('search_result.html',word=display_keyword,search_items=search_items)
     # クエリパラメータがなければ、検索画面
-    return render_template('search.html')
+    return redirect("/")
 
-@items_app.route("/items/<id>")
+@items_app.route("/items/<item_id>")
 def showItem(item_id):
     item=db.session.query(Item).filter_by(id=item_id).first()
-    comment=db.session.query(ItemComment).filter_by(item_id=item_id).order_by(Item.created_at.asc()).all()
+    comment=db.session.query(ItemComment).filter_by(item_id=item_id).order_by(ItemComment.created_at.asc()).all()
     photos=db.session.query(ItemPhoto).filter_by(item_id=item_id).all()
-    tag=db.session.query(ItemTag).join(Tag,Tag.id==ItemTag.tag_id).filter_by(item_id=item_id)
+    tag=db.session.query(ItemTag).filter_by(item_id=item_id)
     if item is None:
         return f'ERROR {item_id} Item is not exist'
-    return render_template('item_datail.html',item=item,comment=comment,photos=photos,tag=tag)
+    return render_template('item_detail.html',item=item,comment=comment,photos=photos,tag=tag)
 
 
 @items_app.route("/")

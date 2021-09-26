@@ -10,11 +10,11 @@ from .form import ItemAdd
 users_app = Blueprint('users', __name__)
 
 # 検索画面
-@users_app.route('/items/search' ,methods=['GET','POST'])
-# @login_required
-def search_page():
+# @users_app.route('/items/search' ,methods=['GET','POST'])
+# # @login_required
+# def search_page():
     
-    return render_template('search.html')
+#     return render_template('search.html')
 
 @users_app.route('/items/add',methods=['GET','POST'])
 @login_required
@@ -31,4 +31,11 @@ def item_add():
             return 'OK'
         return 'FALSE'
 
+@users_app.route("/users/report")
+def report():
+    return render_template("report.html")
+
+@users_app.route("/users/notification")
+def notification():
+    return render_template("notification.html")
 

@@ -23,26 +23,25 @@
 
         <!--検索結果-->
         <div class="title-hitnum search-result">
-            <h1><span id="search-word">スチのり</span><span class="suffix-result">の検索結果</span></h1>
-            <p><span id="hitnum">26</span>件</p>
+            
+            <h1><span id="search-word">{{word}}</span><span class="suffix-result">の検索結果</span></h1>
+            <p><span id="hitnum">{{search_items | count }}</span>件</p>
         </div>
         <ul class="list-item-M">
+            {%for id,name,uri,place,user_id,hanging_method in search_items %}
             <!--------- <<START>> list item M -------->
-
-
             <li>
                 <div class="img_box">
-                    <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
+                    <img class="object-fit-cover" src="{{uri}}" alt="投稿された画像">
                 </div>
                 <div class="item-text">
-                    <h3>メンディングテープ 10mm幅</h3>
+                    <h3>{{name}}</h3>
                     <div>
                         <div class="item-details">
-                            <div> <i><img src="./images/icons/delivery.svg" alt="受け渡し方法"> </i><span>置いておく</span>
+                            <div> <i><img src="/imageicons/delivery.svg" alt="受け渡し方法"> </i><span>置いておく</span>
                             </div>
-                            <div> <i class="material-icons" aria-label="場所" role="presentation">place</i><span
-                                    class="locaiton">1号館 木工室
-                                    端材コーナー</span></div>
+                            <div> <i class="material-icons" aria-label="場所" role="presentation">{{place}}</i>
+                                <span class="locaiton">{{hanging_method}}</span></div>
                             <p class="link-hashtag"><a href="">#tag</a><a href="">#tag</a></p>
                         </div>
                         <!--いいねボタン小-->
@@ -55,121 +54,15 @@
                 </div>
                 <!--以下absolute-->
                 <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold" alt="譲渡完了" src="images/tag/sold_S.svg">
+                <img class="item-status-tag decided" alt="もらい手決定" src="/images/tag/decided_S.svg">
+                <img class="item-status-tag sold" alt="譲渡完了" src="/images/tag/sold_S.svg">
 
                 <!--アイテムへのリンク（カード全体にかかる）-->
-                <a href="#" class="item-link"></a>
+                <a href="/items/{{id}}" class="item-link"></a>
             </li>
             <!--------- <<END>> list item M -------->
-
-            <!--------- <<START>> list item M -------->
-
-
-            <li>
-                <div class="img_box">
-                    <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
-                </div>
-                <div class="item-text">
-                    <h3>メンディングテープ 10mm幅</h3>
-                    <div>
-                        <div class="item-details">
-                            <div> <i><img src="./images/icons/delivery.svg" alt="受け渡し方法"> </i><span>置いておく</span>
-                            </div>
-                            <div> <i class="material-icons" aria-label="場所" role="presentation">place</i><span>1号館 木工室
-                                    端材コーナー</span></div>
-                            <p class="link-hashtag"><a href="">#tag</a><a href="">#tag</a></p>
-                        </div>
-                        <!--いいねボタン小-->
-                        <button type="button" class="btn-like btn-like-S" name="like">
-                            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
-                            </svg></button>
-                    </div>
-                </div>
-                <!--以下absolute-->
-                <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold visible" alt="譲渡完了" src="images/tag/sold_S.svg">
-
-                <!--アイテムへのリンク（カード全体にかかる）-->
-                <a href="#" class="item-link"></a>
-            </li>
-            <!--------- <<END>> list item M -------->
-
-
-            <!--------- <<START>> list item M -------->
-
-
-            <li>
-                <div class="img_box">
-                    <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
-                </div>
-                <div class="item-text">
-                    <h3>メンディングテープ 10mm幅</h3>
-                    <div>
-                        <div class="item-details">
-                            <div> <i><img src="./images/icons/delivery.svg" alt="受け渡し方法"> </i><span>置いておく</span>
-                            </div>
-                            <div> <i class="material-icons" aria-label="場所" role="presentation">place</i><span>1号館 木工室
-                                    端材コーナー</span></div>
-                            <p class="link-hashtag"><a href="">#tag</a><a href="">#tag</a></p>
-                        </div>
-                        <!--いいねボタン小-->
-                        <button type="button" class="btn-like btn-like-S" name="like">
-                            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
-                            </svg></button>
-                    </div>
-                </div>
-                <!--以下absolute-->
-                <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold" alt="譲渡完了" src="images/tag/sold_S.svg">
-
-                <!--アイテムへのリンク（カード全体にかかる）-->
-                <a href="#" class="item-link"></a>
-            </li>
-            <!--------- <<END>> list item M -------->
-
-
-            <!--------- <<START>> list item M -------->
-
-
-            <li>
-                <div class="img_box">
-                    <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
-                </div>
-                <div class="item-text">
-                    <h3>メンディングテープ 10mm幅</h3>
-                    <div>
-                        <div class="item-details">
-                            <div> <i><img src="./images/icons/delivery.svg" alt="受け渡し方法"> </i><span>置いておく</span>
-                            </div>
-                            <div> <i class="material-icons" aria-label="場所" role="presentation">place</i><span>1号館 木工室
-                                    端材コーナー</span></div>
-                            <p class="link-hashtag"><a href="">#tag</a><a href="">#tag</a></p>
-                        </div>
-                        <!--いいねボタン小-->
-                        <button type="button" class="btn-like btn-like-S" name="like">
-                            <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
-                            </svg></button>
-                    </div>
-                </div>
-                <!--以下absolute-->
-                <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided visible" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold" alt="譲渡完了" src="images/tag/sold_S.svg">
-
-                <!--アイテムへのリンク（カード全体にかかる）-->
-                <a href="#" class="item-link"></a>
-            </li>
-            <!--------- <<END>> list item M -------->
-
+            {%endfor%}
+           
         </ul>
 
     </div>

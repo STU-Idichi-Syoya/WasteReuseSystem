@@ -109,11 +109,11 @@
             <div class="share-buttons">
                 <!-- LINE -->
                 <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
-                        src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+                        src="/images/buttons/LINE.svg" alt="LINEで共有"></a>
 
                 <!-- Share -->
                 <button type="button" class="btn-social-share native-share-btn" data-share-title="JO-TO!"><img
-                        src="./images/buttons/share.svg" alt="シェアする"></button>
+                        src="/images/buttons/share.svg" alt="シェアする"></button>
             </div>
         </div>
     </div>
@@ -129,7 +129,7 @@
             <div class="dispaly-user">
                 <div class="user-image S">
                     <div class="img_box">
-                        <img class="object-fit-cover" src="./images/user/user_1.jpg" alt="user image">
+                        <img class="object-fit-cover" src="/images/user/user_1.jpg" alt="user image">
                         <i class="material-icons">person</i>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
             <div class="dispaly-user">
                 <div class="user-image S">
                     <div class="img_box">
-                        <!-- ユーザー画像を登録していない場合はimgなし <img class="object-fit-cover" src="./images/user/none.jpg" name="user image">-->
+                        <!-- ユーザー画像を登録していない場合はimgなし <img class="object-fit-cover" src="/images/user/none.jpg" name="user image">-->
                         <i class="material-icons">person</i>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                 <p>あなた</p>
                 <div class="speech-balloon">
                     <div class="commnet">
-                        <!---ここにコメントが入る-->{c.comment}
+                        <!---ここにコメントが入る-->{{c.comment}}
                     </div>
                     <div class="comment-footer">
                         <span class="passed-time">
@@ -208,7 +208,7 @@
         <ul class="horizontal_scroll list-item-S">
             <!--------- <<START>> list item S -------->
             <li>
-                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
+                <div class="img_box"> <img class="object-fit-cover" src="/images/item/IMG_5536.jpg" alt="投稿された画像">
                     <!--いいねボタン小-->
                     <button type="button" class="btn-like btn-like-S" name="like">
                         <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -218,8 +218,8 @@
                 </div>
                 <p>メンディングテープ 10mm幅</p>
                 <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold visible" alt="譲渡完了" src="images/tag/sold_S.svg">
+                <img class="item-status-tag decided" alt="もらい手決定" src="/images/tag/decided_S.svg">
+                <img class="item-status-tag sold visible" alt="譲渡完了" src="/images/tag/sold_S.svg">
                 <!--アイテムへのリンク（カード全体にかかる）-->
                 <a href="#" class="item-link"></a>
 
@@ -227,7 +227,7 @@
             <!--------- <<END>> list item S -------->
             <!--------- <<START>> list item S -------->
             <li>
-                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
+                <div class="img_box"> <img class="object-fit-cover" src="/images/item/IMG_5536.jpg" alt="投稿された画像">
                     <!--いいねボタン小-->
                     <button type="button" class="btn-like btn-like-S" name="like">
                         <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -237,28 +237,8 @@
                 </div>
                 <p>メンディングテープ 10mm幅</p>
                 <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided visible" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold" alt="譲渡完了" src="images/tag/sold_S.svg">
-                <!--アイテムへのリンク（カード全体にかかる）-->
-                <a href="#" class="item-link"></a>
-
-            </li>
-            <!--------- <<END>> list item S -------->
-
-            <!--------- <<START>> list item S -------->
-            <li>
-                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
-                    <!--いいねボタン小-->
-                    <button type="button" class="btn-like btn-like-S" name="like">
-                        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
-                        </svg></button>
-                </div>
-                <p>メンディングテープ 10mm幅</p>
-                <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold" alt="譲渡完了" src="images/tag/sold_S.svg">
+                <img class="item-status-tag decided visible" alt="もらい手決定" src="/images/tag/decided_S.svg">
+                <img class="item-status-tag sold" alt="譲渡完了" src="/images/tag/sold_S.svg">
                 <!--アイテムへのリンク（カード全体にかかる）-->
                 <a href="#" class="item-link"></a>
 
@@ -267,7 +247,7 @@
 
             <!--------- <<START>> list item S -------->
             <li>
-                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
+                <div class="img_box"> <img class="object-fit-cover" src="/images/item/IMG_5536.jpg" alt="投稿された画像">
                     <!--いいねボタン小-->
                     <button type="button" class="btn-like btn-like-S" name="like">
                         <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -277,8 +257,8 @@
                 </div>
                 <p>メンディングテープ 10mm幅</p>
                 <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold" alt="譲渡完了" src="images/tag/sold_S.svg">
+                <img class="item-status-tag decided" alt="もらい手決定" src="/images/tag/decided_S.svg">
+                <img class="item-status-tag sold" alt="譲渡完了" src="/images/tag/sold_S.svg">
                 <!--アイテムへのリンク（カード全体にかかる）-->
                 <a href="#" class="item-link"></a>
 
@@ -287,7 +267,7 @@
 
             <!--------- <<START>> list item S -------->
             <li>
-                <div class="img_box"> <img class="object-fit-cover" src="./images/item/IMG_5536.jpg" alt="投稿された画像">
+                <div class="img_box"> <img class="object-fit-cover" src="/images/item/IMG_5536.jpg" alt="投稿された画像">
                     <!--いいねボタン小-->
                     <button type="button" class="btn-like btn-like-S" name="like">
                         <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -297,8 +277,28 @@
                 </div>
                 <p>メンディングテープ 10mm幅</p>
                 <!--アイテムの状態を表すタグ-->
-                <img class="item-status-tag decided" alt="もらい手決定" src="images/tag/decided_S.svg">
-                <img class="item-status-tag sold" alt="譲渡完了" src="images/tag/sold_S.svg">
+                <img class="item-status-tag decided" alt="もらい手決定" src="/images/tag/decided_S.svg">
+                <img class="item-status-tag sold" alt="譲渡完了" src="/images/tag/sold_S.svg">
+                <!--アイテムへのリンク（カード全体にかかる）-->
+                <a href="#" class="item-link"></a>
+
+            </li>
+            <!--------- <<END>> list item S -------->
+
+            <!--------- <<START>> list item S -------->
+            <li>
+                <div class="img_box"> <img class="object-fit-cover" src="/images/item/IMG_5536.jpg" alt="投稿された画像">
+                    <!--いいねボタン小-->
+                    <button type="button" class="btn-like btn-like-S" name="like">
+                        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.21 1.5 6.375C1.5 4.065 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.8175C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.065 16.5 6.375C16.5 9.21 13.95 11.52 10.0875 15.03L9 16.0125Z" />
+                        </svg></button>
+                </div>
+                <p>メンディングテープ 10mm幅</p>
+                <!--アイテムの状態を表すタグ-->
+                <img class="item-status-tag decided" alt="もらい手決定" src="/images/tag/decided_S.svg">
+                <img class="item-status-tag sold" alt="譲渡完了" src="/images/tag/sold_S.svg">
                 <!--アイテムへのリンク（カード全体にかかる）-->
                 <a href="#" class="item-link"></a>
 
@@ -332,7 +332,7 @@
                 </p>
                 <p class="text-H-SS">【置いておく】による受け渡しです
                 </p>
-                <img class="" src="./images/leave.svg" alt="置いておく">
+                <img class="" src="/imageleave.svg" alt="置いておく">
                 <ul>
                     <li>
                         あなたが取りに行く前に、誰かが回収してしまう可能性があります。</li>
@@ -377,7 +377,7 @@
                 </p>
                 <p class="text-H-SS">【手渡し】による受け渡しです
                 </p>
-                <img class="" src="./images/hand-to-hand.svg" alt="手渡し">
+                <img class="" src="/imagehand-to-hand.svg" alt="手渡し">
                 <ul>
                     <li>
                         投稿者と対面での受け渡しになります
@@ -423,7 +423,7 @@
                 </p>
                 <p class="text-H-SS">【郵送】による受け渡しです
                 </p>
-                <img class="" src="./images/mailing.svg" alt="郵送">
+                <img class="" src="/imagemailing.svg" alt="郵送">
                 <ul>
                     <li>
                         取引画面で郵送方法や料金の負担について相談する必要があります

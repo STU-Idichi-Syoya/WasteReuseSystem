@@ -1134,7 +1134,7 @@ select {
     width: 100%;
     max-height: 44px;
     height: calc(100vw * 0.12535);
-    background-image: url(../images/buttons/LINE/line_default.png);
+    background-image: url(/images/buttons/LINE/line_default.png);
     display: block;
 }
 
@@ -1202,11 +1202,11 @@ select {
 }
 
 .btn-line:hover {
-   background-image: url(../images/buttons/LINE/line_hover.png);
+   background-image: url(/images/buttons/LINE/line_hover.png);
 }
 
 .btn-line:active {
-  background-image: url(../images/buttons/LINE/line_pressed.png);
+  background-image: url(/images/buttons/LINE/line_pressed.png);
 }*/
 
 /* Circle

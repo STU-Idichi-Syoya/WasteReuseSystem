@@ -17,7 +17,7 @@
     <!-- Swiper.js-->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- Original Style-->
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <!--<link rel="stylesheet" href="styles/header.css">-->
     <!--OGP-->
     <meta property="og:url" content="https://" />
@@ -33,9 +33,9 @@
     <meta name="twitter:player" content="@" />
 
     <!--favicon-->
-    <link rel="icon" href="./images/favicon.ico" />
-    <link rel="apple-touch-icon" href="./images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="icon" type="image/png" href="./images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="/images/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
 
     <!-- Swiper.js-->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -50,7 +50,7 @@
 
     <!-- header -->
     <header class="service-title">
-        <a href="トップページへのリンク"><img src="images/logo.svg" alt="JO-TO!"></a><span class="school-name">東京美術大学</span>
+        <a href="/"><img src="/images/logo.svg" alt="JO-TO!"></a><span class="school-name">東京美術大学</span>
     </header>
     <!-- /header -->
 
@@ -60,8 +60,8 @@
     <!--検索バー-->
     <div class="search-bar head-fix">
         <span id="search-back" class="material-icons invisible">navigate_before</span>
-        <form id="search-form" class="search-form" method="get" action="https://" role="search">
-            <input id="search-input" type="text" placeholder="何をお探しですか？" name="s" value="">
+        <form id="search-form" class="search-form" method="get" action="/items/search" role="search">
+            <input id="search-input" type="text" placeholder="何をお探しですか？" name="keyword" value="">
             <button id="search-btn" type="submit" value="Search" title="検索"><i class="material-icons icon-search"
                     aria-hidden="true" role="presentation">search</i></button>
         </form>
@@ -85,24 +85,24 @@
             <ul class="list-normal">
                 <li>
                     <span>木　角材</span> <i class="material-icons">navigate_next</i>
-                    <a href="#" class="item-link"></a>
+                    <a href="/items/search?keyword=木" class="item-link"></a>
                 </li>
                 <li>
                     <span>アクリル板</span> <i class="material-icons">navigate_next</i>
-                    <a href="#" class="item-link"></a>
+                    <a href="/items/search?keyword=アクリル板" class="item-link"></a>
                 </li>
 
                 <li>
                     <span>布　黄色　薄手</span> <i class="material-icons">navigate_next</i>
-                    <a href="#" class="item-link"></a>
+                    <a href="/items/search?keyword=布" class="item-link"></a>
                 </li>
                 <li>
                     <span>LED テープ</span> <i class="material-icons">navigate_next</i>
-                    <a href="#" class="item-link"></a>
+                    <a href="/items/search?keyword=LED" class="item-link"></a>
                 </li>
                 <li>
                     <span>スチール</span> <i class="material-icons">navigate_next</i>
-                    <a href="#" class="item-link"></a>
+                    <a href="/items/search?keyword=スチール" class="item-link"></a>
                 </li>
 
 
@@ -118,11 +118,11 @@
     <!--Tabbar-->
     <div class="tabbar-container">
         <nav class="menu">
-            <a href="#" class="menu-item" id="menu-home">
+            <a href="/" class="menu-item" id="menu-home">
                 <span class="material-icons menu-icon">home<span class="badge-notify-menu visible"></span></span>
                 <span class="menu-item-label">ホーム</span>
             </a>
-            <a href="#" class="menu-item" id="menu-notify">
+            <a href="/users/notification" class="menu-item" id="menu-notify">
                 <span class="material-icons menu-icon">notifications<span
                         class="badge-notify-menu visible"></span></span>
                 <span class="menu-item-label">お知らせ</span>
@@ -131,11 +131,11 @@
                 <span class="material-icons menu-icon">edit</span>
                 <span class="menu-item-label">投稿</span>
             </a>
-            <a href="#" class="menu-item" id="menu-report">
+            <a href="/users/report" class="menu-item" id="menu-report">
                 <span class="material-icons menu-icon">assessment<span class="badge-notify-menu"></span></span>
                 <span class="menu-item-label">レポート</span>
             </a>
-            <a href="#" class="menu-item" id="menu-mypage">
+            <a href="/users/me" class="menu-item" id="menu-mypage">
                 <span class="material-icons menu-icon">person<span class="badge-notify-menu"></span></span>
                 <span class="menu-item-label">マイページ</span>
             </a>
@@ -143,7 +143,7 @@
     </div>
     <footer>
         <div class="service-title">
-            <img src="images/logo.svg" alt="JO-TO!"><span class="school-name">東京美術大学</span>
+            <img src="/images/logo.svg" alt="JO-TO!"><span class="school-name">東京美術大学</span>
         </div>
 
         <div class="footer-inner">
@@ -183,16 +183,19 @@
                         <div class="share-buttons">
                             <!-- LINE -->
                             <a class="btn-social-share"
+                                id="share-line"
                                 href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
-                                    src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
+                                    src="/images/buttons/LINE.svg" alt="LINEで共有"></a>
                             <!-- Twitter -->
                             <a class="btn-social-share"
+                                id="share-twitter"
                                 href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
-                                rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
+                                rel="nofollow"><img src="/images/buttons/Twitter.svg" alt="Twitterで共有"></a>
                             <!-- Share -->
                             <button type="button" class="btn-social-share native-share-btn"
-                                data-share-title="JO-TO!"><img src="./images/buttons/share.svg" alt="シェアする"></button>
+                                data-share-title="JO-TO!"><img src="/images/buttons/share.svg" alt="シェアする"></button>
                         </div>
+
                     </li>
                 </ul>
             </div>

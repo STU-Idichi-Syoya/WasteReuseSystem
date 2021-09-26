@@ -64,8 +64,8 @@ class Item(db.Model):
     place= db.Column(db.String(length=100), nullable=False)
     # 商品状態(正規化しない)
     state = db.Column(db.String(length=30), nullable=False)
-    # 取引終了か？(貰い手決定)
-    is_active=db.Column(db.Boolean(), nullable=False,default=True)
+    # 取引終了か？(募集，貰い手決定,譲渡完了)
+    is_active=db.Column(db.Integer(), nullable=False,default=0)
     # 出品者からのメッセージ
     message= db.Column(db.String(length=600), nullable=False)
     handing_method = db.Column(db.String(length=100), nullable=False)

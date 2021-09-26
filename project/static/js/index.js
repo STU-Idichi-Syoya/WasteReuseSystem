@@ -46,6 +46,13 @@ $(window).on('scroll', function () {
     startPos = winScrollTop;
 });
 
+/* share-btn */
+const cur=encodeURI(window.location.href);
+const share_text="その不用品、学内で譲渡しない？\nJO-TO!は学内の不用品の共有し、もらい手につなげるお手伝いをします！"
+const tags="joto,不用品,廃材,リユース"
+document.getElementById("share-line").href="https://social-plugins.line.me/lineit/share?url="+cur;
+document.getElementById("share-twitter").href="http://twitter.com/share?text="+share_text+"&url="+cur+"&hashtags="+tags
+
 /* Search Field
     -------------------------------------- */
 $(function () {
