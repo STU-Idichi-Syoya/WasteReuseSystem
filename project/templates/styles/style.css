@@ -75,17 +75,20 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /*開発確認用
-    max-width: 375px;*/
+    /*PC未対応な分、でかくなりすぎて見にくくないように制限かけとく*/
+   margin: 0 auto;
+    max-width: 640px;
 }
-
+/*
 .wrapper {
     margin: 0 auto;
-}
+}*/
 
 main {
-    /*header footer 固定されるやつを除くコンテンツ*/
-    margin: 0;
+    /*header footer 固定されるやつを除くコンテンツ
+    margin: 0 auto;*/
+    max-width: 640px;
+
 }
 
 .searching+main {
@@ -347,7 +350,7 @@ footer li {
 }
 
 .footer-inner {
-    margin: auto;
+    margin: 0;
     max-width: 960px;
     padding: 16px 0;
     display: flex;
@@ -394,12 +397,13 @@ small {
 .tabbar-container {
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 30;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
 .tabbar-container .menu {
@@ -863,10 +867,11 @@ select {
 
 .head-fix {
     width: 100%;
-    filter: var(--shadow-top-fixed-light);
+    max-width: 640px;
+   /* filter: var(--shadow-top-fixed-light);*/
     position: fixed;
     top: 60px;
-    z-index: 100;
+    z-index: 110;
     transition: .5s;
 }
 
@@ -885,6 +890,7 @@ select {
 
 .searching {
     width: 100%;
+    max-width: 640px;
     height: 100%;
     background-color: var(--color-gray-7);
     z-index: 100;
@@ -998,6 +1004,7 @@ select {
     border-radius: 4px;
 }
 
+
 .btn-M {
     width: 100%;
     /*height: 48px;*/
@@ -1061,6 +1068,7 @@ select {
 
 .fixed-btn-container {
     width: 100%;
+    max-width: 640px;
     /*height: 56px;*/
     background-color: var(--color-gray-7);
     position: fixed;
