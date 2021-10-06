@@ -37,17 +37,18 @@
 
     <!-- Swiper.js-->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script> 
 
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+    
 <body>
 
 
     <!-- header -->
     <header class="service-title">
-        <a href="トップページへのリンク"><img src="images/logo.svg" alt="JO-TO!"></a><span class="school-name">東京美術大学</span>
+        <a href="https://ccc2021.idichi.tk/"><img src="images/logo.svg" alt="JO-TO!"></a><span class="school-name">東京美術大学</span>
     </header>
     <!-- /header -->
 
@@ -106,7 +107,6 @@
             </ul>
         </div>
     </div>
-
 
     <main class="mypage report">
 
@@ -422,14 +422,15 @@
                 <h3>SNSでシェアする</h3>
                 <div class="share-buttons">
                     <!-- LINE -->
-                    <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                    <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=https://ccc2021.idichi.tk/"><img
                             src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
                     <!-- Twitter -->
                     <a class="btn-social-share"
-                        href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+                        href="http://twitter.com/share?text=その不用品、学内で譲渡しない？
+JO-TO!は学内の不用品の共有し、もらい手につなげるお手伝いをします！&url=https://ccc2021.idichi.tk/&hashtags=joto,不用品,廃材,リユース"
                         rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
                     <!-- Facebook -->
-                    <a class="btn-social-share" href="http://www.facebook.com/share.php?u=【共有するURL】"><img
+                    <a class="btn-social-share" href="http://www.facebook.com/share.php?u=https://ccc2021.idichi.tk/"><img
                             src="./images/buttons/Facebook.svg" alt="Facebookで共有"></a>
                     <!-- URL Copy -->
                     <a class="btn-social-share" onclick="copyUrl()"><img src="./images/buttons/linkcopy.svg"
@@ -1024,7 +1025,7 @@
                 </div>
                 <div class="share-buttons">
                     <!-- LINE -->
-                    <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                    <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=https://ccc2021.idichi.tk/"><img
                             src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
 
                     <!-- Share -->
@@ -1771,14 +1772,15 @@
             </button>
             <h4 class="not-component">Share</h4>
             <!-- LINE -->
-            <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+            <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=https://ccc2021.idichi.tk/"><img
                     src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
             <!-- Twitter -->
             <a class="btn-social-share"
-                href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+                href="http://twitter.com/share?text=その不用品、学内で譲渡しない？
+JO-TO!は学内の不用品の共有し、もらい手につなげるお手伝いをします！&url=https://ccc2021.idichi.tk/&hashtags=joto,不用品,廃材,リユース"
                 rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
             <!-- Facebook -->
-            <a class="btn-social-share" href="http://www.facebook.com/share.php?u=【共有するURL】"><img
+            <a class="btn-social-share" href="http://www.facebook.com/share.php?u=https://ccc2021.idichi.tk/"><img
                     src="./images/buttons/Facebook.svg" alt="Facebookで共有"></a>
             <!-- URL Copy -->
             <a class="btn-social-share" onclick="copyUrl()"><img src="./images/buttons/linkcopy.svg" alt="URLをコピー"></a>
@@ -2193,7 +2195,7 @@
                             document.getElementById('checked-conditions-leave').addEventListener('change', valueChange);
                         </script>
 
-                        <a id="btn-confirm-ccleave" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                        <a id="btn-confirm-ccleave" class="btn btn-S btn-primary" onclick="determinRecipient()">
                             確定する
                         </a>
 
@@ -2241,7 +2243,7 @@
                             document.getElementById('checked-conditions-hand').addEventListener('change', valueChange);
                         </script>
 
-                        <a id="btn-confirm-cchand" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                        <a id="btn-confirm-cchand" class="btn btn-S btn-primary" onclick="determinRecipient()">
                             確定する
                         </a>
 
@@ -2291,7 +2293,7 @@
                             document.getElementById('checked-conditions-mailing').addEventListener('change', valueChange);
                         </script>
 
-                        <a id="btn-confirm-ccmailing" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                        <a id="btn-confirm-ccmailing" class="btn btn-S btn-primary" onclick="determinRecipient()">
                             確定する
                         </a>
 
@@ -2299,6 +2301,45 @@
                 </div>
             </div>
             <!--<<END>> 取引開始確認用モーダル（郵送）用モーダル-->
+
+
+
+                         <!--<<START>>もらい手確定用モーダル-->
+            <div class="modal-open recipient_determined">クリックでもらい手確定用モーダルを表示</div>
+            <div class="modal-wrapper recipient_determined">
+                <div class="overlay"></div>
+                <div class="modal-contents">
+                    <i class="material-icons modal-close recipient_determined" aria-label="閉じる" role="button">close</i>
+
+                    <div class="modal-LR">
+                        <p class="text-H-S">あなたがもらい手になりました！</p>
+                        <div class="item-image L">
+                            <div class="img_box">
+                                <img class="object-fit-cover" src="./images/item/IMG_5532.jpg" alt="item image">
+                            </div>
+                        </div>
+
+                        <p class="text-H-S">スチのり 4本 実質2本分</p>
+                        <p class="text-P-M">
+                            <span>
+                                投稿者：
+                            </span><a href="#">Nakayama</a>
+                        </p>
+                        <div class="leave-location"><i class="material-icons" aria-label="場所"
+                                role="presentation">place</i><span>1号館 木工室
+                                端材コーナー</span></div>
+
+                       <p class="text-P-M guide">取引画面ではお相手とメッセージのやりとりができます！受け渡しの日程調整等に活用しましょう。</p>
+                    <a  class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                        取引画面へ
+                        <i class="material-icons btn-icon-R">navigate_next</i>
+                    </a>
+                    </div>
+    
+
+                </div>
+            </div>
+            <!--<<END>> もらい手確定用モーダル-->
 
             <!--<<START>>受け渡し（置いておく）用モーダル-->
             <div class="modal-open delivey leave">クリックで受け渡し（置いておく）用モーダルを表示</div>
@@ -2701,11 +2742,12 @@
                         <div class="share-buttons">
                             <!-- LINE -->
                             <a class="btn-social-share"
-                                href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                                href="https://social-plugins.line.me/lineit/share?url=https://ccc2021.idichi.tk/"><img
                                     src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
                             <!-- Twitter -->
                             <a class="btn-social-share"
-                                href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+                                href="http://twitter.com/share?text=その不用品、学内で譲渡しない？
+JO-TO!は学内の不用品の共有し、もらい手につなげるお手伝いをします！&url=https://ccc2021.idichi.tk/&hashtags=joto,不用品,廃材,リユース"
                                 rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
                             <!-- Share -->
                             <button type="button" class="btn-social-share native-share-btn"

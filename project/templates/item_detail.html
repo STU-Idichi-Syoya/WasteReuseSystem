@@ -113,7 +113,7 @@
             </div>
             <div class="share-buttons">
                 <!-- LINE -->
-                <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                <a class="btn-social-share" href="https://social-plugins.line.me/lineit/share?url=https://ccc2021.idichi.tk/"><img
                         src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
 
                 <!-- Share -->
@@ -354,7 +354,7 @@
                     document.getElementById('checked-conditions-leave').addEventListener('change', valueChange);
                 </script>
 
-                <a id="btn-confirm-ccleave" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                <a id="btn-confirm-ccleave" class="btn btn-S btn-primary" onclick="determinRecipient()">
                     確定する
                 </a>
 
@@ -401,7 +401,7 @@
                     document.getElementById('checked-conditions-hand').addEventListener('change', valueChange);
                 </script>
 
-                <a id="btn-confirm-cchand" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                <a id="btn-confirm-cchand" class="btn btn-S btn-primary" onclick="determinRecipient()">
                     確定する
                 </a>
 
@@ -447,7 +447,7 @@
                     document.getElementById('checked-conditions-mailing').addEventListener('change', valueChange);
                 </script>
 
-                <a id="btn-confirm-ccmailing" class="btn btn-S btn-primary" onclick="gotoTransaction()">
+                <a id="btn-confirm-ccmailing" class="btn btn-S btn-primary" onclick="determinRecipient()">
                     確定する
                 </a>
 
@@ -457,6 +457,11 @@
     <!--<<END>> 取引開始確認用モーダル（郵送）用モーダル-->
 </main>
 
-
+<script type="text/javascript">
+    //ページタイトルの変更
+    let itemTitle = $('h1').text();
+    //console.log(itemTitle);
+        document.title=itemTitle+"｜JO-TO!";
+        </script>
 
 {% endblock %}

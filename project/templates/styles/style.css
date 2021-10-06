@@ -430,12 +430,12 @@ small {
     outline: none;
 }
 
-.tabbar-container .menu-item:focus .menu-icon, .tabbar-container .menu-item:hover .menu-icon {
+.tabbar-container .menu-item:focus .menu-icon, .tabbar-container .menu-item:hover .menu-icon,.tabbar-container .menu-item.here .menu-icon {
     font-family: "Material Icons";
     color: var(--color-primary);
 }
 
-.tabbar-container .menu-item:focus .menu-item-label, .tabbar-container .menu-item:hover .menu-item-label {
+.tabbar-container .menu-item:focus .menu-item-label, .tabbar-container .menu-item:hover .menu-item-label ,.tabbar-container .menu-item.here .menu-item-label{
     color: var(--color-primary);
 }
 
@@ -868,7 +868,7 @@ select {
 .head-fix {
     width: 100%;
     max-width: 640px;
-   /* filter: var(--shadow-top-fixed-light);*/
+filter:drop-shadow(0 1px 0px rgba(0, 0, 0, 0.1));
     position: fixed;
     top: 60px;
     z-index: 110;
@@ -890,7 +890,7 @@ select {
 
 .searching {
     width: 100%;
-    max-width: 640px;
+    /*max-width: 640px;*/
     height: 100%;
     background-color: var(--color-gray-7);
     z-index: 100;
@@ -1235,17 +1235,17 @@ select {
 
 .btn-like svg {
     fill: var(--color-gray-3);
-    transition: all .12s;
+    transition: all .14s;
 }
 
 .btn-like.liked {
-    animation: like .4s ease;
-    transition: all .12s;
+    animation: like .6s ease;
+    transition: all .14s;
 }
 
 .btn-like.liked svg {
     fill: var(--color-like);
-    animation: like .4s ease;
+    animation: like .6s ease;
 }
 
 .btn-like-S {
@@ -1260,7 +1260,7 @@ select {
 
 @keyframes like {
     0% {
-        transform: scale(1, 1);
+        transform: scale(0.8, 0.8);
     }
     20% {
         transform: scale(0.8, 0.8);
@@ -1653,7 +1653,7 @@ ul.list-item-S>li .img_box>img.object-fit-cover {
     position: relative;
 }
 
-/* 画面幅が768px以上の場合、横スクロールを解除 */
+/* 画面幅が768px以上の場合、横スクロールを解除 
 
 @media screen and (min-width: 768px) {
     .horizontal_scroll {
@@ -1663,7 +1663,7 @@ ul.list-item-S>li .img_box>img.object-fit-cover {
     .horizontal_scroll>li {
         min-width: inherit;
     }
-}
+}*/
 
 .horizontal_scroll>li:last-child {
     margin-right: 0;
@@ -1827,10 +1827,14 @@ h2.page-search {
 #modal window
 --------------------------------------------------------------*/
 
+.recipient_determined p.guide{
+margin:32px 0 16px;
+}
 body.fixed {
     position: fixed;
     left: 0;
 }
+
 
 .modal-wrapper {
     display: none;
@@ -1863,7 +1867,7 @@ body.fixed {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 36px 0 24px;
-    z-index: 900;
+    z-index: 910;
     text-align: center;
     overflow: auto;
     -webkit-overflow-scrolling: touch;

@@ -1,4 +1,4 @@
-//document.getElementById('#menu-home"').focus();
+
 
 /* Tab
     -------------------------------------- */
@@ -24,6 +24,38 @@ $('.tab-buttons h3').click(function () {
         }
     });
 });
+
+//URLによって現在地を示し分ける
+$(window).on('load',function(){ 
+ 
+    // URLの取得
+    var url = location.href
+   
+    // パスの取得
+    var path = location.pathname
+   
+    // パラメーターの取得
+    var param = location.search
+   
+    // ページ内アンカーの取得
+    var anc = location.hash
+
+   /* if (url == "https://ccc2021.idichi.tk/"){
+      $('#menu-home').focus();
+    } */
+    if (path == "/users/notification"){
+      $('#menu-notify').addClass("here");
+    }else if (path == "/items/add"){
+      $('#menu-post').addClass("here");
+    }else if (path == "/users/report"){
+        // パラメーターの値が 123 の場合に実行する内容
+        $('#menu-report').addClass("here");
+      } else if (path == "/users"){/*/users/mypage*/
+        $('#menu-mypage').addClass("here");
+      }else{
+        $('#menu-home').addClass("here");
+    }
+  });
 
 /* Search Bar Fix（あるところだけ）
     -------------------------------------- */
@@ -235,7 +267,7 @@ function deletePost() {
 function checkPost() {
     //投稿するボタンで確認モーダルを開く
 
-    let howDelivery = $('#input-how-delivery').val();;//undefined
+    let howDelivery = $('#input-how-delivery').val();//undefined
     console.log(howDelivery);
     //取引画面「受け渡しに進む」ボタンを押したら
     if (howDelivery == 'leave') {//受け渡し方法が「置いておく」の場合
@@ -261,17 +293,17 @@ function postItem() {
     //投稿する
 }
 
-/* 取引
+/* アイテム詳細
 -------------------------------------- */
 function checkConditions() {
-    let howDelivery = $('#disp-how-delivery').val();;//undefined
+    let howDelivery = $('#disp-how-delivery').text();
     console.log(howDelivery);
     //アイテム詳細「もらい手になる」ボタンを押したら取引開始確定前のチェックモーダルに飛ばす
-    if (howDelivery == 'leave') {//受け渡し方法が「置いておく」の場合
+    if (howDelivery == '置いておく') {//受け渡し方法が「置いておく」の場合
         //受け渡し（置いておく）モーダルを開く
         $('.modal-wrapper.check-conditions.leave').fadeIn();
         return false;
-    } else if (howDelivery == 'hand') {//受け渡し方法が「手渡し」の場合
+    } else if (howDelivery == '手渡し') {//受け渡し方法が「手渡し」の場合
         //受け渡し（手渡し）モーダルを開く
         $('.modal-wrapper.check-conditions.hand').fadeIn();
         return false;
@@ -283,12 +315,68 @@ function checkConditions() {
 }
 
 
-function gotoTransaction() {
+
+function determinRecipient() {
     //取引開始確認モーダルの「確定する」ボタンを押したら
     //確認モーダルを非表示
     $('.modal-wrapper.check-conditions').fadeOut().css({ top: 0 });
-    //取引ページに飛ぶ
+ 
+    //紙吹雪を表示
+      var count = 50;
+var defaults = {
+  origin: { y: 0.5 }
+};
+
+function fire(particleRatio, opts) {
+  confetti(Object.assign({}, defaults, opts, {
+    particleCount: Math.floor(count * particleRatio),
+
+    zIndex: 900,
+    ticks: 200,
+    colors: [
+        '#ff9e9e',
+        '#ff9eff',
+        '#9e9eff',
+        '#9effff',
+        '#9eff9e',
+        '#ffff9e'
+      ]
+    }));
+}
+
+fire(0.25, {
+  spread: 26,
+  startVelocity: 55,
+});
+fire(0.2, {
+  spread: 60,
+});
+fire(0.35, {
+  spread: 100,
+  decay: 0.91,
+  scalar: 0.8
+});
+fire(0.1, {
+  spread: 120,
+  startVelocity: 25,
+  decay: 0.92,
+  scalar: 1.2
+});
+fire(0.1, {
+  spread: 120,
+  startVelocity: 45,
+});
+
+    //取引が確定したよモーダルを表示しておく
+    $('.modal-wrapper.recipient_determined').fadeIn();
     return false;
+}
+function gotoTransaction() {
+//取引ページに飛ぶ
+console.log("取引画面へ");
+$('.modal-wrapper.recipient_determined').fadeOut().css({ top: 0 });
+return false;
+
 }
 
 function gotoDelivery() {
@@ -309,8 +397,11 @@ function gotoDelivery() {
         }
     }
 }
+
+
 /* 取引
 -------------------------------------- */
+
 function cancelTransaction() {
     /*取引画面「取引をキャンセルする」ボタンを押したら取引キャンセル画面に遷移する */
     $('.modal-wrapper.cancel-transaction').fadeIn();
@@ -359,8 +450,11 @@ function endTransaction() {
 }
 
 
+
+
 // 閉じる用・moral_test.htmlで開くテスト用
 
+//投稿
 $(function () {
 
     // 下書き削除モーダルの開閉）
@@ -410,6 +504,64 @@ $(function () {
         return false;
     });
 
+});
+
+
+//アイテム詳細
+$(function () {
+
+    // 取引開始確認モーダルの開閉（置いておく）
+
+    $('.modal-open.check-conditions.leave').click(function () {
+
+        $('.modal-wrapper.check-conditions.leave').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-conditions.leave').click(function () {
+        $('.modal-wrapper.check-conditions.leave').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+    // 取引開始確認モーダルの開閉（手渡し）
+
+    $('.modal-open.check-conditions.hand').click(function () {
+
+        $('.modal-wrapper.check-conditions.hand').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-conditions.hand').click(function () {
+        $('.modal-wrapper.check-conditions.hand').fadeOut().css({ top: 0 });
+        return false;
+    });
+    // 取引開始確認モーダルの開閉（手渡し）
+
+    $('.modal-open.check-conditions.mailing').click(function () {
+
+        $('.modal-wrapper.check-conditions.mailing').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.check-conditions.mailing').click(function () {
+        $('.modal-wrapper.check-conditions.mailing').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+      // もらい手確定用モーダルの開閉
+
+      $('.modal-open.recipient_determined').click(function () {
+
+        $('.modal-wrapper.recipient_determined').fadeIn();
+        return false;
+    });
+    $('.overlay, .modal-close.recipient_determined').click(function () {
+        $('.modal-wrapper.recipient_determined').fadeOut().css({ top: 0 });
+        return false;
+    });
+
+});
+
+
+//取引
+$(function () {
 
     // 取引開始確認モーダルの開閉（置いておく）
 
