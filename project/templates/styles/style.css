@@ -75,17 +75,20 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /*開発確認用
-    max-width: 375px;*/
+    /*PC未対応な分、でかくなりすぎて見にくくないように制限かけとく*/
+   margin: 0 auto;
+    max-width: 640px;
 }
-
+/*
 .wrapper {
     margin: 0 auto;
-}
+}*/
 
 main {
-    /*header footer 固定されるやつを除くコンテンツ*/
-    margin: 0;
+    /*header footer 固定されるやつを除くコンテンツ
+    margin: 0 auto;*/
+    max-width: 640px;
+
 }
 
 .searching+main {
@@ -347,7 +350,7 @@ footer li {
 }
 
 .footer-inner {
-    margin: auto;
+    margin: 0;
     max-width: 960px;
     padding: 16px 0;
     display: flex;
@@ -394,12 +397,13 @@ small {
 .tabbar-container {
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 30;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
 .tabbar-container .menu {
@@ -426,12 +430,12 @@ small {
     outline: none;
 }
 
-.tabbar-container .menu-item:focus .menu-icon, .tabbar-container .menu-item:hover .menu-icon {
+.tabbar-container .menu-item:focus .menu-icon, .tabbar-container .menu-item:hover .menu-icon,.tabbar-container .menu-item.here .menu-icon {
     font-family: "Material Icons";
     color: var(--color-primary);
 }
 
-.tabbar-container .menu-item:focus .menu-item-label, .tabbar-container .menu-item:hover .menu-item-label {
+.tabbar-container .menu-item:focus .menu-item-label, .tabbar-container .menu-item:hover .menu-item-label ,.tabbar-container .menu-item.here .menu-item-label{
     color: var(--color-primary);
 }
 
@@ -863,10 +867,11 @@ select {
 
 .head-fix {
     width: 100%;
-    filter: var(--shadow-top-fixed-light);
+    max-width: 640px;
+filter:drop-shadow(0 1px 0px rgba(0, 0, 0, 0.1));
     position: fixed;
     top: 60px;
-    z-index: 100;
+    z-index: 110;
     transition: .5s;
 }
 
@@ -885,6 +890,7 @@ select {
 
 .searching {
     width: 100%;
+    /*max-width: 640px;*/
     height: 100%;
     background-color: var(--color-gray-7);
     z-index: 100;
@@ -998,6 +1004,7 @@ select {
     border-radius: 4px;
 }
 
+
 .btn-M {
     width: 100%;
     /*height: 48px;*/
@@ -1061,6 +1068,7 @@ select {
 
 .fixed-btn-container {
     width: 100%;
+    max-width: 640px;
     /*height: 56px;*/
     background-color: var(--color-gray-7);
     position: fixed;
@@ -1227,17 +1235,17 @@ select {
 
 .btn-like svg {
     fill: var(--color-gray-3);
-    transition: all .12s;
+    transition: all .14s;
 }
 
 .btn-like.liked {
-    animation: like .4s ease;
-    transition: all .12s;
+    animation: like .6s ease;
+    transition: all .14s;
 }
 
 .btn-like.liked svg {
     fill: var(--color-like);
-    animation: like .4s ease;
+    animation: like .6s ease;
 }
 
 .btn-like-S {
@@ -1252,7 +1260,7 @@ select {
 
 @keyframes like {
     0% {
-        transform: scale(1, 1);
+        transform: scale(0.8, 0.8);
     }
     20% {
         transform: scale(0.8, 0.8);
@@ -1645,7 +1653,7 @@ ul.list-item-S>li .img_box>img.object-fit-cover {
     position: relative;
 }
 
-/* 画面幅が768px以上の場合、横スクロールを解除 */
+/* 画面幅が768px以上の場合、横スクロールを解除 
 
 @media screen and (min-width: 768px) {
     .horizontal_scroll {
@@ -1655,7 +1663,7 @@ ul.list-item-S>li .img_box>img.object-fit-cover {
     .horizontal_scroll>li {
         min-width: inherit;
     }
-}
+}*/
 
 .horizontal_scroll>li:last-child {
     margin-right: 0;
@@ -1819,10 +1827,14 @@ h2.page-search {
 #modal window
 --------------------------------------------------------------*/
 
+.recipient_determined p.guide{
+margin:32px 0 16px;
+}
 body.fixed {
     position: fixed;
     left: 0;
 }
+
 
 .modal-wrapper {
     display: none;
@@ -1855,7 +1867,7 @@ body.fixed {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 36px 0 24px;
-    z-index: 900;
+    z-index: 910;
     text-align: center;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -2097,6 +2109,10 @@ i.modal-close {
     height: calc(100vw - var(--margin-side)*2);
     margin-bottom: 16px;
     position: relative;
+}
+
+.start .swiper {
+    margin-top: 40px;
 }
 
 .swiper .btn-like-L {
@@ -2880,18 +2896,81 @@ section.bg-color {
     text-align: center;
 }
 
+.mypage section.share-service .share-buttons+p {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.mypage section.share-service p.text-P-M>span {
+    font-weight: 700;
+}
+
 .mypage section.share-service img {
     width: 100%;
-    margin: 8px auto 36px;
+    margin: 8px auto 24px;
+}
+
+.twitter-campaign {
+    text-align: left;
+    font-size: var(--font-size-P-M);
+    border: 2px solid var(--color-primary);
+    border-radius: 4px;
+    padding: 0 var(--margin-side) 12px;
+}
+
+.twitter-campaign p.centering {
+    color: var(--color-primary);
+}
+
+.twitter-campaign div>ul, .twitter-campaign div>ol {
+    margin: 0;
+    padding: 0;
+}
+
+.twitter-campaign div p {
+    margin: 1em 0 0.2em;
+}
+
+.twitter-campaign div {
+    margin-bottom: 4px;
+}
+
+.twitter-campaign div:last-child {
+    color: var(--color-gray-2);
+}
+
+.twitter-campaign div li {
+    margin: 0 0 0.4em 1.6em;
+}
+
+.twitter-campaign div>ol>li {
+    list-style-type: decimal;
+}
+
+.twitter-campaign div>ul>li {
+    list-style: disc;
 }
 
 .mypage .share-service .share-buttons {
     justify-content: center;
+    margin: 0 0 24px;
 }
 
 .mypage .share-service h3 {
-    margin-bottom: 8px;
+    margin: 16px auto;
     font-size: var(--font-size-H-SS);
+    position: relative;
+}
+
+.mypage .share-service h3:before {
+    position: absolute;
+    bottom: -8px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 2px;
+    content: '';
+    border-radius: 3px;
+    background: var(--color-primary);
 }
 
 img.ad {

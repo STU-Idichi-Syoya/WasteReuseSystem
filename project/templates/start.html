@@ -1,4 +1,4 @@
-<!-- templates/base.html -->
+<!-- templates/start.html -->
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 
-    <title>Compornents</title>
+    <title>JO-TO!</title>
     <!-- sanitize.css https://csstools.github.io/sanitize.css/ -->
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
     <!-- material design icons -->
@@ -20,13 +20,14 @@
     <link rel="stylesheet" href="styles/style.css">
     <!--<link rel="stylesheet" href="styles/header.css">-->
     <!--OGP-->
-    <meta property="og:url" content="https://" />
+    <meta property="og:url" content="https://ccc2021.idichi.tk/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
+    <meta property="og:title" content="JO-TO!" />
+    <meta property="og:description" content="JO-TO!は学内の不用品の共有し、
+もらい手につなげるサービスです。" />
     <meta property="og:site_name" content="" />
-    <meta property="og:image" content="https://" />
-    <meta property="fb:app_id" content="" />
+    <meta property="og:image" content="https://mt-sumikko.com/wp-content/uploads/2021/10/ogimage.jpg" />
+    
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@" />
@@ -44,7 +45,7 @@
 
 </head>
 
-
+<body>
 
 <!-- header -->
 
@@ -56,21 +57,21 @@
 
 
 <main>
-    <div class="margin-LR">
+    <div class="margin-LR start">
 
         <!-- Swiper -->
         <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events introduction">
             <div class="swiper-wrapper" aria-live="polite">
                 <div class="swiper-slide" role="group" aria-label="1 / 5"><img src="./images/introduction/01.svg"
-                        alt="img"></div>
+                        alt="その不用品、学内で譲渡しない？"></div>
                 <div class="swiper-slide" role="group" aria-label="2 / 5"><img src="./images/introduction/02.svg"
-                        alt="img"></div>
+                        alt="売るほどでもないものを譲って、後輩や友達を助けよう"></div>
                 <div class="swiper-slide" role="group" aria-label="3 / 5"><img src="./images/introduction/03.svg"
-                        alt="img"></div>
+                        alt="新しいものを買う前に、身近にないか探してみよう"></div>
                 <div class="swiper-slide" role="group" aria-label="4 / 5"><img src="./images/introduction/04.svg"
-                        alt="img"></div>
+                        alt="取引は学内限定・無償だから安心"></div>
                 <div class="swiper-slide" role="group" aria-label="5 / 5"><img src="./images/introduction/05.svg"
-                        alt="img"></div>
+                        alt="節約しながらSDGsに貢献できます"></div>
             </div>
             <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
                 <span class="swiper-pagination-bullet"></span>
@@ -107,8 +108,6 @@
         </div>
     </div>
 
-    <div class="margin-LR">
-    </div>
 </main>
 
 
@@ -155,11 +154,12 @@
                     <div class="share-buttons">
                         <!-- LINE -->
                         <a class="btn-social-share"
-                            href="https://social-plugins.line.me/lineit/share?url=【エンコードしたURL】"><img
+                            href="https://social-plugins.line.me/lineit/share?url=https://ccc2021.idichi.tk/"><img
                                 src="./images/buttons/LINE.svg" alt="LINEで共有"></a>
                         <!-- Twitter -->
                         <a class="btn-social-share"
-                            href="http://twitter.com/share?text=【ツイート文（日本語が含まれる場合にはURLエンコードが必要（エンコードのことはちょっとよくわからないです...!））】&url=【共有するURL】&btn-hashtags=【ハッシュタグ（複数あるときはカンマ区切り）】"
+                            href="http://twitter.com/share?text=その不用品、学内で譲渡しない？
+JO-TO!は学内の不用品の共有し、もらい手につなげるお手伝いをします！&url=https://ccc2021.idichi.tk/&hashtags=joto,不用品,廃材,リユース"
                             rel="nofollow"><img src="./images/buttons/Twitter.svg" alt="Twitterで共有"></a>
                         <!-- Share -->
                         <button type="button" class="btn-social-share native-share-btn" data-share-title="JO-TO!"><img
