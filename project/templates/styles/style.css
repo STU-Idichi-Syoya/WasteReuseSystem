@@ -2107,12 +2107,14 @@ i.modal-close {
 .swiper {
     width: 100%;
     height: calc(100vw - var(--margin-side)*2);
+    max-height:480px;
     margin-bottom: 16px;
     position: relative;
 }
 
 .start .swiper {
     margin-top: 40px;
+    max-width:480px;
 }
 
 .swiper .btn-like-L {
