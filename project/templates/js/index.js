@@ -42,12 +42,12 @@ $(window).on('load',function(){
 
    /* if (url == "https://ccc2021.idichi.tk/"){
       $('#menu-home').focus();
-    } */
+    } 
     $('#menu-home').removeClass("here");
     $('#menu-notify').removeClass("here");
     $('#menu-post').removeClass("here");
     $('#menu-report').removeClass("here");
-    $('#menu-mypage').removeClass("here");
+    $('#menu-mypage').removeClass("here");*/
     if (path == "/users/notification"){
       $('#menu-notify').addClass("here");
     }else if (path == "/items/add"){
