@@ -184,9 +184,12 @@ h1 {
 .title-seemore.h1 {
     padding-top: 24px;
 }
-
 h1.title {
     padding-top: 20px;
+}
+.report h2{
+    font-size:var(--font-size-H-S);
+    margin-bottom:12px;
 }
 
 .report h1.title {
