@@ -68,11 +68,13 @@ $(window).on('scroll', function () {
     if (winScrollTop >= startPos) {
         //下に行ってる時 top:0まで上げて固定する
         $('.head-fix').addClass('hide');
+        $('.searching').addClass('fixed');
 
     } else {//上に行ってるとき
         // $('.head-fix').removeClass('hide');
         if (winScrollTop <= 60) {//headerの高さ以下までたどり着いたら元の位置に固定する
             $('.head-fix').removeClass('hide');
+            $('.searching').addClass('fixed');
         }
     }
     startPos = winScrollTop;
